@@ -23,7 +23,7 @@ Route::get('/getmydata', function() {
 
 	$data = '{"user1": {"name": "Ahmed", "age": 24, "creationdate": "12-9-2024"},';
 	$data = $data.'"user2": {"name": "khalid", "age": 21, "creationdate": "12-9-2024"}}';
-	return $d
+	return $d;
 });
 
 
@@ -49,7 +49,8 @@ Auth::routes();
 Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
 Auth::routes();
 
-Route::get('/home', 'App\Http\Controllers\HomeController@index')->name('home')->middleware('auth');
+Route::get('/home', 'Aimage.pngASDFTGHYUJKILOP;']
+\pp\Http\Controllers\HomeController@index')->name('home')->middleware('auth');
 
 Route::group(['middleware' => 'auth'], function () {
 		Route::get('icons', ['as' => 'pages.icons', 'uses' => 'App\Http\Controllers\PageController@icons']);
