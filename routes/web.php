@@ -1,5 +1,5 @@
 <?php
-
+use App\Http\Controllers\Sing_upController;
 use Illuminate\Support\Facades\Route;
 
 /*
@@ -12,19 +12,16 @@ use Illuminate\Support\Facades\Route;
 | be assigned to the "web" middleware group. Make something great!
 |
 */
-
+/*Route::get('m/{i}', function($i) {
+	return "You requested ".$i;
+});
+*/
+Route::post('/sing_up', [Sing_upController::class, 'storeRegistration']);
 Route::get('/', function () {
     return view('welcome');
 });
 
-Route::get('/getmydata', function() {
-	//User::all();
-	$arr = Db::select("");
 
-	$data = '{"user1": {"name": "Ahmed", "age": 24, "creationdate": "12-9-2024"},';
-	$data = $data.'"user2": {"name": "khalid", "age": 21, "creationdate": "12-9-2024"}}';
-	return $d
-});
 
 
 Route::get('/about', 'App\Http\Controllers\NoorController@index');
@@ -40,12 +37,7 @@ Route::get('/Sing_up', 'App\Http\Controllers\Sing_upController@index');
 Route::get('/Student_Home', 'App\Http\Controllers\Student_HomeController@index');
 Route::get('/Student_Settings', 'App\Http\Controllers\Student_SettingsController@index');
 
-Auth::routes();
-
-Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
-
-Auth::routes();
-
+/*
 Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
 Auth::routes();
 
@@ -67,4 +59,4 @@ Route::group(['middleware' => 'auth'], function () {
 	Route::put('profile', ['as' => 'profile.update', 'uses' => 'App\Http\Controllers\ProfileController@update']);
 	Route::put('profile/password', ['as' => 'profile.password', 'uses' => 'App\Http\Controllers\ProfileController@password']);
 });
-
+*/

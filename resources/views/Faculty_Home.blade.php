@@ -28,12 +28,13 @@ style="
       position: absolute;
       left:2%;
       top:25%;"></i></button>
-      <button>
+      <button onclick="Setting()">
       <i class="fa-solid fa-gear"
       style="font-size:25px; 
       position: absolute;
       left:6%;
-      top:40%;"></i></button>
+      top:40%;"
+      ></i></button>
       <button>
       <i class="fa-solid fa-bell"
       style="font-size:25px; 
@@ -235,7 +236,13 @@ border-color:grey;
 z-index: 1;">
 
 </div>
+<script> 
+        function Setting(){
+            window.location.href ="http://127.0.0.1:8000/OfficerSettings"
+        }
 
+
+     </script> 
 
 
 

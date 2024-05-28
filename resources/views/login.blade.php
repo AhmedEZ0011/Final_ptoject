@@ -85,6 +85,9 @@
                 border:none;
 
                 "
+                 onclick="Go_To_SingUp()"
+                 
+                    
                 >
                 إنشاء حساب
                 </button>
@@ -137,8 +140,8 @@
                 ">
                     <button class="dropbtn"></button>
                     <div class="dropdown-content">
-                    <a href="#">أستاد   <i class="fa-solid fa-user-tie"></i></a>
-                    <a href="#">طالب    <i class="fa-solid fa-user"></i></a>
+                    <a href="http://127.0.0.1:8000/Faculty_Sign_In">أستاد   <i class="fa-solid fa-user-tie"></i></a>
+                    <a href="http://127.0.0.1:8000/Student_Sign_In">طالب    <i class="fa-solid fa-user"></i></a>
                     </div>
                 </div>
                 </div>
@@ -219,7 +222,13 @@
 
 
                 </div>
-                                   
+                 <script> 
+                    function Go_To_SingUp(){
+                        window.location.href ="http://127.0.0.1:8000/Sing_up"
+                    }
+
+
+                 </script>                 
 
 
                 </body>
