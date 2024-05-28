@@ -14,12 +14,12 @@
     font-size: 16px;
     border: none;
     }
-    
+
     .dropdown {
     position: relative;
     display: inline-block;
     }
-    
+
     .dropdown-content {
     display: none;
     position: absolute;
@@ -29,27 +29,27 @@
     z-index: 1;
     border-radius: 10px;
     }
-    
+
     .dropdown-content a {
     color: black;
     padding: 12px 16px;
     text-decoration: none;
     display: block;
     }
-    
+
     .dropdown-content a:hover {background-color: #70abdbd8; }
-    
+
     .dropdown:hover .dropdown-content {display: block;}
-    
+
     .dropdown:hover .dropbtn {background-color: #4b80ab00;}
     </style>
 </head>
-<body 
+<body
     style=" background-image: url({{ URL('main.jpg')}});
     background-repeat: no-repeat;
-    
+
     background-size: 100%;
-    
+
 "
 >
 
@@ -111,7 +111,7 @@ style="font-size: 40px;
         border-radius: 5px;
         border:none;
         "
-       
+
         placeholder="نوع المستخدم";
 >
 
@@ -179,7 +179,7 @@ border:none;
 placeholder="تأكيد كلمة المرور";
 
 >
-<input class="Section" 
+<input class="Section"
 style="
 width: 70%;
 height: 5%;
@@ -263,7 +263,7 @@ style="
     style="color: black ;
         left: 37%;
         top: 16%;
-        position: fixed; 
+        position: fixed;
     "><i class="fa-solid fa-caret-down"></i></button>
 
 
@@ -284,27 +284,24 @@ style="
     style="color: black ;
         left: 37%;
         top: 16%;
-        position: fixed; 
+        position: fixed;
     "><i class="fa-solid fa-caret-down"></i></button>
-                
-                                
+
+
                                     <div class="dropdown-content">
-                                    
+
                     <a href="#">    تقنيات الإنترنت </a>
                     <a href="#">  حوسبة متنقلة     </a>
                     <a href="#">  الشبكات</a>
                     <a href="#">  نظم المعلومات</a>
                     <a href="#"> هندسة برمجيات</a>
-                    
+
                                     </div>
-                                    </div>                    
+                                    </div>
 
 
 </div>
 </div>
-
-
-
 </body>
 </html>
 

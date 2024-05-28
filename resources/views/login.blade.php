@@ -111,7 +111,7 @@
                 "
                 >
                 <i class="fa-solid fa-caret-down"></i>
-                تسجيل الدخول ک
+                   تسجيل الدخول ک
                 </button>
                 <div class="dropdown"
                 style="
@@ -172,15 +172,15 @@
 
                     "
                     >
-                محرك بحث مشاريع التخرج لكلية تقنية المعلومات / جامعة طرابلس
 
+    محرك بحث مشاريع التخرج لكلية تقنية المعلومات / جامعة طرابلس
                 </div>
 
                 <input class=""
                         style="
-                        width: 70%;
+                        width: 90%;
                         height: 10%;
-                        left: 14%;
+                        left: 5%;
                         top: 45%;
                         position: absolute;
                         text-align: center;
@@ -192,16 +192,16 @@
                 >
                 <div class="dropdown"
                   style="
-               width: 90%;
-                height: 10%;
-                   left: 14%;
+                 width: 90%;
+                 height: 10%;
+                 left: 14%;
                  top: 43%;">
-    <button class="dropbtn"
-    style="color: black ;
-        left: 37%;
-        top: 16%;
-        position: fixed;
-    "><i class="fa-solid fa-caret-down"></i></button>
+                <button class="dropbtn"
+                 style="color: black ;
+                     left: 37%;
+                     top: 16%;
+                     position: fixed;
+ "><i class="fa-solid fa-caret-down"></i></button>
 
 
                                     <div class="dropdown-content">
@@ -215,10 +215,9 @@
 
                                     </div>
                                     </div>
-
-
 </div>
-</div>
+
+<button>
                     <i class="fa-solid fa-magnifying-glass"
                     style="
                     width: 70%;
@@ -226,7 +225,7 @@
                     left: 70%;
                     top: 47%;
                     position: absolute;"></i>
-
+</button>
                     <div class="dropdown">
                     <button class="dropbtn"
                     style="color: black ;
@@ -234,69 +233,8 @@
                         top: 46%;
                         position: fixed;
                     "><i class="fa-solid fa-caret-down"></i></button>
-
-
-                                                    <div class="dropdown-content">
-                                                        <a href="#"><i class="fa-solid fa-book-bookmark" ></i>    تقنيات الإنترنت </a>
-                                                        <a href="#"><i class="fa-solid fa-book-bookmark"></i>  حوسبة متنقلة     </a>
-                                                        <a href="#"><i class="fa-solid fa-book-bookmark"></i>  الشبكات</a>
-                                                        <a href="#"><i class="fa-solid fa-book-bookmark"></i>  نظم المعلومات</a>
-                                                        <a href="#"><i class="fa-solid fa-book-bookmark"></i> هندسة برمجيات</a>
-                                                        <a href="#"><i class="fa-solid fa-book-bookmark"></i>الجميع</a>
                                                     </div>
-                                                    </div>
-
-
                 </div>
-
-                <style>
-                    #options
-                    {border:none;
-                        background-color:rgb(255, 255, 255);
-                }
-                </style>
-
-                <label for="options"></label>
-                       <select id="options">
-                        <option value="ALL">الجميع</option>
-                        <option value="WT">تقنيات الإنترنت </option>
-                         <option value="SE">هندسة برمجيات</option>
-                        <option value="NT">الشبكات</option>
-                       <option value="IS">نظم المعلومات</option>
-                        <option value="MC ">الحوسبة المتنقلة</option>
-                             </select>
-
-
-                        <style>
-                        #search{
-                            border:none;
-                            background-color:rgb(255, 255, 255);
-                        }
-                        </style>
-                        <input type="text" id="search">
-                        <style>
-                        .fa-sharp
-                        {border:none;
-                            background-color:rgb(255, 255, 255);
-                        }
-                        </style>
-
-                        <button onclick="performSearch()" class="fa-sharp fa-solid fa-magnifying-glass" ></button>
-                        <div id="searchResults"></div>
-
-            <script>
-            function performSearch() {
-            var selectedOption = document.getElementById("options").value;
-            var searchTerm = document.getElementById("search").value;
-            var searchResultsDiv = document.getElementById("searchResults");
-
-            // Here you can perform your search based on the selected option and the search term
-            // For simplicity, let's just display the selected option and search term
-            searchResultsDiv.innerHTML = "Selected Option: " + selectedOption + "<br>";
-            searchResultsDiv.innerHTML += "Search Term: " + searchTerm;
-        }
-            </script>
-            <script src="script.js"></script>
                 </body>
                 </html>
 

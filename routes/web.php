@@ -1,6 +1,7 @@
 <?php
 
 use Illuminate\Support\Facades\Route;
+use App\Http\Controllers\Student_Sign_InController;
 
 /*
 |--------------------------------------------------------------------------
@@ -26,7 +27,10 @@ Route::get('/getmydata', function() {
 	return $d;
 });
 
+Route::get('/Student_Sign_In', [Student_Sign_InController::class, 'showLoginForm'])->name('Student_Sign_In.blade');
+Route::post('/Student_Sign_In', [Student_Sign_InController::class, 'login']);
 
+//Route::post('/Student_Sign_In', [Student_Sign_InController::class, 'logout'])->name('logout');
 Route::get('/about', 'App\Http\Controllers\NoorController@index');
 Route::get('/loginhome', 'App\Http\Controllers\LoginController@index');
 Route::get('/sign', 'App\Http\Controllers\SignInController@index');
@@ -35,7 +39,6 @@ Route::get('/Officer_Home', 'App\Http\Controllers\Officer_HomeController@index')
 Route::get('/Examiner_Home', 'App\Http\Controllers\Examiner_HomeController@index');
 Route::get('/Faculty_Sign_In', 'App\Http\Controllers\Faculty_Sign_InController@index');
 Route::get('/OfficerSettings', 'App\Http\Controllers\OfficerSettingsController@index');
-Route::get('/Student_Sign_In', 'App\Http\Controllers\Student_Sign_InController@index');
 Route::get('/Sing_up', 'App\Http\Controllers\Sing_upController@index');
 Route::get('/Student_Home', 'App\Http\Controllers\Student_HomeController@index');
 Route::get('/Student_Settings', 'App\Http\Controllers\Student_SettingsController@index');
@@ -68,3 +71,7 @@ Route::group(['middleware' => 'auth'], function () {
 	Route::put('profile/password', ['as' => 'profile.password', 'uses' => 'App\Http\Controllers\ProfileController@password']);
 });
 
+
+Auth::routes();
+
+Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
