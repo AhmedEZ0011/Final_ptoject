@@ -1,13 +1,10 @@
-
 <!DOCTYPE html>
 <html>
 <head>
 <title></title>
 <meta name="viewport" content="width=device-width, initial-scale=1">
-<script src="https://kit.fontawesome.com/258bab96e7.js" crossorigin="anonymous"></script>
-<!--Get your own code at fontawesome.com-->
 <style>
-                    
+
         .dropbtn{
         background-color: #14a7e0;
         height: 9%;
@@ -18,12 +15,12 @@
         border-radius: 20px;
         border-style: none;
         }
-        
+
         .dropdown {
         position: relative;
         display: inline-block;
         }
-        
+
         .dropdown-content {
         display: none;
         position: absolute;
@@ -33,33 +30,33 @@
         z-index: 1;
         border-radius: 10px;
         }
-        
+
         .dropdown-content a {
         color: black;
         padding: 12px 16px;
         text-decoration: none;
         display: block;
         }
-        
+
         .dropdown-content a:hover {background-color: #b5c5d1d8; }
-        
+
         .dropdown:hover .dropdown-content {display: block;}
-        
+
         .dropdown:hover .dropbtn {background-color: #99aab800;}
-        
+
 .popup {
 position: fixed;
 z-index: 10;
 top: 0%;
 bottom: 0%;
-left: 0%; 
+left: 0%;
 right: 0%;
 border-radius: 0.7em;
 background-color: rgba(34, 41, 49, 0.171);
 }
 
 .popup > .container {
-width: 100%; 
+width: 100%;
 height: 100%;
 position: relative;
 
@@ -73,9 +70,9 @@ position: relative;
 }
 </style>
 </head>
-<body 
-    style=" background:#F1F0FB;   
-    
+<body
+    style=" background:#F1F0FB;
+
 "
 >
 <div class="heder"
@@ -87,30 +84,20 @@ style="
       position: absolute;
       border-bottom: 5px solid black;">
       <button>
-      <i class="fa-solid fa-arrow-right-from-bracket"
-      style="font-size:35px; 
-      position: absolute;
-      left:2%;
-      top:25%;"></i></button>
+      <img src="logout.png" alt="Arrow Right From Bracket" style="width: 35px; position: absolute; left:2%; top:25%;">
+      </button>
       <button>
-      <i class="fa-solid fa-gear"
-      style="font-size:25px; 
-      position: absolute;
-      left:6%;
-      top:40%;"></i></button>
+      <img src="Settings.png" alt="Gear" style="width: 25px; position: absolute; left:6%; top:40%;">
+      </button>
       <button>
-      <i class="fa-solid fa-bell"
-      style="font-size:25px; 
-      position: absolute;
-      left:9%;
-      top:40%;"></i>
+      <img src="notification.png" alt="Bell" style="width: 25px; position: absolute; left:9%; top:40%;">
       </button>
      <div class="Home-page"
      style="left:50%;
      top:30%;
      font-size:40px;
       position: absolute;">
-      <i class="fa-solid fa-house"></i>Home</div>
+      <img src="Home.png" alt="Home" style="width: 40px;"> Home</div>
     </div>
 
 
@@ -125,17 +112,11 @@ style="
       position: absolute;
       background: #97CADB;
       border-radius: 40px;
-      
+
   "
 >
   <div class="UserName_Icon">
-    <i class="fa-solid fa-user-tie"
-    style="font-size:40px; 
-    position: absolute;
-    left:80%;
-    top:9%;
-        
-         "></i>
+    <img src="Student Male.png" alt="User" style="width: 40px; position: absolute; left:80%; top:9%;">
   <div class="UserName"
   style="
     position:absolute;
@@ -155,14 +136,10 @@ style="
   position: absolute;
   border-radius: 20px;
   border-style: none;
-  
-">  
-<i class="fa-solid fa-house"
-style="font-size:35px; 
-        right:4%;
-        top:20%;
-        position: absolute;"></i>
-        <h2>الرئسية</h2>    
+
+">
+<img src="Home.png" alt="Home" style="width: 35px; right:4%; top:20%; position: absolute;">
+        <h2>الرئيسية</h2>
 </button>
 <button class="Submit=proposal"
         style="background-color: #97CADB;
@@ -173,12 +150,8 @@ style="font-size:35px;
         position: absolute;
         border-radius: 20px;
         border-style: none;
-">  
-<i class="fa-solid fa-cloud-arrow-down"
-style="font-size:35px; 
-        right:4%;
-        top:20%;
-        position: absolute;"></i>
+">
+<img src="Upload to the Cloud.png" alt="Submit Proposal" style="width: 35px; right:4%; top:20%; position: absolute;">
                <h2>تقديم مقترح</h2>
 </button>
 
@@ -192,13 +165,9 @@ style="font-size:35px;
         position: absolute;
         border-radius: 20px;
         border-style: none;
-">  
-<i class="fa-regular fa-clipboard"
-style="font-size:35px; 
-        right:4%;
-        top:20%;
-        position: absolute;"></i>
-        <h2>ارسال تقرير الشهري </h2> 
+">
+<img src="Send Job List.png" alt="Send Monthly Report" style="width: 35px; right:4%; top:20%; position: absolute;">
+        <h2>ارسال تقرير الشهري </h2>
 </button>
 <button class="Project-document"
         style="background-color: #97CADB;
@@ -209,13 +178,9 @@ style="font-size:35px;
         position: absolute;
         border-radius: 20px;
         border-style: none;
-">  
-<i class="fa-solid fa-file-arrow-down"
-style="font-size:35px; 
-        right:4%;
-        top:20%;
-        position: absolute;"></i>
-        <h2>تحميل التوثيق</h2> 
+">
+<img src="t Document.png" alt="Project Document" style="width: 35px; right:4%; top:20%; position: absolute;">
+        <h2>تحميل التوثيق</h2>
 </button>
 <button class="Archived-projects"
         style="background-color: #97CADB;
@@ -226,13 +191,9 @@ style="font-size:35px;
         position: absolute;
         border-radius: 20px;
         border-style: none;
-        
-"onclick="OpenIt()">  
-<i class="fa-solid fa-book-bookmark"
-   style="font-size:35px; 
-        right:4%;
-        top:20%;
-        position: absolute;"></i>
+
+"onclick="OpenIt()">
+<img src="Bookmark.png" alt="Archived Projects" style="width: 35px; right:4%; top:20%; position: absolute;">
 
 <h2>مشاريع مؤرشفة</h2>
 <div class="popup" style="display: none;">
@@ -246,79 +207,16 @@ style="font-size:35px;
         background:#5e77732a;
         border-radius: 75px;
     ">
-           <div class="text"
-           style="
-           width: 100%;
-           height: 2%;
-           left: 1%;
-           top: 30%;
-           position: absolute;
-           text-align: center;
-           color: #353232;
-           font-size: 20px;
-           font-family: Inter;
-           font-weight: 200px;
-           word-wrap: break-word;
-           
-           "
-           >
-       محرك بحث مشاريع التخرج لكلية تقنية المعلومات / جامعة طرابلس
-
-       </div>
-
-       <input class=""
-               style="
-               width: 70%;
-               height: 10%;
-               left: 14%;
-               top: 45%;
-               position: absolute;
-               text-align: center;
-               color: #090e09;
-               border-radius: 5px;
-               border:none;
-               "
-               placeholder="اختر القسم وابحث عن مشروع";
-       >
-          
-
-           <div class="dropdown">
-           <button class="dropbtn"
-           style="color: black ;
-               left: 35%;
-               top: 46%;
-               position: fixed; 
-           "><i class="fa-solid fa-caret-down"></i>
-           </button>
-                       
-                                          
-                <div class="dropdown-content">
-                <a href="#"><i class="fa-solid fa-book-bookmark" ></i>    تقنيات الإنترنت </a>
-                <a href="#"><i class="fa-solid fa-book-bookmark"></i>  حوسبة متنقلة     </a>
-                <a href="#"><i class="fa-solid fa-book-bookmark"></i>  الشبكات</a>
-                <a href="#"><i class="fa-solid fa-book-bookmark"></i>  نظم المعلومات</a>
-                <a href="#"><i class="fa-solid fa-book-bookmark"></i> هندسة برمجيات</a>
-                <a href="#"><i class="fa-solid fa-book-bookmark"></i>الجميع</a>
-                </div>
-                </div>
-
-
-       </div>
-        
-    </div>
 
 
 
 
 
 
- 
+
+
 </button>
 </div>
-
-
-
-
 <div class="advertisement"
   style="background: #97CADB;
   width: 20%;
@@ -329,12 +227,7 @@ style="font-size:35px;
   border-radius: 20px;
   z-index: 2;">
 
-                <i class="fa-regular fa-clipboard"
-                style=" font-size:37px; 
-                position: absolute;
-                right: 15%;
-                top: 20%;
-                "></i>
+                <img src="Read Online.png" alt="Advertisement" style="width: 37px; position: absolute; right: 15%; top: 20%;">
   <div class="advertisementName"
   style="position:absolute;
   font-size:33px;
@@ -367,7 +260,3 @@ z-index: 1;">
     </script>
 </body>
 </html>
-
-
-
-

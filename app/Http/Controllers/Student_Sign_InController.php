@@ -10,26 +10,43 @@ class Student_Sign_InController extends Controller
     //Action :
     public function showLoginForm()
     {
-        return view('Student_Sign_In');
+        return view('Student_Sign_In', ['email' => '']);
     }
-    //Action اللي ابدير عملية التسجيل
+    /**
+     * Handle login form submission.
+     *
+     * @param  \Illuminate\Http\Request  $request
+     * @return \Illuminate\Http\Response
+     */
     public function login(Request $request)
     {
-        // التحقق من صحة المدخلات
-        $request->validate([
-            'email' => 'required|email',
-            'password' => 'required|min:6',
-        ]);
+        // استقبال البيانات من الطلب
+       $email = $request->input('email');
+       $password = $request->input('password');
 
-        // محاولة تسجيل الدخول
-        if (Auth::attempt(['email' => $request->email, 'password' => $request->password])) {
-            // في حالة نجاح التسجيل يعرض dashboard
-            return redirect()->intended('/dashboard');
-        }
 
-        // في حالة فشل التسجيل لأي سبب يعرض خطأ 404
-        return response()->json([
-            'message' => 'The provided credentials do not match our records.',
-        ], 401);
+        // عرض النموذج مع البريد الإلكتروني المدخل
+        return view('Student_Sign_In', ['email' => $email]);
+
+
+        // تحقق من صحة البيانات
+        //$request->validate([
+        //  'email' => 'required|email',
+        // 'password' => 'required|min:6',
+        //]);
+
+        // محاول تسجيل الدخول
+         //$credentials = $request->only('email', 'password');
+
+          //if (Auth::attempt($credentials)) {
+           // إذا كانت بيانات الاعتماد صحيحة
+         // return redirect()->intended('dashboard'); // تغيير مسار التوجيه حسب حاجتك
+           //}
+
+         // إذا كانت بيانات الاعتماد غير صحيحة
+         //return back()->withErrors([
+         //  'email' => 'البريد الإلكتروني أو كلمة المرور غير صحيحة.',
+          //])->withInput($request->except('password'));
+}
     }
-    }
+

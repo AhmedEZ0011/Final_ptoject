@@ -11,9 +11,10 @@ return new class extends Migration
      */
     public function up(): void
     {
-        Schema::create('users', function (Blueprint $table) {
-            $table->integer('passward', 10)->comment('الرقم السري');
-            $table->char('user_name', 20)->comment('اسم المستخدم');
+        Schema::create('departments', function (Blueprint $table) {
+            $table->char('id',2)->primary()->comment('رمز القسم');
+            $table->string('name', 50)->comment('اسم القسم');
+            $table->timestamps();
             $table->engine = 'InnoDB';
             $table->charset = 'utf8mb4';
             $table->collation = 'utf8mb4_unicode_ci';
@@ -25,6 +26,6 @@ return new class extends Migration
      */
     public function down(): void
     {
-        Schema::dropIfExists('users');
+        Schema::dropIfExists('departments');
     }
 };

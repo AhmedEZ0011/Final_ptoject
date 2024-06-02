@@ -1,162 +1,219 @@
-
 <!DOCTYPE html>
-<html>
+<html lang="ar">
 <head>
-<title></title>
-<meta name="viewport" content="width=device-width, initial-scale=1">
-<script src="https://kit.fontawesome.com/258bab96e7.js" crossorigin="anonymous"></script>
-<!--Get your own code at fontawesome.com-->
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>تسجيل الدخول</title>
+    <link rel="stylesheet" href="styles.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
 </head>
-<body 
-    style=" background-image: url({{ URL('main.jpg')}});
-    background-repeat: no-repeat;
-    
-    background-size: 100%;
-    
-"
->
+<script>
+    // ادير refresh للصفحة تلقائي
+    function reloadPage() {
+        setTimeout(function() {
+            location.reload();
+        }, 4000); // 3 seconds
+    }
+</script>
+<style>
+body {
+    margin: 0;
+    padding: 0;
+    font-family: Arial, sans-serif;
+    background: url('main.jpg') no-repeat center center fixed;
+    background-size: cover;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+}
 
-<div class="heder"
-style="
-    width: 100%;
-    height: 10%;
-    left: 0%;
-    top: 0%;
+.login-container {
+    background: #7CAACF;
+    padding: 30px;
+    border-radius: 8px;
+    width: 300px;
+    text-align: center;
+}
+
+
+.login-box h2 {
+    margin-bottom: 20px;
+}
+
+.input-group {
+    position: relative;
+    margin-bottom: 30px;
+}
+
+.input-group i {
     position: absolute;
-    background: #97cadb4f;
-    
-"
-><button class="BackIcon"
-style="background: #97cadb4f;
-border:none;"><i class="fa-solid fa-circle-arrow-left"
-style="font-size: 40px;
-"></i></button>
-    <i class="fa-solid fa-graduation-cap "
-    style=" font-size: 30px;
-    "></i>
-<button class="UserIcon"
-style="
-width: 13%;
+    left: 15px;
+    top: 50%;
+    transform: translateY(-50%);
+    color: #9b9999;
+}
+
+.input-group input {
+    width: 80%;
+    padding: 10px 10px 10px 30px;
+    border: 1px solid #ffffff;
+    border-radius: 4px;
+    font-size: 16px;
+    text-align: right;
+}
+
+button {
+    width: 60%;
+    padding: 10px;
+    border: none;
+    border-radius: 4px;
+    background-color: #6591c0;
+    color: white;
+    font-size: 16px;
+    cursor: pointer;
+}
+
+button:hover {
+    background-color: #93aece;
+}
+.navbar {
+    width: 99%;
+    padding: 10px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    position: fixed;
+    top: 0;
+    left: 0;
+    z-index: 1000; /* ضمان ظهور الشريط فوق جميع المحتويات الأخرى */
+    background-color: #97cadb4f;
+}
+
+.navbar-left, .navbar-right {
+    display: flex;
+    align-items: center;
+}
+.navbar-left i, .navbar-right i {
+    color: rgb(12, 12, 12);
+    font-size: 28px;
+    margin: 0 10px;
+    right: 10%;
+}
+
+.btn-back {
+    background: none;
+    border: none;
+    color: rgb(3, 3, 3);
+    font-size: 30px;
+    cursor: pointer;
+}
+.custom-link {
+    color: #483fc7; /* تغيير لون النص إلى الأحمر، يمكن تغيير اللون حسب الحاجة */
+    text-decoration: none; /* إزالة الخط تحت الرابط */
+}
+
+.custom-link:hover {
+    color: #7a7675; /* لون النص عند التمرير عليه */
+    text-decoration: underline; /* يمكن إضافة خط تحت الرابط عند التمرير إذا رغبت في ذلك */
+}
+.UserIcon{
+    width: 13%;
 height: 100%;
-left: 80%;
-top: 0%;
+left: 93%;
+top: 30%;
 position: absolute;
 color: #353232;
 background-color: #4b80ab00;
 font-size: 20px;
 border:none;
 text-decoration: none;
+}
+.error {
+    color: red;
+    font-size: 14px;
+}
 
-
-"
->
-<p class ="UserIconName"
-style="width: 13%;
-height: 100%;
-left: 20%;
-top: 0%;
-position: absolute;
-color: #353232;">أستاد</p>
-<i class="fa-solid fa-user" 
-style=" font-size: 30px;"></i>
-
-</div>
-
-
-  <div
-  class="ProjectResearchContener"
-  style="
-      width: 35%;
-      height: 60%;
-      left: 35%;
-      top: 25%;
-      position: absolute;
-      background: #7CAACF;
-      border-radius: 40px;
-  "
->
-<div class="text"
-    style="
-    width: 100%;
-    height: 2%;
-    left: 1%;
-    top: 15%;
+.alert {
+    color: red;
+    margin-bottom: 15px;
+}
+.centered-flex {
     position: absolute;
-    text-align: center;
-    color: #353232;
-    font-size: 20px;
-    font-family: Inter;
-    font-weight: 200px;
-    word-wrap: break-word;
-    "
-    >
-    تسجيل الدخول
-</div>
+    top: 20px;
+  right: ;: 40px;
+    font-size: px; /* تكبير حجم الأيقونة */
+    color: #000000; /* لون الأيقونة */
+}
+.user
+{
 
-<input type="email" class="email" 
-        style="
-        width: 70%;
-        height: 10%;
-        left: 14%;
-        top: 30%;
-        position: absolute;
-        text-align: center;
-        color: #090e09;
-        border-radius: 15px;
-        border:none;
-        "
-       
-        placeholder="البريد الإلكتروني";
->
-<i class="fa-solid fa-envelope"
-style="
-        width: 70%;
-        height: 10%;
-        left: 17%;
-        top: 33%;
-        position: absolute;"></i>
-    <input type="password" class="" 
-    style="
-    width: 70%;
-    height: 10%;
-    left: 14%;
-    top: 50%;
-    position: absolute;
-    text-align: center;
-    color: #090e09;
-    border-radius: 15px;
-    border:none;
-    "
-    placeholder="كلمة المرور ";
+    top: 20px;
+    right: 70px;
+    font-size: px; /* تكبير حجم الأيقونة */
+    color: #000000; /* لون الأيقونة */
+}
+.UserIconName{
+    top: 20px;
+    text-align: right;
+    font-size: 20px; /* تكبير حجم الأيقونة */
+    color: #000000; /* لون الأيقونة */
 
->
-<i class="fa-solid fa-lock"
-style="
-width: 70%;
-height: 10%;
-left: 18%;
-top: 53%;
-position: absolute;"></i>
+}
+</style>
+<body>
 
+    <nav class="navbar">
+        <div class="navbar-left">
+            <div class="centered-flex-user">
+                <img src="Graduation Cap.png" alt="Description of the image" width="50" height="30">
+            </div>
+            </div>
+                         <div class="navbar-rigth">
+                            <div class="user">
+                                <img src="student.png" alt="Description of the image" width="50" height="50">
+                             </div>
+                          </div>
+                              </nav>
+    <div class="login-container">
+            <h2>تسجيل الدخول</h2>
 
-<button class=""
-style="
-width: 60%;
-height: 15%;
-left: 20%;
-top: 75%;
-position: absolute;
-background: #4B80AB;
-border:none;
-border-radius: 5px;"
->تسجيل </button>
-
-</div>
-
+            @if ($errors->any())
+            <div class="alert alert-danger">
+                <ul>
+                    @foreach ($errors->all() as $error)
+                        <li>{{ $error }}</li>
+                    @endforeach
+                </ul>
+            </div>
+            <script>
+                // Call the function to reload the page
+                reloadPage();
+            </script>
+        @endif
+            <form method="POST" action="{{ route('login') }}">
+                @csrf
+                <div class="input-group">
+                    <i class="fas fa-envelope"></i>
+                    <input type="email" name="email" id="email" value="{{ old('email') }}" required autofocus placeholder="البريد الإلكتروني" >
+                    @error('email')
+                    <span class="error">{{ $message }}</span>
+                @enderror
+                </div>
+                <div class="input-group">
+                    <i class="fas fa-lock"></i>
+                    <input type="password" name="password" id="password" required placeholder=" كلمة المرور">
+                    @error('password')
+                    <span class="error">{{ $message }}</span>
+                     @enderror
+            </div>
+                <div>
+                    <a href="{{ route('password.request') }}" class="custom-link">هل نسيت كلمة المرور؟</a>
+                </div>
+                <br>
+                <button type="submit">تسجيل</button>
+            </form>
+        </div>
 
 </body>
 </html>
-
-
-
-

@@ -98,7 +98,7 @@ button:hover {
     color: rgb(12, 12, 12);
     font-size: 28px;
     margin: 0 10px;
-    right: 30%;
+    right: 10%;
 }
 
 .btn-back {
@@ -153,56 +153,40 @@ text-decoration: none;
     font-size: px; /* تكبير حجم الأيقونة */
     color: #000000; /* لون الأيقونة */
 }
-.vavbar-rigth-UserIconName{
-r
+.UserIconName{
+    top: 20px;
+    text-align: right;
+    font-size: 20px; /* تكبير حجم الأيقونة */
+    color: #000000; /* لون الأيقونة */
 
 }
 </style>
 <body>
+
     <nav class="navbar">
         <div class="navbar-left">
             <div class="centered-flex-user">
                 <img src="Graduation Cap.png" alt="Description of the image" width="50" height="30">
             </div>
             </div>
-                <div class="navbar-rigth">
+                         <div class="navbar-rigth">
                             <div class="user">
                                 <img src="user.png" alt="Description of the image" width="50" height="50">
-                            </div>
-                            <h1 class ="UserIconName" >طالب</h1>
-                            </div>
-                          </nav>
+                             </div>
+                          </div>
+                              </nav>
     <div class="login-container">
             <h2>تسجيل الدخول</h2>
-
-            @if ($errors->any())
-            <div class="alert alert-danger">
-                <ul>
-                    @foreach ($errors->all() as $error)
-                        <li>{{ $error }}</li>
-                    @endforeach
-                </ul>
-            </div>
-            <script>
-                // Call the function to reload the page
-                reloadPage();
-            </script>
-        @endif
-            <form method="POST" action="{{ route('login') }}">
+            <form method="POST" action="{{ route('student.login.submit') }}">
                 @csrf
                 <div class="input-group">
                     <i class="fas fa-envelope"></i>
-                    <input type="email" name="email" id="email" value="{{ old('email') }}" required autofocus placeholder="البريد الإلكتروني" >
-                    @error('email')
-                    <span class="error">{{ $message }}</span>
-                @enderror
+                    <input type="email" name="email" id="email" value="{{ $email }}" required autofocus >
                 </div>
                 <div class="input-group">
                     <i class="fas fa-lock"></i>
                     <input type="password" name="password" id="password" required placeholder=" كلمة المرور">
-                    @error('password')
-                    <span class="error">{{ $message }}</span>
-                     @enderror
+
             </div>
                 <div>
                     <a href="{{ route('password.request') }}" class="custom-link">هل نسيت كلمة المرور؟</a>
@@ -211,6 +195,5 @@ r
                 <button type="submit">تسجيل</button>
             </form>
         </div>
-
 </body>
 </html>

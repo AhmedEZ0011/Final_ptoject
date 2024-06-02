@@ -5,11 +5,11 @@ namespace App\Models;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 
-class Department extends Model
+class Faculty extends Model
 {
-    public function faculties()
+    public function departments()
     {
-        return $this->belongsToMany(Faculty::class, 'admins')
+        return $this->belongsToMany(Department::class, 'admins')
                     ->withPivot('role')
                     ->withTimestamps();
     }

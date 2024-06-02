@@ -1,15 +1,12 @@
-
 <!DOCTYPE html>
 <html>
 <head>
 <title></title>
 <meta name="viewport" content="width=device-width, initial-scale=1">
-<script src="https://kit.fontawesome.com/258bab96e7.js" crossorigin="anonymous"></script>
-<!--Get your own code at fontawesome.com-->
 </head>
-<body 
-    style=" background:#F1F0FB;   
-    
+<body
+    style=" background:#F1F0FB;
+
 "
 >
 <div class="heder"
@@ -21,30 +18,17 @@ style="
       position: absolute;
       border-bottom: 5px solid black;">
       <button>
-      <i class="fa-solid fa-arrow-right-from-bracket"
-      style="font-size:35px; 
-      position: absolute;
-      left:2%;
-      top:25%;"></i></button>
+      <img src="logout.png" alt="Arrow Icon" style="width: 35px; position: absolute; left:2%; top:25%;"></button>
       <button>
-      <i class="fa-solid fa-gear"
-      style="font-size:25px; 
-      position: absolute;
-      left:6%;
-      top:40%;"></i></button>
+      <img src="Settings.png" alt="Gear Icon" style="width: 25px; position: absolute; left:6%; top:40%;"></button>
       <button>
-      <i class="fa-solid fa-bell"
-      style="font-size:25px; 
-      position: absolute;
-      left:9%;
-      top:40%;"></i>
-      </button>
+      <img src="notification.png" alt="Bell Icon" style="width: 25px; position: absolute; left:9%; top:40%;"></button>
      <div class="Home-page"
      style="left:50%;
      top:30%;
      font-size:40px;
       position: absolute;">
-      <i class="fa-solid fa-gear"></i>الإعدادات </div>
+      <img src="Settings.png" alt="Home Icon"> الإعدادات </div>
     </div>
 
 
@@ -59,17 +43,11 @@ style="
       position: absolute;
       background: #97CADB;
       border-radius: 40px;
-      
+
   "
 >
   <div class="UserName_Icon">
-    <i class="fa-solid fa-user-graduate"
-    style="font-size:40px; 
-    position: absolute;
-    left:80%;
-    top:9%;
-        
-         "></i>
+    <img src="Student Male.png" alt="User Icon" style="width: 40px; position: absolute; left:80%; top:9%;">
   <div class="UserName"
   style="
     position:absolute;
@@ -89,14 +67,10 @@ style="
   position: absolute;
   border-radius: 20px;
   border-style: none;
-  
-">  
-<i class="fa-solid fa-house"
-style="font-size:35px; 
-        right:4%;
-        top:20%;
-        position: absolute;"></i>
-        <h2>الرئيسية</h2>    
+
+">
+<img src="Home.png" alt="Home Icon" style="width: 35px; right:4%; top:20%; position: absolute;">
+        <h2>الرئيسية</h2>
 </button>
 <button class="Submit=proposal"
         style="background-color: #97CADB;
@@ -107,12 +81,8 @@ style="font-size:35px;
         position: absolute;
         border-radius: 20px;
         border-style: none;
-">  
-<i class="fa-solid fa-cloud-arrow-down"
-style="font-size:35px; 
-        right:4%;
-        top:20%;
-        position: absolute;"></i>
+">
+<img src="Upload to the Cloud.png" alt="Submit Icon" style="width: 35px; right:4%; top:20%; position: absolute;">
                <h2>تقديم مقترح</h2>
 </button>
 <button class="Archived-projects"
@@ -124,13 +94,9 @@ style="font-size:35px;
         position: absolute;
         border-radius: 20px;
         border-style: none;
-">  
-<i class="fa-solid fa-book-bookmark"
-style="font-size:35px; 
-        right:4%;
-        top:20%;
-        position: absolute;"></i>
-<h2>مشاريع مؤرشفة</h2> 
+">
+<img src="Bookmark.png" alt="Archive Icon" style="width: 35px; right:4%; top:20%; position: absolute;">
+<h2>مشاريع مؤرشفة</h2>
 </button>
 
 <button class="Send-monthly-report"
@@ -142,13 +108,9 @@ style="font-size:35px;
         position: absolute;
         border-radius: 20px;
         border-style: none;
-">  
-<i class="fa-regular fa-clipboard"
-style="font-size:35px; 
-        right:4%;
-        top:20%;
-        position: absolute;"></i>
-        <h2>ارسال تقرير الشهري </h2> 
+">
+<img src="Send Job List.png" alt="Report Icon" style="width: 35px; right:4%; top:20%; position: absolute;">
+        <h2>ارسال تقرير الشهري </h2>
 </button>
 <button class="Project-document"
         style="background-color: #97CADB;
@@ -159,27 +121,11 @@ style="font-size:35px;
         position: absolute;
         border-radius: 20px;
         border-style: none;
-">  
-<i class="fa-solid fa-file-arrow-down"
-style="font-size:35px; 
-        right:4%;
-        top:20%;
-        position: absolute;"></i>
-        <h2>تحميل التوثيق</h2> 
+">
+<img src="t Document.png" alt="Document Icon" style="width: 35px; right:4%; top:20%; position: absolute;">
+        <h2>تحميل التوثيق</h2>
 </button>
 </div>
-
-
-
-
-
-
-
-
-
-
-
-
 
 <div class="Settings-Contener"
 style="background: #F1F0FB;
@@ -213,7 +159,8 @@ placeholder="تغيير الأسم";
 style=" font-size:30px;
 left: 70%;
 top: 7%;
-position: absolute;"> :تغيير الاسم <i class="fa-solid fa-user-graduate"></i></div>
+position: absolute;"> :تغيير الاسم
+<img src="Student Male.png" alt="User Icon" style="width: 30px;"></div>
 <input class="Changing-Email"
 style="
 background: #F1F0FB;
@@ -233,7 +180,8 @@ placeholder="تغيير البريد الإلكتروني ";
 style=" font-size:30px;
 left: 70%;
 top: 25%;
-position: absolute;">:تغيير البريد الالكتروني <i class="fa-solid fa-envelope"></i></div>
+position: absolute;">:تغيير البريد الالكتروني
+<img src="Email.png" alt="Email Icon" style="width: 30px;"></div>
 
 
 
@@ -256,7 +204,7 @@ style=" font-size:30px;
 left: 70%;
 top: 54%;
 position: absolute;"> :تغيير كلمة المرور
-<i class="fa-solid fa-lock"></i></div>
+<img src="password.png" alt="Lock Icon" style="width: 30px;"></div>
 
 <input class="New-Password"
 style="
@@ -306,7 +254,3 @@ font-size:25px;
 
 </body>
 </html>
-
-
-
-
