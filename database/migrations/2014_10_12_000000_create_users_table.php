@@ -14,6 +14,8 @@ return new class extends Migration
         Schema::create('users', function (Blueprint $table) {
             
             $table->integer('id')->length(11);
+            $table->bigInteger('user_id')->unsigned();
+            $table->foreign('user_id')->references('id')-> on ('users')->onDelete('cascade');
             $table->string('role');
             $table->string('name',40);
             $table->char('department_id',2);
@@ -25,6 +27,8 @@ return new class extends Migration
             $table->tinyInteger('cridits',3)->length(11)->nullable();
             $table->float('gpa')->nullable();
             $table->timestamps(); //إذا كنت ترغب في إضافة created_at,update_at
+            
+            
         });
     }
 

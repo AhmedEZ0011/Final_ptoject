@@ -11,4 +11,13 @@ class Student_HomeController extends Controller
     {
         return view('Student_Home');
     }
+    public function logout(Request $request)
+    {
+        Auth::logout();
+
+        $request->session()->invalidate();
+        $request->session()->regenerateToken();
+
+        return redirect('/Sing_up');
+}
 }

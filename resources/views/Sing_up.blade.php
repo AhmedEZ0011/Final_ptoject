@@ -100,28 +100,30 @@
         <i class="fa-solid fa-graduation-cap graduation-icon"></i>
     <div class="form-container">
         <h2>إنشاء حساب جديد</h2>
-        <form>
+        <form action="{{route('Sing_up.store')}}" method="post"> 
+            @csrf
+            <input type="hidden" name="_token" value="{{ csrf_token() }}" />
             <div>     
                 <label for="options" placeholder="اختر نوع الحساب"></label>
                     <select id="options" placeholder="اختر">
                      <option value="ALL">أستاذ</option>
                      <option value="WT">طالب</option>
              </div>
-            <input type="text" placeholder="الاسم الثلاثي" required>
-            <input type="text" placeholder="القسم" required>
-            <input type="email" placeholder="البريد الإلكتروني" required>
-            <input type="password" placeholder="كلمة المرور" required>
-            <input type="password" placeholder="تأكيد كلمة المرور" required>
+            <input type="text" name="name" placeholder="الاسم الثلاثي" required>
+            <input type="text" name="department" placeholder="القسم" required>
+            <input type="email" name= "email" placeholder="البريد الإلكتروني" required>
+            <input type="password" name="password" placeholder="كلمة المرور" required>
+            <input type="password" name="password" placeholder="تأكيد كلمة المرور" required>
             <div class="input-group">
                 <label for="file-upload" class="file-label"> ادخل نموذج التسجيل</label>
-                <input type="file" id="file-upload">
-                <input type="number" id="units" placeholder="عدد الوحدات المجتازة"min="1" max="135">
-                <input type="number" id="gpa" placeholder="المعدل التراكمي" min="0" max="100">
+                <input type="file" name="file_path" id="file-upload">
+                <input type="number" name="cridits" id="units" placeholder="عدد الوحدات المجتازة"min="1" max="135">
+                <input type="number" name="gpa" id="gpa" placeholder="المعدل التراكمي" min="0" max="100">
             </div>
             <div class="input-group gender">
                 <label>الجنس</label>
                 <div>
-                    <input type="radio" id="male" name="gender" value="male">
+                    <input type="radio" name="gender" id="male" name="gender" value="male"required>
                     <label for="male">ذكر</label>
 
 
@@ -129,6 +131,7 @@
                     <label for="female">أنثى</label>
                 </div>
             </div>
+            
             <button type="submit">إنشاء حساب</button>
         </form>
     </div>

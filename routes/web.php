@@ -16,26 +16,28 @@ use Illuminate\Support\Facades\Route;
 	return "You requested ".$i;
 });
 */
-Route::post('/sing_up', [Sing_upController::class, 'storeRegistration']);
-Route::get('/', function () {
-    return view('welcome');
-});
+//Route::get('/Sing_up', [Sing_upController::class, 'create'])->name('Sing_up.blade');
+//Route::post('/Sing_up', [Sing_upController::class, 'storeRegistration']);
 
-
+//Route::get('/Faculty_Sign_In', [Student_Sign_InController::class, 'showLoginForm'])->name('Faculty_Sign_In.blade');//تم التعديل
+//Route::post('/Faculty_Sign_In', [Student_Sign_InController::class, 'login']);
 
 
 Route::get('/about', 'App\Http\Controllers\NoorController@index');
 Route::get('/loginhome', 'App\Http\Controllers\LoginController@index');
-Route::get('/sign', 'App\Http\Controllers\SignInController@index');
-Route::get('/Faculty_Home', 'App\Http\Controllers\Faculty_HomeController@index');
-Route::get('/Officer_Home', 'App\Http\Controllers\Officer_HomeController@index');
-Route::get('/Examiner_Home', 'App\Http\Controllers\Examiner_HomeController@index');
-Route::get('/Faculty_Sign_In', 'App\Http\Controllers\Faculty_Sign_InController@index');
-Route::get('/OfficerSettings', 'App\Http\Controllers\OfficerSettingsController@index');
-Route::get('/Student_Sign_In', 'App\Http\Controllers\Student_Sign_InController@index');
-Route::get('/Sing_up', 'App\Http\Controllers\Sing_upController@index');
-Route::get('/Student_Home', 'App\Http\Controllers\Student_HomeController@index');
-Route::get('/Student_Settings', 'App\Http\Controllers\Student_SettingsController@index');
+
+Route::resource("/Student_Sign_In", 'App\Http\Controllers\Student_Sign_InController');
+Route::resource("/Sing_up", 'App\Http\Controllers\Sing_upController');
+Route::resource("/sign", 'App\Http\Controllers\SignInController');
+Route::resource("/Faculty_Home", 'App\Http\Controllers\Faculty_HomeController');
+Route::resource("/Officer_Home", 'App\Http\Controllers\Officer_HomeController');
+Route::resource("/Examiner_Home", 'App\Http\Controllers\Examiner_HomeController');
+Route::resource("/Faculty_Sign_In", 'App\Http\Controllers\Faculty_Sign_InController');
+Route::resource("/OfficerSettings", 'App\Http\Controllers\OfficerSettingsController');
+Route::resource("/Student_Sign_In", 'App\Http\Controllers\Student_Sign_InController');
+Route::resource("/Student_Home", 'App\Http\Controllers\Student_HomeController');
+Route::resource("/Student_Settings", 'App\Http\Controllers\Student_SettingsController');
+
 
 /*
 Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
