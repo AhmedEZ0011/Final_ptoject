@@ -181,7 +181,7 @@ text-decoration: none;
                 @csrf
                 <div class="input-group">
                     <i class="fas fa-envelope"></i>
-                    <input type="email" name="email" id="email" value="{{ $email }}" required autofocus >
+                    <input type="email" name="email" id="email" value="{{ $email }}" required autofocus placeholder="البريد الإلكتروني">
                 </div>
                 <div class="input-group">
                     <i class="fas fa-lock"></i>

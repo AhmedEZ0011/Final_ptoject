@@ -28,7 +28,7 @@ class Student_Sign_InController extends Controller
         // عرض النموذج مع البريد الإلكتروني المدخل
         return view('Student_Sign_In', ['email' => $email]);
 
-
+         //الكود #
         // تحقق من صحة البيانات
         //$request->validate([
         //  'email' => 'required|email',
