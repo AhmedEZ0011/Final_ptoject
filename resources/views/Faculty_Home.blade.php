@@ -93,7 +93,7 @@ style="
   border-radius: 20px;
   border-style: none;
   
-">  
+"onclick="Home_button()">  
 <i class="fa-solid fa-house"
 style="font-size:35px; 
         right:4%;
@@ -240,7 +240,9 @@ z-index: 1;">
         function Setting(){
             window.location.href ="http://127.0.0.1:8000/OfficerSettings"
         }
-
+ function Home_button(){
+                        window.location.href ="http://127.0.0.1:8000/Faculty_Home"
+                                }
 
      </script> 
 

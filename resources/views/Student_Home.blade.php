@@ -253,10 +253,10 @@ style="font-size:35px;
         position: absolute;
         "
         ></i>
-        <h2>الرئسية</h2>    
+        <h2>الرئيسية</h2>    
 </button>
 
-  <button id="sendProposalBtn"  style="background-color: #97CADB;
+  <button id="openModalBtn1"  class="btn-primary" style="background-color: #97CADB;
   height: 9%;
   left: 4%;
   right:4%;
@@ -274,7 +274,7 @@ style="font-size:35px;
  
   
   
-<button id="monthlyReportBtn"
+<button id="openModalBtn2"  class="btn-primary"
         style="background-color: #97CADB;
         height: 9%;
         left: 4%;
@@ -289,9 +289,9 @@ style="font-size:35px;
         right:4%;
         top:20%;
         position: absolute;"></i>
-        <h2>ارسال تقرير الشهري </h2> 
+        <h2>إرسال تقرير الشهري </h2> 
 </button>
-<button class="Project-document"
+<button  id="openModalBtn3" class="btn-primary"
         style="background-color: #97CADB;
         height: 9%;
         left: 4%;
@@ -308,7 +308,7 @@ style="font-size:35px;
         position: absolute;"></i>
         <h2>تحميل التوثيق</h2> 
 </button>
-<button class="Archived-projects"
+<button id="openModalBtn4" class="btn-primary"
         style="background-color: #97CADB;
         height: 9%;
         left: 4%;
@@ -318,7 +318,7 @@ style="font-size:35px;
         border-radius: 20px;
         border-style: none;
         
-"onclick="OpenIt()">  
+">  
 <i class="fa-solid fa-book-bookmark"
    style="font-size:35px; 
         right:4%;
@@ -371,42 +371,70 @@ border-color:grey;
 
 </div>
 
- <div class="modal-container">
-    <div class="modal">
-    <button id="closeModalBtn">❌</button>
-    
-                
-                <div class="header">
-                    <img src="Upload to the Cloud.png" class="cloud-icon"></img> 
-                    <h2>تقديم مقترح</h2>
-                
-              </div>
-              <div class="form-group">
-                  <label for="proposal-input"></label>
-                  <input type="file" id="proposal-input" placeholder="ادخل مقترح المشروع">
-              </div>
-              <button type="submit" >إرسال</button>
-    </div>
- </div>
- <div class="modal-container">
+
+
+
+<div class="modal-container" id="modalContainer1">
   <div class="modal">
-  <button id="closeModalBtn">❌</button>
-  
-              
-              <div class="header">
-                  <img src="Upload to the Cloud.png" class="cloud-icon"></img> 
-                  <h2>تقديم مقترح</h2>
-              
-            </div>
-            <div class="form-group">
-                <label for="proposal-input"></label>
-                <input type="file" id="proposal-input" placeholder="ادخل مقترح المشروع">
-            </div>
-            <button type="submit" >إرسال</button>
+    <button class="close-btn" id="closeModalBtn1">❌</button>
+    <div class="header">
+      <img src="Upload to the Cloud.png" class="cloud-icon"></img>
+      <h2>تقديم مقترح</h2>
+    </div>
+    <div class="form-group">
+      <label for="proposal-input1"></label>
+      <input type="file" id="proposal-input1" placeholder="ادخل مقترح المشروع">
+    </div>
+    <button type="submit">إرسال</button>
   </div>
 </div>
- 
 
+<div class="modal-container" id="modalContainer2">
+  <div class="modal">
+    <button class="close-btn" id="closeModalBtn2">❌</button>
+    <div class="header">
+      <img src="Upload to the Cloud.png" class="cloud-icon"></img>
+      <h2>إرسال تقرير الشهري</h2>
+    </div>
+    <div class="form-group">
+      <label for="proposal-input2"></label>
+      <input type="file" id="proposal-input2" placeholder="إرسال تقرير الشهري">
+    </div>
+    <button type="submit">إرسال </button>
+  </div>
+</div>
+
+
+<div class="modal-container" id="modalContainer3">
+  <div class="modal">
+    <button class="close-btn" id="closeModalBtn3">❌</button>
+    <div class="header">
+      <img src="Upload to the Cloud.png" class="cloud-icon"></img>
+      <h2>رفع التوثيق</h2>
+    </div>
+    <div class="form-group">
+      <label for="proposal-input3"></label>
+      <input type="file" id="proposal-input3" placeholder="رفع التوثيق ">
+    </div>
+    <button type="submit">إرسال</button>
+  </div>
+</div>
+
+
+<div class="modal-container" id="modalContainer4">
+  <div class="modal">
+    <button class="close-btn" id="closeModalBtn4">❌</button>
+    <div class="header">
+      <img src="Upload to the Cloud.png" class="cloud-icon"></img>
+      <h2> مشاريع مؤرشفة</h2>
+    </div>
+    <div class="form-group">
+      <label for="proposal-input4"></label>
+      <input type="text" id="proposal-input4" placeholder="البحث عن مشروع ">
+    </div>
+    <button type="submit">بحث</button>
+  </div>
+</div>
   
 <script>
        
@@ -420,29 +448,53 @@ border-color:grey;
                                 }
 
                                 
-const sendProposalBtn = document.getElementById('sendProposalBtn');
-const closeModalBtn = document.getElementById('closeModalBtn');
-const modalContainer = document.querySelector('.modal-container');
+                                const openModalBtn1 = document.getElementById('openModalBtn1');
+  const closeModalBtn1 = document.getElementById('closeModalBtn1');
+  const modalContainer1 = document.getElementById('modalContainer1');
 
-sendProposalBtn.addEventListener('click', () => {
-  modalContainer.classList.add('show');
-});
+  openModalBtn1.addEventListener('click', () => {
+    modalContainer1.classList.add('show');
+  });
 
-closeModalBtn.addEventListener('click', () => {
-  modalContainer.classList.remove('show');
-});
+  closeModalBtn1.addEventListener('click', () => {
+    modalContainer1.classList.remove('show');
+  });
 
-/*const monthlyReportBtn = document.getElementById('monthlyReportBtn');
-const closeModalBtn = document.getElementById('closeModalBtn');
-const modalContainer = document.querySelector('.modal-container');
+  const openModalBtn2 = document.getElementById('openModalBtn2');
+  const closeModalBtn2 = document.getElementById('closeModalBtn2');
+  const modalContainer2 = document.getElementById('modalContainer2');
 
-monthlyReportBtn.addEventListener('click', () => {
-  modalContainer.classList.add('show');
-});
+  openModalBtn2.addEventListener('click', () => {
+    modalContainer2.classList.add('show');
+  });
 
-closeModalBtn.addEventListener('click', () => {
-  modalContainer.classList.remove('show');
-});*/
+  closeModalBtn2.addEventListener('click', () => {
+    modalContainer2.classList.remove('show');
+  });
+
+  const openModalBtn3 = document.getElementById('openModalBtn3');
+  const closeModalBtn3 = document.getElementById('closeModalBtn3');
+  const modalContainer3 = document.getElementById('modalContainer3');
+
+  openModalBtn3.addEventListener('click', () => {
+    modalContainer3.classList.add('show');
+  });
+
+  closeModalBtn3.addEventListener('click', () => {
+    modalContainer3.classList.remove('show');
+  });
+
+  const openModalBtn4 = document.getElementById('openModalBtn4');
+  const closeModalBtn4 = document.getElementById('closeModalBtn4');
+  const modalContainer4 = document.getElementById('modalContainer4');
+
+  openModalBtn4.addEventListener('click', () => {
+    modalContainer4.classList.add('show');
+  });
+
+  closeModalBtn4.addEventListener('click', () => {
+    modalContainer4.classList.remove('show');
+  });
 
     </script>
 </body>

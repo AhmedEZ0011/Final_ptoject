@@ -6,6 +6,8 @@ use Illuminate\Support\Facades\Schema;
 
 return new class extends Migration
 {
+    public $increamenting = false;
+    public $primaryKey = "id";
     /**
      * Run the migrations.
      */
@@ -13,18 +15,17 @@ return new class extends Migration
     {
         Schema::create('users', function (Blueprint $table) {
             
-            $table->integer('id')->length(11);
-            $table->bigInteger('user_id')->unsigned();
-            $table->foreign('user_id')->references('id')-> on ('users')->onDelete('cascade');
-            $table->string('role');
+            $table->string('id')->primary();
             $table->string('name',40);
             $table->char('department_id',2);
+            $table->char('collage',2);
             $table->string('email',50)->unique();
             $table->enum('gender',['MALE','FEMALE']);
-            $table->datetime('reg_date');
+            //$table->datetime('reg_date');
             $table->char('password',64);
             $table->string('file_path')->nullable();
-            $table->tinyInteger('cridits',3)->length(11)->nullable();
+            $table->integer('type');
+            $table->integer('cridits')->nullable(true);
             $table->float('gpa')->nullable();
             $table->timestamps(); //إذا كنت ترغب في إضافة created_at,update_at
             

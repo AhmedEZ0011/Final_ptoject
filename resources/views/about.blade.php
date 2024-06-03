@@ -1,3 +1,4 @@
+نور, [2024-06-03 02:07 AM]
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -13,6 +14,7 @@
   align-items: center;
   height: 100vh;
   position: relative;
+  gap: 10px; /* Add gap for spacing between buttons */
 }
 
 /* Button styles */
@@ -23,11 +25,6 @@
   border: none;
   cursor: pointer;
   font-size: 16px;
-}
-
-.btn-secondary {
-  background-color: rgba(201, 199, 199, 0.747);
-  color: white;
 }
 
 /* Modal container styles */
@@ -45,7 +42,6 @@
 
 /* Modal styles */
 .modal {
-  
   background-color: rgba(255, 255, 255, 0.589);
   padding: 20px;
   border-radius: 10px;
@@ -73,13 +69,6 @@ body {
     direction: rtl;
     margin: 0;
     padding: 0;
-}
-
-.container {
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    height: 100vh;
 }
 
 .popup {
@@ -154,59 +143,127 @@ button[type="submit"]:hover {
     background-color: #4a8cdb;   
 }
 
-
   </style>
-            </head>
-       
-           
-           
-
+</head>
 <body>
 
-  <div class="container">
-  <button id="openModalBtn">Open Modal</button>
-  <div class="modal-container">
-    <div class="modal">
-    <button id="closeModalBtn">❌</button>
-    
-                
-                <div class="header">
-                    <img src="Upload to the Cloud.png" class="cloud-icon"></img> 
-                    <h2>تقديم مقترح</h2>
-                </div>
-                <div class="form-group">
-                    <label for="proposal-input"></label>
-                    <input type="file" id="proposal-input" placeholder="ادخل مقترح المشروع">
-                </div>
-                <button type="submit">إرسال</button>
-            
-      
+<div class="container">
+  <button id="openModalBtn1" class="btn-primary">Open Modal 1</button>
+  <button id="openModalBtn2" class="btn-primary">Open Modal 2</button>
+  <button id="openModalBtn3" class="btn-primary">Open Modal 3</button>
+  <button id="openModalBtn4" class="btn-primary">Open Modal 4</button>
+</div>
+
+<div class="modal-container" id="modalContainer1">
+  <div class="modal">
+    <button class="close-btn" id="closeModalBtn1">❌</button>
+    <div class="header">
+      <img src="Upload to the Cloud.png" class="cloud-icon"></img>
+      <h2>تقديم مقترح</h2>
     </div>
+    <div class="form-group">
+      <label for="proposal-input1"></label>
+      <input type="file" id="proposal-input1" placeholder="ادخل مقترح المشروع">
+    </div>
+    <button type="submit">إرسال</button>
   </div>
 </div>
 
+<div class="modal-container" id="modalContainer2">
+  <div class="modal">
+    <button class="close-btn" id="closeModalBtn2">❌</button>
+    <div class="header">
+      <img src="Upload to the Cloud.png" class="cloud-icon"></img>
+      <h2>تقارير</h2>
+    </div>
+    <div class="form-group">
+      <label for="proposal-input2"></label>
+      <input type="file" id="proposal-input2" placeholder="ادخل مقترح المشروع">
+    </div>
+    <button type="submit">إرسال</button>
+  </div>
+</div>
 
+نور, [2024-06-03 02:07 AM]
+<div class="modal-container" id="modalContainer3">
+  <div class="modal">
+    <button class="close-btn" id="closeModalBtn3">❌</button>
+    <div class="header">
+      <img src="Upload to the Cloud.png" class="cloud-icon"></img>
+      <h2>مشروع جديد</h2>
+    </div>
+    <div class="form-group">
+      <label for="proposal-input3"></label>
+      <input type="file" id="proposal-input3" placeholder="ادخل المشروع الجديد">
+    </div>
+    <button type="submit">إرسال</button>
+  </div>
+</div>
 
+<div class="modal-container" id="modalContainer4">
+  <div class="modal">
+    <button class="close-btn" id="closeModalBtn4">❌</button>
+    <div class="header">
+      <img src="Upload to the Cloud.png" class="cloud-icon"></img>
+      <h2>تقرير جديد</h2>
+    </div>
+    <div class="form-group">
+      <label for="proposal-input4"></label>
+      <input type="file" id="proposal-input4" placeholder="ادخل التقرير الجديد">
+    </div>
+    <button type="submit">إرسال</button>
+  </div>
+</div>
 
+<script>
+  const openModalBtn1 = document.getElementById('openModalBtn1');
+  const closeModalBtn1 = document.getElementById('closeModalBtn1');
+  const modalContainer1 = document.getElementById('modalContainer1');
 
+  openModalBtn1.addEventListener('click', () => {
+    modalContainer1.classList.add('show');
+  });
 
-       <script>
-const openModalBtn = document.getElementById('openModalBtn');
-const closeModalBtn = document.getElementById('closeModalBtn');
-const modalContainer = document.querySelector('.modal-container');
+  closeModalBtn1.addEventListener('click', () => {
+    modalContainer1.classList.remove('show');
+  });
 
-openModalBtn.addEventListener('click', () => {
-  modalContainer.classList.add('show');
-  openModalBtn.classList.remove('btn-primary');
-  openModalBtn.classList.add('btn-secondary');
-});
+  const openModalBtn2 = document.getElementById('openModalBtn2');
+  const closeModalBtn2 = document.getElementById('closeModalBtn2');
+  const modalContainer2 = document.getElementById('modalContainer2');
 
-closeModalBtn.addEventListener('click', () => {
-  modalContainer.classList.remove('show');
-  openModalBtn.classList.remove('btn-secondary');
-  openModalBtn.classList.add('btn-primary');
-});
+  openModalBtn2.addEventListener('click', () => {
+    modalContainer2.classList.add('show');
+  });
 
+  closeModalBtn2.addEventListener('click', () => {
+    modalContainer2.classList.remove('show');
+  });
+
+  const openModalBtn3 = document.getElementById('openModalBtn3');
+  const closeModalBtn3 = document.getElementById('closeModalBtn3');
+  const modalContainer3 = document.getElementById('modalContainer3');
+
+  openModalBtn3.addEventListener('click', () => {
+    modalContainer3.classList.add('show');
+  });
+
+  closeModalBtn3.addEventListener('click', () => {
+    modalContainer3.classList.remove('show');
+  });
+
+  const openModalBtn4 = document.getElementById('openModalBtn4');
+  const closeModalBtn4 = document.getElementById('closeModalBtn4');
+  const modalContainer4 = document.getElementById('modalContainer4');
+
+  openModalBtn4.addEventListener('click', () => {
+    modalContainer4.classList.add('show');
+  });
+
+  closeModalBtn4.addEventListener('click', () => {
+    modalContainer4.classList.remove('show');
+  });
 </script>
+
 </body>
 </html>

@@ -105,12 +105,21 @@
             <input type="hidden" name="_token" value="{{ csrf_token() }}" />
             <div>     
                 <label for="options" placeholder="اختر نوع الحساب"></label>
-                    <select id="options" placeholder="اختر">
-                     <option value="ALL">أستاذ</option>
-                     <option value="WT">طالب</option>
+                    <select name="type" placeholder="اختر">
+                        <optgroup>
+                            <option value="3">أستاذ</option>
+                            <option value="0">ادمن</option>
+                            <option value="2">مشرف</option>
+                            <option value="1">منسق مشاريع</option>
+                        </optgroup>
+                        <optgroup>
+                            <option value="4">طالب</option>
+                        </optgroup>
              </div>
+            <input type="text" name="id" placeholder="رقم القيد" required>
             <input type="text" name="name" placeholder="الاسم الثلاثي" required>
-            <input type="text" name="department" placeholder="القسم" required>
+            <input type="text" name="collage" placeholder="الكلية" readonly value="IT">
+            <input type="text" name="department_id" placeholder="القسم" required>
             <input type="email" name= "email" placeholder="البريد الإلكتروني" required>
             <input type="password" name="password" placeholder="كلمة المرور" required>
             <input type="password" name="password" placeholder="تأكيد كلمة المرور" required>

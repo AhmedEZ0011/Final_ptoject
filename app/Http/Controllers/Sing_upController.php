@@ -34,44 +34,37 @@ class Sing_upController extends Controller
        
         
     }  */
-        public function store(Request $request) 
-        {
+    public function store(Request $request)
+    {
 
-            $request->validate([
-                'name' => 'required|string|max:255',
-                'email' => 'required|string|email|max:255|unique:users',
-                'password' => 'required|string|min:8|confirmed',
-                'id'=> 'required|integer|max:11|unique:users',
-                'role'=> 'required|string|max:255',
-                'department'=> 'required|string|max:50',
-                'gender'=> 'required|string',
-                'reg_date'=> 'required|integer|max:50',
-                'file_path' => 'nullable|file|mimes:jpg,jpeg,png,pdf|max:2048',
-                'cridits'=> 'integer|max:135|min:1',
-                'gpa'=> 'integer|max:100|min:0',
+        // $request->validate([
+        //     'name' => 'required|string|max:255',
+        //     'email' => 'required|string|email|max:255|unique:users',
+        //     'password' => 'required|string|min:8|confirmed',
+        //     'id' => 'required|integer|max:11|unique:users',
+        //     'type' => 'required|integer|max:5',
+        //     'department' => 'required|string|max:50',
+        //     'gender' => 'required|string',
+        //     'reg_date' => 'required|integer|max:50',
+        //     'file_path' => 'nullable|file|mimes:jpg,jpeg,png,pdf|max:2048',
+        //     'cridits' => 'integer|max:135|min:1',
+        //     'gpa' => 'integer|max:100|min:0',
+        // ]);
 
-                 $user = User::create([
+        $user = User::create([
             'name' => $request->name,
             'email' => $request->email,
             'password' => Hash::make($request->password),
-            'id'=>$request->id,
-            'role'=> $request->role,
-            'department'=>$request->epartment,
-            'gender'=>$request->gender,
-            'reg_date'=>$request-> reg_date,
-            'file_path' =>$request->file_path ,
-            'cridits'=>$request->cridits,
-            'gpa'=>$request->gpa,
-            ])
+            'id' => $request->id,
+            'collage' => $request->collage,
+            'department_id' => $request->department_id,
+            'gender' => $request->gender,
+            'reg_date' => $request->reg_date,
+            'file_path' => $request->file_path,
+            'cridits' => $request->cridits,
+            'gpa' => $request->gpa,
+            'type' => $request->type
         ]);
-           // return redirect('/Student_Home');
-        }
-        
+        // return redirect('/Student_Home');
     }
-
-       
-    
-
-  
-    
-
+}

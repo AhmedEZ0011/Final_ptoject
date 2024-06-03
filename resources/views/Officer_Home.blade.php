@@ -90,7 +90,7 @@ style="font-size:35px;
         right:4%;
         top:20%;
         position: absolute;"></i>
-        <h2>الرئسية</h2>    
+        <h2>الرئيسية</h2>    
 </button>
 <button class="Project-document"
         style="background-color: #97CADB;

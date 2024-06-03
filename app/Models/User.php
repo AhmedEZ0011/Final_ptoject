@@ -22,14 +22,15 @@ class User extends Authenticatable
         'id',
         'role',
         'name',
+        'collage',
         'department_id',
         'email',
         'gender',
-        'reg_date',
         'password',
         'file_path',
         'cridits',
         'gpa',
+        'type'
     ];
 
     // إخفاء الحقول التي لا ينبغي إظهارها مثل كلمة المرور
