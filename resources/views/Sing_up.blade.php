@@ -108,7 +108,19 @@
                      <option value="WT">طالب</option>
              </div>
             <input type="text" placeholder="الاسم الثلاثي" required>
-            <input type="text" placeholder="القسم" required>
+            
+            <div>     
+                <label for="options" placeholder=" القسم "></label>
+                    <select name="department_id" placeholder="القسم">
+                        <optgroup>
+                            <option value="WT">تقنيات الإنترنت</option>
+                            <option value="2">هندسة البرمجيات</option>
+                            <option value="1">حوسبة متنقلة </option>
+                            <option value="3">نظم معلومات</option>
+                             <option value="4">شبكات</option>
+                        </optgroup>
+                        
+             </div>
             <input type="email" placeholder="البريد الإلكتروني" required>
             <input type="password" placeholder="كلمة المرور" required>
             <input type="password" placeholder="تأكيد كلمة المرور" required>
