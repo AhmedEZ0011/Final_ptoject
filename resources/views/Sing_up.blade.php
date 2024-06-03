@@ -114,10 +114,10 @@
                     <select name="department_id" placeholder="القسم">
                         <optgroup>
                             <option value="WT">تقنيات الإنترنت</option>
-                            <option value="2">هندسة البرمجيات</option>
-                            <option value="1">حوسبة متنقلة </option>
-                            <option value="3">نظم معلومات</option>
-                             <option value="4">شبكات</option>
+                            <option value="SE">هندسة البرمجيات</option>
+                            <option value="MC">حوسبة متنقلة </option>
+                            <option value="IS">نظم معلومات</option>
+                             <option value="NT">شبكات</option>
                         </optgroup>
                         
              </div>
