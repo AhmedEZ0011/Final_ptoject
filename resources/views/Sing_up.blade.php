@@ -118,11 +118,10 @@
                         </optgroup>
                         
              </div>
-            <input type="text" name="id" placeholder="رقم القيد" required>
-            <input type="text" name="name" placeholder="الاسم الثلاثي" required>
-            <input type="text" name="collage" placeholder="الكلية" readonly value="IT">
-            <input type="text" name="" placeholder="" required>
-            <div>     
+             <input type="text" name="collage" placeholder="الكلية" readonly value="IT">
+           <input type="text" name="name" placeholder="الاسم الثلاثي" required>
+             <input type="text" name="id" placeholder="رقم القيد" required>
+              <div>     
                 <label for="options" placeholder=" القسم "></label>
                     <select name="department_id" placeholder="القسم">
                         <optgroup>
@@ -134,17 +133,11 @@
                         </optgroup>
                         
              </div>
-            <input type="email" name= "email" placeholder="البريد الإلكتروني" required>
-            <input type="password" name="password" placeholder="كلمة المرور" required>
+              <input type="email" name= "email" placeholder="البريد الإلكتروني" required>
+              <input type="password" name="password" placeholder="كلمة المرور" required>
             <input type="password" name="password" placeholder="تأكيد كلمة المرور" required>
-            <div class="input-group">
-                <label for="file-upload" class="file-label"> ادخل نموذج التسجيل</label>
-                <input type="file" name="file_path" id="file-upload">
-                <input type="number" name="cridits" id="units" placeholder="عدد الوحدات المجتازة"min="1" max="135">
-                <input type="number" name="gpa" id="gpa" placeholder="المعدل التراكمي" min="0" max="100">
-            </div>
-            <div class="input-group gender">
-                <label>الجنس</label>
+              <div class="input-group gender">
+                
                 <div>
                     <input type="radio" name="gender" id="male" name="gender" value="male"required>
                     <label for="male">ذكر</label>
@@ -154,6 +147,14 @@
                     <label for="female">أنثى</label>
                 </div>
             </div>
+            <label>الجنس</label>
+            <div class="input-group">
+                <label for="file-upload" class="file-label"> ادخل نموذج التسجيل</label>
+                <input type="file" name="file_path" id="file-upload">
+                <input type="number" name="cridits" id="units" placeholder="عدد الوحدات المجتازة"min="1" max="135">
+                <input type="number" name="gpa" id="gpa" placeholder="المعدل التراكمي" min="0" max="100">
+            </div>
+          
             
             <button type="submit">إنشاء حساب</button>
         </form>
