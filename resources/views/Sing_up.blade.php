@@ -119,7 +119,18 @@
             <input type="text" name="id" placeholder="رقم القيد" required>
             <input type="text" name="name" placeholder="الاسم الثلاثي" required>
             <input type="text" name="collage" placeholder="الكلية" readonly value="IT">
-            <input type="text" name="department_id" placeholder="القسم" required>
+            <div>     
+                <label for="options" placeholder=" القسم "></label>
+                    <select name="department_id" placeholder="القسم">
+                        <optgroup>
+                            <option value="WT">تقنيات الإنترنت</option>
+                            <option value="SE">هندسة البرمجيات</option>
+                            <option value="MC">حوسبة متنقلة </option>
+                            <option value="IS">نظم معلومات</option>
+                             <option value="NT">شبكات</option>
+                        </optgroup>
+                        
+             </div>
             <input type="email" name= "email" placeholder="البريد الإلكتروني" required>
             <input type="password" name="password" placeholder="كلمة المرور" required>
             <input type="password" name="password" placeholder="تأكيد كلمة المرور" required>
