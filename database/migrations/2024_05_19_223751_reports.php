@@ -13,7 +13,7 @@ return new class extends Migration
      */
     public function up()
     {
-        Schema::create('fmonthly_reports', function (Blueprint $table) {
+        Schema::create('reports', function (Blueprint $table) {
             $table->integer('id')->length(15);
             $table->dateTime('app_date');
             $table->integer('student_id')->length(15);
@@ -21,7 +21,10 @@ return new class extends Migration
             $table->integer('superviser_id')->length(15);
             $table->string('comments');
             $table->string('content');
+            $table->enum('acceptance_status',['ACCEPTED','PENDING','REJECTED']);
+            $table->binary('upload_flag');
     });
+  
 }
 
     /*
@@ -31,6 +34,6 @@ return new class extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('monthly_reports');
+        Schema::dropIfExists('reports');
     }
 };

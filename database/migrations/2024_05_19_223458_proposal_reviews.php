@@ -20,9 +20,13 @@ return new class extends Migration
         $table->dateTime('assignment_date');
         $table->enum('opinion',['GOOD','FAIR','BAD']);
         $table->dateTime('opinion_date');
-        $table->string('comments');
-        $table->timestamps(); //إذا كنت ترغب في إضافة created_at,update_at
-    });
+        $table->string('comments')->nullable();
+        $table->timestamps();
+         //إذا كنت ترغب في إضافة created_at,update_at
+        $table->primary('id');
+        });
+   
+    
     }
     /**
      * Reverse the migrations.

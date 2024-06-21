@@ -1,230 +1,200 @@
 
-                <!DOCTYPE html>
-                <html>
-                <head>
-                <title></title>
-                <meta name="viewport" content="width=device-width, initial-scale=1">
-                <script src="https://kit.fontawesome.com/258bab96e7.js" crossorigin="anonymous"></script>
-                <!--Get your own code at fontawesome.com-->
-                <style>
-                    .dropbtn {
-                    background-color: #4b80ab00;
-                    color: white;
-                    padding: 16px;
-                    font-size: 16px;
-                    border: none;
-                    }
-                    
-                    .dropdown {
-                    position: relative;
-                    display: inline-block;
-                    }
-                    
-                    .dropdown-content {
-                    display: none;
-                    position: absolute;
-                    background-color: #97cadb71;
-                    min-width: 160px;
-                    box-shadow: 0px 8px 16px 0px rgba(0,0,0,0.2);
-                    z-index: 1;
-                    border-radius: 10px;
-                    }
-                    
-                    .dropdown-content a {
-                    color: black;
-                    padding: 12px 16px;
-                    text-decoration: none;
-                    display: block;
-                    }
-                    
-                    .dropdown-content a:hover {background-color: #70abdbd8; }
-                    
-                    .dropdown:hover .dropdown-content {display: block;}
-                    
-                    .dropdown:hover .dropbtn {background-color: #4b80ab00;}
-                    </style>
-                </head>
-                <body 
-                    style=" background-image: url({{ URL('main.jpg')}});
-                    background-repeat: no-repeat;
-                    
-                    background-size: 100%;
-                    
-                "
-                >
-                    <i class="fa-solid fa-graduation-cap"
-                    style="font-size: 36px ;
-                           "></i>
-                <div class="heder"
-                style="
-                    width: 100%;
-                    height: 7%;
-                    left: 0%;
-                    top: 0%;
-                    position: absolute;
-                    background: #97cadb71;
-                    
-                "
-                >
-                <button class="create"
-                style="
-                width: 13%;
-                height: 100%;
-                left: 70%;
-                top: 0%;
-                position: absolute;
-                text-align: center;
-                background-color: #4B80AB;
-                color: #353232;
-                font-size: 20px;
-                font-family: Inter;
-                font-weight: 700;
-                text-decoration: none;
-                word-wrap: break-word;
-                border-radius: 5px;
-                border:none;
+<!DOCTYPE html>
+<html lang="ar">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>تسجيل الدخول</title>
+    <link rel="stylesheet" href="styles.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+</head>
+<script>
+    // ادير refresh للصفحة تلقائي
+    function reloadPage() {
+        setTimeout(function() {
+            location.reload();
+        }, 4000); // 4 seconds
+    }
+</script>
+<style>
+body {
+    margin: 0;
+    padding: 0;
+    font-family: Arial, sans-serif;
+    background: url('main.jpg') no-repeat center center fixed;
+    background-size: cover;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+}
 
-                "
-                >
-                إنشاء حساب
-                </button>
-                <button class="create"
-                style="
-                width: 13%;
-                height: 100%;
-                left: 88%;
-                top: 0%;
-                position: absolute;
-                text-align: center;
-                color: black;
-                font-size: 20px;
-                font-family: Inter;
-                font-weight: 700;
-                text-decoration: underline;
-                word-wrap: break-word;
-                border-radius: 5px;
-                border:none;
-                text-decoration: none;
-                background:#054980;
+.login-container {
+    background: #97cadbe1;
+    padding: 30px;
+    border-radius: 8px;
+    width: 300px;
+    text-align: center;
+}
 
 
-                "
-                >
-                <i class="fa-solid fa-caret-down"></i>
-                تسجيل الدخول ک
-                </button>
-                <div class="dropdown"
-                style="
-                width: 13%;
-                height: 100%;
-                left: 88%;
-                top: 0%;
-                position: absolute;
-                text-align: center;
-                color: #353232;
-                background-color: #4b80ab00;
-                font-size: 20px;
-                font-family: Inter;
-                font-weight: 700;
-                text-decoration: underline;
-                word-wrap: break-word;
-                border-radius: 5px;
-                border:none;
-                text-decoration: none;
-                background:#97cadb6b;
+.login-box h2 {
+    margin-bottom: 20px;
+}
+
+.input-group {
+    position: relative;
+    margin-bottom: 30px;
+}
+
+.input-group i {
+    position: absolute;
+    left: 15px;
+    top: 50%;
+    transform: translateY(-50%);
+    color: #9b9999;
+}
+
+.input-group input {
+    width: 80%;
+    padding: 10px 10px 10px 30px;
+    border: 1px solid #ffffff;
+    border-radius: 4px;
+    font-size: 16px;
+    text-align: right;
+}
+
+button {
+    width: 60%;
+    padding: 10px;
+    border: none;
+    border-radius: 4px;
+    background-color: #6591c0;
+    color: white;
+    font-size: 16px;
+    cursor: pointer;
+}
+
+button:hover {
+    background-color: #93aece;
+}
+.navbar {
+    width: 99%;
+    padding: 10px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    position: fixed;
+    top: 0;
+    left: 0;
+    z-index: 1000; /* ضمان ظهور الشريط فوق جميع المحتويات الأخرى */
+    background-color: #97cadb4f;
+}
+
+.navbar-left, .navbar-right {
+    display: flex;
+    align-items: center;
+}
+.navbar-left i, .navbar-right i {
+    color: rgb(12, 12, 12);
+    font-size: 28px;
+    margin: 0 10px;
+    right: 10%;
+}
+
+.btn-back {
+    background: none;
+    border: none;
+    color: rgb(3, 3, 3);
+    font-size: 30px;
+    cursor: pointer;
+}
+.custom-link {
+    color: #483fc7; /* تغيير لون النص إلى الأحمر، يمكن تغيير اللون حسب الحاجة */
+    text-decoration: none; /* إزالة الخط تحت الرابط */
+}
+
+.custom-link:hover {
+    color: #7a7675; /* لون النص عند التمرير عليه */
+    text-decoration: underline; /* يمكن إضافة خط تحت الرابط عند التمرير إذا رغبت في ذلك */
+}
+.UserIcon{
+    width: 13%;
+height: 100%;
+left: 93%;
+top: 30%;
+position: absolute;
+color: #353232;
+background-color: #4b80ab00;
+font-size: 20px;
+border:none;
+text-decoration: none;
+}
+.error {
+    color: red;
+    font-size: 14px;
+}
+
+.alert {
+    color: red;
+    margin-bottom: 15px;
+}
+.centered-flex {
+    position: absolute;
+    top: 20px;
+  right: ;: 40px;
+    font-size: px; /* تكبير حجم الأيقونة */
+    color: #000000; /* لون الأيقونة */
+}
+.user
+{
+
+    top: 20px;
+    right: 70px;
+    font-size: px; /* تكبير حجم الأيقونة */
+    color: #000000; /* لون الأيقونة */
+}
+.UserIconName{
+    top: 20px;
+    text-align: right;
+    font-size: 20px; /* تكبير حجم الأيقونة */
+    color: #000000; /* لون الأيقونة */
+
+}
+</style>
+<body>
 
 
-                ">
-                    <button class="dropbtn"></button>
-                    <div class="dropdown-content">
-                    <a href="#">أستاد   <i class="fa-solid fa-user-tie"></i></a>
-                    <a href="#">طالب    <i class="fa-solid fa-user"></i></a>
-                    </div>
-                </div>
-                </div>
-
-                <div>
-                <div
-                class="ProjectResearchContener"
-                style="
-                    width: 40%;
-                    height: 50%;
-                    left: 30%;
-                    top: 25%;
-                    position: absolute;
-                    background:#97cadb6b;
-                    border-radius: 75px;
-                "
-                >
-                <div class="text"
-                    style="
-                    width: 100%;
-                    height: 2%;
-                    left: 1%;
-                    top: 30%;
-                    position: absolute;
-                    text-align: center;
-                    color: #353232;
-                    font-size: 20px;
-                    font-family: Inter;
-                    font-weight: 200px;
-                    word-wrap: break-word;
-                    
-                    "
-                    >
-                محرك بحث مشاريع التخرج لكلية تقنية المعلومات / جامعة طرابلس
-
-                </div>
-
-                <input class=""
-                        style="
-                        width: 70%;
-                        height: 10%;
-                        left: 14%;
-                        top: 45%;
-                        position: absolute;
-                        text-align: center;
-                        color: #090e09;
-                        border-radius: 5px;
-                        border:none;
-                        "
-                        placeholder="اختر القسم وابحث عن مشروع";
-                >
-                    <i class="fa-solid fa-magnifying-glass"
-                    style="
-                    width: 70%;
-                    height: 10%;
-                    left: 70%;
-                    top: 47%;
-                    position: absolute;"></i>
-
-                    <div class="dropdown">
-                    <button class="dropbtn"
-                    style="color: black ;
-                        left: 35%;
-                        top: 46%;
-                        position: fixed; 
-                    "><i class="fa-solid fa-caret-down"></i></button>
-                                
-                                                   
-                                                    <div class="dropdown-content">
-                                                        <a href="#"><i class="fa-solid fa-book-bookmark" ></i>    تقنيات الإنترنت </a>
-                                                        <a href="#"><i class="fa-solid fa-book-bookmark"></i>  حوسبة متنقلة     </a>
-                                                        <a href="#"><i class="fa-solid fa-book-bookmark"></i>  الشبكات</a>
-                                                        <a href="#"><i class="fa-solid fa-book-bookmark"></i>  نظم المعلومات</a>
-                                                        <a href="#"><i class="fa-solid fa-book-bookmark"></i> هندسة برمجيات</a>
-                                                        <a href="#"><i class="fa-solid fa-book-bookmark"></i>الجميع</a>
-                                                    </div>
-                                                    </div>
-
-
-                </div>
-                                   
-
-
-                </body>
-                </html>
-
-
-
-
+<nav class="navbar">
+        <div class="navbar-left">
+            <div class="centered-flex-user">
+                <img src="Graduation Cap.png" alt="Description of the image" width="50" height="30">
+            </div>
+        </div>
+        <div class="navbar-right">
+            <div class="user">
+                <img src="user.png" alt="Description of the image" width="50" height="50">
+            </div>
+        </div>
+    </nav>
+    <div class="login-container">
+        <h2>تسجيل الدخول</h2>
+        <form method="post" action="{{ route('login') }}">
+            @csrf
+            <div class="input-group">
+                <i class="fas fa-envelope"></i>
+                <input type="email" name="email" id="email" required autofocus placeholder="البريد الإلكتروني">
+            </div>
+            <div class="input-group">
+                <i class="fas fa-lock"></i>
+                <input type="password" name="password" id="password" required placeholder=" كلمة المرور">
+            </div>
+            <div>
+                
+            </div>
+            <br>
+            <button type="submit">تسجيل</button>
+        </form>
+    </div>
+</body>
+</html>

@@ -1,41 +1,13 @@
-
 <!DOCTYPE html>
 <html>
 <head>
 <title></title>
-<meta name="csrf-token" content="{{csrf_token()}}">
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <script src="https://kit.fontawesome.com/258bab96e7.js" crossorigin="anonymous"></script>
 <!--Get your own code at fontawesome.com-->
-<style>
-        table {
-          width: 100%;
-          border-collapse: collapse;
-        }
-    
-        th, td {
-          text-align: left;
-          padding: 8px;
-          border-bottom: 1px solid #ddd;
-          text-align: center;
-        }
-        a {
-      text-decoration: none;
-      color: black;
-    }
-    button{
-        border-radius: 5px;
-        border: none;
-    }
-      </style>
 </head>
 <body 
-    style=" background:#F1F0FB;
-    
-    
-    
-"
->
+    style=" background:#F1F0FB;">
 <div class="heder"
 style="background-color:#F1F0FB;
       width: 70%;
@@ -93,7 +65,7 @@ style="background-color:#F1F0FB;
     right:27%;
     top:7%;
     "
-    >{{$username}}</div>
+    >نور الإسلام عبد النبي المنتصر </div>
   </div>
   <button class="Home"
   style="
@@ -233,6 +205,21 @@ style="font-size:35px;
         position: absolute;"></i>
                <h2>المشاريع</h2>
 </button>
+
+
+</div>
+
+
+
+
+
+
+
+
+
+
+
+
  
 
 </div>
@@ -246,48 +233,8 @@ position: absolute;
 border-radius: 20px;
 border-style: solid;
 border-color:grey;
-overflow: auto;">
-<div>
+">
 
-        <div style="position: absolute;
-                     right: 46%;
-                     top: 2%;">
-           <i style="font-size: 27px;"> طلبات التسجيل</i>
-        </div>
-        <br>
-        <table style="position: absolute;
-        top: 10%;
-        border=0.5" >
-                <tr>
-                        <td>     </td>
-                        <td>     </td>
-                        <td>الأسم</td>
-                        <td>تاريخ طلب التسجيل</td>
-                        
-                </tr>
-                @if($inactive_users->count())
-                @foreach($inactive_users as $user)
-                <tr>
-                        <td><button style="background-color: rgb(218, 55, 55);">
-                                <a target="self" href="{{route('drop_request_account', $user->id)}}">رفض</a>
-                            </button></td>
-                        <td><button style="background-color: rgb(93, 202, 93)">
-                                <a href="{{route('add_request_account', $user->id)}}">قبول</a>
-                                </button></td>
-                        
-                        <td>{{$user->name}}</td>
-                        <td>{{$user->created_at}}</td>
-                        
-                </tr>
-                @endforeach
-                @else 
-                <tr>
-                        <td colspan="4">لا يوجد طلبات تسجيل </td>
-                </tr>
-                @endif
-        </table>
-        </div>
-        </div>
 </div>
 
 <div class="advertisementContener"
@@ -300,6 +247,17 @@ position: absolute;
 border-radius: 20px;
 border-style: solid;
 border-color:grey;">
+
+
 </div>
+
+
+
+
 </body>
 </html>
+
+
+
+
+

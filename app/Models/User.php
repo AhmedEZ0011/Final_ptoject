@@ -17,29 +17,31 @@ class User extends Authenticatable
      *
      * @var array<int, string>
      */
+    // تحديد الحقول القابلة للملء
     protected $fillable = [
+        'id',
+        'role',
         'name',
+        'collage',
+        'department_id',
         'email',
         'password',
+        'cridits',
+        'gpa',
+        'type',
+        'active'
     ];
 
-    /**
-     * The attributes that should be hidden for serialization.
-     *
-     * @var array<int, string>
-     */
+    // إخفاء الحقول التي لا ينبغي إظهارها مثل كلمة المرور
     protected $hidden = [
         'password',
         'remember_token',
     ];
 
-    /**
-     * The attributes that should be cast.
-     *
-     * @var array<string, string>
-     */
+    // تحويل الحقول إلى نوع بيانات مناسب
     protected $casts = [
-        'email_verified_at' => 'datetime',
-        'password' => 'hashed',
+        'reg_date' => 'datetime',
+        'cridits' => 'integer',
+        'gpa' => 'float',
     ];
 }

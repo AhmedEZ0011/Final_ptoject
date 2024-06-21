@@ -88,9 +88,9 @@ style="
   top: 20%;
   position: absolute;
   border-radius: 20px;
-  border-style: none;
-  
-">  
+  border-style: none; 
+"
+onclick="Home_button()">  
 <i class="fa-solid fa-house"
 style="font-size:35px; 
         right:4%;
@@ -300,10 +300,12 @@ font-size:25px;
 "
 >حفظ التغييرات</button>
 </div>
+<script>
+function Home_button(){
+        window.location.href ="http://127.0.0.1:8000/Student_Home"
+                }
 
-
-
-
+</script>                
 </body>
 </html>
 

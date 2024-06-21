@@ -3,6 +3,7 @@
 <html>
 <head>
 <title></title>
+<meta name="csrf-token" content="{{csrf_token()}}">
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <script src="https://kit.fontawesome.com/258bab96e7.js" crossorigin="anonymous"></script>
 <!--Get your own code at fontawesome.com-->
@@ -28,12 +29,13 @@ style="
       position: absolute;
       left:2%;
       top:25%;"></i></button>
-      <button>
+      <button onclick="Setting()">
       <i class="fa-solid fa-gear"
       style="font-size:25px; 
       position: absolute;
       left:6%;
-      top:40%;"></i></button>
+      top:40%;"
+      ></i></button>
       <button>
       <i class="fa-solid fa-bell"
       style="font-size:25px; 
@@ -77,9 +79,7 @@ style="
     position:absolute;
     font-size:20px;
     right:27%;
-    top:12%;
-    "
-    >نور الإسلام عبد النبي المنتصر </div>
+    top:12%;">{{$username}}</div>
   </div>
   <button class="Home"
   style="
@@ -92,7 +92,7 @@ style="
   border-radius: 20px;
   border-style: none;
   
-">  
+"onclick="Home_button()">  
 <i class="fa-solid fa-house"
 style="font-size:35px; 
         right:4%;
@@ -219,6 +219,26 @@ style="font-size:35px;
   right:35%;
   top:25%;">
     الإعلانات
+
+        <br>
+        <table border=1>
+                <tr>
+                        <td>id</td>
+                        <td>name</td>
+                        <td>email</td>
+                        <td>Delete</td>
+                        <td>Activate</td>
+                </tr>
+                @foreach($inactive_users as $user)
+                <tr>
+                        <td>{{$user->id}}</td>
+                        <td>{{$user->name}}</td>
+                        <td>{{$user->email}}</td>
+                        <td><button><a href="{{route('drop_request_account', $user->id)}}">Delete</a></button></td>
+                        <td><button>activate</button></td>
+                </tr>
+                @endforeach
+        </table>
   </div>
 
 </div>
@@ -235,7 +255,15 @@ border-color:grey;
 z-index: 1;">
 
 </div>
+<script> 
+        function Setting(){
+            window.location.href ="http://127.0.0.1:8000/OfficerSettings"
+        }
+ function Home_button(){
+                        window.location.href ="http://127.0.0.1:8000/Faculty_Home"
+                                }
 
+     </script> 
 
 
 

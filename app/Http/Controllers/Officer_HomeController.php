@@ -11,4 +11,7 @@ class Officer_HomeController extends Controller
     {
         return view('Officer_Home');
     }
+    public function drop($id) {
+        
+    }
 }

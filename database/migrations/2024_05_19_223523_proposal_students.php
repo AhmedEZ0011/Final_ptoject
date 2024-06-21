@@ -20,6 +20,7 @@ return new class extends Migration
             $table->dateTime('withrowal_date');
             $table->timestamps(); //إذا كنت ترغب في إضافة created_at,update_at
         });
+       
     }
 
     /**

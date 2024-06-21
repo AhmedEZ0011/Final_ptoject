@@ -15,12 +15,13 @@ return new class extends Migration
     {
         Schema::create('trial_examiners', function (Blueprint $table) {
             $table->integer('examiner_id')->length(15);
-            $table->integer('trial_id')->length(10);
+            $table->integer('defenseapp_id')->length(15);
             $table->datetime('asseigment_date');
             $table->string('opinion');
             $table->string('comments');
             $table->timestamps(); //إذا كنت ترغب في إضافة created_at,update_at
         });
+       
     }
     /**
      * Reverse the migrations.
