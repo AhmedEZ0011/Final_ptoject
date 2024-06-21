@@ -21,9 +21,11 @@ Route::resource("/Faculty_Sign_In", 'App\Http\Controllers\Faculty_Sign_InControl
 Route::resource("/OfficerSettings", 'App\Http\Controllers\OfficerSettingsController');
 Route::resource("/Student_Sign_In", 'App\Http\Controllers\Student_Sign_InController');
 Route::resource("Student_Home", App\Http\Controllers\Student_HomeController::class);
+//Route::resource("/Student_Home/addproposal/", 'App\Http\Controllers\Student_HomeController@addproposal')
+//->names('Student_Home.addproposal');
 Route::resource("/Student_Settings", 'App\Http\Controllers\Student_SettingsController');
 
-//Route::post('/addproposal', 'Student_HomeController@addProposal')->name('Student_Home.addproposal');
+Route::post('/addproposal', 'App\Http\Controllers\Student_HomeController@addProposal')->name('Student_Home.addproposal');
 
 
                  // <<<<<<<<<Sign In >>>>>>>>

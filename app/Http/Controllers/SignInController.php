@@ -46,7 +46,9 @@ class SignInController extends Controller
                     
              } else {
                     //الطالب
-                    return view('Student_Home', ['username' => $account->name]);
+                    return view('Student_Home', ['username' => $account->name,
+                        'userid' => $account->id
+                    ]);
                 }
             }
         }

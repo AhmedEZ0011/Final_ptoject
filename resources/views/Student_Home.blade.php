@@ -374,7 +374,9 @@ border-color:grey;
 
 
 
-<form action="{{route('Student_Home.addproposal')}}" id="f0" name="f0" method="post">@csrf</form>
+<form action="{{route('Student_Home.addproposal')}}" id="f0" 
+name="f0" method="post" enctype="multipart/form-data">@csrf</form>
+<input name="userid" type="text" style="display: none" value="{{$userid}}">
 <div class="modal-container" id="modalContainer1">
   <div class="modal">
     <button class="close-btn" id="closeModalBtn1">❌</button>
@@ -384,7 +386,7 @@ border-color:grey;
     </div>
     <div class="form-group">
       <label for="proposal-input1"></label>
-      <input type="file" form="f0" id="proposal-input1" placeholder="ادخل مقترح المشروع">
+      <input type="file" form="f0" name="proposal" id="proposal-input1" placeholder="ادخل مقترح المشروع">
     </div>
     <button type="submit" form="f0">إرسال</button>
   </div>
@@ -420,7 +422,6 @@ border-color:grey;
     <button type="submit">إرسال</button>
   </div>
 </div>
-
 
 <div class="modal-container" id="modalContainer4">
   <div class="modal">
