@@ -2,8 +2,9 @@
 
 namespace App\Http\Controllers;
 use Illuminate\Http\Request;
-
-
+use Illuminate\Support\Facades\Hash;
+use App\Models\User;
+use App\Http\Controllers\Auth;
 
 class Faculty_Sign_InController extends Controller
 {
@@ -27,13 +28,27 @@ class Faculty_Sign_InController extends Controller
             //المقارنه
             if (Auth::attempt(['email' => $request->email, 'password' => $request->password])) {
                 // في حالة نجاح التسجيل يعرض dashboard
-                return redirect()->intended('/dashboard');
+                return redirect()->intended('Officer_Home');
             }
     
             // في حالة فشل التسجيل لأي سبب يعرض خطأ 401
             return response()->json([
                 'message' => 'The provided credentials do not match our records.',
-            ], 401);
-        }
-        }
+            ], 401);}
+       /* $account = User::where(["email" => $request->email, "password" => $request->password])->first();
+        
+       // A  و B يعتبرو قيم حقول الادخال 
+       // الي ح نتحصلوا عليه عليهم من ال request
+        
+        $request->email;
+        $request->password;
+        
+        if($account->type == 0) {
+        // admin
+        return view('Officer_Home');
+        */
+    }
+        
+        
 
+    

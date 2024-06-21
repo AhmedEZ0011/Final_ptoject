@@ -92,7 +92,8 @@ style=" font-size: 30px;"></i>
     >
     تسجيل الدخول
 </div>
-
+<form action="{{route('Faculty_Sign_In.login')}}" method="post"> 
+    @csrf
 <input type="email" class="email" 
         style="
         width: 70%;
@@ -115,7 +116,7 @@ style="
         left: 17%;
         top: 33%;
         position: absolute;"></i>
-    <input type="password" class="" 
+    <input type="password" class="password" 
     style="
     width: 70%;
     height: 10%;
@@ -139,7 +140,7 @@ top: 53%;
 position: absolute;"></i>
 
 
-<button class=""
+<button 
 style="
 width: 60%;
 height: 15%;
@@ -149,11 +150,11 @@ position: absolute;
 background: #4B80AB;
 border:none;
 border-radius: 5px;"
->تسجيل </button>
+type="submit">تسجيل </button>
 
 </div>
 
-
+</form>
 </body>
 </html>
 
