@@ -3,6 +3,7 @@
 <html lang="ar">
 <head>
     <meta charset="UTF-8">
+    <meta name="csrf-token" content="{{csrf_token()}}">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <script src="https://kit.fontawesome.com/258bab96e7.js" crossorigin="anonymous"></script>
     <title>إنشاء حساب جديد</title>
@@ -30,7 +31,7 @@
         }
         .form-container input, .form-container select {
             width: 95%;
-            padding: 10px;
+            padding: 5px;
             margin: 5px 0;
             text-align:right;
             border: 1px solid #ccc;
@@ -83,16 +84,8 @@
     font-size: 30px; /* تكبير حجم الأيقونة */
     color: #000000; /* لون الأيقونة */
 }
-.input-group input[type="file"] {
-            width: 95%;
-            padding: 10px;
-            margin: 5px 0;
-            text-align:right;
-            border: 1px solid #ccc;      
-}
-.file-label {
-    text-align:left; /* محاذاة النص إلى اليمين */
-}
+
+
     </style>
 </head>
 <body>
@@ -112,8 +105,8 @@
                         </optgroup>
                         <optgroup>
                             <option value="0">ادمن</option>
-                            <option value="2">مشرف</option>
                             <option value="1">منسق مشاريع</option>
+                            <option value="2">مشرف</option>
                             <option value="3">أستاذ</option>
                         </optgroup>
                         
@@ -136,21 +129,8 @@
               <input type="email" name= "email" placeholder="البريد الإلكتروني" required>
               <input type="password" name="password" placeholder="كلمة المرور" required>
             <input type="password" name="password" placeholder="تأكيد كلمة المرور" required>
-              <div class="input-group gender">
-                
-                <div>
-                    <input type="radio" name="gender" id="male" name="gender" value="male"required>
-                    <label for="male">ذكر</label>
-
-
-<input type="radio" id="female" name="gender" value="female">
-                    <label for="female">أنثى</label>
-                </div>
-            </div>
-            <label>الجنس</label>
+              
             <div class="input-group">
-                <label for="file-upload" class="file-label"> ادخل نموذج التسجيل</label>
-                <input type="file" name="file_path" id="file-upload">
                 <input type="number" name="cridits" id="units" placeholder="عدد الوحدات المجتازة"min="1" max="135">
                 <input type="number" name="gpa" id="gpa" placeholder="المعدل التراكمي" min="0" max="100">
             </div>

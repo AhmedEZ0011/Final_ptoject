@@ -92,8 +92,9 @@ style=" font-size: 30px;"></i>
     >
     تسجيل الدخول
 </div>
-<form action="{{route('Faculty_Sign_In.login')}}" method="post"> 
+<form action="{{route('Faculty_Sign_In.loginPost')}}" method="post"> 
     @csrf
+    <input type="hidden" name="_token" value="{{ csrf_token() }}" />
 <input type="email" class="email" 
         style="
         width: 70%;

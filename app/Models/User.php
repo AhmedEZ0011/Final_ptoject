@@ -25,12 +25,11 @@ class User extends Authenticatable
         'collage',
         'department_id',
         'email',
-        'gender',
         'password',
-        'file_path',
         'cridits',
         'gpa',
-        'type'
+        'type',
+        'active'
     ];
 
     // إخفاء الحقول التي لا ينبغي إظهارها مثل كلمة المرور

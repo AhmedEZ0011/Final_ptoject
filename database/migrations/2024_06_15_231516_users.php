@@ -8,8 +8,8 @@ return new class extends Migration
 {
     public $increamenting = false;
     public $primaryKey = "id";
-    /**
-     * Run the migrations.
+    
+     /* Run the migrations.
      */
     public function up(): void
     {
@@ -20,21 +20,20 @@ return new class extends Migration
             $table->char('department_id',2);
             $table->char('collage',2);
             $table->string('email',50)->unique();
-            $table->enum('gender',['MALE','FEMALE']);
-            //$table->datetime('reg_date');
             $table->char('password',64);
-            $table->string('file_path')->nullable();
             $table->integer('type');
+            $table->boolean('active');
             $table->integer('cridits')->nullable(true);
             $table->float('gpa')->nullable();
-            $table->timestamps(); //إذا كنت ترغب في إضافة created_at,update_at
+            $table->timestamps();
             
             
         });
+        
     }
 
-    /**
-     * Reverse the migrations.
+    
+     /* Reverse the migrations.
      */
     public function down(): void
     {

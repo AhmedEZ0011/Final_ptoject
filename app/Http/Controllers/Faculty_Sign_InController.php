@@ -5,19 +5,21 @@ use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Hash;
 use App\Models\User;
 use App\Http\Controllers\Auth;
+use Illuminate\Support\Facades\Auth as LaravelAuth;
+
+// ...
+
 
 class Faculty_Sign_InController extends Controller
 {
-    //لعرض صفحة تسجيل الدخول لطالب
-        //Action :
+   
     public function index()
     {
-        return view('Faculty_Sign_In');
+        return view ('/Faculty_Sign_In');
     }
-    
        
         //Action اللي ابدير عملية التسجيل
-        public function login(Request $request)
+        /*public function login(Request $request)
         {
             // التحقق من صحة المدخلات
             $request->validate([
@@ -47,6 +49,19 @@ class Faculty_Sign_InController extends Controller
         // admin
         return view('Officer_Home');
         */
+        function login (){
+            return view ('/Faculty_Sign_In');
+        }
+        function loginPost(Request $request){
+          //  $request->validate([
+            //    'password'=>'required'
+            //]);
+            $user = $request->only('password');
+            
+            if (LaravelAuth::attempt($user)){
+                return redirect()->intended(route('Student_Home'));
+            }
+        }
     }
         
         

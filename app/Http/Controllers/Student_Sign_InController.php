@@ -1,16 +1,14 @@
 <?php
 
 namespace App\Http\Controllers;
-use App\Http\Controllers\Student_Sign_InControlle;
 use Illuminate\Http\Request;
 use App\Models\User;
 use Illuminate\Support\Facades\Hash;
 
 class Student_Sign_InController extends Controller
-{
-    public function index()
-    {
-        return view('student_sign_in');
+{    
+    public function index(){
+    return view('login');
     }
     public function login(Request $request)
     {
@@ -19,25 +17,32 @@ class Student_Sign_InController extends Controller
         $password = $request->password;
 
 
-        $account = User::where('email', $email)->first();
+        $account = User::where("email", $email)->first();
 
         
         if ($account && Hash::check($password, $account->password)) {
             
             if ($account->type == 0) {
-                //منسق المشاريع
-                return view('Officer_Home');
-            } else {
-                
-            if ($account->type == 1) {
+                return view('Admin_Home');}
+                 
+              //منسق المشاريع 
+            elseif ($account->type == 1) {
+                return view('Officer_Home');}
+
                //المشرف
+             elseif ($account->type == 2){
+                return view('Faculty_Home');}
+                //أستاد
+             elseif ($account->type == 3) {
                 return view('Faculty_Home');
-            } else {
-                         //الطالب
-                return view('Student_Home');
+                // طالب
+                if ($account->type == 4) {
+                
+                     return view('Student_Home');
+                 }      
+                
             }
         
          }
     }
-}
 }

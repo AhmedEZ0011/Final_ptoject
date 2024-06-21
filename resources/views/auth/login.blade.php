@@ -1,53 +1,200 @@
-@extends('layouts.app', ['class' => 'login-page', 'page' => __('Login Page'), 'contentClass' => 'login-page'])
 
-@section('content')
-    <div class="col-md-10 text-center ml-auto mr-auto">
-        <h3 class="mb-5">Log in to see how you can speed up your web development with out of the box CRUD for #User Management and more.</h3>
-    </div>
-    <div class="col-lg-4 col-md-6 ml-auto mr-auto">
-        <form class="form" method="post" action="{{ route('login') }}">
-            @csrf
+<!DOCTYPE html>
+<html lang="ar">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>تسجيل الدخول</title>
+    <link rel="stylesheet" href="styles.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+</head>
+<script>
+    // ادير refresh للصفحة تلقائي
+    function reloadPage() {
+        setTimeout(function() {
+            location.reload();
+        }, 4000); // 4 seconds
+    }
+</script>
+<style>
+body {
+    margin: 0;
+    padding: 0;
+    font-family: Arial, sans-serif;
+    background: url('main.jpg') no-repeat center center fixed;
+    background-size: cover;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+}
 
-            <div class="card card-login card-white">
-                <div class="card-header">
-                    <img src="{{ asset('black') }}/img/card-primary.png" alt="">
-                    <h1 class="card-title">{{ __('Log in') }}</h1>
-                </div>
-                <div class="card-body">
-                    <p class="text-dark mb-2">Sign in with <strong>admin@black.com</strong> and the password <strong>secret</strong></p>
-                    <div class="input-group{{ $errors->has('email') ? ' has-danger' : '' }}">
-                        <div class="input-group-prepend">
-                            <div class="input-group-text">
-                                <i class="tim-icons icon-email-85"></i>
-                            </div>
-                        </div>
-                        <input type="email" name="email" class="form-control{{ $errors->has('email') ? ' is-invalid' : '' }}" placeholder="{{ __('Email') }}">
-                        @include('alerts.feedback', ['field' => 'email'])
-                    </div>
-                    <div class="input-group{{ $errors->has('password') ? ' has-danger' : '' }}">
-                        <div class="input-group-prepend">
-                            <div class="input-group-text">
-                                <i class="tim-icons icon-lock-circle"></i>
-                            </div>
-                        </div>
-                        <input type="password" placeholder="{{ __('Password') }}" name="password" class="form-control{{ $errors->has('password') ? ' is-invalid' : '' }}">
-                        @include('alerts.feedback', ['field' => 'password'])
-                    </div>
-                </div>
-                <div class="card-footer">
-                    <button type="submit" href="" class="btn btn-primary btn-lg btn-block mb-3">{{ __('Get Started') }}</button>
-                    <div class="pull-left">
-                        <h6>
-                            <a href="{{ route('register') }}" class="link footer-link">{{ __('Create Account') }}</a>
-                        </h6>
-                    </div>
-                    <div class="pull-right">
-                        <h6>
-                            <a href="{{ route('password.request') }}" class="link footer-link">{{ __('Forgot password?') }}</a>
-                        </h6>
-                    </div>
-                </div>
+.login-container {
+    background: #97cadbe1;
+    padding: 30px;
+    border-radius: 8px;
+    width: 300px;
+    text-align: center;
+}
+
+
+.login-box h2 {
+    margin-bottom: 20px;
+}
+
+.input-group {
+    position: relative;
+    margin-bottom: 30px;
+}
+
+.input-group i {
+    position: absolute;
+    left: 15px;
+    top: 50%;
+    transform: translateY(-50%);
+    color: #9b9999;
+}
+
+.input-group input {
+    width: 80%;
+    padding: 10px 10px 10px 30px;
+    border: 1px solid #ffffff;
+    border-radius: 4px;
+    font-size: 16px;
+    text-align: right;
+}
+
+button {
+    width: 60%;
+    padding: 10px;
+    border: none;
+    border-radius: 4px;
+    background-color: #6591c0;
+    color: white;
+    font-size: 16px;
+    cursor: pointer;
+}
+
+button:hover {
+    background-color: #93aece;
+}
+.navbar {
+    width: 99%;
+    padding: 10px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    position: fixed;
+    top: 0;
+    left: 0;
+    z-index: 1000; /* ضمان ظهور الشريط فوق جميع المحتويات الأخرى */
+    background-color: #97cadb4f;
+}
+
+.navbar-left, .navbar-right {
+    display: flex;
+    align-items: center;
+}
+.navbar-left i, .navbar-right i {
+    color: rgb(12, 12, 12);
+    font-size: 28px;
+    margin: 0 10px;
+    right: 10%;
+}
+
+.btn-back {
+    background: none;
+    border: none;
+    color: rgb(3, 3, 3);
+    font-size: 30px;
+    cursor: pointer;
+}
+.custom-link {
+    color: #483fc7; /* تغيير لون النص إلى الأحمر، يمكن تغيير اللون حسب الحاجة */
+    text-decoration: none; /* إزالة الخط تحت الرابط */
+}
+
+.custom-link:hover {
+    color: #7a7675; /* لون النص عند التمرير عليه */
+    text-decoration: underline; /* يمكن إضافة خط تحت الرابط عند التمرير إذا رغبت في ذلك */
+}
+.UserIcon{
+    width: 13%;
+height: 100%;
+left: 93%;
+top: 30%;
+position: absolute;
+color: #353232;
+background-color: #4b80ab00;
+font-size: 20px;
+border:none;
+text-decoration: none;
+}
+.error {
+    color: red;
+    font-size: 14px;
+}
+
+.alert {
+    color: red;
+    margin-bottom: 15px;
+}
+.centered-flex {
+    position: absolute;
+    top: 20px;
+  right: ;: 40px;
+    font-size: px; /* تكبير حجم الأيقونة */
+    color: #000000; /* لون الأيقونة */
+}
+.user
+{
+
+    top: 20px;
+    right: 70px;
+    font-size: px; /* تكبير حجم الأيقونة */
+    color: #000000; /* لون الأيقونة */
+}
+.UserIconName{
+    top: 20px;
+    text-align: right;
+    font-size: 20px; /* تكبير حجم الأيقونة */
+    color: #000000; /* لون الأيقونة */
+
+}
+</style>
+<body>
+
+
+<nav class="navbar">
+        <div class="navbar-left">
+            <div class="centered-flex-user">
+                <img src="Graduation Cap.png" alt="Description of the image" width="50" height="30">
             </div>
+        </div>
+        <div class="navbar-right">
+            <div class="user">
+                <img src="user.png" alt="Description of the image" width="50" height="50">
+            </div>
+        </div>
+    </nav>
+    <div class="login-container">
+        <h2>تسجيل الدخول</h2>
+        <form method="post" action="{{ route('login') }}">
+            @csrf
+            <div class="input-group">
+                <i class="fas fa-envelope"></i>
+                <input type="email" name="email" id="email" required autofocus placeholder="البريد الإلكتروني">
+            </div>
+            <div class="input-group">
+                <i class="fas fa-lock"></i>
+                <input type="password" name="password" id="password" required placeholder=" كلمة المرور">
+            </div>
+            <div>
+                <a href="{{ route('password.request') }}" class="custom-link">هل نسيت كلمة المرور؟</a>
+            </div>
+            <br>
+            <button type="submit">تسجيل</button>
         </form>
     </div>
-@endsection
+</body>
+</html>

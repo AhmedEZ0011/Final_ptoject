@@ -5,17 +5,18 @@ namespace App\Models;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 
-class Project extends Model
+class Monthly_report extends Model
 {
     use HasFactory;
     protected $fillable = [
         'id',
         'proposal_id',
-        'superviser_id',
-        'status',
-        'start_date',
-        'end_date',
-       // 'comments',
-       // 'content',
+        'faculty_id',
+        'assignment_date',
+        'opinion',
+        'opinion_date',
+        'comments',
+        
     ];
+    
 }

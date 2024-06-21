@@ -7,6 +7,7 @@
 
 
 <title></title>
+<meta name="csrf-token" content="{{csrf_token()}}">
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <script src="https://kit.fontawesome.com/258bab96e7.js" crossorigin="anonymous"></script>
 
@@ -229,7 +230,7 @@ style="
     right:27%;
     top:12%;
     "
-    >نور الإسلام عبد النبي المنتصر </div>
+    >{{$username}}</div>
   </div>
   <button name="Home" class="Home"
   style="
@@ -373,7 +374,7 @@ border-color:grey;
 
 
 
-
+<form action="{{route('Student_Home.addproposal')}}" id="f0" name="f0" method="post">@csrf</form>
 <div class="modal-container" id="modalContainer1">
   <div class="modal">
     <button class="close-btn" id="closeModalBtn1">❌</button>
@@ -383,9 +384,9 @@ border-color:grey;
     </div>
     <div class="form-group">
       <label for="proposal-input1"></label>
-      <input type="file" id="proposal-input1" placeholder="ادخل مقترح المشروع">
+      <input type="file" form="f0" id="proposal-input1" placeholder="ادخل مقترح المشروع">
     </div>
-    <button type="submit">إرسال</button>
+    <button type="submit" form="f0">إرسال</button>
   </div>
 </div>
 
@@ -428,6 +429,8 @@ border-color:grey;
       <img src="Upload to the Cloud.png" class="cloud-icon"></img>
       <h2> مشاريع مؤرشفة</h2>
     </div>
+    <form action="{{route('Sing_up.store')}}" method="post"> 
+      @csrf
     <div class="form-group">
       <label for="proposal-input4"></label>
       <input type="text" id="proposal-input4" placeholder="البحث عن مشروع ">

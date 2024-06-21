@@ -1,7 +1,6 @@
 <?php
 
 namespace App\Http\Controllers;
-
 use Illuminate\Http\Request;
 use App\Models\User;
 use Illuminate\Support\Facades\Hash;
@@ -37,20 +36,6 @@ class Sing_upController extends Controller
     public function store(Request $request)
     {
 
-        // $request->validate([
-        //     'name' => 'required|string|max:255',
-        //     'email' => 'required|string|email|max:255|unique:users',
-        //     'password' => 'required|string|min:8|confirmed',
-        //     'id' => 'required|integer|max:11|unique:users',
-        //     'type' => 'required|integer|max:5',
-        //     'department' => 'required|string|max:50',
-        //     'gender' => 'required|string',
-        //     'reg_date' => 'required|integer|max:50',
-        //     'file_path' => 'nullable|file|mimes:jpg,jpeg,png,pdf|max:2048',
-        //     'cridits' => 'integer|max:135|min:1',
-        //     'gpa' => 'integer|max:100|min:0',
-        // ]);
-
         $user = User::create([
             'name' => $request->name,
             'email' => $request->email,
@@ -63,8 +48,21 @@ class Sing_upController extends Controller
             'file_path' => $request->file_path,
             'cridits' => $request->cridits,
             'gpa' => $request->gpa,
-            'type' => $request->type
+            'type' => $request->type,
+            'active' => 0
         ]);
-        // return redirect('/Student_Home');
+        $userdir = public_path().'/users/'.$request->id;
+        mkdir($userdir);
+        mkdir($userdir.'/documentation');
+        return "Fuck off";
+       /*
+            /public/
+                    user-id/
+                            prob
+                            last-version
+                            documentation
+        */
+    
+     
     }
 }

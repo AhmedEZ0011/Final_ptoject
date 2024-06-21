@@ -3,6 +3,7 @@
 <html>
 <head>
 <title></title>
+<meta name="csrf-token" content="{{csrf_token()}}">
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <script src="https://kit.fontawesome.com/258bab96e7.js" crossorigin="anonymous"></script>
 <!--Get your own code at fontawesome.com-->
@@ -78,9 +79,7 @@ style="
     position:absolute;
     font-size:20px;
     right:27%;
-    top:12%;
-    "
-    >نور الإسلام عبد النبي المنتصر </div>
+    top:12%;">{{$username}}</div>
   </div>
   <button class="Home"
   style="
@@ -220,6 +219,26 @@ style="font-size:35px;
   right:35%;
   top:25%;">
     الإعلانات
+
+        <br>
+        <table border=1>
+                <tr>
+                        <td>id</td>
+                        <td>name</td>
+                        <td>email</td>
+                        <td>Delete</td>
+                        <td>Activate</td>
+                </tr>
+                @foreach($inactive_users as $user)
+                <tr>
+                        <td>{{$user->id}}</td>
+                        <td>{{$user->name}}</td>
+                        <td>{{$user->email}}</td>
+                        <td><button><a href="{{route('drop_request_account', $user->id)}}">Delete</a></button></td>
+                        <td><button>activate</button></td>
+                </tr>
+                @endforeach
+        </table>
   </div>
 
 </div>

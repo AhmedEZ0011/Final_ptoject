@@ -177,7 +177,7 @@ text-decoration: none;
     </nav>
     <div class="login-container">
         <h2>تسجيل الدخول</h2>
-        <form method="POST" action="{{ route('student.login.submit') }}">
+        <form  action="{{ route('Sign_in.login') }}" method="post">
             @csrf
             <div class="input-group">
                 <i class="fas fa-envelope"></i>
@@ -192,6 +192,8 @@ text-decoration: none;
             </div>
             <br>
             <button type="submit">تسجيل</button>
+            
+
         </form>
     </div>
 </body>
