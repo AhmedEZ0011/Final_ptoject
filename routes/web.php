@@ -1,7 +1,8 @@
 <?php
 
 use Illuminate\Support\Facades\Route;
-
+use Illuminate\Support\Facades\Auth;
+use Illuminate\Support\Facades\DB;
 /*
 |--------------------------------------------------------------------------
 | Web Routes
@@ -18,14 +19,12 @@ Route::get('/', function () {
 });
 
 Route::get('/getmydata', function() {
-	//User::all();
-	$arr = Db::select("");
-
 	$data = '{"user1": {"name": "Ahmed", "age": 24, "creationdate": "12-9-2024"},';
 	$data = $data.'"user2": {"name": "khalid", "age": 21, "creationdate": "12-9-2024"}}';
-	return $d;
+	return $data;
 });
 
+Route::resource("/note", 'App\Http\Controllers\NoteController');
 
 Route::get('/about', 'App\Http\Controllers\NoorController@index');
 Route::get('/loginhome', 'App\Http\Controllers\LoginController@index');
@@ -49,7 +48,7 @@ Auth::routes();
 Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
 Auth::routes();
 
-Route::get('/home', 'Aimage.pngASDFTGHYUJKILOP;']
+Route::get('/home', 'Aimage.pngASDFTGHYUJKILOP;
 \pp\Http\Controllers\HomeController@index')->name('home')->middleware('auth');
 
 Route::group(['middleware' => 'auth'], function () {
