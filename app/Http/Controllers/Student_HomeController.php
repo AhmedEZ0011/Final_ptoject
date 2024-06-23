@@ -2,7 +2,10 @@
 
 namespace App\Http\Controllers;
 
+
+use Illuminate\Support\Facades\Auth;
 use Illuminate\Http\Request;
+use Illuminate\View\View;
 use Laravel\Ui\Presets\React;
 
 class Student_HomeController extends Controller
@@ -16,10 +19,10 @@ class Student_HomeController extends Controller
         
     }
     public function addproposal(Request $request) {
-        $userid = $request->userid;
+        $userid = Auth::user()->id;
         //$file = $request->file('file');
-        //$file->store(public_path('users', $userid, 'proposal.pdf'));
-        $request->proposal->move(public_path('users', $userid), 'proposal.pdf');
-        return "Hello ". $userid. "<br>".public_path('users', $userid);
+        $proposal = $request->file('proposal');
+        $proposal->move(public_path().'\\users\\'.$userid.'\\', 'proposal.pdf');
+        return redirect('Student_Home')->with('status', 'File uploaded successfully');
     }
 }

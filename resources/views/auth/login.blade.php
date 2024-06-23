@@ -142,7 +142,7 @@ text-decoration: none;
 .centered-flex {
     position: absolute;
     top: 20px;
-  right: ;: 40px;
+    right: 40px;
     font-size: px; /* تكبير حجم الأيقونة */
     color: #000000; /* لون الأيقونة */
 }
