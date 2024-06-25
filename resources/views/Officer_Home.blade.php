@@ -41,11 +41,11 @@
       top: 2%;
       position: absolute;
       border-bottom:black">
-                <button><a href="{{ route('logout') }}">
+                <a href="{{ route('logout') }}">
                         <i class="fa-solid fa-arrow-right-from-bracket" style="font-size:35px; 
       position: absolute;
       left:2%;
-      top:25%;"></a></i></button>
+      top:25%;"></a></i>
 
                 <i class="fa-solid fa-graduation-cap" style="font-size:35px; 
       position: absolute;

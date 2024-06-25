@@ -7,14 +7,15 @@
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <script src="https://kit.fontawesome.com/258bab96e7.js" crossorigin="anonymous"></script>
 <!--Get your own code at fontawesome.com-->
+<style>
+ a{
+      color: #000;
+    }
+</style>
 </head>
 <body 
-    style=" background:#F1F0FB;
-    
-    
-    
-"
->
+    style=" background:#F1F0FB;">
+
 <div class="heder"
 style="
       width: 70%;
@@ -22,27 +23,27 @@ style="
       left: 2%;
       top: 2%;
       position: absolute;
-      border-bottom: 5px solid black;">
-      <button>
+      border-bottom: 5px solid black;" >
+      <a href="{{ route('logout') }}">
       <i class="fa-solid fa-arrow-right-from-bracket"
       style="font-size:35px; 
       position: absolute;
       left:2%;
-      top:25%;"></i></button>
-      <button onclick="Setting()">
+      top:25%;"></i></a>
+     
       <i class="fa-solid fa-gear"
       style="font-size:25px; 
       position: absolute;
-      left:6%;
-      top:40%;"
-      ></i></button>
-      <button>
+      left:8%;
+      top:40%;" onclick="Setting()"
+      ></i>
+      
       <i class="fa-solid fa-bell"
       style="font-size:25px; 
       position: absolute;
-      left:9%;
+      left:13%;
       top:40%;"></i>
-      </button>
+      
      <div class="Home-page"
      style="left:50%;
      top:30%;

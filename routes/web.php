@@ -27,7 +27,6 @@ Route::resource("/OfficerSettings", 'App\Http\Controllers\OfficerSettingsControl
 Route::resource("/Student_Sign_In", 'App\Http\Controllers\Student_Sign_InController');
 Route::resource("Student_Home", 'App\Http\Controllers\Student_HomeController')
 ->names("Student_Home");
-Route::post("/Student_Home/addproposal/", 'App\Http\Controllers\Student_HomeController@addproposal')->name('Student_Home.addproposal');
 Route::resource("/Student_Settings", 'App\Http\Controllers\Student_SettingsController');
 
 //Route::post('/addproposal', 'App\Http\Controllers\Student_HomeController@addProposal')->name('Student_Home.addproposal');
@@ -66,3 +65,22 @@ Route::get('/add_request_account/{id}/', function($id) {
 	return "You requested ".$i;
 });
 */
+                //<<<<<<<Student_Home>>>>>>>>
+Route::post("/Student_Home/addproposal/", 'App\Http\Controllers\Student_HomeController@addproposal')->name('Student_Home.addproposal');
+Route::post("/Student_Home/addreport/", 'App\Http\Controllers\Student_HomeController@addreport')->name('Student_Home.addreport');
+Route::post("/Student_Home/addDocumentation/", 'App\Http\Controllers\Student_HomeController@addDocumentation')->name('Student_Home.addDocumentation');
+Route::get("/Student_Home/search",'App\Http\Controllers\Student_HomeController@search')->name('Student_Home.search');
+Route::get('/search/{id}/', function($id) {
+	$state = User::find($id);
+        if($state) {
+			$state->active = 1;
+			$state->save();
+			//$query = $request->input('query');
+			//$results = Project::where('column_name', 'LIKE', "%{$query}%")->get(); // Adjust column_name and model
+	
+			return redirect ()->route('Student_Home.search');
+		}
+		else {
+			return redirect ()->route('Student_Home.search');
+        }
+})->name("search");

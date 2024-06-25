@@ -73,6 +73,9 @@
       padding: 0;
     }
 
+    a{
+      color: #000;
+    }
     .container {
       display: flex;
       justify-content: center;
@@ -152,6 +155,24 @@
     button[type="submit"]:hover {
       background-color: #4a8cdb;
     }
+    .flash-message {
+    border-radius: 5px;
+    font-size: 25px;
+    text-align: center;
+    width: 78%;
+    height: 7%;
+    left: 0%;
+    top: 13%;
+    position: absolute;
+}
+
+.flash-success {
+    background-color: #d4edda;
+    color: #155724;
+    border: 1px solid #c3e6cb;
+}
+
+
   </style>
 
 </head>
@@ -168,33 +189,38 @@
       position: absolute;
       border-bottom: 5px solid black;">
 
-    <button><a href="{{ route('logout') }}">
+    <a href="{{ route('logout') }}">
       <i name="logout" class="fa-solid fa-arrow-right-from-bracket" style="font-size:35px; 
       position: absolute;
       left:2%;
-      top:25%;" action="{{route('Sing_up.store')}}" method="post"></i></button>
-    </a><button>
+      top:25%;" action="{{route('Sing_up.store')}}" method="post"></i>
+    </a>
+    
       <i name="settings" class="fa-solid fa-gear" style="font-size:25px; 
       position: absolute;
-      left:6%;
-      top:40%;" onclick="Settings_button()"></i></button>
-    <button>
+      left:8%;
+      top:40%;" onclick="Settings_button()"></i>
+    
       <i class="fa-solid fa-bell" style="font-size:25px; 
       position: absolute;
-      left:9%;
+      left:13%;
       top:40%;"></i>
-    </button>
+    
     <div class="Home-page" style="left:50%;
      top:30%;
      font-size:40px;
       position: absolute;">
-      <i class="fa-solid fa-house"></i>Home
+      <i class="fa-solid fa-house"></i>     Home   
     </div>
   </div>
 
-    @isset($status) 
-        <h1>$status</h1>
-    @endisset
+  @if (session('status'))
+  <div class="flash-message flash-success">
+      {{ session('status') }}
+  </div>
+@endif
+
+
 
   <div class="ContenFunction" style="
       width: 20%;
@@ -271,7 +297,7 @@
         right:4%;
         top:20%;
         position: absolute;"></i>
-      <h2>إرسال تقرير الشهري </h2>
+      <h2>إرسال تقرير  </h2>
     </button>
     <button id="openModalBtn3" class="btn-primary" style="background-color: #97CADB;
         height: 9%;
@@ -363,23 +389,25 @@ border-color:grey;
       <button type="submit" form="f0">إرسال</button>
     </div>
   </div>
-
+<form action="{{ route('Student_Home.addreport') }}" id="f1" name="f1" method="post" enctype="multipart/form-data">
+    @csrf</form>
   <div class="modal-container" id="modalContainer2">
     <div class="modal">
       <button class="close-btn" id="closeModalBtn2">❌</button>
       <div class="header">
         <img src="Upload to the Cloud.png" class="cloud-icon"></img>
-        <h2>إرسال تقرير الشهري</h2>
+        <h2>إرسال تقرير </h2>
       </div>
       <div class="form-group">
         <label for="proposal-input2"></label>
-        <input type="file" id="proposal-input2" placeholder="إرسال تقرير الشهري">
+        <input type="file" form="f1" name="report" id="proposal-input2" placeholder="إرسال تقرير ">
       </div>
-      <button type="submit">إرسال </button>
+      <button type="submit" form="f1">إرسال </button>
     </div>
   </div>
 
-
+  <form action="{{ route('Student_Home.addDocumentation') }}" id="f2" name="f2" method="post" enctype="multipart/form-data">
+    @csrf</form>
   <div class="modal-container" id="modalContainer3">
     <div class="modal">
       <button class="close-btn" id="closeModalBtn3">❌</button>
@@ -389,12 +417,13 @@ border-color:grey;
       </div>
       <div class="form-group">
         <label for="proposal-input3"></label>
-        <input type="file" id="proposal-input3" placeholder="رفع التوثيق ">
+        <input type="file" form="f2" name="documentation" id="proposal-input3" placeholder="رفع التوثيق ">
       </div>
-      <button type="submit">إرسال</button>
+      <button type="submit" form="f2">إرسال</button>
     </div>
   </div>
-
+  <form action="{{ route('Student_Home.search') }}" id="f3" name="f3" method="post" enctype="multipart/form-data">
+    @csrf</form>
   <div class="modal-container" id="modalContainer4">
     <div class="modal">
       <button class="close-btn" id="closeModalBtn4">❌</button>
@@ -402,13 +431,11 @@ border-color:grey;
         <img src="Upload to the Cloud.png" class="cloud-icon"></img>
         <h2> مشاريع مؤرشفة</h2>
       </div>
-      <form action="{{route('Sing_up.store')}}" method="post">
-        @csrf
         <div class="form-group">
           <label for="proposal-input4"></label>
-          <input type="text" id="proposal-input4" placeholder="البحث عن مشروع ">
+          <input type="text" form="f3" name="search" id="proposal-input4" placeholder="البحث عن مشروع ">
         </div>
-        <button type="submit">بحث</button>
+        <button type="submit" form="f3">بحث</button>
     </div>
   </div>
 

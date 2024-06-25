@@ -20,11 +20,12 @@ return new class extends Migration
             $table->integer('last_proposal_id')->length(11);
             $table->string('applicant_id',)->length(10);
             $table->dateTime('app_datetime');
-            $table->integer('superviser_id')->length(11);
-            $table->enum('decision',['PENDING','REFUSED','ACCEPTED']);
+            $table->integer('superviser_id')->length(11)->nullable();;
+            $table->enum('decision',['PENDING','REFUSED','ACCEPTED'])->nullable();;
             $table->dateTime('decision_date');
             $table->tinyInteger('enabled')->length(1);
-            $table->binary('proposal_flag');
+            $table->binary('proposal_flag')->nullable();
+            $table->binary('proposal_path');
             $table->timestamps(); //إذا كنت ترغب في إضافة created_at,update_at
     });
     
