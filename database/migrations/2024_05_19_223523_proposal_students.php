@@ -15,10 +15,13 @@ return new class extends Migration
     {
         Schema::create('proposal_students', function (Blueprint $table) {
             $table->integer('id')->length(11);
+            $table->string("user_id")->nullable(true);
             $table->integer('proposal_id')->length(11);
             $table->dateTime('enrollment_date');
             $table->dateTime('withrowal_date');
             $table->timestamps(); //إذا كنت ترغب في إضافة created_at,update_at
+
+            $table->foreign("user_id")->references("id")->on("users");
         });
        
     }
