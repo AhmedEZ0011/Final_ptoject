@@ -383,6 +383,14 @@ border-color:grey;
         <h2>تقديم مقترح</h2>
       </div>
       <div class="form-group">
+        <label for="proposal-input-title">العنوان</label>
+        <input type="text" id="proposal-input-title" name="proposal-input-title" required maxlength="200" minlength="5" form="f0">
+        <label for="proposal-input-subtitle">العنوان الفرعي</label>
+        <input type="text" id="proposal-input-subtitle" name="proposal-input-subtitle" maxlength="200" minlength="5" form="f0">
+        <label for="proposal-input-subtitle">الطالب 2</label>
+        <input type="text" id="proposal-input-student2" name="proposal-input-student2" form="f0">
+        <label for="proposal-input-subtitle">الطالب 3</label>
+        <input type="text" id="proposal-input-student3" name="proposal-input-student3" form="f0">
         <label for="proposal-input1"></label>
         <input type="file" form="f0" name="proposal" id="proposal-input1" placeholder="ادخل مقترح المشروع">
       </div>

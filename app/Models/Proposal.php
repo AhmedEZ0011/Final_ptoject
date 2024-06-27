@@ -20,7 +20,8 @@ class Proposal extends Model
         'decision_date',
         'enabled',
         'proposal_flag',
-        
+        'path',
+        'user_id'
         
     ];
 }

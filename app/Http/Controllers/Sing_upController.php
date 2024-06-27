@@ -54,6 +54,7 @@ class Sing_upController extends Controller
         $userdir = public_path().'/users/'.$request->id;
         mkdir($userdir);
         mkdir($userdir.'/documentation');
+        mkdir($userdir.'/proposals');
         return $this->index();
        /*
             /public/

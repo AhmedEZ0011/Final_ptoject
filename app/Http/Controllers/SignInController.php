@@ -33,18 +33,15 @@ class SignInController extends Controller
                 return view('Admin_Home',  ['username' => $account->name]);
             } elseif ($account->type == 1) {
                 //منسق المشاريع
-                return view('Officer_Home', [
-                    'inactive_users' => User::where('active', '=', 0)->where('type', '=', 4)->get()
-                ]);
+                return redirect("Officer_Home");//view('Officer_Home', [
+                   // 'inactive_users' => User::where('active', '=', 0)->where('type', '=', 4)->get()
+                //]);
             } elseif ($account->type == 2) {
                 //المشرف
                 return view('Faculty_Home',  ['username' => $account->name]);
             } else {
                 //الطالب
-                return view('Student_Home', [
-                    'username' => $account->name,
-                    'userid' => $account->id
-                ]);
+                return redirect("Student_Home");
             }
         }
         else {
