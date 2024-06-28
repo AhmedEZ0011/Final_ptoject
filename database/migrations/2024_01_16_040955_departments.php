@@ -19,7 +19,6 @@ return new class extends Migration
             $table->integer('coordinator_id')->nullable();
             $table->timestamps();
     
-            
         });
     }
 

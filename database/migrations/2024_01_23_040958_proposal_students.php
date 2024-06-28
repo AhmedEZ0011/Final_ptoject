@@ -15,13 +15,13 @@ return new class extends Migration
     {
         Schema::create('proposal_students', function (Blueprint $table) {
             $table->integer('id');
-            $table->string('user_id');
+            $table->bigInteger('user_id');
             $table->integer('proposal_id');
             $table->dateTime('enrollment_date');
             $table->dateTime('withrowal_date');
             $table->timestamps(); //إذا كنت ترغب في إضافة created_at,update_at
                               //<<<<foreigns>>>>>>>
-           // $table->foreign("user_id")->references("id")->on("users");
+            $table->foreign("user_id")->references("id")->on("users")->cascadeOnDelete()->cascadeOnUpdate();
         });
        
     }

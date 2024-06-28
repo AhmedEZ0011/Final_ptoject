@@ -12,10 +12,10 @@ return new class extends Migration
      * @return void
      */
     public function up()
-    {
+    {// pre defense lناقشة
         Schema::create('defense_app', function (Blueprint $table) {
 
-            $table->id('id')->autoIncrement();
+            $table->bigInteger('id')->autoIncrement();
             $table->integer('project_id');
             $table->integer('superviser_id');
             $table->enum('decission',['REFUSED','ACCEPTED'])->nullable();
@@ -27,6 +27,8 @@ return new class extends Migration
             $table->dateTime('expected_date')->nullable();
             $table->timestamps();
              
+            $table->primary("id");
+
         //                  //<<<<foreigns>>>>>>>
       
       

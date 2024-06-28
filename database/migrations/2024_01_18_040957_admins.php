@@ -21,7 +21,7 @@ return new class extends Migration
 
             
                               //<<<<foreigns>>>>>>>
-         //  $table->foreign('department_id')->references('id')->on('departments');
+          // $table->foreign('department_id')->references('department_id')->on('departments')->cascadeOnDelete()->cascadeOnUpdate();
 
         });
  

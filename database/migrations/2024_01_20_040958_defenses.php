@@ -14,7 +14,7 @@ return new class extends Migration
        
             Schema::create('defenses', function (Blueprint $table) {
                 $table->id('id')->autoIncrement();
-                $table->integer('defenseapp_id')->unsigned();
+                $table->bigInteger('defenseapp_id', false, true);
                 $table->datetime('date');
                 $table->binary('document_flag')->nullable();
                 $table->text('decission')->nullable();
@@ -24,7 +24,7 @@ return new class extends Migration
                 $table->timestamps();
                 
                      //<<<<foreigns>>>>>>>
-           // $table->foreign("defenseapp_id")->references("id")->on("departments");
+            $table->foreign("defenseapp_id")->references("id")->on("defense_app");
             });
     }
 
