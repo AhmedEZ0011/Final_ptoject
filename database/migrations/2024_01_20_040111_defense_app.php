@@ -15,7 +15,7 @@ return new class extends Migration
     {// pre defense lناقشة
         Schema::create('defense_app', function (Blueprint $table) {
 
-            $table->bigInteger('id')->autoIncrement();
+            $table->bigInteger('id', true);
             $table->integer('project_id');
             $table->integer('superviser_id');
             $table->enum('decission',['REFUSED','ACCEPTED'])->nullable();
@@ -27,7 +27,7 @@ return new class extends Migration
             $table->dateTime('expected_date')->nullable();
             $table->timestamps();
              
-            $table->primary("id");
+            //$table->primary("id");
 
         //                  //<<<<foreigns>>>>>>>
       
