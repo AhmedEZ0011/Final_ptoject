@@ -14,9 +14,9 @@ return new class extends Migration
     public function up()
     {
         Schema::create('projects', function (Blueprint $table) {
-            $table->id('id')->autoIncrement();
+            $table->bigInteger('id')->autoIncrement();
             $table->integer('user_id');
-            $table->integer('proposal_id')->nullable(true);
+            $table->bigInteger('proposal_id')->nullable(true);
             $table->integer('superviser_id')->nullable(true);
             $table->enum('status',['INPROGRESS','IDLE','DONE'])->default("INPROGRESS");
             $table->dateTime('end_date')->nullable(true);
@@ -24,7 +24,7 @@ return new class extends Migration
             $table->timestamps(); 
                         
                             //<<<<foreigns>>>>>
-           // $table->foreign("proposal_id")->references("id")->on("proposals");      
+            $table->foreign("proposal_id")->references("id")->on("proposals");      
          
         });
   
