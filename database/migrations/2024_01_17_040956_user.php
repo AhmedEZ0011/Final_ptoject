@@ -13,9 +13,9 @@ return new class extends Migration
     public function up(): void
     {
         Schema::create('users', function (Blueprint $table) {
-            $table->id('id')->autoIncrement();
+            $table->bigInteger('id');
             $table->string('name',40);
-            $table->char('department_id', 2);
+            $table->bigInteger('department_id');
             $table->char('collage',2);
             $table->string('email',50)->unique();
             $table->char('password',64);
@@ -27,9 +27,9 @@ return new class extends Migration
             
             
                                //<<<<foreigns>>>>>>>
-            //$table->foreign("department_id")->references("department_id")->on("departments");
+            $table->foreign("department_id")->references("id")->on("departments");
             
-            //$table->primary("id");
+            $table->primary("id");
         });
         
     }

@@ -14,7 +14,7 @@ return new class extends Migration
     public function up()
     {
         Schema::create('proposals', function (Blueprint $table) {
-            $table->integer('id')->autoIncrement();
+            $table->bigInteger('id')->autoIncrement();
             $table->string('title',100);
             $table->string('sub_title',100)->nullable(true);
             $table->integer('last_proposal_id')->nullable(true)->length(11);
@@ -28,7 +28,7 @@ return new class extends Migration
             $table->string('path');
             $table->timestamps(); //إذا كنت ترغب في إضافة created_at,update_at
             
-          //  $table->foreign("user_id")->references("id")->on("users");
+            $table->foreign("user_id")->references("id")->on("users")->cascadeOnDelete()->cascadeOnUpdate();
     });
     
     }
