@@ -14,16 +14,19 @@ return new class extends Migration
     public function up()
     {
         Schema::create('proposal_reviews', function (Blueprint $table) {
-        $table->integer('id')->length(11);
-        $table->integer('proposal_id')->length(11);
-        $table->integer('faculty_id')->length(11);
+        $table->id('id')->autoIncrement();
+        $table->integer('proposal_id');
+        $table->integer('faculty_id');
         $table->dateTime('assignment_date');
         $table->enum('opinion',['GOOD','FAIR','BAD']);
         $table->dateTime('opinion_date');
         $table->string('comments')->nullable();
         $table->timestamps();
          //إذا كنت ترغب في إضافة created_at,update_at
-        $table->primary('id');
+        
+        
+                         //<<<<foreigns>>>>>>>
+         //$table->foreign("proposal_id")->references("id")->on("proposals");
         });
    
     

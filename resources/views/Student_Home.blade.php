@@ -17,7 +17,7 @@
       display: flex;
       justify-content: center;
       align-items: center;
-      height: 100vh;
+      height: 5%;
       position: relative;
       z-index: 2;
     }
@@ -109,7 +109,7 @@
       display: flex;
       align-items: center;
       justify-content: center;
-      margin-bottom: 90px;
+      margin-bottom: 1px;
     }
 
     .header .cloud-icon {
@@ -126,13 +126,13 @@
     }
 
     .form-group {
-      margin-bottom: 20px;
+      margin-bottom: 2px;
       position: relative;
     }
 
     .form-group input {
       width: calc(100% - 10px);
-      padding: 10px;
+      padding: 1px;
       padding-left: 30px;
       border: 1px solid #bdb6b6;
       border-radius: 5px;
@@ -148,7 +148,7 @@
       font-size: 16px;
       border-radius: 5px;
       cursor: pointer;
-      margin-top: 10%;
+      margin-top: 4%;
       margin-right: 37%;
     }
 
@@ -383,13 +383,13 @@ border-color:grey;
         <h2>تقديم مقترح</h2>
       </div>
       <div class="form-group">
-        <label for="proposal-input-title">العنوان</label>
+        <label for="proposal-input-title">عنوان المقترح</label>
         <input type="text" id="proposal-input-title" name="proposal-input-title" required maxlength="200" minlength="5" form="f0">
-        <label for="proposal-input-subtitle">العنوان الفرعي</label>
+        <label for="proposal-input-subtitle">عنوان المقترح الفرعي</label>
         <input type="text" id="proposal-input-subtitle" name="proposal-input-subtitle" maxlength="200" minlength="5" form="f0">
-        <label for="proposal-input-subtitle">الطالب 2</label>
+        <label for="proposal-input-subtitle">أدخل رقم القيد الطالب الثاني</label>
         <input type="text" id="proposal-input-student2" name="proposal-input-student2" form="f0">
-        <label for="proposal-input-subtitle">الطالب 3</label>
+        <label for="proposal-input-subtitle">أدخل رقم قيد الطالب الثالث </label>
         <input type="text" id="proposal-input-student3" name="proposal-input-student3" form="f0">
         <label for="proposal-input1"></label>
         <input type="file" form="f0" name="proposal" id="proposal-input1" placeholder="ادخل مقترح المشروع">
@@ -405,6 +405,11 @@ border-color:grey;
       <div class="header">
         <img src="Upload to the Cloud.png" class="cloud-icon"></img>
         <h2>إرسال تقرير </h2>
+      </div>
+      <div class="form-group">
+        <label for="report-input-content">محتوى التقرير </label>
+        <input type="text" id="report-input-content" name="report-input-content" required maxlength="300" minlength="20" form="f1"
+        style="width: 100%; height: 150px;">
       </div>
       <div class="form-group">
         <label for="proposal-input2"></label>

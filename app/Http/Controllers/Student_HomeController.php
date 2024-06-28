@@ -1,13 +1,6 @@
 <?php
 
 namespace App\Http\Controllers;
-<<<<<<< HEAD
-use Illuminate\Support\Facades\DB;
-
-=======
-
-use App\Models\Proposal;
->>>>>>> db9dbe1340353a8afe3435e503e1108091b97473
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Http\Request;
 use Illuminate\View\View;
@@ -41,75 +34,49 @@ class Student_HomeController extends Controller
         }
         $userid = Auth::user()->id;
         $proposal = $request->file('proposal');
-<<<<<<< HEAD
-        $proposal->move(public_path().'\\users\\'.$userid.'\\', 'proposal.pdf');
-        /* $proposal=Proposal::create([
-            'id'=> $request->id,
-            'title',
-            'sub_title',
-            'last_proposal_id',
-            'applicant_id',
-            'app_datetime',
-            'superviser_id',
-            'decision',
-            'decision_date',
-            'enabled',
-            'proposal_flag'=>1
-              
-            ]);*/
-        return redirect('Student_Home')->with('status', 'تم رفع المقترح بنجاح');
-    }
-    public function addreport(Request $request) {
-        $userid = Auth::user()->id;
-        $proposal = $request->file('report');
-        $proposal->move(public_path().'\\users\\'.$userid.'\\', 'report.pdf');
-         /*$report=Report::create([
-        'id',
-        'proposal_id',
-        'faculty_id',
-        'assignment_date',
-        'opinion',
-        'opinion_date',
-        'comments',
-         ]);*/
-        return redirect('Student_Home')->with('status', 'تم رفع التقرير بنجاح');
-    }
-    public function addDocumentation(Request $request) {
-        $userid = Auth::user()->id;
-        $proposal = $request->file('documentation');
-        $proposal->move(public_path().'\\users\\'.$userid.'\\', 'documentation.pdf');
-       /*  $project=Project::create([
-            'id',
-            'proposal_id',
-            'superviser_id',
-            'status',
-            'start_date',
-            'end_date',
-           // 'comments',
-           // 'content',
-         ]);*/
-        return redirect('Student_Home')->with('status', 'تم رفع التوثيق بنجاح');
-    }
-    /*
-    public function search(Request $request)
-    {
-        $query = $request->input('query');
-        $results = Project::where('column_name', 'LIKE', "%{$query}%")->get(); // Adjust column_name and model
-
-        return view('Search');
-    }*/
-
-}
-=======
-        $proposal->move(public_path() . '\\users\\' . $userid . '\\proposals\\', $proposal->getClientOriginalName() . '.pdf');
+        $proposal->move(public_path() . '\\users\\' . $userid . '\\proposals\\', $proposal->getClientOriginalName() );
         //return "title = ".$request->input("proposal-input-title");
         Proposal::create([
-            'user_id' => $userid,
+            'user_id' => Auth::user()->id,
             'title' => $request->input("proposal-input-title"),
             'subtitle' => $request->input("proposal-input-subtitle"),
             'path' => $proposal->getClientOriginalName() . '.pdf'
+            
         ]);
-        return redirect('Student_Home')->with('status', 'File uploaded successfully');
+        return redirect('Student_Home')->with('status', 'تم رفع المقترح بنجاح');
     }
+    public function addreport(Request $request)
+    {
+        if (!Auth::check()) {
+            return redirect("login");
+        }
+        $userid = Auth::user()->id;
+        $proposal = $request->file('report');
+        $proposal->move(public_path() . '\\users\\' . $userid . '\\report\\');
+        
+        Report::create([
+            'user_id' => Auth::user()->id,
+            'content' => $request->input("report-input-content"),
+            //'project_id'=>
+            //'superviser_id'=>    
+        ]);
+        return redirect('Student_Home')->with('status', 'تم رفع التقرير بنجاح ');
 }
->>>>>>> db9dbe1340353a8afe3435e503e1108091b97473
+public function addDocumentation(Request $request)
+{
+    if (!Auth::check()) {
+        return redirect("login");
+    }
+    $userid = Auth::user()->id;
+    $proposal = $request->file('documentation');
+    $proposal->move(public_path() . '\\users\\' . $userid . '\\documentation\\');
+    
+    Report::create([
+        'user_id' => Auth::user()->id,
+        'path' => $proposal->getClientOriginalName() . '.pdf',
+        //'proposal_id'=>
+        //'superviser_id'=>    
+    ]);
+    return redirect('Student_Home')->with('status', 'تم رفع التوثيق بنجاح ');
+}
+}

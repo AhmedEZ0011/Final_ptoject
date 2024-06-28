@@ -221,25 +221,8 @@ style="font-size:35px;
   top:25%;">
     الإعلانات
 
-        <br>
-        <table border=1>
-                <tr>
-                        <td>id</td>
-                        <td>name</td>
-                        <td>email</td>
-                        <td>Delete</td>
-                        <td>Activate</td>
-                </tr>
-                @foreach($inactive_users as $user)
-                <tr>
-                        <td>{{$user->id}}</td>
-                        <td>{{$user->name}}</td>
-                        <td>{{$user->email}}</td>
-                        <td><button><a href="{{route('drop_request_account', $user->id)}}">Delete</a></button></td>
-                        <td><button>activate</button></td>
-                </tr>
-                @endforeach
-        </table>
+        
+        
   </div>
 
 </div>

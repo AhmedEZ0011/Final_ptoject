@@ -30,7 +30,7 @@ class SignInController extends Controller
             $account = Auth::user();
             if ($account->type == 0) {
                 //أدمن
-                return view('Admin_Home',  ['username' => $account->name]);
+                return redirect("Admin_Home");
             } elseif ($account->type == 1) {
                 //منسق المشاريع
                 return redirect("Officer_Home");//view('Officer_Home', [
@@ -38,7 +38,7 @@ class SignInController extends Controller
                 //]);
             } elseif ($account->type == 2) {
                 //المشرف
-                return view('Faculty_Home',  ['username' => $account->name]);
+                return redirect("Faculty_Home");
             } else {
                 //الطالب
                 return redirect("Student_Home");

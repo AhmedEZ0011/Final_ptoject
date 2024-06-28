@@ -14,16 +14,19 @@ return new class extends Migration
     public function up()
     {
         Schema::create('projects', function (Blueprint $table) {
-            $table->integer('id')->length(15);
-            $table->integer('proposal_id')->length(15);
-            $table->integer('superviser_id')->length(11);
-            $table->enum('status',['INPROGRESS','IDLE','DONE']);
-            $table->dateTime('start_date');
-            $table->dateTime('end_date');
-           // $table->string('comments');
-           //$table->string('content');
-            $table->timestamps(); //إذا كنت ترغب في إضافة created_at,update_at
-    });
+            $table->id('id')->autoIncrement();
+            $table->integer('user_id');
+            $table->integer('proposal_id')->nullable(true);
+            $table->integer('superviser_id')->nullable(true);
+            $table->enum('status',['INPROGRESS','IDLE','DONE'])->default("INPROGRESS");
+            $table->dateTime('end_date')->nullable(true);
+            $table->string('path');
+            $table->timestamps(); 
+                        
+                            //<<<<foreigns>>>>>
+           // $table->foreign("proposal_id")->references("id")->on("proposals");      
+         
+        });
   
     }
 

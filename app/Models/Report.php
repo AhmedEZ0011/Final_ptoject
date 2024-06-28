@@ -10,13 +10,14 @@ class Report extends Model
     use HasFactory;
     protected $fillable = [
         'id',
-        'proposal_id',
-        'faculty_id',
         'assignment_date',
-        'opinion',
-        'opinion_date',
+        'user_id',
+        'project_id',
+        'superviser_id',
         'comments',
-        
+        'content',
+        'acceptance_status',
+        'upload_flag',
     ];
     
 }

@@ -10,12 +10,11 @@ class Project extends Model
     use HasFactory;
     protected $fillable = [
         'id',
+        'user_id',
         'proposal_id',
         'superviser_id',
         'status',
-        'start_date',
         'end_date',
-       // 'comments',
-       // 'content',
+        'path'
     ];
 }

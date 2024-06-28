@@ -14,15 +14,17 @@ return new class extends Migration
     public function up()
     {
         Schema::create('trial_examiners', function (Blueprint $table) {
-            $table->integer('examiner_id')->length(15);
-            $table->integer('defenseapp_id')->length(15);
+            $table->id('examiner_id')->autoIncrement();
+            $table->integer('defenseapp_id');
             $table->datetime('asseigment_date');
             $table->string('opinion');
             $table->string('comments');
             $table->timestamps(); //إذا كنت ترغب في إضافة created_at,update_at
+                    
+                            //<<<<foreigns>>>>>>>
+            // $table->foreign("defenseapp_id")->references("id")->on("departments");
         });
-       
-    }
+       }  
     /**
      * Reverse the migrations.
      *
