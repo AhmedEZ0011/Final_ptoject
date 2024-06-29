@@ -39,3 +39,6 @@
 5. Use git checkout main to switch to the main branch
 6. Use git merge <your-branch-name> to bring those chanegs you made to the main 
    branch
+
+                seeder command 
+      php artisan migrate:fresh --seed
