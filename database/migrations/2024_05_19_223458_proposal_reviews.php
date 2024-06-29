@@ -15,7 +15,7 @@ return new class extends Migration
     {
         Schema::create('proposal_reviews', function (Blueprint $table) {
         $table->id('id')->autoIncrement();
-        $table->integer('proposal_id');
+        $table->bigInteger('proposal_id');
         $table->integer('faculty_id');
         $table->dateTime('assignment_date');
         $table->enum('opinion',['GOOD','FAIR','BAD']);
@@ -26,7 +26,7 @@ return new class extends Migration
         
         
                          //<<<<foreigns>>>>>>>
-         //$table->foreign("proposal_id")->references("id")->on("proposals");
+         $table->foreign("proposal_id")->references("id")->on("proposals");
         });
    
     

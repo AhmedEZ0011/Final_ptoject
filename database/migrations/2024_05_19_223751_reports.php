@@ -18,9 +18,9 @@ return new class extends Migration
         Schema::create('reports', function (Blueprint $table) {
             $table->integer('id')->autoIncrement();
             $table->dateTime('assignment_date')->nullable(true);
-            $table->integer('user_id');
-            $table->integer('project_id')->nullable(true);;
-            $table->integer('superviser_id')->nullable(true);;
+            $table->bigInteger('user_id');
+            $table->bigInteger('project_id')->nullable(true);
+            $table->integer('superviser_id')->nullable(true);
             $table->string('comments')->nullable(true);
             $table->string('content');
             $table->enum('acceptance_status',['ACCEPTED','PENDING','REJECTED'])->default("PENDING");
@@ -28,14 +28,9 @@ return new class extends Migration
             $table->timestamps();
           
             
-           
-          
-            
-
-           
                 //<<<<foreigns>>>>>>>
-           // $table->foreign("student_id")->references("id")->on("users");
-            //$table->foreign("project_id")->references("id")->on("projects");
+            $table->foreign("user_id")->references("id")->on("users");
+            $table->foreign("project_id")->references("id")->on("projects");
             
     });
   
