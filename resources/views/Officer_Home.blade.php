@@ -280,7 +280,9 @@ border-color:grey;">
 
 
         function proposals_view_button() {
-          window.location.href = "http://127.0.0.1:8000/Proposals_view"
+          //window.location.href = "http://127.0.0.1:8000/proposals_view";
+          window.location.href = "{{route('proposals_view.index')}}"//"http://127.0.0.1:8000/proposals_view";
+
         }
         </script>
 </html>
