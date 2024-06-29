@@ -40,9 +40,29 @@ class Student_HomeController extends Controller
             'user_id' => Auth::user()->id,
             'title' => $request->input("proposal-input-title"),
             'subtitle' => $request->input("proposal-input-subtitle"),
-            'path' => $proposal->getClientOriginalName() . '.pdf'
+            'path' => $proposal->getClientOriginalName(),
             
         ]);
+
+        $secondStudent = $request->input('proposal-input-student2');
+        if($secondStudent != "") {
+            Proposal::create([
+                'user_id' => $secondStudent,
+                'title' => $request->input("proposal-input-title"),
+                'subtitle' => $request->input("proposal-input-subtitle"),
+                'path' => $proposal->getClientOriginalName() . '.pdf',
+            ]);
+        }
+
+        $thirdStudent = $request->input('proposal-input-student3');
+        if($thirdStudent != "") {
+            Proposal::create([
+                'user_id' => $thirdStudent,
+                'title' => $request->input("proposal-input-title"),
+                'subtitle' => $request->input("proposal-input-subtitle"),
+                'path' => $proposal->getClientOriginalName() . '.pdf',
+            ]);
+        }
         return redirect('Student_Home')->with('status', 'تم رفع المقترح بنجاح');
     }
     public function addreport(Request $request)

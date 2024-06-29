@@ -237,21 +237,36 @@ overflow: auto;">
                                         <td> </td>
                                         <td>ملف  </td>
                                         <td>أسم الطالب </td>
+                                        <td>الطالب الثاني  </td>
+                                        <td>الطالب الثالث  </td>
                                         <td>عنوان </td>
                                         <td>تاريخ تقديم  </td>
+                                        
 
                                 </tr>
-                                @if($proposal_list->count())
+                                @if(count($proposal_list))
                                 @foreach($proposal_list as $proposals)
                                 <tr>
                                         <td><button style="background-color: rgb(218, 55, 55);">
-                                                        <a target="self" href="{{route('drop_request_account', $user->id)}}">رفض</a>
+                                                        <a href="{{ route('proposals_view.modify', ['reject', $proposals->title, $proposals->students]) }}">رفض</a>
                                                 </button></td>
                                         <td><button style="background-color: rgb(93, 202, 93)">
-                                                        <a href="{{route('add_request_account', $user->id)}}">قبول</a>
+                                                        <a href="{{ route('proposals_view.modify', ['accept', $proposals->title, $proposals->students]) }}">قبول</a>
                                                 </button></td>
-                                        <td>{{$proposals->path}}</td>
-                                        <td>{{$proposals->user_id}}</td>
+                                        <td><a download href="/users/{{explode(',',$proposals->students)[0]}}/proposals/{{explode(",", $proposals->path)[0]}}">Download</a></td>
+                                        
+                                        @php
+                                                $studentsList = $proposals->students;
+                                                $students = explode(",", $studentsList);
+                                                foreach ($students as $student) {
+                                                        echo "<td>".$student."</td>";
+                                                }
+                                                if(count($students) == 2)
+                                                echo "<td> -- </td>";
+                                                if(count($students) == 1)
+                                                        echo "<td> -- </td><td> -- </td>";
+                                        @endphp
+
                                         <td>{{$proposals->title}}</td>
                                         <td>{{$proposals->created_at}}</td>
                                         
@@ -260,7 +275,7 @@ overflow: auto;">
                                 @endforeach
                                 @else
                                 <tr>
-                                        <td colspan="6">لا يوجد مقترحات   </td>
+                                        <td colspan="8">لا يوجد مقترحات   </td>
                                 </tr>
                                 @endif
                         </table>

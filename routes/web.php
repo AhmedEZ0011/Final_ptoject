@@ -1,11 +1,12 @@
 <?php
+
+use App\Http\Controllers\ProposalsView_Controller;
 use App\Http\Controllers\SingupController;
 //use Illuminate\Routing\Route;
 use Illuminate\Support\Facades\Route;
 //use App\Http\Controllers\StudentSignInController;
 use App\Http\Controllers\SignInController;
 use App\Models\User;
-
 use App\Http\Controllers\Student_HomeController;
 //use Illuminate\Support\Facades\Storage;
 //use Illuminate\Support\Facades\File;
@@ -29,7 +30,7 @@ Route::resource("/Student_Sign_In", 'App\Http\Controllers\Student_Sign_InControl
 Route::resource("Student_Home", 'App\Http\Controllers\Student_HomeController')
 ->names("Student_Home");
 Route::resource("/Student_Settings", 'App\Http\Controllers\Student_SettingsController');
-Route::resource("/proposals_view", 'App\Http\Controllers\Officer_HomeController')
+Route::resource("/proposals_view", 'App\Http\Controllers\ProposalsView_Controller')
 ->names("proposals_view");
 
 
@@ -61,6 +62,12 @@ Route::get('/add_request_account/{id}/', function($id) {
 			return redirect ()->route('Officer_Home.index');
         }
 })->name("add_request_account");
+
+Route::name('proposals_view.')->group(function() {
+
+    Route::get('modify/{state}/{title}/{ids}/', [ProposalsView_Controller::class, "modify"])->name('modify');
+	//Route::get("index", 'App\Http\Controllers\ProposalsView_Controller@index')->name("index");
+});
 
 
 

@@ -20,7 +20,7 @@ return new class extends Migration
             $table->string('email',50)->unique();
             $table->char('password',64);
             $table->integer('type');
-            $table->boolean('active');
+            $table->boolean('active')->default(false);
             $table->integer('cridits')->nullable(true);
             $table->float('gpa')->nullable();
             $table->timestamps();

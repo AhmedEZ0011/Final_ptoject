@@ -24,7 +24,8 @@ return new class extends Migration
             $table->enum('decision',['PENDING','REFUSED','ACCEPTED'])->default("PENDING");
             $table->dateTime('decision_date')->nullable(true);
             $table->tinyInteger('enabled')->default(0)->length(1);
-            $table->binary('proposal_flag')->nullable(true);
+            //$table->boolean('proposal_flag')->default();
+            (true);
             $table->string('path');
             $table->timestamps(); //إذا كنت ترغب في إضافة created_at,update_at
             
