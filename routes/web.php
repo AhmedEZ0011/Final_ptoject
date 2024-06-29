@@ -29,8 +29,8 @@ Route::resource("/Student_Sign_In", 'App\Http\Controllers\Student_Sign_InControl
 Route::resource("Student_Home", 'App\Http\Controllers\Student_HomeController')
 ->names("Student_Home");
 Route::resource("/Student_Settings", 'App\Http\Controllers\Student_SettingsController');
-
-//Route::post('/addproposal', 'App\Http\Controllers\Student_HomeController@addProposal')->name('Student_Home.addproposal');
+Route::resource("/proposals_view", 'App\Http\Controllers\Officer_HomeController')
+->names("proposals_view");
 
 
                  // <<<<<<<<<Sign In >>>>>>>>
@@ -61,6 +61,8 @@ Route::get('/add_request_account/{id}/', function($id) {
 			return redirect ()->route('Officer_Home.index');
         }
 })->name("add_request_account");
+
+
 
 /*Route::get('m/{i}', function($i) {
 	return "You requested ".$i;

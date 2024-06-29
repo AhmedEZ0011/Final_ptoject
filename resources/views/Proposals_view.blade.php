@@ -1,3 +1,4 @@
+
 <!DOCTYPE html>
 <html>
 
@@ -143,7 +144,8 @@
                         <i class="fa-solid fa-person-chalkboard" style="font-size:35px; 
         right:4%;
         top:20%;
-        position: absolute;"></i>
+        position: absolute;"
+  ></i>
                         <h2> المشرفين </h2>
                 </button>
                 <button class="Proposals" style="background-color: #97CADB;
@@ -158,11 +160,8 @@
                         <i class="fa-regular fa-newspaper" style="font-size:35px; 
         right:4%;
         top:20%;
-        position: absolute;"onclick=proposals_view_button()></i>
+        position: absolute;"      ></i>
                         <h2>المقترحات</h2>
-                        
-                        
-                        
                 </button>
                 <button class="Graduation-project-students" style="background-color: #97CADB;
         height: 9%;
@@ -213,9 +212,9 @@
 
         </div>
         <div class="Contener" style="background: #F1F0FB;
-width: 55%;
+width: 75%;
 height: 75%;
-left: 20%;
+left: 1%;
 top: 20%;
 position: absolute;
 border-radius: 20px;
@@ -227,7 +226,7 @@ overflow: auto;">
                         <div style="position: absolute;
                      right: 46%;
                      top: 2%;">
-                                <i style="font-size: 27px;"> طلبات التسجيل</i>
+                                <i style="font-size: 27px;"> طلبات المقترحات</i>
                         </div>
                         <br>
                         <table style="position: absolute;
@@ -236,12 +235,14 @@ overflow: auto;">
                                 <tr>
                                         <td> </td>
                                         <td> </td>
-                                        <td>الأسم</td>
-                                        <td>تاريخ طلب التسجيل</td>
+                                        <td>ملف  </td>
+                                        <td>أسم الطالب </td>
+                                        <td>عنوان </td>
+                                        <td>تاريخ تقديم  </td>
 
                                 </tr>
-                                @if($inactive_users->count())
-                                @foreach($inactive_users as $user)
+                                @if($proposal_list->count())
+                                @foreach($proposal_list as $proposals)
                                 <tr>
                                         <td><button style="background-color: rgb(218, 55, 55);">
                                                         <a target="self" href="{{route('drop_request_account', $user->id)}}">رفض</a>
@@ -249,15 +250,17 @@ overflow: auto;">
                                         <td><button style="background-color: rgb(93, 202, 93)">
                                                         <a href="{{route('add_request_account', $user->id)}}">قبول</a>
                                                 </button></td>
-
-                                        <td>{{$user->name}}</td>
-                                        <td>{{$user->created_at}}</td>
+                                        <td>{{$proposals->path}}</td>
+                                        <td>{{$proposals->user_id}}</td>
+                                        <td>{{$proposals->title}}</td>
+                                        <td>{{$proposals->created_at}}</td>
+                                        
 
                                 </tr>
                                 @endforeach
                                 @else
                                 <tr>
-                                        <td colspan="4">لا يوجد طلبات تسجيل </td>
+                                        <td colspan="6">لا يوجد مقترحات   </td>
                                 </tr>
                                 @endif
                         </table>
@@ -265,22 +268,7 @@ overflow: auto;">
         </div>
         </div>
 
-        <div class="advertisementContener" style="background: #F1F0FB;
-width: 15%;
-height: 75%;
-left: 2%;
-top: 20%;
-position: absolute;
-border-radius: 20px;
-border-style: solid;
-border-color:grey;">
-        </div>
+        
 </body>
-<script>
 
-
-        function proposals_view_button() {
-          window.location.href = "http://127.0.0.1:8000/Proposals_view"
-        }
-        </script>
 </html>

@@ -6,8 +6,6 @@ use Illuminate\Database\Console\Seeds\WithoutModelEvents;
 use Illuminate\Database\Seeder;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Support\Facades\DB;
-use Illuminate\Support\Facades\Hash;
-use Illuminate\Support\Str;
 
 class DepartmentSeeder extends Seeder
 {
@@ -17,11 +15,9 @@ class DepartmentSeeder extends Seeder
     public function run(): void
     {
         //
-        DB::table('departments')->insert([
-            'name' => "web technology",
+        DB::table("departments")->insert([
             'department_id' => "WT",
-           
+            'name' => "Web Technology"
         ]);
-       
     }
 }
