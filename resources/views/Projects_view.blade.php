@@ -1,3 +1,4 @@
+
 <!DOCTYPE html>
 <html>
 
@@ -143,7 +144,8 @@
                         <i class="fa-solid fa-person-chalkboard" style="font-size:35px; 
         right:4%;
         top:20%;
-        position: absolute;"></i>
+        position: absolute;"
+  ></i>
                         <h2> المشرفين </h2>
                 </button>
                 <button class="Proposals" style="background-color: #97CADB;
@@ -154,15 +156,12 @@
         position: absolute;
         border-radius: 20px;
         border-style: none;
-"onclick=proposals_view_button()>
+">
                         <i class="fa-regular fa-newspaper" style="font-size:35px; 
         right:4%;
         top:20%;
-        position: absolute;"></i>
+        position: absolute;"      ></i>
                         <h2>المقترحات</h2>
-                        
-                        
-                        
                 </button>
                 <button class="Graduation-project-students" style="background-color: #97CADB;
         height: 9%;
@@ -187,7 +186,7 @@
         position: absolute;
         border-radius: 20px;
         border-style: none;
-"onclick=projects_view_button()>
+">
                         <i class="fa-solid fa-thumbtack" style="font-size:35px; 
         right:4%;
         top:20%;
@@ -213,9 +212,9 @@
 
         </div>
         <div class="Contener" style="background: #F1F0FB;
-width: 55%;
+width: 75%;
 height: 75%;
-left: 20%;
+left: 1%;
 top: 20%;
 position: absolute;
 border-radius: 20px;
@@ -227,37 +226,56 @@ overflow: auto;">
                         <div style="position: absolute;
                      right: 46%;
                      top: 2%;">
-                                <i style="font-size: 27px;"> طلبات التسجيل</i>
+                                <i style="font-size: 27px;">  مشاريع التخرج</i>
                         </div>
                         <br>
                         <table style="position: absolute;
         top: 10%;
         border=0.5">
                                 <tr>
+                                        
                                         <td> </td>
-                                        <td> </td>
-                                        <td>الأسم</td>
-                                        <td>تاريخ طلب التسجيل</td>
+                                        <td>ملف  </td>
+                                        <td>الطالب الثالث  </td>
+                                        <td>الطالب الثاني  </td>
+                                        <td>أسم الطالب </td>
+                                        <td> عنوان المشروع  </td>
+                                        <td>تاريخ تقديم  </td>
+                                        
 
                                 </tr>
-                                @if($inactive_users->count())
-                                @foreach($inactive_users as $user)
+                                @if(count($projects_list))
+                                @foreach($projects_list as $projects)
                                 <tr>
                                         <td><button style="background-color: rgb(218, 55, 55);">
-                                                        <a target="self" href="{{route('drop_request_account', $user->id)}}">رفض</a>
+                                                        <a href="{{ route('proposals_view.modify', ['reject', $projects->title, $projects->students]) }}">رفض</a>
                                                 </button></td>
                                         <td><button style="background-color: rgb(93, 202, 93)">
-                                                        <a href="{{route('add_request_account', $user->id)}}">قبول</a>
+                                                        <a href="{{ route('proposals_view.modify', ['accept', $projects->title, $projects->students]) }}">قبول</a>
                                                 </button></td>
+                                        <td><a download href="/users/{{explode(',',$projects->students)[0]}}/projects/{{explode(",", $projects->path)[0]}}">Download</a></td>
+                                        
+                                        @php
+                                                $projects_list = $projects->students;
+                                                $projects = explode(",", $projects_list);
+                                                foreach ($students as $student) {
+                                                        echo "<td>".$student."</td>";
+                                                }
+                                                if(count($students) == 2)
+                                                echo "<td> -- </td>";
+                                                if(count($students) == 1)
+                                                        echo "<td> -- </td><td> -- </td>";
+                                        @endphp
 
-                                        <td>{{$user->name}}</td>
-                                        <td>{{$user->created_at}}</td>
+                                        <td>{{$projects->title}}</td>
+                                        <td>{{$projects->created_at}}</td>
+                                        
 
                                 </tr>
                                 @endforeach
                                 @else
                                 <tr>
-                                        <td colspan="4">لا يوجد طلبات تسجيل </td>
+                                        <td colspan="8">لا يوجد مشاريع   </td>
                                 </tr>
                                 @endif
                         </table>
@@ -265,24 +283,7 @@ overflow: auto;">
         </div>
         </div>
 
-        <div class="advertisementContener" style="background: #F1F0FB;
-width: 15%;
-height: 75%;
-left: 2%;
-top: 20%;
-position: absolute;
-border-radius: 20px;
-border-style: solid;
-border-color:grey;">
-        </div>
+        
 </body>
-<script>
 
-
-        function proposals_view_button() {
-          window.location.href = "{{route('proposals_view.index')}}"//"http://127.0.0.1:8000/proposals_view";
-
-        }
-     
-        </script>
 </html>

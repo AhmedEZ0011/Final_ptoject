@@ -14,7 +14,7 @@ return new class extends Migration
     public function up()
     {
         Schema::create('projects', function (Blueprint $table) {
-            $table->bigInteger('id')->autoIncrement();
+            $table->string('id');
             $table->integer('user_id');
             $table->bigInteger('proposal_id')->nullable(true);
             $table->integer('superviser_id')->nullable(true);
@@ -22,7 +22,8 @@ return new class extends Migration
             $table->dateTime('end_date')->nullable(true);
             $table->string('path');
             $table->timestamps(); 
-                        
+                       
+            //$table->primary('id');
                             //<<<<foreigns>>>>>
             $table->foreign("proposal_id")->references("id")->on("proposals");      
          

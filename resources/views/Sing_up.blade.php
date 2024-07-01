@@ -106,7 +106,6 @@
                         <optgroup>
                             <option value="0">ادمن</option>
                             <option value="1">منسق مشاريع</option>
-                            <option value="2">مشرف</option>
                             <option value="3">أستاذ</option>
                         </optgroup>
                         
@@ -117,14 +116,10 @@
               <div>     
                 <label for="options" placeholder=" القسم "></label>
                     <select name="department_id" placeholder="القسم">
-                        <optgroup>
-                            <option value="0">تقنيات الإنترنت</option>
-                            <option value="2">هندسة البرمجيات</option>
-                            <option value="1">حوسبة متنقلة </option>
-                            <option value="3">نظم معلومات</option>
-                             <option value="4">شبكات</option>
-                        </optgroup>
-                        
+                        @foreach($departments as $department)
+                            <option value="{{$department->id}}">{{$department->name}}</option>
+                        @endforeach
+                    </select>   
              </div>
               <input type="email" name= "email" placeholder="البريد الإلكتروني" required>
               <input type="password" name="password" placeholder="كلمة المرور" required>

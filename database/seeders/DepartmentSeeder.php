@@ -19,5 +19,10 @@ class DepartmentSeeder extends Seeder
             'department_id' => "WT",
             'name' => "Web Technology"
         ]);
+
+        DB::table("departments")->insert([
+            'department_id' => "SE",
+            'name' => "Software Engineer"
+        ]);
     }
 }

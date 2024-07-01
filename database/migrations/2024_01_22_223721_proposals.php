@@ -3,7 +3,7 @@
 use Illuminate\Database\Migrations\Migration;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Support\Facades\Schema;
-
+use Illuminate\Support\Facades\DB;
 return new class extends Migration
 {
     /** 
@@ -30,8 +30,13 @@ return new class extends Migration
             $table->timestamps(); //إذا كنت ترغب في إضافة created_at,update_at
             
             $table->foreign("user_id")->references("id")->on("users")->cascadeOnDelete()->cascadeOnUpdate();
-    });
+        });
     
+        DB::unprepared("CREATE TRIGGER proposals_BEFORE_INSERT BEFORE INSERT ON `proposals` FOR EACH ROW BEGIN
+        Declare lastID Integer;
+          Set lastID = (SELECT id FROM gpmsnew.proposals where user_id = NEW.user_id order by created_at desc limit 1);
+        SET NEW.last_proposal_id  = lastID;
+        END");
     }
 
     /** 
@@ -41,6 +46,7 @@ return new class extends Migration
      */
     public function down()
     {
+        DB::unprepared('DROP TRIGGER proposals_BEFORE_INSERT;');
         Schema::dropIfExists('proposals');
     }
 };

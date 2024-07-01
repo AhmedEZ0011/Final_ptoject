@@ -4,13 +4,15 @@ namespace App\Http\Controllers;
 use Illuminate\Http\Request;
 use App\Models\User;
 use Illuminate\Support\Facades\Hash;
-
+use App\Models\Department;
 class Sing_upController extends Controller
 {
     //
     public function index()
     {
-        return view('Sing_up');
+        return view('Sing_up', [
+            'departments' => Department::all()
+        ]);
     }
     /*
     public function storeRegistration(Request $request) 
