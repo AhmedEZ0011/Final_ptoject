@@ -14,11 +14,10 @@ return new class extends Migration
     public function up()
     {
         Schema::create('projects', function (Blueprint $table) {
-            $table->string('id');
-            $table->integer('user_id');
-            $table->bigInteger('proposal_id')->nullable(true);
-            $table->integer('superviser_id')->nullable(true);
-            $table->enum('status',['INPROGRESS','IDLE','DONE'])->default("INPROGRESS");
+            $table->bigInteger('id', true);
+            $table->bigInteger('proposal_id');
+            //$table->integer('superviser_id');
+            $table->enum('status',['INPROGRESS','IDLE', 'FINISHING','DONE'])->default("INPROGRESS");
             $table->dateTime('end_date')->nullable(true);
             $table->string('path');
             $table->timestamps(); 
