@@ -7,12 +7,8 @@
 <script src="https://kit.fontawesome.com/258bab96e7.js" crossorigin="anonymous"></script>
 <!--Get your own code at fontawesome.com-->
 </head>
-<body 
-    style=" background:#F1F0FB;
-    
-    
-    
-"
+<body
+    style=" background:#F1F0FB;"
 >
 <div class="heder"
 style="background-color:#F1F0FB;
@@ -24,19 +20,19 @@ style="background-color:#F1F0FB;
       border-bottom:rgb(15, 9, 9)">
       <button>
       <i class="fa-solid fa-arrow-right-from-bracket"
-      style="font-size:35px; 
+      style="font-size:35px;
       position: absolute;
       left:2%;
       top:25%;"></i></button>
       <button>
       <i class="fa-solid fa-gear"
-      style="font-size:25px; 
+      style="font-size:25px;
       position: absolute;
       left:6%;
       top:40%;"></i></button>
       <button>
       <i class="fa-solid fa-bell"
-      style="font-size:25px; 
+      style="font-size:25px;
       position: absolute;
       left:9%;
       top:40%;"></i>
@@ -64,11 +60,11 @@ style="background-color:#F1F0FB;
   >
     <div class="UserName_Icon">
       <i class="fa-solid fa-user-tie"
-      style="font-size:40px; 
+      style="font-size:40px;
       position: absolute;
       left:80%;
       top:4%;
-          
+
            "></i>
     <div class="UserName"
     style="
@@ -89,14 +85,14 @@ style="background-color:#F1F0FB;
     position: absolute;
     border-radius: 20px;
     border-style: none;
-    
-  ">  
+
+  ">
   <i class="fa-solid fa-house"
-  style="font-size:35px; 
+  style="font-size:35px;
           right:4%;
           top:20%;
           position: absolute;"></i>
-          <h2>الرئسية</h2>    
+          <h2>الرئسية</h2>
   </button>
   <button class="Project-document"
           style="background-color: #97CADB;
@@ -107,13 +103,13 @@ style="background-color:#F1F0FB;
           position: absolute;
           border-radius: 20px;
           border-style: none;
-  ">  
+  ">
   <i class="fa-solid fa-gear"
-  style="font-size:35px; 
+  style="font-size:35px;
           right:4%;
           top:20%;
           position: absolute;"></i>
-          <h2>الإعدادات </h2> 
+          <h2>الإعدادات </h2>
   </button>
   <button class="Monthly-reports"
           style="background-color: #97CADB;
@@ -124,13 +120,13 @@ style="background-color:#F1F0FB;
           position: absolute;
           border-radius: 20px;
           border-style: none;
-  ">  
+  ">
   <i class="fa-solid fa-clipboard-list"
-  style="font-size:35px; 
+  style="font-size:35px;
           right:4%;
           top:20%;
           position: absolute;"></i>
-  <h2>إضافة إعلان</h2> 
+  <h2>إضافة إعلان</h2>
   </button>
   <button class="Enter-evaluation"
           style="background-color: #97CADB;
@@ -141,13 +137,13 @@ style="background-color:#F1F0FB;
           position: absolute;
           border-radius: 20px;
           border-style: none;
-  ">  
+  ">
   <i class="fa-solid fa-person-chalkboard"
-  style="font-size:35px; 
+  style="font-size:35px;
           right:4%;
           top:20%;
           position: absolute;"></i>
-          <h2> المشرفين </h2> 
+          <h2> المشرفين </h2>
   </button>
   <button class="Proposals"
           style="background-color: #97CADB;
@@ -158,13 +154,13 @@ style="background-color:#F1F0FB;
           position: absolute;
           border-radius: 20px;
           border-style: none;
-  ">  
+  ">
   <i class="fa-regular fa-newspaper"
-  style="font-size:35px; 
+  style="font-size:35px;
           right:4%;
           top:20%;
           position: absolute;"></i>
-          <h2>المقترحات</h2> 
+          <h2>المقترحات</h2>
   </button>
   <button class="Graduation-project-students"
           style="background-color: #97CADB;
@@ -175,9 +171,9 @@ style="background-color:#F1F0FB;
           position: absolute;
           border-radius: 20px;
           border-style: none;
-  ">  
+  ">
   <i class="fa-solid fa-people-group"
-  style="font-size:35px; 
+  style="font-size:35px;
           right:4%;
           top:20%;
           position: absolute;"></i>
@@ -192,9 +188,9 @@ style="background-color:#F1F0FB;
           position: absolute;
           border-radius: 20px;
           border-style: none;
-  ">  
+  ">
   <i class="fa-solid fa-thumbtack"
-  style="font-size:35px; 
+  style="font-size:35px;
           right:4%;
           top:20%;
           position: absolute;"></i>
@@ -209,16 +205,16 @@ style="background-color:#F1F0FB;
           position: absolute;
           border-radius: 20px;
           border-style: none;
-  ">  
+  ">
   <i class="fa-regular fa-copy"
-  style="font-size:35px; 
+  style="font-size:35px;
           right:4%;
           top:20%;
           position: absolute;"></i>
                  <h2>المشاريع</h2>
   </button>
-  
-  
+
+
   </div>
 
 

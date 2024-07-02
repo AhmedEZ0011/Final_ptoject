@@ -1,10 +1,7 @@
 <?php
 
 use Illuminate\Support\Facades\Route;
-use App\Http\Controllers\Student_Sign_InController;
-use App\Http\Controllers\AuthController;
-use App\Http\Controllers\Sing_upController;
-use App\Http\Controllers\Auth\RegisterController;
+
 /*
 |--------------------------------------------------------------------------
 | Web Routes
@@ -15,45 +12,42 @@ use App\Http\Controllers\Auth\RegisterController;
 | be assigned to the "web" middleware group. Make something great!
 |
 */
+
 Route::get('/', function () {
     return view('welcome');
 });
-Route::get('/register', [RegisterController::class, 'showRegistrationForm'])->name('register');
-Route::post('/register', [RegisterController::class, 'register'])->name('register');
-//Route::post('/register', [Sing_upController::class, 'register'])->name('register');
-Route::get('/login', function () {
-    return view('login');
-});
-Route::post('/login', [AuthController::class, 'login'])->name('login');
-
-
 
 Route::get('/getmydata', function() {
 	//User::all();
 	$arr = Db::select("");
 
 	$data = '{"user1": {"name": "Ahmed", "age": 24, "creationdate": "12-9-2024"},';
+
+	$data = $data.'"user2": {"name": "khalid", "age": 21, "creationdate": "12-9-2024"}}';
+
+	return $d;
+
+	return $d;
+
 	$data = $data.'"user2": {"name": "khalid", "age": 21, "creationdate": "12-9-2024"},';
 	return $d;
+
+
 });
 
-// Route for showing the login form
-//Route::get('/Student_Sign_In', [Student_Sign_InController::class, 'showLoginForm'])->name('student.login');
 
-// Route for handling the login form submission
-//Route::post('/Student_Sign_In', [Student_Sign_InController::class, 'login'])->name('student.login.submit');
-
-
-//Route::get('/loginhome', 'App\Http\Controllers\LoginController@index');//***
+Route::get('/about', 'App\Http\Controllers\NoorController@index');
+Route::get('/loginhome', 'App\Http\Controllers\LoginController@index');
 Route::get('/sign', 'App\Http\Controllers\SignInController@index');
-Route::get('/Faculty_Home', 'App\Http\Controllers\Faculty_HomeController@index');//تم التعديل
-Route::get('/Officer_Home', 'App\Http\Controllers\Officer_HomeController@index');//تم التعديل
-Route::get('/Examiner_Home', 'App\Http\Controllers\Examiner_HomeController@index');//تم التعديل
-Route::get('/Faculty_Sign_In', 'App\Http\Controllers\Faculty_Sign_InController@index');//تم التعديل
-Route::get('/OfficerSettings', 'App\Http\Controllers\OfficerSettingsController@index');//تم النعديل
-Route::get('/Sing_up', 'App\Http\Controllers\Sing_upController@index');//تم التعديل
-Route::get('/Student_Home', 'App\Http\Controllers\Student_HomeController@index');//تم التعديل
-Route::get('/Student_Settings', 'App\Http\Controllers\Student_SettingsController@index');//تم التعديل
+Route::get('/Faculty_Home', 'App\Http\Controllers\Faculty_HomeController@index');
+Route::get('/Officer_Home', 'App\Http\Controllers\Officer_HomeController@index');
+Route::get('/Examiner_Home', 'App\Http\Controllers\Examiner_HomeController@index');
+Route::get('/Faculty_Sign_In', 'App\Http\Controllers\Faculty_Sign_InController@index');
+Route::get('/OfficerSettings', 'App\Http\Controllers\OfficerSettingsController@index');
+Route::get('/Student_Sign_In', 'App\Http\Controllers\Student_Sign_InController@index');
+Route::get('/Sing_up', 'App\Http\Controllers\Sing_upController@index');
+Route::get('/Student_Home', 'App\Http\Controllers\Student_HomeController@index');
+Route::get('/Student_Settings', 'App\Http\Controllers\Student_SettingsController@index');
 
 Auth::routes();
 
@@ -83,7 +77,3 @@ Route::group(['middleware' => 'auth'], function () {
 	Route::put('profile/password', ['as' => 'profile.password', 'uses' => 'App\Http\Controllers\ProfileController@password']);
 });
 
-
-Auth::routes();
-
-Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
