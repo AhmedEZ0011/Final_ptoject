@@ -9,11 +9,11 @@ class Proposal_student extends Model
 {
     use HasFactory;
     protected $fillable = [
-        'id',
+        'user_id',
         'proposal_id',
         'enrollment_date',
         'withrowal_date',
-        
+        'path'
         
     ];
 }

@@ -36,7 +36,7 @@ class SignInController extends Controller
                 return redirect("Officer_Home");//view('Officer_Home', [
                    // 'inactive_users' => User::where('active', '=', 0)->where('type', '=', 4)->get()
                 //]);
-            } elseif ($account->type == 2) {
+            } elseif ($account->type == 3) {
                 //المشرف
                 return redirect("Faculty_Home");
             } else {
