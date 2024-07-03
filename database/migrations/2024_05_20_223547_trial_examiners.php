@@ -14,15 +14,17 @@ return new class extends Migration
     public function up()
     {
         Schema::create('trial_examiners', function (Blueprint $table) {
-            $table->id('examiner_id')->autoIncrement();
-            $table->bigInteger('defenseapp_id');
-            $table->datetime('asseigment_date');
-            $table->string('opinion');
-            $table->string('comments');
+            $table->bigInteger('examiner_id');
+            $table->bigInteger('project_id');
+            //$table->bigInteger('defenseapp_id');
+            //$table->datetime('asseigment_date');
+            $table->enum('opinion',['PENDING','REFUSED','ACCEPTED'])->default("PENDING");
+            $table->string('comments')->nullable(true);
             $table->timestamps(); //إذا كنت ترغب في إضافة created_at,update_at
                     
                             //<<<<foreigns>>>>>>>
-             $table->foreign("defenseapp_id")->references("id")->on("departments");
+             $table->foreign("examiner_id")->references("id")->on("users")->cascadeOnDelete()->cascadeOnUpdate();
+             $table->foreign("project_id")->references("id")->on("projects")->cascadeOnDelete()->cascadeOnUpdate();
         });
        }  
     /**

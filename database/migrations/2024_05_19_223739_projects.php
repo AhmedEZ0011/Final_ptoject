@@ -20,9 +20,9 @@ return new class extends Migration
             $table->enum('status',['INPROGRESS','IDLE', 'FINISHING','DONE'])->default("INPROGRESS");
             $table->dateTime('end_date')->nullable(true);
             $table->string('path');
+            $table->double('grade')->default(0);
             $table->timestamps(); 
-                       
-            //$table->primary('id');
+            
                             //<<<<foreigns>>>>>
             $table->foreign("proposal_id")->references("id")->on("proposals");      
          

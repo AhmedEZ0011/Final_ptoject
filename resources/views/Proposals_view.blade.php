@@ -413,10 +413,6 @@ overflow: auto;">
                                         <td><a download href="/users/{{$proposals->Student1_ID}}/proposals/{{$proposals->Student1_Path}}">Download</a></td>
                                         
                                         @php
-                                                $count = 0;
-                                                if($proposals->Student1_ID != null) $count++;
-                                                if($proposals->Student2_ID != null) $count++;
-                                                if($proposals->Student3_ID != null) $count++;
                                                 $studentsList = [
                                                         "First" => ["ID" => $proposals->Student1_ID, "Name" => $proposals->Student1_Name], 
                                                         "Second" => ["ID" => $proposals->Student2_ID, "Name" => $proposals->Student2_Name], 

@@ -46,7 +46,7 @@ class Proposal extends Model
                     	SELECT `path`,proposal_id, user_id, ROW_NUMBER() OVER (PARTITION BY proposal_id ORDER BY user_id) AS "row_number"
                     	FROM proposal_students
                     ) ps ON p.id = ps.proposal_id INNER JOIN users s ON ps.user_id = s.id
-                    WHERE p.decision = \'PENDING\' '.$extra.' GROUP BY p.id, p.title;';
+                    WHERE p.decision = \''.$proposal_decision.'\' '.$extra.' GROUP BY p.id, p.title;';
 
         return DB::select($script);
     }
