@@ -14,14 +14,15 @@ return new class extends Migration
     public function up()
     {
         Schema::create('proposal_students', function (Blueprint $table) {
-            $table->integer('id');
             $table->bigInteger('user_id');
-            $table->integer('proposal_id');
-            $table->dateTime('enrollment_date');
-            $table->dateTime('withrowal_date');
+            $table->bigInteger('proposal_id');
+            $table->dateTime('enrollment_date')->useCurrent();
+            $table->dateTime('withrowal_date')->useCurrent();
+            $table->string('path');
             $table->timestamps(); //إذا كنت ترغب في إضافة created_at,update_at
                               //<<<<foreigns>>>>>>>
             $table->foreign("user_id")->references("id")->on("users")->cascadeOnDelete()->cascadeOnUpdate();
+            $table->foreign("proposal_id")->references("id")->on("proposals")->cascadeOnDelete()->cascadeOnUpdate();
         });
        
     }

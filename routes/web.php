@@ -1,6 +1,7 @@
 <?php
 
 use App\Http\Controllers\ProposalsView_Controller;
+use App\Http\Controllers\ProjectsStudentsViewController;
 use App\Http\Controllers\SingupController;
 //use Illuminate\Routing\Route;
 use Illuminate\Support\Facades\Route;
@@ -27,7 +28,7 @@ Route::resource("/Examiner_Home", 'App\Http\Controllers\Examiner_HomeController'
 Route::resource("/Faculty_Sign_In", 'App\Http\Controllers\Faculty_Sign_InController');
 Route::resource("/OfficerSettings", 'App\Http\Controllers\OfficerSettingsController');
 Route::resource("/Student_Sign_In", 'App\Http\Controllers\Student_Sign_InController');
-Route::resource("Student_Home", 'App\Http\Controllers\ProjectsStudentsViewController')
+Route::resource("Student_Home", 'App\Http\Controllers\Student_HomeController')
 ->names("Student_Home");
 Route::resource("/Student_Settings", 'App\Http\Controllers\Student_SettingsController');
 Route::resource("/proposals_view", 'App\Http\Controllers\ProposalsView_Controller')
@@ -67,9 +68,16 @@ Route::get('/add_request_account/{id}/', function($id) {
 
 Route::name('proposals_view.')->group(function() {
 
-    Route::post('modify/{state}/{title}/{ids}/', [ProposalsView_Controller::class, "modify"])->name('modify');
-    Route::get('modify/{state}/{title}/{ids}/', [ProposalsView_Controller::class, "modify"])->name('modify');
+    Route::post('modify/{state}/{data}/', [ProposalsView_Controller::class, "modify"])->name('modify');
+    Route::get('modify/{state}/{data}/', [ProposalsView_Controller::class, "modify"])->name('modify');
 	//Route::get("index", 'App\Http\Controllers\ProposalsView_Controller@index')->name("index");
+});
+
+Route::name('projects_view.')->group(function() {
+
+    Route::post('set_examiner/{project_id}/', [ProjectsStudentsViewController::class, "setExaminers"])->name('set_examiner');
+    Route::post('set_grade/{project_id}/', [ProjectsStudentsViewController::class, "setGrade"])->name('set_grade');
+    
 });
 //Route::name('Projects_view.')->group(function() {
 

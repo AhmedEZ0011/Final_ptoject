@@ -6,6 +6,7 @@ use Illuminate\Http\Request;
 use Illuminate\View\View;
 use Laravel\Ui\Presets\React;
 use App\Models\Proposal;
+use App\Models\Proposal_student;
 use App\Models\Report;
 use App\Models\Project;
 
@@ -35,34 +36,30 @@ class Student_HomeController extends Controller
         $userid = Auth::user()->id;
         $proposal = $request->file('proposal');
         $proposal->move(public_path() . '\\users\\' . $userid . '\\proposals\\', $proposal->getClientOriginalName() );
-        //return "title = ".$request->input("proposal-input-title");
-        Proposal::create([
-            'user_id' => Auth::user()->id,
+
+        $proposalObject = Proposal::create([
             'title' => $request->input("proposal-input-title"),
-            'subtitle' => $request->input("proposal-input-subtitle"),
-            'path' => $proposal->getClientOriginalName(),
-            
+            'sub_title' => $request->input("proposal-input-subtitle")
         ]);
 
-        $secondStudent = $request->input('proposal-input-student2');
-        if($secondStudent != "") {
-            Proposal::create([
-                'user_id' => $secondStudent,
-                'title' => $request->input("proposal-input-title"),
-                'subtitle' => $request->input("proposal-input-subtitle"),
-                'path' => $proposal->getClientOriginalName() . '.pdf',
-            ]);
+        $students = [
+            $userid, 
+            $request->input('proposal-input-student2'), 
+            $request->input('proposal-input-student3')
+        ];
+        for($i = 0; $i < count($students); $i++) {
+            $element = $students[$i];
+            
+            if(null == $element || $element == '') continue;
+            else {
+                Proposal_student::create([
+                    'user_id' => $element,
+                    'proposal_id' => $proposalObject->id,
+                    'path' => $proposal->getClientOriginalName()
+                ]);
+            }
         }
 
-        $thirdStudent = $request->input('proposal-input-student3');
-        if($thirdStudent != "") {
-            Proposal::create([
-                'user_id' => $thirdStudent,
-                'title' => $request->input("proposal-input-title"),
-                'subtitle' => $request->input("proposal-input-subtitle"),
-                'path' => $proposal->getClientOriginalName() . '.pdf',
-            ]);
-        }
         return redirect('Student_Home')->with('status', 'تم رفع المقترح بنجاح');
     }
     public function addreport(Request $request)
