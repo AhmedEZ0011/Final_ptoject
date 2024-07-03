@@ -234,7 +234,7 @@ overflow: auto;">
         top: 10%;
         border=0.5">
                                 <tr>
-                                        <td>   </td>
+                                        
                                         <td>   </td>
                                         <td>   </td>
                                         <td>   </td>
@@ -249,21 +249,17 @@ overflow: auto;">
                                 @if(count($projects_list))
                                 @foreach($projects_list as $projects)
                                 <tr>
-                                        <td><buttononclick="acceptProposal(this);" href="{{ route('proposals_view.modify', ['accept', $proposals->title, $proposals->students]) }}" class="btn-primary"  style="background-color: rgb(218, 55, 55);">
-                                                        <a target="self" href="{{route('drop_request_account', $user->id)}}">تكليف مشرف</a>
+                                        <td><buttononclick="Examiners(this);" href="{{ route('proposals_view.modify', ['accept', $proposals->title, $proposals->students]) }}" class="btn-primary"  style="background-color: rgb(93, 202, 93)">
+                                                        <a target="self" href="{{route('drop_request_account', $user->id)}}">تكليف ممتحن </a>
                                                 </button></td>
-                                        <td><button style="background-color: rgb(93, 202, 93)">
-                                                        <a href="{{route('add_request_account', $user->id)}}">تكليف ممتحن </a>
+                                       
+                                                <td><buttononclick="EnterTheRating(this);" href="{{ route('proposals_view.modify', ['accept', $proposals->title, $proposals->students]) }}" class="btn-primary"  style="background-color: rgb(93, 202, 93)">
+                                                        <a target="self" href="{{route('drop_request_account', $user->id)}}">ادخال تقييم </a>
+
+                                                <td><buttononclick="acceptProposal(this);" href="{{ route('proposals_view.modify', ['accept', $proposals->title, $proposals->students]) }}" class="btn-primary"  style="background-color: rgb(93, 202, 93)">
+                                                        <a target="self" href="{{route('drop_request_account', $user->id)}}">أرشفة المشروع   </a>
                                                 </button></td>
-                                         
-                                                <td><button style="background-color: rgb(93, 202, 93)">
-                                                        <a href="{{route('add_request_account', $user->id)}}"> ادخال تقييم  </a>
-                                                </button></td>
-                                        
-                                                <td><button style="background-color: rgb(93, 202, 93)">
-                                                        <a href="{{route('add_request_account', $user->id)}}"> أرشفة المشروع  </a>
-                                                </button></td>
-                                        
+                                                
                                         @php
                                                 $studentsList = $projects->students;
                                                 $students = explode(",", $studentsList);
@@ -311,6 +307,26 @@ overflow: auto;">
                   <button type="submit" form="f0">إرسال</button>
                 </div>
               </div>
+              <form id="f1" name="f1" method="post" enctype="multipart/form-data">
+                @csrf</form>
+              <div class="modal-container" id="modalContainer1">
+                <div class="modal">
+                  <button class="close-btn" id="closeModalBtn1">❌</button>
+                  <div class="header">
+                    <img src="Upload to the Cloud.png" class="cloud-icon"></img>
+                    <h2> ادخال التقييم </h2>
+                  </div>
+                  <div class="form-group">
+                    
+                    <label for="project-supoervisor-id"> ادخال التقييم  </label>
+                    <select id="project-supoervisor-id" name="project-supoervisor-id" required form="f1">
+                    <input type="text" form="f1" name="search" id="proposal-input4" placeholder="البحث عن مشروع ">
+                        
+                    </select>
+                  </div>
+                  <button type="submit" form="f1">إرسال</button>
+                </div>
+              </div>
     </body>
         <script>
 
@@ -328,11 +344,14 @@ function proposals_view_button() {
         function Home_button() {
       window.location.href = "http://127.0.0.1:8000/Officer_Home"
     }
-         function acceptProposal(button) {
+         function Examiners(button) {
         const route = button.getAttribute('href');
-        //const proposalId = button.getAttribute('proposal-id');
         document.forms['f0'].setAttribute('action', route);
-        //document.forms['f0'].elements['project-proposal-id'].value = proposalId;
+        modalContainer1.classList.add('show');
+
+        function EnterTheRating(button) {
+        const route = button.getAttribute('href');
+        document.forms['f1'].setAttribute('action', route);
         modalContainer1.classList.add('show');
         </script>
     </html>
