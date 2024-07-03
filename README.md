@@ -42,3 +42,6 @@
 
                 seeder command 
       php artisan migrate:fresh --seed
+
+              migtation 
+      .\mig.bat
