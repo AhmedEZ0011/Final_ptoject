@@ -187,7 +187,7 @@
         position: absolute;
         border-radius: 20px;
         border-style: none;
-"onclick=projects_view_button()>
+">
                         <i class="fa-solid fa-thumbtack" style="font-size:35px; 
         right:4%;
         top:20%;
