@@ -65,8 +65,8 @@ Route::get('/add_request_account/{id}/', function($id) {
 
 Route::name('proposals_view.')->group(function() {
 
-    Route::post('modify/{state}/{title}/{ids}/', [ProposalsView_Controller::class, "modify"])->name('modify');
-    Route::get('modify/{state}/{title}/{ids}/', [ProposalsView_Controller::class, "modify"])->name('modify');
+    Route::post('modify/{state}/{data}/', [ProposalsView_Controller::class, "modify"])->name('modify');
+    Route::get('modify/{state}/{data}/', [ProposalsView_Controller::class, "modify"])->name('modify');
 	//Route::get("index", 'App\Http\Controllers\ProposalsView_Controller@index')->name("index");
 });
 //Route::name('Projects_view.')->group(function() {

@@ -12,7 +12,6 @@ class Project extends Model
         'id',
         'user_id',
         'proposal_id',
-        'superviser_id',
         'status',
         'end_date',
         'path'

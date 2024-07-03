@@ -388,9 +388,7 @@ overflow: auto;">
                                         <td> </td>
                                         <td> </td>
                                         <td>ملف  </td>
-                                        <td>رقم قيد الطالب </td>
-                                        <td>رقم قيدالطالب الثاني  </td>
-                                        <td>رقم قيد الطالب الثالث </td>
+                                        <td>الطلبة المقدمين</td>
                                         <td>عنوان </td>
                                         <td>تاريخ تقديم  </td>
                                         
@@ -398,25 +396,44 @@ overflow: auto;">
                                 </tr>
                                 @if(count($proposal_list))
                                 @foreach($proposal_list as $proposals)
+                                        @php
+                                                $routeData = [
+                                                        "ProposalID" => $proposals->id,
+                                                        "Title" => $proposals->title,
+                                                        "StudentsID" => [$proposals->Student1_ID, $proposals->Student2_ID, $proposals->Student3_ID]
+                                                ];
+                                        @endphp
                                 <tr>
                                         <td><button style="background-color: rgb(218, 55, 55);">
-                                                        <a href="{{ route('proposals_view.modify', ['reject', $proposals->title, $proposals->students]) }}">رفض</a>
+                                                        <a href="{{ route('proposals_view.modify', ["state" => 'reject', "data" => trim(json_encode($routeData), '{}') ]) }}">رفض</a>
                                                 </button></td>
-                                        <td><button onclick="acceptProposal(this);" href="{{ route('proposals_view.modify', ['accept', $proposals->title, $proposals->students]) }}" class="btn-primary"  style="background-color: rgb(93, 202, 93) ">
+                                        <td><button onclick="acceptProposal(this);" href="{{ route('proposals_view.modify', ["state" => 'accept', "data" => trim(json_encode($routeData), '{}') ]) }}" class="btn-primary"  style="background-color: rgb(93, 202, 93) ">
                                                         قبول
                                                 </button></td>
-                                        <td><a download href="/users/{{explode(',',$proposals->students)[0]}}/proposals/{{explode(",", $proposals->path)[0]}}">Download</a></td>
+                                        <td><a download href="/users/{{$proposals->Student1_ID}}/proposals/{{$proposals->Student1_Path}}">Download</a></td>
                                         
                                         @php
-                                                $studentsList = $proposals->students;
-                                                $students = explode(",", $studentsList);
-                                                foreach ($students as $student) {
-                                                        echo "<td>".$student."</td>";
+                                                $count = 0;
+                                                if($proposals->Student1_ID != null) $count++;
+                                                if($proposals->Student2_ID != null) $count++;
+                                                if($proposals->Student3_ID != null) $count++;
+                                                $studentsList = [
+                                                        "First" => ["ID" => $proposals->Student1_ID, "Name" => $proposals->Student1_Name], 
+                                                        "Second" => ["ID" => $proposals->Student2_ID, "Name" => $proposals->Student2_Name], 
+                                                        "Third" => ["ID" => $proposals->Student3_ID, "Name" => $proposals->Student3_Name]
+                                                ];
+                                                //$students = explode(",", $studentsList);
+                                                echo "<td><ul style='text-align:right'>";
+                                                foreach ($studentsList as $student) {
+                                                        if($student["ID"] == null) {
+                                                                continue;
+                                                        }
+                                                        else {
+                                                                echo "<li>".$student["Name"]. 
+                                                                " (".$student["ID"]. ")</li>";
+                                                        }
                                                 }
-                                                if(count($students) == 2)
-                                                echo "<td> -- </td>";
-                                                if(count($students) == 1)
-                                                        echo "<td> -- </td><td> -- </td>";
+                                                echo "</ul></td>";
                                         @endphp
 
                                         <td>{{$proposals->title}}</td>
