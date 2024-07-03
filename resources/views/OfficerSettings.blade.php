@@ -77,7 +77,7 @@ style="background-color:#F1F0FB;
       right:27%;
       top:7%;
       "
-      >نور الإسلام عبد النبي المنتصر </div>
+      >نور </div>
     </div>
     <button class="Home"
     style="
@@ -90,7 +90,7 @@ style="background-color:#F1F0FB;
     border-radius: 20px;
     border-style: none;
     
-  ">  
+  "onclick=Home_button()>  
   <i class="fa-solid fa-house"
   style="font-size:35px; 
           right:4%;
@@ -107,7 +107,7 @@ style="background-color:#F1F0FB;
           position: absolute;
           border-radius: 20px;
           border-style: none;
-  ">  
+  "onclick=Settings_button()>  
   <i class="fa-solid fa-gear"
   style="font-size:35px; 
           right:4%;
@@ -158,7 +158,7 @@ style="background-color:#F1F0FB;
           position: absolute;
           border-radius: 20px;
           border-style: none;
-  ">  
+  "onclick=proposals_view_button()>  
   <i class="fa-regular fa-newspaper"
   style="font-size:35px; 
           right:4%;
@@ -175,7 +175,7 @@ style="background-color:#F1F0FB;
           position: absolute;
           border-radius: 20px;
           border-style: none;
-  ">  
+  "onclick=Projects_students_view_button(>  
   <i class="fa-solid fa-people-group"
   style="font-size:35px; 
           right:4%;
@@ -350,6 +350,24 @@ style="background-color:#F1F0FB;
 
 
 </body>
+<script>
+
+function proposals_view_button() {
+          window.location.href = "{{route('proposals_view.index')}}"//"http://127.0.0.1:8000/proposals_view";
+
+        }
+        function Projects_students_view_button() {
+          window.location.href = "{{route('Projects_students_view.index')}}"//"http://127.0.0.1:8000/proposals_view";
+
+        }
+        function Settings_button() {
+      window.location.href = "http://127.0.0.1:8000/OfficerSettings"
+        }
+        function Home_button() {
+      window.location.href = "http://127.0.0.1:8000/Officer_Home"
+    }
+ </script>
+</html>
 </html>
 
 

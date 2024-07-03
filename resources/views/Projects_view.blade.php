@@ -95,7 +95,7 @@
   border-radius: 20px;
   border-style: none;
   
-">
+"onclick=Home_button()>
                         <i class="fa-solid fa-house" style="font-size:35px; 
         right:4%;
         top:20%;
@@ -156,7 +156,7 @@
         position: absolute;
         border-radius: 20px;
         border-style: none;
-">
+"onclick=proposals_view_button()>
                         <i class="fa-regular fa-newspaper" style="font-size:35px; 
         right:4%;
         top:20%;
@@ -171,7 +171,7 @@
         position: absolute;
         border-radius: 20px;
         border-style: none;
-">
+"onclick=Projects_students_view_button(>
                         <i class="fa-solid fa-people-group" style="font-size:35px; 
         right:4%;
         top:20%;
@@ -285,5 +285,23 @@ overflow: auto;">
 
         
 </body>
+<script>
 
+
+        function proposals_view_button() {
+          window.location.href = "{{route('proposals_view.index')}}"//"http://127.0.0.1:8000/proposals_view";
+
+        }
+        function Projects_students_view_button() {
+          window.location.href = "{{route('Projects_students_view.index')}}"//"http://127.0.0.1:8000/proposals_view";
+
+        }
+        function Settings_button() {
+      window.location.href = "http://127.0.0.1:8000/OfficerSettings"
+        }
+        function Home_button() {
+      window.location.href = "http://127.0.0.1:8000/Officer_Home"
+    }
+        </script>
+</html>
 </html>
