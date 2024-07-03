@@ -27,11 +27,13 @@ Route::resource("/Examiner_Home", 'App\Http\Controllers\Examiner_HomeController'
 Route::resource("/Faculty_Sign_In", 'App\Http\Controllers\Faculty_Sign_InController');
 Route::resource("/OfficerSettings", 'App\Http\Controllers\OfficerSettingsController');
 Route::resource("/Student_Sign_In", 'App\Http\Controllers\Student_Sign_InController');
-Route::resource("Student_Home", 'App\Http\Controllers\Student_HomeController')
+Route::resource("Student_Home", 'App\Http\Controllers\ProjectsStudentsViewController')
 ->names("Student_Home");
 Route::resource("/Student_Settings", 'App\Http\Controllers\Student_SettingsController');
 Route::resource("/proposals_view", 'App\Http\Controllers\ProposalsView_Controller')
 ->names("proposals_view");
+Route::resource("/Projects_students_view", 'App\Http\Controllers\ProjectsStudentsViewController')
+->names("Projects_students_view");
 
 
                  // <<<<<<<<<Sign In >>>>>>>>

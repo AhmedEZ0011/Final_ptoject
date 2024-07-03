@@ -94,7 +94,7 @@
   border-radius: 20px;
   border-style: none;
   
-">
+"onclick=Home_button()>
                         <i class="fa-solid fa-house" style="font-size:35px; 
         right:4%;
         top:20%;
@@ -109,7 +109,7 @@
         position: absolute;
         border-radius: 20px;
         border-style: none;
-">
+"onclick=Settings_button()>
                         <i class="fa-solid fa-gear" style="font-size:35px; 
         right:4%;
         top:20%;
@@ -172,7 +172,7 @@
         position: absolute;
         border-radius: 20px;
         border-style: none;
-">
+"onclick=Projects_students_view_button()>
                         <i class="fa-solid fa-people-group" style="font-size:35px; 
         right:4%;
         top:20%;
@@ -283,6 +283,15 @@ border-color:grey;">
           window.location.href = "{{route('proposals_view.index')}}"//"http://127.0.0.1:8000/proposals_view";
 
         }
-     
+        function Projects_students_view_button() {
+          window.location.href = "http://127.0.0.1:8000/Projects_students_view"//"http://127.0.0.1:8000/proposals_view";
+
+        }
+        function Settings_button() {
+      window.location.href = "http://127.0.0.1:8000/OfficerSettings"
+        }
+        function Home_button() {
+      window.location.href = "http://127.0.0.1:8000/Officer_Home"
+    }
         </script>
 </html>
