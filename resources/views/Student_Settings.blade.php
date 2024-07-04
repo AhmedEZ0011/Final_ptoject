@@ -20,25 +20,24 @@ style="
       top: 2%;
       position: absolute;
       border-bottom: 5px solid black;">
-      <button>
+      
       <i class="fa-solid fa-arrow-right-from-bracket"
       style="font-size:35px; 
       position: absolute;
       left:2%;
-      top:25%;"></i></button>
-      <button>
+      top:25%;"></i>
+      
       <i class="fa-solid fa-gear"
       style="font-size:25px; 
       position: absolute;
       left:6%;
-      top:40%;"></i></button>
-      <button>
+      top:40%;"></i>
       <i class="fa-solid fa-bell"
       style="font-size:25px; 
       position: absolute;
       left:9%;
       top:40%;"></i>
-      </button>
+     
      <div class="Home-page"
      style="left:50%;
      top:30%;
@@ -77,7 +76,7 @@ style="
     right:27%;
     top:12%;
     "
-    >نور الإسلام عبد النبي المنتصر </div>
+    > {{ Auth::user()->name }} </div>
   </div>
   <button class="Home"
   style="

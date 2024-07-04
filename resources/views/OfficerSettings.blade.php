@@ -22,12 +22,12 @@ style="background-color:#F1F0FB;
       top: 2%;
       position: absolute;
       border-bottom:rgb(15, 9, 9)">
-      <button>
+      <a href="{{ route('logout') }}">
       <i class="fa-solid fa-arrow-right-from-bracket"
       style="font-size:35px; 
       position: absolute;
       left:2%;
-      top:25%;"></i></button>
+      top:25%;"></a></i>
       <button>
       <i class="fa-solid fa-gear"
       style="font-size:25px; 
@@ -77,7 +77,7 @@ style="background-color:#F1F0FB;
       right:27%;
       top:7%;
       "
-      >نور </div>
+      >{{ Auth::user()->name }} </div>
     </div>
     <button class="Home"
     style="
@@ -89,7 +89,6 @@ style="background-color:#F1F0FB;
     position: absolute;
     border-radius: 20px;
     border-style: none;
-    
   "onclick=Home_button()>  
   <i class="fa-solid fa-house"
   style="font-size:35px; 
@@ -176,12 +175,12 @@ style="background-color:#F1F0FB;
           border-radius: 20px;
           border-style: none;
   "onclick=Projects_students_view_button(>  
-  <i class="fa-solid fa-people-group"
+  <i class="fa-regular fa-copy"
   style="font-size:35px; 
           right:4%;
           top:20%;
           position: absolute;"></i>
-                 <h2>طلبة المشاريع</h2>
+                 <h2> المشاريع</h2>
   </button>
   <button class="Graduation-project-students"
           style="background-color: #97CADB;
@@ -215,7 +214,7 @@ style="background-color:#F1F0FB;
           right:4%;
           top:20%;
           position: absolute;"></i>
-                 <h2>المشاريع</h2>
+                 <h2></h2>
   </button>
   
   
@@ -366,6 +365,7 @@ function proposals_view_button() {
         function Home_button() {
       window.location.href = "http://127.0.0.1:8000/Officer_Home"
     }
+    
  </script>
 </html>
 </html>

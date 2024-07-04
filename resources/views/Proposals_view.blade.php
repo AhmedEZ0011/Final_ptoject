@@ -262,8 +262,8 @@
         position: absolute;
         border-radius: 20px;
         border-style: none;
-"onclick="Settings_button()>
-                        <i class="fa-solid fa-gear" style="font-size:35px; 
+"onclick=Settings_button()>
+ <i class="fa-solid fa-gear" style="font-size:35px; 
         right:4%;
         top:20%;
         position: absolute;"></i>
@@ -323,12 +323,12 @@
         position: absolute;
         border-radius: 20px;
         border-style: none;
-"onclick=Projects_students_view_button(>
-                        <i class="fa-solid fa-people-group" style="font-size:35px; 
+"onclick=Projects_students_view_button()>
+                        <i class="fa-regular fa-copy" style="font-size:35px; 
         right:4%;
         top:20%;
         position: absolute;"></i>
-                        <h2>طلبة المشاريع</h2>
+                        <h2>المشاريع </h2>
                 </button>
                 <button class="Graduation-project-students" style="background-color: #97CADB;
         height: 9%;
@@ -354,11 +354,11 @@
         border-radius: 20px;
         border-style: none;
 ">
-                        <i class="fa-regular fa-copy" style="font-size:35px; 
+                        <i class="" style="font-size:35px; 
         right:4%;
         top:20%;
         position: absolute;"></i>
-                        <h2>المشاريع</h2>
+                        <h2></h2>
                 </button>
 
 
@@ -495,6 +495,7 @@ overflow: auto;">
           window.location.href = "{{route('proposals_view.index')}}"//"http://127.0.0.1:8000/proposals_view";
 
         }
+       
         function Projects_students_view_button() {
           window.location.href = "{{route('Projects_students_view.index')}}"//"http://127.0.0.1:8000/proposals_view";
 

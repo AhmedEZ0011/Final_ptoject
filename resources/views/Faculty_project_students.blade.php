@@ -80,7 +80,7 @@ style="
     position:absolute;
     font-size:20px;
     right:27%;
-    top:12%;">{{$username}}</div>
+    top:12%;">{{ Auth::user()->name}}</div>
   </div>
   <button class="Home"
   style="
@@ -190,41 +190,6 @@ style="font-size:35px;
 
 
 
-
-
-
-
-
-
-
-
-<div class="advertisement"
-  style="background: #4B80AB;
-  width: 20%;
-  height: 10%;
-  left: 30%;
-  top: 20%;
-  position: absolute;
-  border-radius: 20px;
-  z-index: 2;">
-
-                <i class="fa-regular fa-clipboard"
-                style=" font-size:37px; 
-                position: absolute;
-                right: 15%;
-                top: 20%;
-                "></i>
-  <div class="advertisementName"
-  style="position:absolute;
-  font-size:33px;
-  right:35%;
-  top:25%;">
-    الإعلانات
-
-        
-        
-  </div>
-
 </div>
 <div class="advertisementContener"
 style="background: #F1F0FB;
@@ -237,18 +202,71 @@ border-radius: 20px;
 border-style: solid;
 border-color:grey;
 z-index: 1;">
+                                <tr>
 
-</div>
-<script> 
-        function Setting(){
-            window.location.href ="http://127.0.0.1:8000/OfficerSettings"
-        }
- function Home_button(){
+                                   
+                                    <td>طلبة المشروع </td>
+                                    <td>عنوان </td>
+                                    <td>تاريخ تقديم المقترح</td>
+
+
+                            </tr>
+                            @if(count($projects_list))
+                            @foreach($projects_list as $projects)
+                            
+                      
+
+                                    @php
+                                    $studentsList = [
+                                    "First" => ["ID" => $projects->Student1_ID, "Name" => $projects->Student1_Name],
+                                    "Second" => ["ID" => $projects->Student2_ID, "Name" => $projects->Student2_Name],
+                                    "Third" => ["ID" => $projects->Student3_ID, "Name" => $projects->Student3_Name]
+                                    ];
+                                    //$students = explode(",", $studentsList);
+                                    echo "<td>
+                                            <ul style='text-align:right'>";
+                                                    foreach ($studentsList as $student) {
+                                                    if($student["ID"] == null) {
+                                                    continue;
+                                                    }
+                                                    else {
+                                                    echo "<li>".$student["Name"].
+                                                            " (".$student["ID"]. ")</li>";
+                                                    }
+                                                    }
+                                                    echo "</ul>
+                                    </td>";
+                                    @endphp
+
+                                    <td>{{$projects->title}}</td>
+                                    <td>{{$projects->created_at}}</td>
+
+
+                            </tr>
+                            @endforeach
+                            @else
+                            <tr>
+                                    <td colspan="3">لا يوجد مقترحات </td>
+                            </tr>
+                            @endif
+                    </table>
+            </div>
+    </div>
+    
+</body>
+<script>
+
+
+                                   function Setting(){
+                                     window.location.href ="http://127.0.0.1:8000/OfficerSettings"
+                                 }
+                                function Home_button(){
                         window.location.href ="http://127.0.0.1:8000/Faculty_Home"
                                 }
                                 function Faculty_project_students_button(){
                         window.location.href ="http://127.0.0.1:8000/Faculty_project_students"
                                 }
+
 
      </script> 
 

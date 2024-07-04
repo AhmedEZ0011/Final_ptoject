@@ -173,11 +173,11 @@
         border-radius: 20px;
         border-style: none;
 "onclick=Projects_students_view_button()>
-                        <i class="fa-solid fa-people-group" style="font-size:35px; 
+                        <i class="fa-regular fa-copy" style="font-size:35px; 
         right:4%;
         top:20%;
         position: absolute;"></i>
-                        <h2>طلبة المشاريع</h2>
+                        <h2> المشاريع</h2>
                 </button>
                 <button class="Graduation-project-students" style="background-color: #97CADB;
         height: 9%;
@@ -203,11 +203,11 @@
         border-radius: 20px;
         border-style: none;
 ">
-                        <i class="fa-regular fa-copy" style="font-size:35px; 
+                        <i class="" style="font-size:35px; 
         right:4%;
         top:20%;
         position: absolute;"></i>
-                        <h2>المشاريع</h2>
+                        <h2></h2>
                 </button>
 
 

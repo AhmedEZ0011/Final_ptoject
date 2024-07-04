@@ -35,7 +35,8 @@ Route::resource("/proposals_view", 'App\Http\Controllers\ProposalsView_Controlle
 ->names("proposals_view");
 Route::resource("/Projects_students_view", 'App\Http\Controllers\ProjectsStudentsViewController')
 ->names("Projects_students_view");
-
+Route::resource("/Faculty_project_students", 'App\Http\Controllers\FacultyProjectStudentsController')
+->names("Faculty_project_students");
 
                  // <<<<<<<<<Sign In >>>>>>>>
 
