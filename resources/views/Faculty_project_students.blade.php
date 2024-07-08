@@ -8,6 +8,18 @@
 <script src="https://kit.fontawesome.com/258bab96e7.js" crossorigin="anonymous"></script>
 <!--Get your own code at fontawesome.com-->
 <style>
+                        table {
+                        width: 100%;
+                        border-collapse: collapse;
+                }
+
+                th,
+                td {
+                        text-align: left;
+                        padding: 8px;
+                        border-bottom: 1px solid #ddd;
+                        text-align: center;
+                }
  a{
       color: #000;
     }
@@ -46,10 +58,11 @@ style="
       
      <div class="Home-page"
      style="left:50%;
-     top:30%;
+     top:18;
      font-size:40px;
       position: absolute;">
-      <i class="fa-solid fa-house"></i>Home</div>
+      <i class="fa-solid fa-people-group">طلبة مشاريع</i>
+                     </div>
     </div>
 
 
@@ -99,69 +112,53 @@ style="font-size:35px;
         right:4%;
         top:20%;
         position: absolute;"></i>
-        <h2>الرئسية</h2>    
+        <h2>الرئيسية</h2>    
 </button>
 <button class="Graduation-project-students"
         style="background-color: #4B80AB;
         height: 9%;
         left: 4%;
         right:4%;
-        top: 30%;
+        top: 31%;
         position: absolute;
         border-radius: 20px;
         border-style: none;
 "onclick=Faculty_project_students_button()>  
 <i class="fa-solid fa-people-group"
 style="font-size:35px; 
-        right:4%;
-        top:20%;
+        right:-3%;
+        top:29%;
         position: absolute;"></i>
                <h2>طلبة المشاريع</h2>
 </button>
-<button class="Monthly-reports"
-        style="background-color: #4B80AB;
-        height: 9%;
-        left: 4%;
-        right:4%;
-        top: 40%;
-        position: absolute;
-        border-radius: 20px;
-        border-style: none;
-">  
-<i class="fa-solid fa-clipboard-list"
-style="font-size:35px; 
-        right:4%;
-        top:20%;
-        position: absolute;"></i>
-<h2>التقارير الشهرية</h2> 
-</button>
+
 
 <button class="Proposals"
-        style="background-color: #4B80AB;
-        height: 9%;
-        left: 4%;
-        right:4%;
-        top: 50%;
-        position: absolute;
-        border-radius: 20px;
-        border-style: none;
-">  
+style="background-color: #4B80AB;
+height: 9%;
+left: 4%;
+right:4%;
+top: 43%;
+position: absolute;
+border-radius: 20px;
+border-style: none;
+"onclick=Faculty_proposal_students_button()>  
 <i class="fa-regular fa-newspaper"
 style="font-size:35px; 
         right:4%;
-        top:20%;
+        top:32%;
         position: absolute;"></i>
         <h2>المقترحات</h2> 
 </button>
 <button class="Project-document"
-        style="background-color: #4B80AB;
-        height: 9%;
-        left: 4%;
-        right:4%;
-        top: 60%;
-        position: absolute;
-        border-radius: 20px;
-        border-style: none;
+style="background-color: #4B80AB;
+height: 9%;
+left: 4%;
+right:4%;
+top: 55%;
+position: absolute;
+border-radius: 20px;
+border-style: none;
 ">  
 <i class="fa-regular fa-copy"
 style="font-size:35px; 
@@ -169,22 +166,6 @@ style="font-size:35px;
         top:20%;
         position: absolute;"></i>
         <h2>ملفات التوثيق</h2> 
-</button><button class="Enter-evaluation"
-        style="background-color: #4B80AB;
-        height: 9%;
-        left: 4%;
-        right:4%;
-        top: 70%;
-        position: absolute;
-        border-radius: 20px;
-        border-style: none;
-">  
-<i class="fa-solid fa-table-list"
-style="font-size:35px; 
-        right:4%;
-        top:20%;
-        position: absolute;"></i>
-        <h2>إدخال التقييم </h2> 
 </button>
 </div>
 
@@ -193,15 +174,18 @@ style="font-size:35px;
 </div>
 <div class="advertisementContener"
 style="background: #F1F0FB;
-width: 60%;
-height: 69%;
-left: 11%;
-top: 27%;
+width: 74%;
+height: 79%;
+left: 1%;
+top: 17%;
 position: absolute;
 border-radius: 20px;
 border-style: solid;
 border-color:grey;
 z-index: 1;">
+    <table style="position: absolute;
+    top: 10%;
+    border=0.5">
                                 <tr>
 
                                    
@@ -214,7 +198,7 @@ z-index: 1;">
                             @if(count($projects_list))
                             @foreach($projects_list as $projects)
                             
-                      
+                                        
 
                                     @php
                                     $studentsList = [
@@ -266,7 +250,9 @@ z-index: 1;">
                                 function Faculty_project_students_button(){
                         window.location.href ="http://127.0.0.1:8000/Faculty_project_students"
                                 }
-
+                                function Faculty_proposal_students_button(){
+                        window.location.href ="http://127.0.0.1:8000/Faculty_proposal_students"
+                                }
 
      </script> 
 

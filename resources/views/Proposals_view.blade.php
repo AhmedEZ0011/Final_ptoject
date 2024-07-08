@@ -269,37 +269,8 @@
         position: absolute;"></i>
                         <h2>الإعدادات </h2>
                 </button>
-                <button class="Monthly-reports" style="background-color: #97CADB;
-        height: 9%;
-        left: 4%;
-        right:4%;
-        top: 68%;
-        position: absolute;
-        border-radius: 20px;
-        border-style: none;
-">
-                        <i class="fa-solid fa-clipboard-list" style="font-size:35px; 
-        right:4%;
-        top:20%;
-        position: absolute;"></i>
-                        <h2>إضافة إعلان</h2>
-                </button>
-                <button class="Enter-evaluation" style="background-color: #97CADB;
-        height: 9%;
-        left: 4%;
-        right:4%;
-        top: 57%;
-        position: absolute;
-        border-radius: 20px;
-        border-style: none;
-">
-                        <i class="fa-solid fa-person-chalkboard" style="font-size:35px; 
-        right:4%;
-        top:20%;
-        position: absolute;"
-  ></i>
-                        <h2> المشرفين </h2>
-                </button>
+               
+            
                 <button class="Proposals" style="background-color: #97CADB;
         height: 9%;
         left: 4%;
@@ -330,11 +301,11 @@
         position: absolute;"></i>
                         <h2>المشاريع </h2>
                 </button>
-                <button class="Graduation-project-students" style="background-color: #97CADB;
+                <button id="openModalBtn4" class="btn-primary" style="background-color: #97CADB;
         height: 9%;
         left: 4%;
         right:4%;
-        top: 68%;
+        top: 57%;
         position: absolute;
         border-radius: 20px;
         border-style: none;
@@ -471,16 +442,34 @@ overflow: auto;">
                 </div>
               </div>
               
-        
+              <form action="{{ route('Student_Home.addreport') }}" id="f4" name="f4" method="post" enctype="multipart/form-data">
+                @csrf</form>
+              <div class="modal-container" id="modalContainer4">
+                <div class="modal">
+                  <button class="close-btn" id="closeModalBtn4">❌</button>
+                  <div class="header">
+                    <img src="Upload to the Cloud.png" class="cloud-icon"></img>
+                    <h2> إضافةإعلان </h2>
+                  </div>
+                  <div class="form-group">
+                    
+                    <input type="text" id="report-input-content" name="report-input-content" required maxlength="300" minlength="20" form="f1"
+                    style="width: 100%; height: 150px;">
+                 </div>
+                  <button type="submit" form="f4">إرسال </button>
+                </div>
+              </div>
 </body>
 <script>
-        //const openModalBtn1 = document.getElementById('openModalBtn1');
-    const closeModalBtn1 = document.getElementById('closeModalBtn1');
-    const modalContainer1 = document.getElementById('modalContainer1');
+    const openModalBtn4 = document.getElementById('openModalBtn4');
+    const closeModalBtn4 = document.getElementById('closeModalBtn4');
+    const modalContainer4 = document.getElementById('modalContainer4');
 
-
-    closeModalBtn1.addEventListener('click', () => {
-      modalContainer1.classList.remove('show');
+    openModalBtn4.addEventListener('click', () => {
+      modalContainer4.classList.add('show');
+    });
+    closeModalBtn4.addEventListener('click', () => {
+      modalContainer4.classList.remove('show');
     });
 
 

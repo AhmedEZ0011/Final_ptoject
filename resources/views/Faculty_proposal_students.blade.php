@@ -8,6 +8,18 @@
 <script src="https://kit.fontawesome.com/258bab96e7.js" crossorigin="anonymous"></script>
 <!--Get your own code at fontawesome.com-->
 <style>
+                        table {
+                        width: 100%;
+                        border-collapse: collapse;
+                }
+
+                th,
+                td {
+                        text-align: left;
+                        padding: 8px;
+                        border-bottom: 1px solid #ddd;
+                        text-align: center;
+                }
  a{
       color: #000;
     }
@@ -35,8 +47,8 @@ style="
       style="font-size:25px; 
       position: absolute;
       left:8%;
-      top:40%;" onclick=Setting()></i>
-      
+      top:40%;" onclick="Setting()"
+      ></i>
       
       <i class="fa-solid fa-bell"
       style="font-size:25px; 
@@ -46,10 +58,11 @@ style="
       
      <div class="Home-page"
      style="left:50%;
-     top:16%;
-     font-size:36px;
+     top:18;
+     font-size:40px;
       position: absolute;">
-      <i class="fa-solid fa-house"></i>الرئيسية</div>
+      <i class="fa-solid fa-people-group">طلبة مشاريع</i>
+                     </div>
     </div>
 
 
@@ -129,7 +142,7 @@ top: 43%;
 position: absolute;
 border-radius: 20px;
 border-style: none;
-" onclick=Faculty_proposal_students_button()>  
+"onclick=Faculty_proposal_students_button()>  
 <i class="fa-regular fa-newspaper"
 style="font-size:35px; 
         right:4%;
@@ -137,7 +150,7 @@ style="font-size:35px;
         position: absolute;"></i>
         <h2>المقترحات</h2> 
 </button>
-<button class="Project-documents"
+<button class="Project-document"
 style="background-color: #4B80AB;
 height: 9%;
 left: 4%;
@@ -158,72 +171,79 @@ style="font-size:35px;
 
 
 
-
-
-
-
-
-
-
-
-<div class="advertisement"
-  style="background: #4B80AB;
-  width: 20%;
-  height: 10%;
-  left: 35%;
-  top: 20%;
-  position: absolute;
-  border-radius: 20px;
-  z-index: 2;">
-
-                <i class="fa-regular fa-clipboard"
-                style=" font-size:37px; 
-                position: absolute;
-                right: 15%;
-                top: 20%;
-                "></i>
-  <div class="advertisementName"
-  style="position:absolute;
-  font-size:33px;
-  right:35%;
-  top:25%;">
-    الإعلانات
-
-        
-        
-  </div>
-
 </div>
 <div class="advertisementContener"
 style="background: #F1F0FB;
-width: 50%;
-height: 67%;
-left: 22%;
-top: 27%;
-position: absolute;
-border-radius: 20px;
-border-style: solid;
-border-color:grey;
-z-index: 1;">
-
-</div>
-<div class="advertisementContener"
-style="background: #F1F0FB;
-width: 20%;
-height: 80%;
+width: 74%;
+height: 79%;
 left: 1%;
-top: 15%;
+top: 17%;
 position: absolute;
 border-radius: 20px;
 border-style: solid;
 border-color:grey;
 z-index: 1;">
+    <table style="position: absolute;
+    top: 10%;
+    border=0.5">
+                                <tr>
 
-</div>
-<script> 
-                                function Setting(){
-                        window.location.href ="http://127.0.0.1:8000/Faculty_Setting"
-                                }
+                                   
+                                    <td>طلبة المشروع </td>
+                                    <td>عنوان </td>
+                                    <td>تاريخ تقديم المقترح</td>
+
+
+                            </tr>
+                            @if(count($projects_list))
+                            @foreach($projects_list as $projects)
+                            
+                                        
+
+                                    @php
+                                    $studentsList = [
+                                    "First" => ["ID" => $projects->Student1_ID, "Name" => $projects->Student1_Name],
+                                    "Second" => ["ID" => $projects->Student2_ID, "Name" => $projects->Student2_Name],
+                                    "Third" => ["ID" => $projects->Student3_ID, "Name" => $projects->Student3_Name]
+                                    ];
+                                    //$students = explode(",", $studentsList);
+                                    echo "<td>
+                                            <ul style='text-align:right'>";
+                                                    foreach ($studentsList as $student) {
+                                                    if($student["ID"] == null) {
+                                                    continue;
+                                                    }
+                                                    else {
+                                                    echo "<li>".$student["Name"].
+                                                            " (".$student["ID"]. ")</li>";
+                                                    }
+                                                    }
+                                                    echo "</ul>
+                                    </td>";
+                                    @endphp
+
+                                    <td>{{$projects->title}}</td>
+                                    <td>{{$projects->created_at}}</td>
+
+
+                            </tr>
+                            @endforeach
+                            @else
+                            <tr>
+                                    <td colspan="3">لا يوجد مقترحات </td>
+                            </tr>
+                            @endif
+                    </table>
+            </div>
+    </div>
+    
+</body>
+<script>
+
+
+                                   function Setting(){
+                                     window.location.href ="http://127.0.0.1:8000/OfficerSettings"
+                                 }
                                 function Home_button(){
                         window.location.href ="http://127.0.0.1:8000/Faculty_Home"
                                 }
@@ -233,6 +253,7 @@ z-index: 1;">
                                 function Faculty_proposal_students_button(){
                         window.location.href ="http://127.0.0.1:8000/Faculty_proposal_students"
                                 }
+
 
      </script> 
 

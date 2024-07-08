@@ -15,7 +15,7 @@ use App\Http\Controllers\Student_HomeController;
 
 Route::get('/loginhome', 'App\Http\Controllers\LoginController@index');
 Route::resource("/Student_Sign_In", 'App\Http\Controllers\Student_Sign_InController');
-Route::resource("/Admin_Home", 'App\Http\Controllers\Admin_HomeController');
+Route::resource("/Officer_message", 'App\Http\Controllers\OfficerMessageController');
 Route::resource("Sing_up", 'App\Http\Controllers\Sing_upController')->names('Sing_up');
 Route::get('login', 'App\Http\Controllers\SignInController@index')->name('login');
 Route::get('logout', 'App\Http\Controllers\SignInController@logout')->name('logout');
@@ -24,8 +24,9 @@ Route::resource("/Faculty_Home", 'App\Http\Controllers\Faculty_HomeController')
 ->names("Faculty_Home");
 Route::resource("Officer_Home", 'App\Http\Controllers\Officer_HomeController')
 ->names("Officer_Home");
-Route::resource("/Examiner_Home", 'App\Http\Controllers\Examiner_HomeController');
-Route::resource("/Faculty_Sign_In", 'App\Http\Controllers\Faculty_Sign_InController');
+Route::resource("/Faculty_proposal_students", 'App\Http\Controllers\FacultyProposalStudentsController')
+->names("Faculty_proposal_students");;
+Route::resource("/Faculty_Setting", 'App\Http\Controllers\FacultySettingController');
 Route::resource("/OfficerSettings", 'App\Http\Controllers\OfficerSettingsController');
 Route::resource("/Student_Sign_In", 'App\Http\Controllers\Student_Sign_InController');
 Route::resource("Student_Home", 'App\Http\Controllers\Student_HomeController')

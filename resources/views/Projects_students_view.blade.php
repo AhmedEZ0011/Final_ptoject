@@ -267,36 +267,8 @@
         position: absolute;"></i>
                         <h2>الإعدادات </h2>
                 </button>
-                <button class="Monthly-reports" style="background-color: #97CADB;
-        height: 9%;
-        left: 4%;
-        right:4%;
-        top: 68%;
-        position: absolute;
-        border-radius: 20px;
-        border-style: none;
-">
-                        <i class="fa-solid fa-clipboard-list" style="font-size:35px; 
-        right:4%;
-        top:20%;
-        position: absolute;"></i>
-                        <h2>إضافة إعلان</h2>
-                </button>
-                <button class="Enter-evaluation" style="background-color: #97CADB;
-        height: 9%;
-        left: 4%;
-        right:4%;
-        top: 57%;
-        position: absolute;
-        border-radius: 20px;
-        border-style: none;
-">
-                        <i class="fa-solid fa-person-chalkboard" style="font-size:35px; 
-        right:4%;
-        top:20%;
-        position: absolute;"></i>
-                        <h2> المشرفين </h2>
-                </button>
+
+     
                 <button class="Proposals" style="background-color: #97CADB;
         height: 9%;
         left: 4%;
@@ -330,15 +302,15 @@
         position: absolute;"></i>
                         <h2> المشاريع</h2>
                 </button>
-                <button class="Graduation-project-students" style="background-color: #97CADB;
+                <button id="openModalBtn4" class="btn-primary"style="background-color: #97CADB;
         height: 9%;
         left: 4%;
         right:4%;
-        top: 68%;
+        top: 59%;
         position: absolute;
         border-radius: 20px;
         border-style: none;
-" onclick=projects_view_button()>
+" >
                         <i class="fa-solid fa-thumbtack" style="font-size:35px; 
         right:4%;
         top:20%;
@@ -386,28 +358,19 @@ overflow: auto;">
         border=0.5">
                                 <tr>
 
+                                        <td>طلبة مشاريع</td>
+                                        <td> عنوان</td>
+                                        <td> تاريخ تقديم المقترح</td>
+                                        <td>  </td>
                                         <td> </td>
                                         <td> </td>
-                                        <td> </td>
-                                        <td>طلبة المشروع </td>
-                                        <td>عنوان </td>
-                                        <td>تاريخ تقديم المقترح</td>
 
 
                                 </tr>
                                 @if(count($projects_list))
                                 @foreach($projects_list as $projects)
                                 <tr>
-                                        <td><button onclick="Examiners(this);" href="{{ route('projects_view.set_examiner', [$projects->id]) }}" class="btn-primary" style="background-color: rgb(93, 202, 93)">
-                                                        تكليف ممتحن
-                                                </button></td>
 
-                                        <td><button onclick="EnterTheRating(this);" href="{{ route('projects_view.set_grade',[$projects->id]) }}" class="btn-primary" style="background-color: rgb(93, 202, 93)">
-                                        ادخال التقييم        
-                                </button></td>
-                                        <td><button onclick="acceptProposal(this);" href="{ route('proposals_view.modify', ['accept', $proposals->title, $proposals->students]) }" class="btn-primary" style="background-color: rgb(93, 202, 93)">
-                                                       ارشفة 
-                                                </button></td>
 
                                         @php
                                         $studentsList = [
@@ -433,7 +396,19 @@ overflow: auto;">
 
                                         <td>{{$projects->title}}</td>
                                         <td>{{$projects->created_at}}</td>
+                                        <td><button onclick="Examiners(this);" href="{{ route('projects_view.set_examiner', [$projects->id]) }}" class="btn-primary" style="background-color: rgb(93, 202, 93)">
+                                                        تكليف ممتحن
+                                                </button></td>
 
+                                        <td><button onclick="EnterTheRating(this);" href="{{ route('projects_view.set_grade',[$projects->id]) }}" class="btn-primary" style="background-color: rgb(93, 202, 93)">
+                                        ادخال التقييم        
+                                </button></td>
+                                        <td><button onclick="ReplaceTheExaminer(this);" href="{ route('proposals_view.modify', ['accept', $proposals->title, $proposals->students]) }" class="btn-primary" style="background-color: rgb(93, 202, 93)">
+                                                       تغيير مشرف  
+                                                </button></td>
+                                         <td><button onclick="ReplaceTheExaminer(this);" href="{ route('proposals_view.modify', ['accept', $proposals->title, $proposals->students]) }" class="btn-primary" style="background-color: rgb(211, 69, 69)">
+                                                        إيقاف مشروع   
+                                                 </button></td>
 
                                 </tr>
                                 @endforeach
@@ -481,11 +456,13 @@ overflow: auto;">
                         <button type="submit" form="f0">إرسال</button>
                 </div>
         </div>
+
+        
         <form id="f1" name="f1" method="post" enctype="multipart/form-data">
                 @csrf</form>
         <div class="modal-container" id="modalContainer2">
                 <div class="modal">
-                        <button class="close-btn" id="closeModalBtn1">❌</button>
+                        <button class="close-btn" id="closeModalBtn2">❌</button>
                         <div class="header">
                                 <img src="Upload to the Cloud.png" class="cloud-icon"></img>
                                 <h2> ادخال التقييم </h2>
@@ -493,17 +470,93 @@ overflow: auto;">
                         <div class="form-group">
 
                                 <label for="project-grade"> ادخال التقييم </label>
-                                <input type="number" step="0.1" form="f1" name="project-grade" id="project-grade" placeholder="البحث عن مشروع ">
+                                <input type="number" step="0.1" form="f1" name="project-grade" id="project-grade" placeholder="أدخل النتيجة النهائية للمشروع ">
                         </div>
                         <button type="submit" form="f1">إرسال</button>
                 </div>
         </div>
+
+
+
+        <form id="f2" name="f2" method="post" enctype="multipart/form-data">
+                @csrf</form>
+        <div class="modal-container" id="modalContainer3">
+                <div class="modal">
+                        <button class="close-btn" id="closeModalBtn3">❌</button>
+                        <div class="header">
+                                <img src="Upload to the Cloud.png" class="cloud-icon"></img>
+                                <h2>  إستبدال المشرف  </h2>
+                        </div>
+                        <div class="form-group">
+                                <label for="project-examiner1-id"> أختيار الممتحن</label>
+                                <select id="project-examiner1-id" name="project-examiner1-id" required form="f2">
+                                        <option value="None" selected>لا يوجد</option>
+                                        @foreach($teachers as $teacher)
+                                        <option value="{{$teacher->id}}">{{$teacher->name}}</option>
+                                        @endforeach
+                                </select></div>
+                        <button type="submit" form="f2">إرسال</button>
+                </div>
+        </div>
+        <form action="{{ route('Student_Home.addreport') }}" id="f4" name="f4" method="post" enctype="multipart/form-data">
+                @csrf</form>
+              <div class="modal-container" id="modalContainer4">
+                <div class="modal">
+                  <button class="close-btn" id="closeModalBtn4">❌</button>
+                  <div class="header">
+                    <img src="Upload to the Cloud.png" class="cloud-icon"></img>
+                    <h2> إضافةإعلان </h2>
+                  </div>
+                  <div class="form-group">
+                    
+                    <input type="text" id="report-input-content" name="report-input-content" required maxlength="300" minlength="20" form="f4"
+                    style="width: 100%; height: 150px;">
+                 </div>
+                 <div class="form-group">
+                        <label for="project-examiner1-id"> أختيار المستخدم  </label>
+                        <select id="project-examiner1-id" name="project-examiner1-id" required form="f4">
+                                <option value="None" selected>لا يوجد</option>
+                                @foreach($teachers as $teacher)
+                                <option value="{{$teacher->id}}">{{$teacher->name}}</option>
+                                @endforeach
+                        </select></div>
+                  <button type="submit" form="f4">إرسال </button>
+                </div>
+              </div>
 </body>
 <script>
-
+const openModalBtn1 = document.getElementById('openModalBtn1');
 const closeModalBtn1 = document.getElementById('closeModalBtn1');
 const modalContainer1 = document.getElementById('modalContainer1');
+const openModalBtn2 = document.getElementById('openModalBtn2');
+const closeModalBtn2 = document.getElementById('closeModalBtn2');
 const modalContainer2 = document.getElementById('modalContainer2');
+const openModalBtn3 = document.getElementById('openModalBtn3');
+const closeModalBtn3 = document.getElementById('closeModalBtn3');
+const modalContainer3 = document.getElementById('modalContainer3');
+const openModalBtn4 = document.getElementById('openModalBtn4');
+const closeModalBtn4 = document.getElementById('closeModalBtn4');
+const modalContainer4 = document.getElementById('modalContainer4');
+     
+  
+
+    closeModalBtn1.addEventListener('click', () => {
+      modalContainer1.classList.remove('show');
+    });
+    closeModalBtn2.addEventListener('click', () => {
+      modalContainer2.classList.remove('show');
+    });
+    closeModalBtn3.addEventListener('click', () => {
+      modalContainer3.classList.remove('show');
+    });
+        openModalBtn4.addEventListener('click', () => {
+      modalContainer4.classList.add('show');
+    });
+
+    closeModalBtn4.addEventListener('click', () => {
+      modalContainer4.classList.remove('show');
+    });
+    
 
         function proposals_view_button() {
                 window.location.href = "{{route('proposals_view.index')}}" //"http://127.0.0.1:8000/proposals_view";
@@ -532,6 +585,16 @@ const modalContainer2 = document.getElementById('modalContainer2');
                 const route = button.getAttribute('href');
                 document.forms['f1'].setAttribute('action', route);
                 modalContainer2.classList.add('show');
+        }
+        function ReplaceTheExaminer(button) {
+                const route = button.getAttribute('href');
+                document.forms['f2'].setAttribute('action', route);
+                modalContainer3.classList.add('show');
+        }
+        function ReplaceTheExaminer(button) {
+                const route = button.getAttribute('href');
+                document.forms['f2'].setAttribute('action', route);
+                modalContainer3.classList.add('show');
         }
 </script>
 

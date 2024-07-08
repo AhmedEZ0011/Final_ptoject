@@ -271,7 +271,7 @@
   height: 9%;
   left: 4%;
   right:4%;
-  top: 30%;
+  top: 33%;
   position: absolute;
   border-radius: 20px;
   border-style: none;
@@ -285,26 +285,13 @@
 
 
 
-    <button id="openModalBtn2" class="btn-primary" style="background-color: #97CADB;
-        height: 9%;
-        left: 4%;
-        right:4%;
-        top: 50%;
-        position: absolute;
-        border-radius: 20px;
-        border-style: none;
-">
-      <i class="fa-regular fa-clipboard" style="font-size:35px; 
-        right:4%;
-        top:20%;
-        position: absolute;"></i>
-      <h2>إرسال تقرير  </h2>
-    </button>
+ 
+      
     <button id="openModalBtn3" class="btn-primary" style="background-color: #97CADB;
         height: 9%;
         left: 4%;
         right:4%;
-        top: 60%;
+        top: 55%;
         position: absolute;
         border-radius: 20px;
         border-style: none;
@@ -319,18 +306,18 @@
         height: 9%;
         left: 4%;
         right:4%;
-        top: 40%;
+        top: 45%;
         position: absolute;
         border-radius: 20px;
         border-style: none;
         
 ">
       <i class="fa-solid fa-book-bookmark" style="font-size:35px; 
-        right:4%;
+        right:-1%;
         top:20%;
         position: absolute;"></i>
 
-      <h2>مشاريع مؤرشفة</h2>
+      <h2>مشاريع مؤرشفة </h2>
 
   </div>
 
@@ -340,11 +327,12 @@
   <div class="advertisement" style="background: #97CADB;
   width: 20%;
   height: 10%;
-  left: 30%;
+  left: 35%;
   top: 20%;
   position: absolute;
   border-radius: 20px;
   z-index: 1;">
+    
 
     <i class="fa-regular fa-clipboard" style=" font-size:37px; 
                 position: absolute;
@@ -359,17 +347,31 @@
     </div>
 
   </div>
-  <div class="advertisementContener" style="background: #F1F0FB;
-width: 60%;
-height: 69%;
-left: 11%;
-top: 27%;
-position: absolute;
-border-radius: 20px;
-border-style: solid;
-border-color:grey;
-">
-
+  <div class="advertisementContener"
+  style="background: #F1F0FB;
+  width: 50%;
+  height: 67%;
+  left: 22%;
+  top: 27%;
+  position: absolute;
+  border-radius: 20px;
+  border-style: solid;
+  border-color:grey;
+  z-index: 1;">
+  
+  </div>
+  <div class="advertisementContener"
+  style="background: #F1F0FB;
+  width: 20%;
+  height: 80%;
+  left: 1%;
+  top: 15%;
+  position: absolute;
+  border-radius: 20px;
+  border-style: solid;
+  border-color:grey;
+  z-index: 1;">
+  
   </div>
 
 

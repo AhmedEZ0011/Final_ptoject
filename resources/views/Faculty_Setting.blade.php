@@ -49,7 +49,7 @@ style="
      top:16%;
      font-size:36px;
       position: absolute;">
-      <i class="fa-solid fa-house"></i>الرئيسية</div>
+      <i i class="fa-solid fa-gear"></i>إعدادات </div>
     </div>
 
 
@@ -129,7 +129,7 @@ top: 43%;
 position: absolute;
 border-radius: 20px;
 border-style: none;
-" onclick=Faculty_proposal_students_button()>  
+"onclick=Faculty_proposal_students_button()>  
 <i class="fa-regular fa-newspaper"
 style="font-size:35px; 
         right:4%;
@@ -137,7 +137,7 @@ style="font-size:35px;
         position: absolute;"></i>
         <h2>المقترحات</h2> 
 </button>
-<button class="Project-documents"
+<button class="Project-document"
 style="background-color: #4B80AB;
 height: 9%;
 left: 4%;
@@ -156,83 +156,136 @@ style="font-size:35px;
 </button>
 </div>
 
-
-
-
-
-
-
-
-
-
-
-<div class="advertisement"
-  style="background: #4B80AB;
-  width: 20%;
-  height: 10%;
-  left: 35%;
-  top: 20%;
-  position: absolute;
-  border-radius: 20px;
-  z-index: 2;">
-
-                <i class="fa-regular fa-clipboard"
-                style=" font-size:37px; 
-                position: absolute;
-                right: 15%;
-                top: 20%;
-                "></i>
-  <div class="advertisementName"
-  style="position:absolute;
-  font-size:33px;
-  right:35%;
-  top:25%;">
-    الإعلانات
-
-        
-        
-  </div>
-
-</div>
-<div class="advertisementContener"
+<div class="Settings-Contener"
 style="background: #F1F0FB;
-width: 50%;
-height: 67%;
-left: 22%;
-top: 27%;
-position: absolute;
-border-radius: 20px;
-border-style: solid;
-border-color:grey;
-z-index: 1;">
-
-</div>
-<div class="advertisementContener"
-style="background: #F1F0FB;
-width: 20%;
+width: 60%;
 height: 80%;
-left: 1%;
-top: 15%;
+left: 11%;
+top: 17%;
 position: absolute;
 border-radius: 20px;
 border-style: solid;
 border-color:grey;
 z-index: 1;">
 
+
+<input class="Changing-Name"
+style="
+background: #F1F0FB;
+width: 40%;
+height: 10%;
+left: 11%;
+top: 5%;
+position: absolute;
+border-radius: 10px;
+text-align: center;
+font-size:30px;
+"
+placeholder="تغيير الأسم";
+>
+
+<div class="Changing-Email"
+style=" font-size:30px;
+left: 70%;
+top: 7%;
+position: absolute;"> :تغيير الاسم <i class="fa-solid fa-user-tie"></i></div>
+<input class="Changing-Email"
+style="
+background: #F1F0FB;
+width: 40%;
+height: 10%;
+left: 11%;
+top: 25%;
+position: absolute;
+border-radius: 10px;
+text-align: center;
+font-size:30px;
+"
+placeholder="تغيير البريد الإلكتروني ";
+>
+
+<div class="Changing-Name"
+style=" font-size:30px;
+left: 70%;
+top: 25%;
+position: absolute;">:تغيير البريد الالكتروني <i class="fa-solid fa-envelope"></i></div>
+
+
+
+<input class="Old-Password"
+style="
+background: #F1F0FB;
+width: 40%;
+height: 10%;
+left: 11%;
+top: 45%;
+position: absolute;
+border-radius: 10px;
+font-size:30px;
+text-align: center;
+"
+placeholder="كلمة المرور القديمة";>
+
+<div class="Changing-Name"
+style=" font-size:30px;
+left: 70%;
+top: 54%;
+position: absolute;"> :تغيير كلمة المرور
+<i class="fa-solid fa-lock"></i></div>
+
+<input class="New-Password"
+style="
+background: #F1F0FB;
+width: 40%;
+height: 10%;
+left: 11%;
+top: 57%;
+position: absolute;
+border-radius: 10px;
+font-size:30px;
+text-align: center;"
+placeholder="كلمة المرور الجديدة ";>
+
+<input class="confirm-password"
+style="
+background: #F1F0FB;
+width: 40%;
+height: 10%;
+left: 11%;
+top: 69%;
+position: absolute;
+border-radius: 10px;
+text-align: center;
+font-size:30px;
+"
+placeholder="تأكيد كلمة المرور ";>
+
+
+<button class="Saving changes"
+style="
+background: #4B80AB;
+width: 30%;
+height: 10%;
+left: 40%;
+bottom: 2%;
+position: absolute;
+border-radius: 10px;
+border-style: none;
+font-size:25px;
+"
+>حفظ التغييرات</button>
 </div>
 <script> 
-                                function Setting(){
-                        window.location.href ="http://127.0.0.1:8000/Faculty_Setting"
-                                }
-                                function Home_button(){
+        function Setting(){
+            window.location.href ="http://127.0.0.1:8000/Faculty_Setting"
+        }
+ function Home_button(){
                         window.location.href ="http://127.0.0.1:8000/Faculty_Home"
                                 }
                                 function Faculty_project_students_button(){
                         window.location.href ="http://127.0.0.1:8000/Faculty_project_students"
                                 }
-                                function Faculty_proposal_students_button(){
-                        window.location.href ="http://127.0.0.1:8000/Faculty_proposal_students"
-                                }
+                                
 
      </script> 
 
