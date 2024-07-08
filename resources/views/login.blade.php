@@ -202,6 +202,8 @@
     <div class="login-container">
         @if ($errors->has('incorrectData'))
             <span class="text-danger" style="color:red;">{{ $errors->first('incorrectData') }}</span>
+        @elseif ($errors->has('accountNotActive'))
+            <span class="text-danger" style="color:darkorange;">{{ $errors->first('accountNotActive') }}</span>
         @endif
         <h2>تسجيل الدخول</h2>
         <form method="post" action="{{ route('login') }}">

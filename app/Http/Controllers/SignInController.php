@@ -28,6 +28,10 @@ class SignInController extends Controller
         $credintials = $request->only('email', 'password');
         if(Auth::attempt($credintials)) {
             $account = Auth::user();
+            if($account->active == 0) {
+                $validator["accountNotActive"] = "Your account not active yet!";
+                return $this->logoutWithError($validator);
+            }
             if ($account->type == 0) {
                 //أدمن
                 return redirect("Admin_Home");
@@ -54,7 +58,11 @@ class SignInController extends Controller
     public function logout() {
         Session::flush();
         Auth::logout();
-  
+        
         return redirect('login');
+    }
+
+    public function logoutWithError($err) {
+        return redirect('login')->withErrors($err);
     }
 }
