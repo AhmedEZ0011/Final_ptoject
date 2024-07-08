@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\DB;
 use App\Models\Project;
+use App\Models\Proposal;
 use App\Models\User;
 use App\Models\Trial_examiner;
 class ProjectsStudentsViewController extends Controller
@@ -48,6 +49,23 @@ class ProjectsStudentsViewController extends Controller
         $p = Project::find($project_id);
         $p->grade = $request->input('project-grade');
         $p->save();
+
+        return $this->index();        
+    }
+
+    public function setSupervisor(Request $request, $project_id) {
+        $p = Project::find($project_id);
+        $proposal = Proposal::find($p->proposal_id);
+        $proposal->superviser_id = (int)$request->input('project-examiner1-id');
+        $proposal->save();
+        return $this->index();        
+    }
+
+    public function setEnableState(Request $request, $project_id) {
+        $p = Project::find($project_id);
+        $proposal = Proposal::find($p->proposal_id);
+        $proposal->enabled = $proposal->enabled == 1 ? 0 : 1;
+        $proposal->save();
 
         return $this->index();        
     }

@@ -22,7 +22,7 @@ class Project extends Model
 
     public static function getProjectsList($status = 'INPROGRESS') {
         return DB::select('SELECT
-                                j.id, ps.proposal_id, j.grade, p.title,
+                                j.id, ps.proposal_id, j.grade, p.title, p.enabled AS enabled,
                                 MAX(CASE WHEN ps.row_number = 1 THEN ps.name END) AS Student1_Name,
                                 MAX(CASE WHEN ps.row_number = 2 THEN ps.name END) AS Student2_Name,
                                 MAX(CASE WHEN ps.row_number = 3 THEN ps.name END) AS Student3_Name,
@@ -31,6 +31,7 @@ class Project extends Model
                                 MAX(CASE WHEN ps.row_number = 3 THEN ps.user_id END) AS Student3_ID,
                                 p.superviser_id AS Supervier_ID, j.status, j.created_at, j.end_date, j.`path`,
                                 (Select `name` from users where id = p.superviser_id) as Supervier_Name
+                                
                             FROM projects j 
                             Inner join proposals p ON p.id = j.proposal_id
                             INNER JOIN (
