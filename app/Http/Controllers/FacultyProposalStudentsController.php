@@ -3,7 +3,8 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
-use App\Models\Project;
+use App\Models\Proposal;
+use App\Models\User;
 use Illuminate\Support\Facades\Auth;
 
 class FacultyProposalStudentsController extends Controller
@@ -12,7 +13,7 @@ class FacultyProposalStudentsController extends Controller
     public function index()
     {
         return view('Faculty_proposal_students',[
-            'projects_list' => Project::getProjectsListWithCondition('p.superviser_id = '.Auth::user()->id),
-       ]);
+            'proposal_list' => Proposal::getFacultyproposals(Auth::user()->id),
+             ]);
     }
 }

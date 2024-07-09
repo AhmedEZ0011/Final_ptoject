@@ -186,54 +186,60 @@ z-index: 1;">
     <table style="position: absolute;
     top: 10%;
     border=0.5">
-                                <tr>
+           
+           <tr>
+                <td> </td>
+                <td> </td>
+                <td>ملف  </td>
+                <td>الطلبة المقدمين</td>
+                <td>عنوان </td>
+                <td>تاريخ تقديم  </td>
+                
 
-                                   
-                                    <td>طلبة المشروع </td>
-                                    <td>عنوان </td>
-                                    <td>تاريخ تقديم المقترح</td>
+        </tr>
+        @if(count($proposal_list))
+        @foreach($proposal_list as $proposals)
+                @php
+                        $routeData = [
+                                "ProposalID" => $proposals->id,
+                                "Title" => $proposals->title,
+                                "StudentsID" => [$proposals->Student1_ID, $proposals->Student2_ID, $proposals->Student3_ID]
+                        ];
+                @endphp
+       
+                @php
+                        $studentsList = [
+                                "First" => ["ID" => $proposals->Student1_ID, "Name" => $proposals->Student1_Name], 
+                                "Second" => ["ID" => $proposals->Student2_ID, "Name" => $proposals->Student2_Name], 
+                                "Third" => ["ID" => $proposals->Student3_ID, "Name" => $proposals->Student3_Name]
+                        ];
+                        //$students = explode(",", $studentsList);
+                        echo "<td><ul style='text-align:right'>";
+                        foreach ($studentsList as $student) {
+                                if($student["ID"] == null) {
+                                        continue;
+                                }
+                                else {
+                                        echo "<li>".$student["Name"]. 
+                                        " (".$student["ID"]. ")</li>";
+                                }
+                        }
+                        echo "</ul></td>";
+                @endphp
 
+                <td>{{$proposals->title}}</td>
+                <td>{{$proposals->created_at}}</td>
+                
 
-                            </tr>
-                            @if(count($projects_list))
-                            @foreach($projects_list as $projects)
-                            
-                                        
-
-                                    @php
-                                    $studentsList = [
-                                    "First" => ["ID" => $projects->Student1_ID, "Name" => $projects->Student1_Name],
-                                    "Second" => ["ID" => $projects->Student2_ID, "Name" => $projects->Student2_Name],
-                                    "Third" => ["ID" => $projects->Student3_ID, "Name" => $projects->Student3_Name]
-                                    ];
-                                    //$students = explode(",", $studentsList);
-                                    echo "<td>
-                                            <ul style='text-align:right'>";
-                                                    foreach ($studentsList as $student) {
-                                                    if($student["ID"] == null) {
-                                                    continue;
-                                                    }
-                                                    else {
-                                                    echo "<li>".$student["Name"].
-                                                            " (".$student["ID"]. ")</li>";
-                                                    }
-                                                    }
-                                                    echo "</ul>
-                                    </td>";
-                                    @endphp
-
-                                    <td>{{$projects->title}}</td>
-                                    <td>{{$projects->created_at}}</td>
-
-
-                            </tr>
-                            @endforeach
-                            @else
-                            <tr>
-                                    <td colspan="3">لا يوجد مقترحات </td>
-                            </tr>
-                            @endif
-                    </table>
+        </tr>
+        @endforeach
+        @else
+        <tr>
+                <td colspan="8">لا يوجد مقترحات   </td>
+        </tr>
+        @endif
+</table>
+</div>
             </div>
     </div>
     

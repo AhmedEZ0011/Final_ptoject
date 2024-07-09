@@ -14,7 +14,6 @@ class ProposalsView_Controller extends Controller
     //
     public function index()
     {
-        //Proposal::where('proposal_flag', '=', 0)->get()->unique("title")
         
         return view('Proposals_view', [
             'proposal_list' => Proposal::getProposalsList(),//DB::select('SELECT title, group_concat(user_id) students, created_at, group_concat(path) path FROM '.env('DB_DATABASE').'.proposals where decision = \'PENDING\' group by title, created_at;'),
