@@ -390,7 +390,7 @@ border-style: solid;
 border-color:grey;">
  
         </div>
-        <form action="{{ route('Student_Home.addreport') }}" id="f4" name="f4" method="post" enctype="multipart/form-data">
+        <form action="{{ route('Officer_Home.add_advertisement') }}" id="f4" name="f4" method="post" enctype="multipart/form-data">
                 @csrf</form>
               <div class="modal-container" id="modalContainer4">
                 <div class="modal">
@@ -400,9 +400,19 @@ border-color:grey;">
                     <h2> إضافةإعلان </h2>
                   </div>
                   <div class="form-group">
-                    
-                    <input type="text" id="report-input-content" name="report-input-content" required maxlength="300" minlength="20" form="f1"
+                    <select name="ad_target" form="f4" required>
+                      <option value="ALL">All</option>
+                      <option value="STUDENTS">Students</option>
+                      <option value="FACULTIES">Faculties</option>
+                      <option value="OFFICERS">Officers</option>
+                      <option value="SPECIFIC">Specific</option>
+                    </select>
+                    <input type="text" name="ad_specific_target" form="f4" placeholder="Specific target">
+                    <input type="text" name="ad_title" form="f4" placeholder="Title">
+                    <input type="text" id="ad_content" name="ad_content" required maxlength="300" minlength="20" form="f4"
                     style="width: 100%; height: 150px;">
+                    <label for="ad_enabled">Enabled</label>
+                    <input type="checkbox" name="ad_enabled" id="ad_enabled" checkbox form="f4" value>
                     
                  </div>
                   <button type="submit" form="f4">إرسال </button>
@@ -440,4 +450,10 @@ const modalContainer4 = document.getElementById('modalContainer4');
     
    
         </script>
+
+      @if($errors->has('ad_error'))
+        <H1>
+        {{ $errors->first('ad_error')}}
+        </H1>
+      @endif
 </html>
