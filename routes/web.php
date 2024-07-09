@@ -1,5 +1,6 @@
 <?php
 
+use App\Http\Controllers\Officer_HomeController;
 use App\Http\Controllers\ProposalsView_Controller;
 use App\Http\Controllers\ProjectsStudentsViewController;
 use App\Http\Controllers\SingupController;
@@ -22,8 +23,11 @@ Route::get('logout', 'App\Http\Controllers\SignInController@logout')->name('logo
 Route::resource("/Sign_in", 'App\Http\Controllers\SignInController');
 Route::resource("/Faculty_Home", 'App\Http\Controllers\Faculty_HomeController')
 ->names("Faculty_Home");
-Route::resource("Officer_Home", 'App\Http\Controllers\Officer_HomeController')
-->names("Officer_Home");
+Route::name('Officer_Home.')->prefix("Officer_Home")->group(function() {
+	Route::get('/', [Officer_HomeController::class, "index"])->name('index');
+	Route::post('add_advertisement/', [Officer_HomeController::class, "AddAdvertisement"])->name('add_advertisement');
+}); //::resource("", 'App\Http\Controllers\Officer_HomeController')
+//->names("Officer_Home");
 Route::resource("/Faculty_proposal_students", 'App\Http\Controllers\FacultyProposalStudentsController')
 ->names("Faculty_proposal_students");;
 Route::resource("/Faculty_Setting", 'App\Http\Controllers\FacultySettingController');

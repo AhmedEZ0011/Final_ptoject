@@ -45,3 +45,6 @@
 
               migtation 
       .\mig.bat
+
+               specific migration
+      php artisan migrate --path="\database\migrations\YOUR_MIGRATION_FILE.php"
