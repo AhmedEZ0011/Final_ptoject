@@ -63,7 +63,7 @@ class Proposal extends Model
                         MAX(CASE WHEN ps.row_number = 2 THEN ps.`path` END) AS Student2_Path,
                         p.superviser_id AS Supervier_ID,
                         (Select `name` from users where id = p.superviser_id) as Supervier_Name
-                        ,p.app_datetime AS created_at
+                        ,p.app_datetime AS created_at ,p.decision AS decision
                     FROM proposals p
                     INNER JOIN (
                     	SELECT `path`,proposal_id, user_id, ROW_NUMBER() OVER (PARTITION BY proposal_id ORDER BY user_id) AS "row_number"

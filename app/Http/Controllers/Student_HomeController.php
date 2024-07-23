@@ -19,15 +19,17 @@ class Student_HomeController extends Controller
             $account = Auth::user();
             return view('Student_Home', [
                 'username' => $account->name,
-                'userid' => $account->id
+                'userid' => $account->id,
+                'decision' => Proposal::where('decision', '=', 'REFUSED')->get() ,
+                'project_list' => Project::getProjectsListWithCondition('ps.user_id = '.Auth::user()->id) ,
+                 
+
             ]);
         } else {
             return redirect("login");
         }
     }
-    public function drop($id)
-    {
-    }
+    
     public function addproposal(Request $request)
     {
         if (!Auth::check()) {
@@ -36,7 +38,7 @@ class Student_HomeController extends Controller
         $userid = Auth::user()->id;
         $proposal = $request->file('proposal');
         $proposal->move(public_path() . '\\users\\' . $userid . '\\proposals\\', $proposal->getClientOriginalName() );
-
+        
         $proposalObject = Proposal::create([
             'title' => $request->input("proposal-input-title"),
             'sub_title' => $request->input("proposal-input-subtitle")
@@ -59,10 +61,27 @@ class Student_HomeController extends Controller
                 ]);
             }
         }
-
-        return redirect('Student_Home')->with('status', 'تم رفع المقترح بنجاح');
+         return redirect('Student_Home')->with('status', 'تم رفع المقترح بنجاح');
     }
-    public function addreport(Request $request)
+
+
+public function addDocumentation(Request $request)
+{
+    if (!Auth::check()) {
+        return redirect("login");
+    }
+    $userid = Auth::user()->id;
+    $proposal = $request->file('documentation');
+    $proposal->move(public_path() . '\\users\\' . $userid . '\\documentation\\', $proposal->getClientOriginalName());
+    
+     
+    return redirect('Student_Home')->with('status', 'تم رفع التوثيق بنجاح ');
+}
+public function drop($id)
+    {
+    }
+}
+/*  public function addreport(Request $request)
     {
         if (!Auth::check()) {
             return redirect("login");
@@ -74,26 +93,6 @@ class Student_HomeController extends Controller
         Report::create([
             'user_id' => Auth::user()->id,
             'content' => $request->input("report-input-content"),
-            //'project_id'=>
-            //'superviser_id'=>    
         ]);
         return redirect('Student_Home')->with('status', 'تم رفع التقرير بنجاح ');
-}
-public function addDocumentation(Request $request)
-{
-    if (!Auth::check()) {
-        return redirect("login");
-    }
-    $userid = Auth::user()->id;
-    $proposal = $request->file('documentation');
-    $proposal->move(public_path() . '\\users\\' . $userid . '\\documentation\\');
-    
-    Report::create([
-        'user_id' => Auth::user()->id,
-        'path' => $proposal->getClientOriginalName() . '.pdf',
-        //'proposal_id'=>
-        //'superviser_id'=>    
-    ]);
-    return redirect('Student_Home')->with('status', 'تم رفع التوثيق بنجاح ');
-}
-}
+}*/

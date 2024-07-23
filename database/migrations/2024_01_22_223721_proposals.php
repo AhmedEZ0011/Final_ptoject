@@ -18,17 +18,15 @@ return new class extends Migration
             $table->string('title',100);
             $table->string('sub_title',100)->nullable(true);
             $table->integer('last_proposal_id')->nullable(true)->length(11);
-            //$table->bigInteger('user_id');
             $table->dateTime('app_datetime')->useCurrent();
             $table->bigInteger('superviser_id')->nullable(true);
             $table->enum('decision',['PENDING','REFUSED','ACCEPTED'])->default("PENDING");
             $table->dateTime('decision_date')->nullable(true);
             $table->tinyInteger('enabled')->default(0)->length(1);
             
-            
-            //$table->timestamp('created_at')->useCurrent(); //إذا كنت ترغب في إضافة created_at,update_at
-            
-            //$table->foreign("user_id")->references("id")->on("users")->cascadeOnDelete()->cascadeOnUpdate();
+           
+           
+           
             $table->foreign("superviser_id")->references("id")->on("users")->cascadeOnDelete()->cascadeOnUpdate();
         });
     

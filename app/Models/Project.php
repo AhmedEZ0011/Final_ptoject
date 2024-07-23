@@ -20,7 +20,8 @@ class Project extends Model
     ];
 
 
-    public static function getProjectsList($status = 'INPROGRESS') {
+    public static function getProjectsList($status = 'INPROGRESS')
+    {
         return DB::select('SELECT
                                 j.id, ps.proposal_id, j.grade, p.title, p.enabled AS enabled,
                                 MAX(CASE WHEN ps.row_number = 1 THEN ps.name END) AS Student1_Name,
@@ -38,10 +39,11 @@ class Project extends Model
                             	SELECT `path`,proposal_id, user_id, s.name, ROW_NUMBER() OVER (PARTITION BY proposal_id ORDER BY user_id) AS "row_number"
                             	FROM proposal_students inner join users s ON s.id = user_id
                             ) ps ON j.proposal_id = ps.proposal_id 
-                            WHERE j.status = \''.$status.'\' GROUP BY j.id, p.title, p.superviser_id;');
+                            WHERE j.status = \'' . $status . '\' GROUP BY j.id, p.title, p.superviser_id;');
     }
 
-    public static function getProjectsListWithCondition($condition = '') {
+    public static function getProjectsListWithCondition($condition = '')
+    {
         return DB::select('SELECT
                                 j.id, ps.proposal_id, j.grade, p.title,
                                 MAX(CASE WHEN ps.row_number = 1 THEN ps.name END) AS Student1_Name,
@@ -50,14 +52,19 @@ class Project extends Model
                                 MAX(CASE WHEN ps.row_number = 1 THEN ps.user_id END) AS Student1_ID,
                                 MAX(CASE WHEN ps.row_number = 2 THEN ps.user_id END) AS Student2_ID,
                                 MAX(CASE WHEN ps.row_number = 3 THEN ps.user_id END) AS Student3_ID,
-                                p.superviser_id AS Supervier_ID, j.status, j.created_at, j.end_date, j.`path`,
-                                (Select `name` from users where id = p.superviser_id) as Supervier_Name
+                                MAX(CASE WHEN ps.row_number = 1 THEN ps.`path` END) AS Student1_Path,
+                                MAX(CASE WHEN ps.row_number = 2 THEN ps.`path` END) AS Student2_Path,
+                                MAX(CASE WHEN ps.row_number = 3 THEN ps.`path` END) AS Student3_Path,
+                                p.superviser_id AS Supervier_ID, j.status, j.created_at AS Created_AT ,
+                                j.end_date, j.`path`, ps.department_name ,
+                                (Select `name` from users where id = p.superviser_id ) as Supervier_Name
                             FROM projects j 
                             Inner join proposals p ON p.id = j.proposal_id
                             INNER JOIN (
-                            	SELECT `path`,proposal_id, user_id, s.name, ROW_NUMBER() OVER (PARTITION BY proposal_id ORDER BY user_id) AS "row_number"
+                            	SELECT `path`,proposal_id, dp.name department_name , user_id, s.name, ROW_NUMBER() OVER (PARTITION BY proposal_id ORDER BY user_id) AS "row_number"
                             	FROM proposal_students inner join users s ON s.id = user_id
+                                INNER JOIN departments dp ON s.department_id = dp.id
                             ) ps ON j.proposal_id = ps.proposal_id 
-                            WHERE '.$condition.' GROUP BY j.id, p.title, p.superviser_id;');
+                            WHERE ' . $condition . ' GROUP BY j.id, p.title, p.superviser_id;');
     }
 }

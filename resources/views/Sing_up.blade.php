@@ -104,7 +104,6 @@
                             <option value="4">طالب</option>
                         </optgroup>
                         <optgroup>
-                            <option value="0">ادمن</option>
                             <option value="1">منسق مشاريع</option>
                             <option value="3">أستاذ</option>
                         </optgroup>

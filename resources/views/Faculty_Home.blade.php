@@ -146,7 +146,7 @@ top: 55%;
 position: absolute;
 border-radius: 20px;
 border-style: none;
-">  
+"onclick=Faculty_documentation_button()>  
 <i class="fa-regular fa-copy"
 style="font-size:35px; 
         right:4%;
@@ -233,6 +233,10 @@ z-index: 1;">
                                 function Faculty_proposal_students_button(){
                         window.location.href ="http://127.0.0.1:8000/Faculty_proposal_students"
                                 }
+                                function Faculty_documentation_button(){
+                        window.location.href ="http://127.0.0.1:8000/Faculty_documentation"
+                                }
+                                
 
      </script> 
 

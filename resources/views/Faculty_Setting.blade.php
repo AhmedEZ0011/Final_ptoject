@@ -146,7 +146,7 @@ top: 55%;
 position: absolute;
 border-radius: 20px;
 border-style: none;
-">  
+"onclick=Faculty_documentation_button()>  
 <i class="fa-regular fa-copy"
 style="font-size:35px; 
         right:4%;
@@ -168,8 +168,9 @@ border-style: solid;
 border-color:grey;
 z-index: 1;">
 
-
-<input class="Changing-Name"
+<form action="{{ route('Faculty_Setting.update') }}" id="f2" name="f2" method="post" enctype="multipart/form-data">
+        @csrf
+<input class="name" name="name"
 style="
 background: #F1F0FB;
 width: 40%;
@@ -181,6 +182,8 @@ border-radius: 10px;
 text-align: center;
 font-size:30px;
 "
+type="text" 
+name="f2"
 placeholder="تغيير الأسم";
 >
 
@@ -188,8 +191,8 @@ placeholder="تغيير الأسم";
 style=" font-size:30px;
 left: 70%;
 top: 7%;
-position: absolute;"> :تغيير الاسم <i class="fa-solid fa-user-tie"></i></div>
-<input class="Changing-Email"
+position: absolute;"> :تغيير الاسم <i class="fa-solid fa-user-graduate"></i></div>
+<input type="email" class="email" name="email"
 style="
 background: #F1F0FB;
 width: 40%;
@@ -201,6 +204,7 @@ border-radius: 10px;
 text-align: center;
 font-size:30px;
 "
+name="f2"
 placeholder="تغيير البريد الإلكتروني ";
 >
 
@@ -212,19 +216,7 @@ position: absolute;">:تغيير البريد الالكتروني <i class="fa-
 
 
 
-<input class="Old-Password"
-style="
-background: #F1F0FB;
-width: 40%;
-height: 10%;
-left: 11%;
-top: 45%;
-position: absolute;
-border-radius: 10px;
-font-size:30px;
-text-align: center;
-"
-placeholder="كلمة المرور القديمة";>
+
 
 <div class="Changing-Name"
 style=" font-size:30px;
@@ -233,35 +225,25 @@ top: 54%;
 position: absolute;"> :تغيير كلمة المرور
 <i class="fa-solid fa-lock"></i></div>
 
-<input class="New-Password"
-style="
-background: #F1F0FB;
-width: 40%;
-height: 10%;
-left: 11%;
-top: 57%;
-position: absolute;
-border-radius: 10px;
-font-size:30px;
-text-align: center;"
-placeholder="كلمة المرور الجديدة ";>
 
-<input class="confirm-password"
+<input type="password" class="password" name="password"
 style="
 background: #F1F0FB;
 width: 40%;
 height: 10%;
 left: 11%;
-top: 69%;
+top: 60%;
 position: absolute;
 border-radius: 10px;
 text-align: center;
 font-size:30px;
 "
-placeholder="تأكيد كلمة المرور ";>
+name="password"
+placeholder="تغيير كلمة المرور ";>
 
 
-<button class="Saving changes"
+<button class="Saving changes" 
+type="submit"
 style="
 background: #4B80AB;
 width: 30%;
@@ -273,19 +255,23 @@ border-radius: 10px;
 border-style: none;
 font-size:25px;
 "
+
 >حفظ التغييرات</button>
 </div>
 <script> 
-        function Setting(){
-            window.location.href ="http://127.0.0.1:8000/Faculty_Setting"
-        }
- function Home_button(){
+                        function Setting(){
+                            window.location.href ="http://127.0.0.1:8000/Faculty_Setting"
+                                }
+                       function Home_button(){
                         window.location.href ="http://127.0.0.1:8000/Faculty_Home"
                                 }
                                 function Faculty_project_students_button(){
                         window.location.href ="http://127.0.0.1:8000/Faculty_project_students"
                                 }
                                 
+                                function Faculty_documentation_button(){
+                        window.location.href ="http://127.0.0.1:8000/Faculty_documentation"
+                                }
 
      </script> 
 

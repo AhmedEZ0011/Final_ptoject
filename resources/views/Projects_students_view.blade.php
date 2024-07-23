@@ -403,15 +403,11 @@ overflow: auto;">
                                         <td><button onclick="EnterTheRating(this);" href="{{ route('projects_view.set_grade',[$projects->id]) }}" class="btn-primary" style="background-color: rgb(93, 202, 93)">
                                         ادخال التقييم        
                                 </button></td>
-                                        <td><button onclick="ReplaceSupervisor(this);" href="{{ route('projects_view.set_supervisor', [$projects->id]) }}" class="btn-primary" style="background-color: rgb(93, 202, 93)">
+                                        <td><button onclick="ReplaceTheExaminer(this);" href="{ route('proposals_view.modify', ['accept', $proposals->title, $proposals->students]) }" class="btn-primary" style="background-color: rgb(93, 202, 93)">
                                                        تغيير مشرف  
                                                 </button></td>
-                                         <td><button onclick="SetProjectEnableState(this);" href="{{ route('projects_view.set_enable', [$projects->id]) }}" class="btn-primary" style="background-color: rgb(211, 69, 69)">
-                                                      @if ($projects->enabled == 1)
-                                                        إيقاف مشروع  
-                                                        @else
-                                                                تفعيل المشروع
-                                                        @endif
+                                         <td><button onclick="ReplaceTheExaminer(this);" href="{ route('proposals_view.modify', ['accept', $proposals->title, $proposals->students]) }" class="btn-primary" style="background-color: rgb(211, 69, 69)">
+                                                        إيقاف مشروع   
                                                  </button></td>
 
                                 </tr>
@@ -527,11 +523,6 @@ overflow: auto;">
                   <button type="submit" form="f4">إرسال </button>
                 </div>
               </div>
-
-        <form id="f5" name="f5" method="post" enctype="multipart/form-data" style="display: none;">
-              @csrf
-                <input type="hidden" form="f5" value="0" name="project-enable-state">
-        </form>
 </body>
 <script>
 const openModalBtn1 = document.getElementById('openModalBtn1');
@@ -595,15 +586,15 @@ const modalContainer4 = document.getElementById('modalContainer4');
                 document.forms['f1'].setAttribute('action', route);
                 modalContainer2.classList.add('show');
         }
-        function ReplaceSupervisor(button) {
+        function ReplaceTheExaminer(button) {
                 const route = button.getAttribute('href');
                 document.forms['f2'].setAttribute('action', route);
                 modalContainer3.classList.add('show');
         }
-        function SetProjectEnableState(button) {
+        function ReplaceTheExaminer(button) {
                 const route = button.getAttribute('href');
-                document.forms['f5'].setAttribute('action', route);
-                document.forms['f5'].submit();
+                document.forms['f2'].setAttribute('action', route);
+                modalContainer3.classList.add('show');
         }
 </script>
 

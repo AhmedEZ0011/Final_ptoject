@@ -10,8 +10,7 @@ class ProjectsViewController extends Controller
 {
     public function index()
     {
-       // Project::where('proposal_flag', '=', 0)->get()->unique("title")
-        
+       
         return view('Projects_view' 
             ,['projects_list' => DB::select('SELECT title, group_concat(user_id) students, created_at, group_concat(path) path FROM gpmsnew.proposals where decision = \'PENDING\' group by title, created_at;')]
         );

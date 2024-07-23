@@ -14,6 +14,26 @@
 
   <style>
     /* Container styles */
+    table {
+                        width: 100%;
+                        border-collapse: collapse;
+                }
+
+                th,
+                td {
+                        text-align: left;
+                        padding: 8px;
+                        border-bottom: 1px solid #ddd;
+                        text-align: center;
+                }
+                h4{
+                        text-align: center;
+                        margin: 8px;
+                  }
+                  h5{
+                        text-align: center;
+                        margin: 8px;
+                  }
     .container {
       display: flex;
       justify-content: center;
@@ -252,7 +272,7 @@
   height: 9%;
   left: 4%;
   right:4%;
-  top: 20%;
+  top: 25%;
   position: absolute;
   border-radius: 20px;
   border-style: none;
@@ -271,7 +291,7 @@
   height: 9%;
   left: 4%;
   right:4%;
-  top: 33%;
+  top: 40%;
   position: absolute;
   border-radius: 20px;
   border-style: none;
@@ -287,11 +307,28 @@
 
  
       
-    <button id="openModalBtn3" class="btn-primary" style="background-color: #97CADB;
+   
+    <button id="openModalBtn4" class="btn-primary" style="background-color: #97CADB;
         height: 9%;
         left: 4%;
         right:4%;
         top: 55%;
+        position: absolute;
+        border-radius: 20px;
+        border-style: none;
+        
+"onclick=Search_button()>
+      <i class="fa-solid fa-book-bookmark" style="font-size:35px; 
+        right:-1%;
+        top:20%;
+        position: absolute;"></i>
+
+      <h2>مشاريع مؤرشفة </h2>
+ <button id="openModalBtn3" class="btn-primary" style="background-color: #97CADB;
+        height: 9%;
+        left: 4%;
+        right:4%;
+        top: 70%;
         position: absolute;
         border-radius: 20px;
         border-style: none;
@@ -302,23 +339,6 @@
         position: absolute;"></i>
       <h2>تحميل التوثيق</h2>
     </button>
-    <button id="openModalBtn4" class="btn-primary" style="background-color: #97CADB;
-        height: 9%;
-        left: 4%;
-        right:4%;
-        top: 45%;
-        position: absolute;
-        border-radius: 20px;
-        border-style: none;
-        
-">
-      <i class="fa-solid fa-book-bookmark" style="font-size:35px; 
-        right:-1%;
-        top:20%;
-        position: absolute;"></i>
-
-      <h2>مشاريع مؤرشفة </h2>
-
   </div>
 
 
@@ -358,7 +378,6 @@
   border-style: solid;
   border-color:grey;
   z-index: 1;">
-  
   </div>
   <div class="advertisementContener"
   style="background: #F1F0FB;
@@ -371,7 +390,30 @@
   border-style: solid;
   border-color:grey;
   z-index: 1;">
+        @if(count($project_list))
+        @foreach($project_list as $project)
+        <tr>
+          <h4 style="color: #44dd68">معلومات عن المقترح المقبول </h4>
+         <h4> أسم المقترح</h4> 
+         <td><h5>{{$project->title}}</h5></td>
+        </tr>
+        <tr>
+          <h4>أسم المشرف  الخاص بك </h4>  
+          <td><h5>{{$project->Supervier_Name}}</h5></td>
+        </tr>
+        <tr>
+          <h4>حالة المشروع</h4>
+          <td><h5>{{$project->status}}</h5></td>
+        </tr>
+        <tr>
+          <h4>تاريخ قبول المقترح </h4> 
+          <td><h5>{{$project->Created_AT}}</h5></td>
+        </tr>
+        
   
+       @endforeach
+       @endif
+ 
   </div>
 
 
@@ -400,27 +442,7 @@
       <button type="submit" form="f0">إرسال</button>
     </div>
   </div>
-<form action="{{ route('Student_Home.addreport') }}" id="f1" name="f1" method="post" enctype="multipart/form-data">
-    @csrf</form>
-  <div class="modal-container" id="modalContainer2">
-    <div class="modal">
-      <button class="close-btn" id="closeModalBtn2">❌</button>
-      <div class="header">
-        <img src="Upload to the Cloud.png" class="cloud-icon"></img>
-        <h2>إرسال تقرير </h2>
-      </div>
-      <div class="form-group">
-        <label for="report-input-content">محتوى التقرير </label>
-        <input type="text" id="report-input-content" name="report-input-content" required maxlength="300" minlength="20" form="f1"
-        style="width: 100%; height: 150px;">
-      </div>
-      <div class="form-group">
-        <label for="proposal-input2"></label>
-        <input type="file" form="f1" name="report" id="proposal-input2" placeholder="إرسال تقرير ">
-      </div>
-      <button type="submit" form="f1">إرسال </button>
-    </div>
-  </div>
+
 
   <form action="{{ route('Student_Home.addDocumentation') }}" id="f2" name="f2" method="post" enctype="multipart/form-data">
     @csrf</form>
@@ -438,21 +460,7 @@
       <button type="submit" form="f2">إرسال</button>
     </div>
   </div>
-  <form action="{{ route('Student_Home.search') }}" id="f3" name="f3" method="post" enctype="multipart/form-data">
-    @csrf</form>
-  <div class="modal-container" id="modalContainer4">
-    <div class="modal">
-      <button class="close-btn" id="closeModalBtn4">❌</button>
-      <div class="header">
-        <img src="Upload to the Cloud.png" class="cloud-icon"></img>
-        <h2> مشاريع مؤرشفة</h2>
-      </div>
-        <div class="form-group">
-          <label for="proposal-input4"></label>
-          <input type="text" form="f3" name="search" id="proposal-input4" placeholder="البحث عن مشروع ">
-        </div>
-        <button type="submit" form="f3">بحث</button>
-    </div>
+  
   </div>
 
   <script>
@@ -464,6 +472,9 @@
 
     function Home_button() {
       window.location.href = "http://127.0.0.1:8000/Student_Home"
+    }
+    function Search_button() {
+      window.location.href = "http://127.0.0.1:8000/Search"
     }
 
 
@@ -479,17 +490,7 @@
       modalContainer1.classList.remove('show');
     });
 
-    const openModalBtn2 = document.getElementById('openModalBtn2');
-    const closeModalBtn2 = document.getElementById('closeModalBtn2');
-    const modalContainer2 = document.getElementById('modalContainer2');
-
-    openModalBtn2.addEventListener('click', () => {
-      modalContainer2.classList.add('show');
-    });
-
-    closeModalBtn2.addEventListener('click', () => {
-      modalContainer2.classList.remove('show');
-    });
+    
 
     const openModalBtn3 = document.getElementById('openModalBtn3');
     const closeModalBtn3 = document.getElementById('closeModalBtn3');
@@ -503,17 +504,7 @@
       modalContainer3.classList.remove('show');
     });
 
-    const openModalBtn4 = document.getElementById('openModalBtn4');
-    const closeModalBtn4 = document.getElementById('closeModalBtn4');
-    const modalContainer4 = document.getElementById('modalContainer4');
-
-    openModalBtn4.addEventListener('click', () => {
-      modalContainer4.classList.add('show');
-    });
-
-    closeModalBtn4.addEventListener('click', () => {
-      modalContainer4.classList.remove('show');
-    });
+  
 
   </script>
 </body>

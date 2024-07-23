@@ -189,48 +189,27 @@ z-index: 1;">
                                 <tr>
 
                                    
-                                    <td>طلبة المشروع </td>
-                                    <td>عنوان </td>
-                                    <td>تاريخ تقديم المقترح</td>
+                                    
+                                    <td> </td>
+                                    <td>عنوان</td>
 
 
                             </tr>
                             @if(count($projects_list))
                             @foreach($projects_list as $projects)
-                            
-                                        
-
-                                    @php
-                                    $studentsList = [
-                                    "First" => ["ID" => $projects->Student1_ID, "Name" => $projects->Student1_Name],
-                                    "Second" => ["ID" => $projects->Student2_ID, "Name" => $projects->Student2_Name],
-                                    "Third" => ["ID" => $projects->Student3_ID, "Name" => $projects->Student3_Name]
-                                    ];
-                                    //$students = explode(",", $studentsList);
-                                    echo "<td>
-                                            <ul style='text-align:right'>";
-                                                    foreach ($studentsList as $student) {
-                                                    if($student["ID"] == null) {
-                                                    continue;
-                                                    }
-                                                    else {
-                                                    echo "<li>".$student["Name"].
-                                                            " (".$student["ID"]. ")</li>";
-                                                    }
-                                                    }
-                                                    echo "</ul>
-                                    </td>";
-                                    @endphp
-
+                            @php
+                                
+                            @endphp
+                                   
+                            <td><a download href="/users/{{$projects->Student1_ID}}/documentation/{{$projects->Student1_Path}}">Download</a></td>
                                     <td>{{$projects->title}}</td>
-                                    <td>{{$projects->Created_AT}}</td>
 
 
                             </tr>
                             @endforeach
                             @else
                             <tr>
-                                    <td colspan="3">لا يوجد مقترحات </td>
+                                    <td colspan="2">لا يوجد مقترحات </td>
                             </tr>
                             @endif
                     </table>

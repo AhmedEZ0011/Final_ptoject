@@ -10,6 +10,11 @@ use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\SignInController;
 use App\Models\User;
 use App\Http\Controllers\Student_HomeController;
+use App\Http\Controllers\SearchController;
+use App\Http\Controllers\SearchResultsController;
+use App\Http\Controllers\StudentSettingController;
+use App\Http\Controllers\FacultyDocumentationController;
+
 //use Illuminate\Support\Facades\Storage;
 //use Illuminate\Support\Facades\File;
 
@@ -26,8 +31,7 @@ Route::resource("/Faculty_Home", 'App\Http\Controllers\Faculty_HomeController')
 Route::name('Officer_Home.')->prefix("Officer_Home")->group(function() {
 	Route::get('/', [Officer_HomeController::class, "index"])->name('index');
 	Route::post('add_advertisement/', [Officer_HomeController::class, "AddAdvertisement"])->name('add_advertisement');
-}); //::resource("", 'App\Http\Controllers\Officer_HomeController')
-//->names("Officer_Home");
+}); 
 Route::resource("/Faculty_proposal_students", 'App\Http\Controllers\FacultyProposalStudentsController')
 ->names("Faculty_proposal_students");;
 Route::resource("/Faculty_Setting", 'App\Http\Controllers\FacultySettingController');
@@ -35,13 +39,27 @@ Route::resource("/OfficerSettings", 'App\Http\Controllers\OfficerSettingsControl
 Route::resource("/Student_Sign_In", 'App\Http\Controllers\Student_Sign_InController');
 Route::resource("Student_Home", 'App\Http\Controllers\Student_HomeController')
 ->names("Student_Home");
-Route::resource("/Student_Settings", 'App\Http\Controllers\Student_SettingsController');
+Route::resource("Faculty_documentation", 'App\Http\Controllers\FacultyDocumentationController')
+->names("Faculty_documentation");
+Route::name('Student_Settings.')->prefix('Student_Settings')->group(function() {
+	Route::get('/', [StudentSettingController::class, 'index'])->name("index");
+	Route::post('update/', [StudentSettingController::class, 'update'])->name("update");
+});
 Route::resource("/proposals_view", 'App\Http\Controllers\ProposalsView_Controller')
 ->names("proposals_view");
 Route::resource("/Projects_students_view", 'App\Http\Controllers\ProjectsStudentsViewController')
 ->names("Projects_students_view");
 Route::resource("/Faculty_project_students", 'App\Http\Controllers\FacultyProjectStudentsController')
 ->names("Faculty_project_students");
+Route::resource("/Search_Results", 'App\Http\Controllers\SearchResultsController')
+->names("Search_Results");
+
+Route::name('Search.')->prefix("Search")->group(function() {
+    Route::get('/', [SearchController::class, "index"])->name('index');
+    Route::get('Searchforproject/', [SearchController::class, "Search_Results"])->name('Searchforproject');
+});
+
+
 
                  // <<<<<<<<<Sign In >>>>>>>>
 
@@ -109,12 +127,12 @@ Route::get('/search/{id}/', function($id) {
         if($state) {
 			$state->active = 1;
 			$state->save();
-			//$query = $request->input('query');
-			//$results = Project::where('column_name', 'LIKE', "%{$query}%")->get(); // Adjust column_name and model
-	
+			
 			return redirect ()->route('Student_Home.search');
 		}
 		else {
 			return redirect ()->route('Student_Home.search');
         }
 })->name("search");
+
+

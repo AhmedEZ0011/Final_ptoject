@@ -1,21 +1,16 @@
 <?php
 
 namespace App\Http\Controllers;
-use Illuminate\Http\Request;
-use Illuminate\Support\Facades\Hash;
-use App\Models\User;
 use Illuminate\Support\Facades\Auth;
-use Illuminate\Support\Facades\Auth as LaravelAuth;
+use Illuminate\Http\Request;
+use App\Models\User;
 
-// ...
-
-
-class FacultySettingController extends Controller
+class StudentSettingController extends Controller
 {
-   
+    //
     public function index()
     {
-        return view ('/Faculty_Setting');
+        return view('Student_Settings');
     }
     public function update(Request $request)
 {   
@@ -24,11 +19,7 @@ class FacultySettingController extends Controller
     $account->email = $request->input('email');
     $account->password = $request->input('password');
      $account->save();
-     return redirect("Faculty_Home");
-}       
-       
-    }
-        
-        
+     return redirect("Student_Home");
+}
 
-    
+}

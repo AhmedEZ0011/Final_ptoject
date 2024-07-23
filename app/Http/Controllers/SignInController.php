@@ -32,10 +32,7 @@ class SignInController extends Controller
                 $validator["accountNotActive"] = "Your account not active yet!";
                 return $this->logoutWithError($validator);
             }
-            if ($account->type == 0) {
-                //أدمن
-                return redirect("Admin_Home");
-            } elseif ($account->type == 1) {
+             if ($account->type == 1) {
                 //منسق المشاريع
                 return redirect("Officer_Home");//view('Officer_Home', [
                    // 'inactive_users' => User::where('active', '=', 0)->where('type', '=', 4)->get()
