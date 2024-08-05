@@ -3,13 +3,17 @@
 use App\Http\Controllers\Officer_HomeController;
 use App\Http\Controllers\ProposalsView_Controller;
 use App\Http\Controllers\ProjectsStudentsViewController;
+use App\Http\Controllers\AdvertisementController;
 use App\Http\Controllers\SingupController;
 //use Illuminate\Routing\Route;
 use Illuminate\Support\Facades\Route;
 //use App\Http\Controllers\StudentSignInController;
 use App\Http\Controllers\SignInController;
+
 use App\Models\User;
 use App\Http\Controllers\Student_HomeController;
+use App\Models\Project;
+
 //use Illuminate\Support\Facades\Storage;
 //use Illuminate\Support\Facades\File;
 
@@ -87,19 +91,17 @@ Route::name('projects_view.')->group(function() {
     Route::post('set_grade/{project_id}/', [ProjectsStudentsViewController::class, "setGrade"])->name('set_grade');
     
 });
-//Route::name('Projects_view.')->group(function() {
-
-//    Route::get('modify/{state}/{title}/{ids}/', [ProjectsViewController::class, "modify"])->name('modify');
-	
-//});
 
 
-
-/*Route::get('m/{i}', function($i) {
-	return "You requested ".$i;
+Route::name('advertisements.')->prefix('advertisements')->group(function() {
+	Route::get('/', [AdvertisementController::class, "load"])->name('load');
+	Route::get('/{target}/', [AdvertisementController::class, "loads"])->name('loads');
+	Route::post('seen/{id}/{target}/', [AdvertisementController::class, "seen"])->name('seen');
+	Route::post('edit/{id}/', [AdvertisementController::class, "edit"])->name('edit');
+	Route::delete('remove/{id}/{target}/', [AdvertisementController::class, "remove"])->name('remove');
 });
-*/
-                //<<<<<<<Student_Home>>>>>>>>
+
+	//<<<<<<<Student_Home>>>>>>>>
 Route::post("/Student_Home/addproposal/", 'App\Http\Controllers\Student_HomeController@addproposal')->name('Student_Home.addproposal');
 Route::post("/Student_Home/addreport/", 'App\Http\Controllers\Student_HomeController@addreport')->name('Student_Home.addreport');
 Route::post("/Student_Home/addDocumentation/", 'App\Http\Controllers\Student_HomeController@addDocumentation')->name('Student_Home.addDocumentation');
