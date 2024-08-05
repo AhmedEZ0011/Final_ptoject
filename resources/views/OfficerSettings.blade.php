@@ -194,127 +194,129 @@ style="background-color:#F1F0FB;
     </div>
 
 
-    <div
-    class="ContenFunction"
-    style="
-        width: 20%;
-        height: 95%;
-        right: 2%;
-        top: 2%;
-        position: absolute;
-        background: #97CADB;
-        border-radius: 40px;
-    "
-  >
-    <div class="UserName_Icon">
-      <i class="fa-solid fa-user-tie"
-      style="font-size:40px; 
+    <div class="ContenFunction" style="
+      width: 20%;
+      height: 95%;
+      right: 2%;
+      top: 2%;
       position: absolute;
-      left:80%;
-      top:4%;
-          
-           "></i>
-    <div class="UserName"
-    style="
-      position:absolute;
-      font-size:20px;
-      right:27%;
-      top:7%;
-      "
-      >{{ Auth::user()->name }} </div>
-    </div>
-    <button class="Home"
-    style="
-    background-color: #97CADB;
-    height: 9%;
-    left: 4%;
-    right:4%;
-    top: 13%;
+      background: #97CADB;
+      border-radius: 40px;
+  ">
+                <div class="UserName_Icon">
+                        <i class="fa-solid fa-user-tie" style="font-size:40px; 
     position: absolute;
-    border-radius: 20px;
-    border-style: none;
-  "onclick=Home_button()>  
-  <i class="fa-solid fa-house"
-  style="font-size:35px; 
-          right:4%;
-          top:20%;
-          position: absolute;"></i>
-          <h2>الرئيسية</h2>    
-  </button>
-  <button class="Project-document"
-          style="background-color: #97CADB;
-          height: 9%;
-          left: 4%;
-          right:4%;
-          top: 24%;
-          position: absolute;
-          border-radius: 20px;
-          border-style: none;
-  "onclick=Settings_button()>  
-  <i class="fa-solid fa-gear"
-  style="font-size:35px; 
-          right:4%;
-          top:20%;
-          position: absolute;"></i>
-          <h2>الإعدادات </h2> 
-  </button>
- 
+    left:80%;
+    top:4%;
+        
+         "></i>
+                        <div class="UserName" style="
+    position:absolute;
+    font-size:20px;
+    right:27%;
+    top:7%;
+    ">{{ Auth::user()->name }}</div>
+                </div>
+                <button class="Home" style="
+  background-color: #97CADB;
+  height: 9%;
+  left: 4%;
+  right:4%;
+  top: 13%;
+  position: absolute;
+  border-radius: 20px;
+  border-style: none;
   
-  <button class="Proposals"
-          style="background-color: #97CADB;
-          height: 9%;
-          left: 4%;
-          right:4%;
-          top: 35%;
-          position: absolute;
-          border-radius: 20px;
-          border-style: none;
-  "onclick=proposals_view_button()>  
-  <i class="fa-regular fa-newspaper"
-  style="font-size:35px; 
-          right:4%;
-          top:20%;
-          position: absolute;"></i>
-          <h2>المقترحات</h2> 
-  </button>
-  <button class="Graduation-project-students"
-          style="background-color: #97CADB;
-          height: 9%;
-          left: 4%;
-          right:4%;
-          top: 46%;
-          position: absolute;
-          border-radius: 20px;
-          border-style: none;
-  "onclick=Projects_students_view_button(>  
-  <i class="fa-regular fa-copy"
-  style="font-size:35px; 
-          right:4%;
-          top:20%;
-          position: absolute;"></i>
-                 <h2> المشاريع</h2>
-  </button>
-  <button id="openModalBtn4" class="btn-primary"
-          style="background-color: #97CADB;
-          height: 9%;
+" onclick=Home_button()>
+                        <i class="fa-solid fa-house" style="font-size:35px; 
+        right:4%;
+        top:20%;
+        position: absolute;"></i>
+                        <h2>الرئيسية</h2>
+                </button>
+                <button class="Project-document" style="background-color: #97CADB;
+        height: 9%;
         left: 4%;
         right:4%;
-        top: 57%;
+        top: 24%;
         position: absolute;
         border-radius: 20px;
         border-style: none;
-  ">  
-  <i class="fa-solid fa-thumbtack"
-  style="font-size:35px; 
-          right:4%;
-          top:20%;
-          position: absolute;"></i>
-                 <h2>إضافة إعلان </h2>
-  </button>
+" onclick=Settings_button()>
+                        <i class="fa-solid fa-gear" style="font-size:35px; 
+        right:4%;
+        top:20%;
+        position: absolute;"></i>
+                        <h2>الإعدادات </h2>
+                </button>
 
-  
-  
-  </div>
+     
+                <button class="Proposals" style="background-color: #97CADB;
+        height: 9%;
+        left: 4%;
+        right:4%;
+        top: 35%;
+        position: absolute;
+        border-radius: 20px;
+        border-style: none;
+" onclick=proposals_view_button()>
+                        <i class="fa-regular fa-newspaper" style="font-size:35px; 
+        right:4%;
+        top:20%;
+        position: absolute;"></i>
+                        <h2>المقترحات</h2>
+
+
+
+                </button>
+                <button class="Graduation-project-students" style="background-color: #97CADB;
+        height: 9%;
+        left: 4%;
+        right:4%;
+        top: 46%;
+        position: absolute;
+        border-radius: 20px;
+        border-style: none;
+">
+                        <i class="fa-regular fa-copy" style="font-size:35px; 
+        right:4%;
+        top:20%;
+        position: absolute;"></i>
+                        <h2> المشاريع</h2>
+                </button>
+                <button id="openModalBtn4" class="btn-primary"style="background-color: #97CADB;
+        height: 9%;
+        left: 4%;
+        right:4%;
+        top: 59%;
+        position: absolute;
+        border-radius: 20px;
+        border-style: none;
+" >
+                        <i class="fa-solid fa-thumbtack" style="font-size:35px; 
+        right:4%;
+        top:20%;
+        position: absolute;"></i>
+                        <h2>إضافة إعلان </h2>
+                </button>
+                <button class="Graduation-project-students" style="background-color: #97CADB;
+        height: 9%;
+        left: 4%;
+        right:4%;
+        top: 78%;
+        position: absolute;
+        border-radius: 20px;
+        border-style: none;
+">
+                        <i class="" style="font-size:35px; 
+        right:4%;
+        top:20%;
+        position: absolute;"></i>
+                        <h2></h2>
+                </button>
+
+
+        </div>
 
   <div class="Settings-Contener"
   style="background: #F1F0FB;
@@ -329,132 +331,103 @@ style="background-color:#F1F0FB;
   z-index: 1;">
   
   
-  <input class="Changing-Name"
-  style="
-  background: #F1F0FB;
-  width: 40%;
-  height: 10%;
-  left: 11%;
-  top: 5%;
-  position: absolute;
-  border-radius: 10px;
-  text-align: center;
-  font-size:30px;
-  "
-  placeholder="تغيير الأسم";
-  >
-  
-  <div class="Changing-Email"
-  style=" font-size:30px;
-  left: 70%;
-  top: 7%;
-  position: absolute;"> :تغيير الاسم <i class="fa-solid fa-user-tie"></i></div>
-  <input class="Changing-Email"
-  style="
-  background: #F1F0FB;
-  width: 40%;
-  height: 10%;
-  left: 11%;
-  top: 25%;
-  position: absolute;
-  border-radius: 10px;
-  text-align: center;
-  font-size:30px;
-  "
-  placeholder="تغيير البريد الإلكتروني ";
-  >
-  
-  <div class="Changing-Name"
-  style=" font-size:30px;
-  left: 70%;
-  top: 25%;
-  position: absolute;">:تغيير البريد الالكتروني <i class="fa-solid fa-envelope"></i></div>
-  
-  
-  
-  <input class="Old-Password"
-  style="
-  background: #F1F0FB;
-  width: 40%;
-  height: 10%;
-  left: 11%;
-  top: 45%;
-  position: absolute;
-  border-radius: 10px;
-  font-size:30px;
-  text-align: center;
-  "
-  placeholder="كلمة المرور القديمة";>
-  
-  <div class="Changing-Name"
-  style=" font-size:30px;
-  left: 70%;
-  top: 54%;
-  position: absolute;"> :تغيير كلمة المرور
-  <i class="fa-solid fa-lock"></i></div>
-  
-  <input class="New-Password"
-  style="
-  background: #F1F0FB;
-  width: 40%;
-  height: 10%;
-  left: 11%;
-  top: 57%;
-  position: absolute;
-  border-radius: 10px;
-  font-size:30px;
-  text-align: center;"
-  placeholder="كلمة المرور الجديدة ";>
-  
-  <input class="confirm-password"
-  style="
-  background: #F1F0FB;
-  width: 40%;
-  height: 10%;
-  left: 11%;
-  top: 69%;
-  position: absolute;
-  border-radius: 10px;
-  text-align: center;
-  font-size:30px;
-  "
-  placeholder="تأكيد كلمة المرور ";>
-  
-  
-  <button class="Saving changes"
-  style="
-  background: #4B80AB;
-  width: 30%;
-  height: 10%;
-  left: 40%;
-  bottom: 2%;
-  position: absolute;
-  border-radius: 10px;
-  border-style: none;
-  font-size:25px;
-  "
-  >حفظ التغييرات</button>
+  <form action="{{ route('Student_Settings.update') }}" id="f2" name="f2" method="post" enctype="multipart/form-data">
+    @csrf
+<input class="name" name="name"
+style="
+background: #F1F0FB;
+width: 40%;
+height: 10%;
+left: 11%;
+top: 5%;
+position: absolute;
+border-radius: 10px;
+text-align: center;
+font-size:30px;
+"
+type="text" 
+name="f2"
+placeholder="تغيير الأسم";
+>
+
+<div class="Changing-Email"
+style=" font-size:30px;
+left: 70%;
+top: 7%;
+position: absolute;"> :تغيير الاسم <i class="fa-solid fa-user-graduate"></i></div>
+<input type="email" class="email" name="email"
+style="
+background: #F1F0FB;
+width: 40%;
+height: 10%;
+left: 11%;
+top: 25%;
+position: absolute;
+border-radius: 10px;
+text-align: center;
+font-size:30px;
+"
+name="f2"
+placeholder="تغيير البريد الإلكتروني ";
+>
+
+<div class="Changing-Name"
+style=" font-size:30px;
+left: 70%;
+top: 25%;
+position: absolute;">:تغيير البريد الالكتروني <i class="fa-solid fa-envelope"></i></div>
+
+
+
+
+
+<div class="Changing-Name"
+style=" font-size:30px;
+left: 70%;
+top: 54%;
+position: absolute;"> :تغيير كلمة المرور
+<i class="fa-solid fa-lock"></i></div>
+
+
+<input type="password" class="password" name="password"
+style="
+background: #F1F0FB;
+width: 40%;
+height: 10%;
+left: 11%;
+top: 60%;
+position: absolute;
+border-radius: 10px;
+text-align: center;
+font-size:30px;
+"
+name="password"
+placeholder="تغيير كلمة المرور ";>
+
+
+<button class="Saving changes" 
+type="submit"
+style="
+background: #4B80AB;
+width: 30%;
+height: 10%;
+left: 40%;
+bottom: 2%;
+position: absolute;
+border-radius: 10px;
+border-style: none;
+font-size:25px;
+"
+
+>حفظ التغييرات</button>
+</div>
+</form>
   </div>
 
   </div>
 
 
-    <form action="{{ route('Student_Home.addreport') }}" id="f4" name="f4" method="post" enctype="multipart/form-data">
-    @csrf</form>
-  <div class="modal-container" id="modalContainer4">
-    <div class="modal">
-      <button class="close-btn" id="closeModalBtn4">❌</button>
-      <div class="header">
-        <img src="Upload to the Cloud.png" class="cloud-icon"></img>
-        <h2> إضافةإعلان </h2>
-      </div>
-      <div class="form-group">
-        
-        <input type="text" id="report-input-content" name="report-input-content" required maxlength="300" minlength="20" form="f1"
-        style="width: 100%; height: 150px;">
-     </div>
-      <button type="submit" form="f4">إرسال </button>
-    </div>
+
 
 
 
@@ -474,13 +447,11 @@ const modalContainer4 = document.getElementById('modalContainer4');
       modalContainer4.classList.remove('show');
     });
 
-function proposals_view_button() {
+        function proposals_view_button() {
           window.location.href = "{{route('proposals_view.index')}}"//"http://127.0.0.1:8000/proposals_view";
-
         }
         function Projects_students_view_button() {
           window.location.href = "{{route('Projects_students_view.index')}}"//"http://127.0.0.1:8000/proposals_view";
-
         }
         function Settings_button() {
       window.location.href = "http://127.0.0.1:8000/OfficerSettings"

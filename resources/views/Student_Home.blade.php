@@ -97,6 +97,7 @@
     a{
       color: #000;
     }
+   
     .container {
       display: flex;
       justify-content: center;
@@ -185,12 +186,14 @@
     left: 0%;
     top: 13%;
     position: absolute;
+    
 }
 
 .flash-success {
     background-color: #d4edda;
     color: #155724;
     border: 1px solid #c3e6cb;
+    z-index: 10;
 }
 
 
@@ -203,12 +206,13 @@
 ">
 
   <div class="heder" style="
-      width: 70%;
+      width: 100%;
       height: 10%;
-      left: 2%;
-      top: 2%;
       position: absolute;
-      border-bottom: 5px solid black;">
+      border-bottom: 5px solid black;
+      align-items: center;
+      background-color: #fff;
+   ">
 
     <a href="{{ route('logout') }}">
       <i name="logout" class="fa-solid fa-arrow-right-from-bracket" style="font-size:35px; 
@@ -227,34 +231,37 @@
       left:13%;
       top:40%;"></i>
     
-    <div class="Home-page" style="left:50%;
+    <div class="Home-page" style="left:60%;
      top:30%;
      font-size:40px;
       position: absolute;">
-      <i class="fa-solid fa-house"></i>     Home   
+      <i class="fa-solid fa-house"></i>   الرئيسية
     </div>
   </div>
+  
 
+  
   @if (session('status'))
   <div class="flash-message flash-success">
       {{ session('status') }}
   </div>
 @endif
+ 
 
 
 
   <div class="ContenFunction" style="
       width: 20%;
-      height: 95%;
-      right: 2%;
-      top: 2%;
+      height: 89%;
+      right:1px;
+      top: 11%;
       position: absolute;
       background: #97CADB;
-      border-radius: 40px;
+      border-radius: 5px;
       
   ">
     <div class="UserName_Icon">
-      <i class="fa-solid fa-user-tie" style="font-size:40px; 
+      <i class="fa-solid fa-user-tie" style="font-size:20px; 
     position: absolute;
     left:80%;
     top:9%;
@@ -279,12 +286,12 @@
   
   " onclick="Home_button()">
 
-      <i class="fa-solid fa-house" style="font-size:35px; 
+      <img src="Group.ico" style="font-size:35px; 
         right:4%;
         top:20%;
         position: absolute;
-        "></i>
-      <h2>الرئيسية</h2>
+        ">
+      <h2 style=" right:30px; ">الرئيسية</h2>
     </button>
 
     <button id="openModalBtn1" class="btn-primary" style="background-color: #97CADB;
@@ -296,11 +303,11 @@
   border-radius: 20px;
   border-style: none;
 ">
-      <i class="fa-solid fa-cloud-arrow-down" style="font-size:35px; 
-  right:4%;
+      <i class="fa-solid fa-cloud-arrow-down" style="font-size:25px; 
+  right:2%;
   top:20%;
   position: absolute;"></i>
-      <h2>تقديم مقترح</h2>
+      <h2 style=" right:10px; ">تقديم مقترح</h2>
     </button>
 
 
@@ -344,46 +351,13 @@
 
 
 
-  <div class="advertisement" style="background: #97CADB;
-  width: 20%;
-  height: 10%;
-  left: 35%;
-  top: 20%;
-  position: absolute;
-  border-radius: 20px;
-  z-index: 1;">
-    
-
-    <i class="fa-regular fa-clipboard" style=" font-size:37px; 
-                position: absolute;
-                right: 15%;
-                top: 20%;
-                "></i>
-    <div class="advertisementName" style="position:absolute;
-  font-size:33px;
-  right:35%;
-  top:25%;">
-      الإعلانات
-    </div>
-
-  </div>
+  
+ 
   <div class="advertisementContener"
   style="background: #F1F0FB;
-  width: 50%;
-  height: 67%;
-  left: 22%;
-  top: 27%;
-  position: absolute;
-  border-radius: 20px;
-  border-style: solid;
-  border-color:grey;
-  z-index: 1;">
-  </div>
-  <div class="advertisementContener"
-  style="background: #F1F0FB;
-  width: 20%;
+  width: 70%;
   height: 80%;
-  left: 1%;
+  left: 5%;
   top: 15%;
   position: absolute;
   border-radius: 20px;

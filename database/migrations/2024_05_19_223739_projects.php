@@ -16,7 +16,7 @@ return new class extends Migration
         Schema::create('projects', function (Blueprint $table) {
             $table->bigInteger('id', true);
             $table->bigInteger('proposal_id');
-            $table->enum('status',['INPROGRESS','IDLE', 'FINISHING','DONE'])->default("INPROGRESS");
+            $table->enum('status',['INPROGRESS','IDLE','DONE'])->default("INPROGRESS");
             $table->dateTime('end_date')->nullable(true);
             $table->string('path');
             $table->double('grade')->default(0);

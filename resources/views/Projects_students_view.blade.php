@@ -337,9 +337,9 @@
         </div>
         <div class="Contener" style="background: #F1F0FB;
 width: 75%;
-height: 75%;
+height: 87%;
 left: 1%;
-top: 20%;
+top: 10%;
 position: absolute;
 border-radius: 20px;
 border-style: solid;
@@ -406,7 +406,7 @@ overflow: auto;">
                                         <td><button onclick="ReplaceTheExaminer(this);" href="{ route('proposals_view.modify', ['accept', $proposals->title, $proposals->students]) }" class="btn-primary" style="background-color: rgb(93, 202, 93)">
                                                        تغيير مشرف  
                                                 </button></td>
-                                         <td><button onclick="ReplaceTheExaminer(this);" href="{ route('proposals_view.modify', ['accept', $proposals->title, $proposals->students]) }" class="btn-primary" style="background-color: rgb(211, 69, 69)">
+                                         <td><button onclick="setEnableState(this);" href="{ route('projects_view.set_enable') }" style="background-color: rgb(211, 69, 69)">
                                                         إيقاف مشروع   
                                                  </button></td>
 
@@ -414,7 +414,7 @@ overflow: auto;">
                                 @endforeach
                                 @else
                                 <tr>
-                                        <td colspan="8">لا يوجد مقترحات </td>
+                                        <td colspan="8">لا يوجد مشاريع </td>
                                 </tr>
                                 @endif
                         </table>
@@ -498,7 +498,7 @@ overflow: auto;">
                         <button type="submit" form="f2">إرسال</button>
                 </div>
         </div>
-        <form action="{{ route('Student_Home.addreport') }}" id="f4" name="f4" method="post" enctype="multipart/form-data">
+        <form action="" id="f4" name="f4" method="post" enctype="multipart/form-data">
                 @csrf</form>
               <div class="modal-container" id="modalContainer4">
                 <div class="modal">
@@ -591,10 +591,9 @@ const modalContainer4 = document.getElementById('modalContainer4');
                 document.forms['f2'].setAttribute('action', route);
                 modalContainer3.classList.add('show');
         }
-        function ReplaceTheExaminer(button) {
+        function setEnableState(button) {
                 const route = button.getAttribute('href');
-                document.forms['f2'].setAttribute('action', route);
-                modalContainer3.classList.add('show');
+                
         }
 </script>
 

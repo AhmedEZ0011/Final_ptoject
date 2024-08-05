@@ -14,7 +14,7 @@ use App\Http\Controllers\SearchController;
 use App\Http\Controllers\SearchResultsController;
 use App\Http\Controllers\StudentSettingController;
 use App\Http\Controllers\FacultyDocumentationController;
-
+use App\Http\Controllers\HomeController;
 //use Illuminate\Support\Facades\Storage;
 //use Illuminate\Support\Facades\File;
 
@@ -58,6 +58,7 @@ Route::name('Search.')->prefix("Search")->group(function() {
     Route::get('/', [SearchController::class, "index"])->name('index');
     Route::get('Searchforproject/', [SearchController::class, "Search_Results"])->name('Searchforproject');
 });
+Route::get('/Main_Home', 'App\Http\Controllers\HomeController@index');
 
 
 
@@ -119,7 +120,6 @@ Route::name('projects_view.')->group(function() {
 */
                 //<<<<<<<Student_Home>>>>>>>>
 Route::post("/Student_Home/addproposal/", 'App\Http\Controllers\Student_HomeController@addproposal')->name('Student_Home.addproposal');
-Route::post("/Student_Home/addreport/", 'App\Http\Controllers\Student_HomeController@addreport')->name('Student_Home.addreport');
 Route::post("/Student_Home/addDocumentation/", 'App\Http\Controllers\Student_HomeController@addDocumentation')->name('Student_Home.addDocumentation');
 Route::get("/Student_Home/search",'App\Http\Controllers\Student_HomeController@search')->name('Student_Home.search');
 Route::get('/search/{id}/', function($id) {

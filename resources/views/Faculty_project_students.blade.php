@@ -182,7 +182,8 @@ position: absolute;
 border-radius: 20px;
 border-style: solid;
 border-color:grey;
-z-index: 1;">
+z-index: 1;
+overflow: auto;">
     <table style="position: absolute;
     top: 10%;
     border=0.5">

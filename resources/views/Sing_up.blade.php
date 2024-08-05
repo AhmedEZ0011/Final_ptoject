@@ -10,9 +10,10 @@
     <style>
         body {
             font-family: Arial, sans-serif;
-            background-image: url('main.jpg');
+            background-image: url('MainImg.jpg');
             background-size: cover;
-            display: flex;
+            background-position: center;
+            background-repeat: no-repeat; display: flex;
             justify-content: center;
             align-items: center;
             height: 100vh;
@@ -84,29 +85,32 @@
     font-size: 30px; /* تكبير حجم الأيقونة */
     color: #000000; /* لون الأيقونة */
 }
-
-
+#logo{
+    position: absolute;
+    top: 34px;
+    left: 50px;
+    weight: 50;
+    height: 30; /* لون الأيقونة */
+}
     </style>
 </head>
 <body>
-        <i class="fa-regular fa-circle-left" id="back"></i>
-        <i class="fa-solid fa-graduation-cap graduation-icon"></i>
+    <div id="logo"> 
+        <img src="Mortarboard.ico" alt="Description of the image" width="50" height="30">
+    </div>
     <div class="form-container">
         <h2>إنشاء حساب جديد</h2>
-        <form action="{{route('Sing_up.store')}}" method="post"> 
+        <form  action="{{route('Sing_up.store')}}" method="post"> 
             @csrf
             <input type="hidden" name="_token" value="{{ csrf_token() }}" />
             <div>     
                 <label for="options" placeholder="اختر نوع الحساب"></label>
                     <select name="type" placeholder="اختر">
 
-                        <optgroup>
+                       
                             <option value="4">طالب</option>
-                        </optgroup>
-                        <optgroup>
-                            <option value="1">منسق مشاريع</option>
                             <option value="3">أستاذ</option>
-                        </optgroup>
+                        
                         
              </div>
              <input type="text" name="collage" placeholder="الكلية" readonly value="IT">
@@ -130,8 +134,21 @@
             </div>
           
             
-            <button type="submit">إنشاء حساب</button>
+            <button type="submit" value="submit">إنشاء حساب</button>
+            
         </form>
+        
+
+   
+
+<script>
+document.getElementById('myForm').addEventListener('submit', function(event) {
+  event.preventDefault(); // Prevent the default form submission
+  // Handle form submission, e.g., using fetch or XMLHttpRequest
+  window.location.href = 'https://'; // Redirect to the desired URL
+});
+</script>
+    
     </div>
 </body>
 </html>

@@ -22,8 +22,7 @@ class Student_HomeController extends Controller
                 'userid' => $account->id,
                 'decision' => Proposal::where('decision', '=', 'REFUSED')->get() ,
                 'project_list' => Project::getProjectsListWithCondition('ps.user_id = '.Auth::user()->id) ,
-                 
-
+               // 'project_list' => Project::getArchive('ps.user_id = '.Auth::user()->id) ,
             ]);
         } else {
             return redirect("login");
@@ -81,18 +80,4 @@ public function drop($id)
     {
     }
 }
-/*  public function addreport(Request $request)
-    {
-        if (!Auth::check()) {
-            return redirect("login");
-        }
-        $userid = Auth::user()->id;
-        $proposal = $request->file('report');
-        $proposal->move(public_path() . '\\users\\' . $userid . '\\report\\');
-        
-        Report::create([
-            'user_id' => Auth::user()->id,
-            'content' => $request->input("report-input-content"),
-        ]);
-        return redirect('Student_Home')->with('status', 'تم رفع التقرير بنجاح ');
-}*/
+

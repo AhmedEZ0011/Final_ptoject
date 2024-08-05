@@ -13,14 +13,12 @@ use Exception;
 
 class Officer_HomeController extends Controller
 {
-    //
+   
     public function index()
     {
         return view('Officer_Home', [
-            'inactive_users' => User::where('active', '=', 0)->where('type', '=', 4)->get()
-            //where('superviser_id', '=', 0)
-            
-            ]);
+            'inactive_users' => User::where('active', '=', 0)->whereIn('type', [3, 4])->get()
+           ]);
     }
     public function drop($id) {
         
@@ -38,9 +36,6 @@ class Officer_HomeController extends Controller
 
         if($request->input('ad_target') == 'SPECIFIC') {
 
-            // split the specified users selected with the space withen the text which was intered in the input form
-            // using: explode(' ', $request->input('ad_target_specific)) ..
-            // e.g: a = explode(' ', "217180410 217180142") -> a = ["217180410", "217180142"]
             $selectedAudience = explode(' ', $request->input('ad_specific_target'));
             foreach($selectedAudience as $item) {
                 try {

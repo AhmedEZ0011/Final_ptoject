@@ -329,7 +329,7 @@
         right:4%;
         top:20%;
         position: absolute;"></i>
-                        <h2></h2>
+                        
                 </button>
 
 
@@ -442,23 +442,7 @@ overflow: auto;">
                 </div>
               </div>
               
-              <form action="{{ route('Student_Home.addreport') }}" id="f4" name="f4" method="post" enctype="multipart/form-data">
-                @csrf</form>
-              <div class="modal-container" id="modalContainer4">
-                <div class="modal">
-                  <button class="close-btn" id="closeModalBtn4">❌</button>
-                  <div class="header">
-                    <img src="Upload to the Cloud.png" class="cloud-icon"></img>
-                    <h2> إضافةإعلان </h2>
-                  </div>
-                  <div class="form-group">
-                    
-                    <input type="text" id="report-input-content" name="report-input-content" required maxlength="300" minlength="20" form="f1"
-                    style="width: 100%; height: 150px;">
-                 </div>
-                  <button type="submit" form="f4">إرسال </button>
-                </div>
-              </div>
+              
 </body>
 <script>
     const openModalBtn4 = document.getElementById('openModalBtn4');

@@ -19,13 +19,14 @@
 body {
     margin: 0;
     padding: 0;
+    width:100%;
+    height: 100%;
     font-family: Arial, sans-serif;
-    background: url('main.jpg') no-repeat center center fixed;
+    box-sizing: border-box;
+    background-image: url('MainImg.jpg');
     background-size: cover;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    height: 100vh;
+    background-position: center;
+    background-repeat: no-repeat;
 }
 
 .login-container {
@@ -164,15 +165,7 @@ text-decoration: none;
 <body>
 
     <nav class="navbar">
-        <div class="navbar-left">
-            <div class="centered-flex-user">
-                <img src="Graduation Cap.png" alt="Description of the image" width="50" height="30">
-            </div>
-        </div>
-        <div class="navbar-right">
-            <div class="user">
-                <img src="user.png" alt="Description of the image" width="50" height="50">
-            </div>
+        
         </div>
     </nav>
     <div class="login-container">

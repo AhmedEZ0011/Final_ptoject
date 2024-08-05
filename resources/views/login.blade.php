@@ -18,15 +18,13 @@
 </script>
 <style>
     body {
-        margin: 0;
-        padding: 0;
-        font-family: Arial, sans-serif;
-        background: url('main.jpg') no-repeat center center fixed;
-        background-size: cover;
-        display: flex;
-        justify-content: center;
-        align-items: center;
-        height: 100vh;
+    width:100%;
+    height: 100%;
+    font-family: Arial, sans-serif;
+    box-sizing: border-box;
+    background-image: url('MainImg.jpg');
+    background-size: cover;
+    background-repeat: no-repeat;
     }
 
     .login-container {
@@ -35,6 +33,10 @@
         border-radius: 8px;
         width: 300px;
         text-align: center;
+        left: 40%;
+        top: 25%;
+        position:absolute;
+        
     }
 
 
@@ -187,18 +189,7 @@
 <body>
 
 
-    <nav class="navbar">
-        <div class="navbar-left">
-            <div class="centered-flex-user">
-                <img src="Graduation Cap.png" alt="Description of the image" width="50" height="30">
-            </div>
-        </div>
-        <div class="navbar-right">
-            <div class="user">
-                <img src="user.png" alt="Description of the image" width="50" height="50">
-            </div>
-        </div>
-    </nav>
+   
     <div class="login-container">
         @if ($errors->has('incorrectData'))
             <span class="text-danger" style="color:red;">{{ $errors->first('incorrectData') }}</span>

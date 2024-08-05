@@ -192,6 +192,7 @@
         left: 1%;
         top: 2%;
         position: absolute;
+        overflow: auto;
         ">
         <form method="GET" action="{{ route('Search.Searchforproject') }}">
                 <input type="text" name="query" placeholder="ابحث هنا...">

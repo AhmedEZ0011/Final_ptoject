@@ -67,4 +67,14 @@ class Project extends Model
                             ) ps ON j.proposal_id = ps.proposal_id 
                             WHERE ' . $condition . ' GROUP BY j.id, p.title, p.superviser_id;');
     }
+  
+
+   /* public static function getArchive($condition = '')
+    {
+        return DB::select('SELECT
+                               p.*, s.*
+                            FROM projects p 
+                            Inner join proposals s ON s.id = p.proposal_id 
+                            WHERE p.status = \'DONE\' ' . $condition . ';');
+    }*/
 }

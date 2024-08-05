@@ -14,6 +14,7 @@ class Sing_upController extends Controller
             'departments' => Department::all()
         ]);
     }
+    
     /*
     public function storeRegistration(Request $request) 
     {
@@ -51,13 +52,15 @@ class Sing_upController extends Controller
             'cridits' => $request->cridits,
             'gpa' => $request->gpa,
             'type' => $request->type,
-            'active' => 0
-        ]);
+            'active' => 0,
+           ]);
+            
+        
         $userdir = public_path().'/users/'.$request->id;
         mkdir($userdir);
         mkdir($userdir.'/documentation');
         mkdir($userdir.'/proposals');
-        return $this->index();
+        return redirect("Main_Home")->with('active', 'تم إرسال طلب تسجيلك في إنتظار قبولك في النظام  ');
        /*
             /public/
                     user-id/
