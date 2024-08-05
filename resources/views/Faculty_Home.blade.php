@@ -1,62 +1,67 @@
-
 <!DOCTYPE html>
 <html>
-<head>
-<title></title>
-<meta name="csrf-token" content="{{csrf_token()}}">
-<meta name="viewport" content="width=device-width, initial-scale=1">
-<script src="https://kit.fontawesome.com/258bab96e7.js" crossorigin="anonymous"></script>
-<!--Get your own code at fontawesome.com-->
-<style>
- a{
-      color: #000;
-    }
-</style>
-</head>
-<body 
-    style=" background:#F1F0FB;">
 
-<div class="heder"
-style="
+<head>
+        <title></title>
+        <meta name="csrf-token" content="{{csrf_token()}}">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+        <link rel="stylesheet" href="/css/a.css">
+        <script src="/js/main.js"></script>
+        <script src="https://kit.fontawesome.com/258bab96e7.js" crossorigin="anonymous"></script>
+        <!--Get your own code at fontawesome.com-->
+        <style>
+                a {
+                        color: #000;
+                }
+
+                body {
+                        font-family: Arial, sans-serif;
+                        background-color: #f5f5f5;
+                        text-align: right;
+                        direction: rtl;
+                        margin: 0;
+                        padding: 0;
+                }
+        </style>
+</head>
+
+<body style=" background:#F1F0FB;">
+
+        <div class="heder" style="
       width: 70%;
       height: 10%;
       left: 2%;
       top: 2%;
       position: absolute;
-      border-bottom: 5px solid black;" >
-      <a href="{{ route('logout') }}">
-      <i class="fa-solid fa-arrow-right-from-bracket"
-      style="font-size:35px; 
+      border-bottom: 5px solid black;">
+                <a href="{{ route('logout') }}">
+                        <i class="fa-solid fa-arrow-right-from-bracket" style="font-size:35px; 
       position: absolute;
       left:2%;
       top:25%;"></i></a>
-     
-      <i class="fa-solid fa-gear"
-      style="font-size:25px; 
+
+                <i class="fa-solid fa-gear" style="font-size:25px; 
       position: absolute;
       left:8%;
       top:40%;" onclick=Setting()></i>
-      
-      
-      <i class="fa-solid fa-bell"
-      style="font-size:25px; 
+
+
+                <i id="bell_icon" class="fa-solid fa-bell" style="font-size:25px; 
       position: absolute;
       left:13%;
-      top:40%;"></i>
-      
-     <div class="Home-page"
-     style="left:50%;
+      top:40%;" badge-number="0" onclick="showNotificationPanel(this);"></i>
+
+                <div class="Home-page" style="left:50%;
      top:16%;
      font-size:36px;
       position: absolute;">
-      <i class="fa-solid fa-house"></i>الرئيسية</div>
-    </div>
+                        <i class="fa-solid fa-house"></i>الرئيسية
+                </div>
+        </div>
 
 
 
-  <div
-  class="ContenFunction"
-  style="
+        <div class="ContenFunction" style="
       width: 20%;
       height: 95%;
       right: 2%;
@@ -65,25 +70,21 @@ style="
       background: #4B80AB;
       border-radius: 40px;
       
-  "
->
-  <div class="UserName_Icon">
-    <i class="fa-solid fa-user-tie"
-    style="font-size:40px; 
+  ">
+                <div class="UserName_Icon">
+                        <i class="fa-solid fa-user-tie" style="font-size:40px; 
     position: absolute;
     left:80%;
     top:9%;
         
          "></i>
-  <div class="UserName"
-  style="
+                        <div class="UserName" style="
     position:absolute;
     font-size:20px;
     right:27%;
     top:12%;">{{ Auth::user()->name}}</div>
-  </div>
-  <button class="Home"
-  style="
+                </div>
+                <button class="Home" style="
   background-color: #4B80AB;
   height: 9%;
   left: 4%;
@@ -93,16 +94,14 @@ style="
   border-radius: 20px;
   border-style: none;
   
-"onclick="Home_button()">  
-<i class="fa-solid fa-house"
-style="font-size:35px; 
+" onclick="Home_button()">
+                        <i class="fa-solid fa-house" style="font-size:35px; 
         right:4%;
         top:20%;
         position: absolute;"></i>
-        <h2>الرئيسية</h2>    
-</button>
-<button class="Graduation-project-students"
-        style="background-color: #4B80AB;
+                        <h2>الرئيسية</h2>
+                </button>
+                <button class="Graduation-project-students" style="background-color: #4B80AB;
         height: 9%;
         left: 4%;
         right:4%;
@@ -110,18 +109,16 @@ style="font-size:35px;
         position: absolute;
         border-radius: 20px;
         border-style: none;
-"onclick=Faculty_project_students_button()>  
-<i class="fa-solid fa-people-group"
-style="font-size:35px; 
+" onclick=Faculty_project_students_button()>
+                        <i class="fa-solid fa-people-group" style="font-size:35px; 
         right:-3%;
         top:29%;
         position: absolute;"></i>
-               <h2>طلبة المشاريع</h2>
-</button>
+                        <h2>طلبة المشاريع</h2>
+                </button>
 
 
-<button class="Proposals"
-style="background-color: #4B80AB;
+                <button class="Proposals" style="background-color: #4B80AB;
 height: 9%;
 left: 4%;
 right:4%;
@@ -129,16 +126,14 @@ top: 43%;
 position: absolute;
 border-radius: 20px;
 border-style: none;
-" onclick=Faculty_proposal_students_button()>  
-<i class="fa-regular fa-newspaper"
-style="font-size:35px; 
+" onclick=Faculty_proposal_students_button()>
+                        <i class="fa-regular fa-newspaper" style="font-size:35px; 
         right:4%;
         top:32%;
         position: absolute;"></i>
-        <h2>المقترحات</h2> 
-</button>
-<button class="Project-documents"
-style="background-color: #4B80AB;
+                        <h2>المقترحات</h2>
+                </button>
+                <button class="Project-documents" style="background-color: #4B80AB;
 height: 9%;
 left: 4%;
 right:4%;
@@ -152,9 +147,9 @@ style="font-size:35px;
         right:4%;
         top:20%;
         position: absolute;"></i>
-        <h2>ملفات التوثيق</h2> 
-</button>
-</div>
+                        <h2>ملفات التوثيق</h2>
+                </button>
+        </div>
 
 
 
@@ -166,8 +161,7 @@ style="font-size:35px;
 
 
 
-<div class="advertisement"
-  style="background: #4B80AB;
+        <div class="advertisement" style="background: #4B80AB;
   width: 20%;
   height: 10%;
   left: 35%;
@@ -176,26 +170,23 @@ style="font-size:35px;
   border-radius: 20px;
   z-index: 2;">
 
-                <i class="fa-regular fa-clipboard"
-                style=" font-size:37px; 
+                <i class="fa-regular fa-clipboard" style=" font-size:37px; 
                 position: absolute;
                 right: 15%;
                 top: 20%;
                 "></i>
-  <div class="advertisementName"
-  style="position:absolute;
+                <div class="advertisementName" style="position:absolute;
   font-size:33px;
   right:35%;
   top:25%;">
-    الإعلانات
+                        الإعلانات
 
-        
-        
-  </div>
 
-</div>
-<div class="advertisementContener"
-style="background: #F1F0FB;
+
+                </div>
+
+        </div>
+        <div class="advertisementContener" style="background: #F1F0FB;
 width: 50%;
 height: 67%;
 left: 22%;
@@ -206,9 +197,8 @@ border-style: solid;
 border-color:grey;
 z-index: 1;">
 
-</div>
-<div class="advertisementContener"
-style="background: #F1F0FB;
+        </div>
+        <div class="advertisementContener" style="background: #F1F0FB;
 width: 20%;
 height: 80%;
 left: 1%;
@@ -244,8 +234,5 @@ z-index: 1;">
 
 
 </body>
+
 </html>
-
-
-
-

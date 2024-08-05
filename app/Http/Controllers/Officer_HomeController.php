@@ -16,6 +16,8 @@ class Officer_HomeController extends Controller
    
     public function index()
     {
+        if(!Auth::check())
+            redirect('login');
         return view('Officer_Home', [
             'inactive_users' => User::where('active', '=', 0)->whereIn('type', [3, 4])->get()
            ]);

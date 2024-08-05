@@ -1,4 +1,3 @@
-
 <!DOCTYPE html>
 <html>
 
@@ -10,6 +9,8 @@
   <title></title>
   <meta name="csrf-token" content="{{csrf_token()}}">
   <meta name="viewport" content="width=device-width, initial-scale=1">
+  <link rel="stylesheet" href="/css/a.css">
+  <script src="/js/main.js"></script>
   <script src="https://kit.fontawesome.com/258bab96e7.js" crossorigin="anonymous"></script>
 
   <style>
@@ -94,7 +95,7 @@
       padding: 0;
     }
 
-    a{
+    a {
       color: #000;
     }
    
@@ -177,6 +178,7 @@
     button[type="submit"]:hover {
       background-color: #4a8cdb;
     }
+
     .flash-message {
     border-radius: 5px;
     font-size: 25px;
@@ -196,14 +198,12 @@
     z-index: 10;
 }
 
-
+    
   </style>
 
 </head>
 
-<body style=" background:#F1F0FB;   
-    
-">
+<body style=" background:#F1F0FB;">
 
   <div class="heder" style="
       width: 100%;
@@ -220,13 +220,13 @@
       left:2%;
       top:25%;" action="{{route('Sing_up.store')}}" method="post"></i>
     </a>
-    
-      <i name="settings" class="fa-solid fa-gear" style="font-size:25px; 
+
+    <i name="settings" class="fa-solid fa-gear" style="font-size:25px; 
       position: absolute;
       left:8%;
       top:40%;" onclick="Settings_button()"></i>
-    
-      <i class="fa-solid fa-bell" style="font-size:25px; 
+
+    <i id="bell_icon" class="fa-solid fa-bell" style="font-size:25px; 
       position: absolute;
       left:13%;
       top:40%;"></i>
@@ -243,7 +243,7 @@
   
   @if (session('status'))
   <div class="flash-message flash-success">
-      {{ session('status') }}
+    {{ session('status') }}
   </div>
 @endif
  
@@ -436,9 +436,12 @@
   </div>
   
   </div>
+  @include('advertisement_panel');
+
 
   <script>
-
+    var Advertisements = [];
+    var bellIcon = document.getElementById('bell_icon');
 
     function Settings_button() {
       window.location.href = "http://127.0.0.1:8000/Student_Settings"
@@ -481,6 +484,7 @@
   
 
   </script>
+
 </body>
 
 </html>
