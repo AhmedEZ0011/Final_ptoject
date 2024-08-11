@@ -6,8 +6,11 @@ use Illuminate\Http\Request;
 
 class SearchResultsController extends Controller
 {
-    public function index()
-    {
-        return view('Search_Results');
-    }
+
+      public function index()
+      {
+          return view('Search_Results');
+      }
+
+
 }

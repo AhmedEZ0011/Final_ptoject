@@ -14,9 +14,9 @@ class Sing_upController extends Controller
             'departments' => Department::all()
         ]);
     }
-    
+
     /*
-    public function storeRegistration(Request $request) 
+    public function storeRegistration(Request $request)
     {
         $request->validate([
             'name' => 'required|string|max:255',
@@ -31,10 +31,10 @@ class Sing_upController extends Controller
             'cridits'=> 'integer|max:135|min:1',
             'gpa'=> 'integer|max:100|min:0',
             'department_id'=> 'required|integer|max:11|unique:users',
-             
+
         ]);
-       
-        
+
+
     }  */
     public function store(Request $request)
     {
@@ -54,13 +54,13 @@ class Sing_upController extends Controller
             'type' => $request->type,
             'active' => 0,
            ]);
-            
-        
+
+
         $userdir = public_path().'/users/'.$request->id;
         mkdir($userdir);
         mkdir($userdir.'/documentation');
         mkdir($userdir.'/proposals');
-        return redirect("Main_Home")->with('active', 'تم إرسال طلب تسجيلك في إنتظار قبولك في النظام  ');
+        return redirect("/")->with('active', 'تم إرسال طلب تسجيلك في إنتظار قبولك في النظام  ');
        /*
             /public/
                     user-id/
@@ -70,7 +70,7 @@ class Sing_upController extends Controller
                                 /proposals
                                      /report
         */
-    
-     
+
+
     }
 }

@@ -184,12 +184,12 @@
       position: absolute;
       border-bottom:black">
                 <a href="{{ route('logout') }}">
-                        <i class="fa-solid fa-arrow-right-from-bracket" style="font-size:35px; 
+                        <i class="fa-solid fa-arrow-right-from-bracket" style="font-size:35px;
       position: absolute;
       left:2%;
       top:25%;"></a></i>
 
-                <i class="fa-solid fa-graduation-cap" style="font-size:35px; 
+                <i class="fa-solid fa-graduation-cap" style="font-size:35px;
       position: absolute;
       left:10%;
       top:25%;"></i>
@@ -213,11 +213,11 @@
         border-radius: 40px;
     ">
                   <div class="UserName_Icon">
-                          <i class="fa-solid fa-user-tie" style="font-size:40px; 
+                          <i class="fa-solid fa-user-tie" style="font-size:40px;
       position: absolute;
       left:80%;
       top:4%;
-          
+
            "></i>
                           <div class="UserName" style="
       position:absolute;
@@ -235,9 +235,9 @@
     position: absolute;
     border-radius: 20px;
     border-style: none;
-    
+
   " onclick=Home_button()>
-                          <i class="fa-solid fa-house" style="font-size:35px; 
+                          <i class="fa-solid fa-house" style="font-size:35px;
           right:4%;
           top:20%;
           position: absolute;"></i>
@@ -252,14 +252,14 @@
           border-radius: 20px;
           border-style: none;
   " onclick=Settings_button()>
-                          <i class="fa-solid fa-gear" style="font-size:35px; 
+                          <i class="fa-solid fa-gear" style="font-size:35px;
           right:4%;
           top:20%;
           position: absolute;"></i>
                           <h2>الإعدادات </h2>
                   </button>
-  
-       
+
+
                   <button class="Proposals" style="background-color: #97CADB;
           height: 9%;
           left: 4%;
@@ -269,14 +269,14 @@
           border-radius: 20px;
           border-style: none;
   " onclick=proposals_view_button()>
-                          <i class="fa-regular fa-newspaper" style="font-size:35px; 
+                          <i class="fa-regular fa-newspaper" style="font-size:35px;
           right:4%;
           top:20%;
           position: absolute;"></i>
                           <h2>المقترحات</h2>
-  
-  
-  
+
+
+
                   </button>
                   <button class="Graduation-project-students" style="background-color: #97CADB;
           height: 9%;
@@ -286,8 +286,8 @@
           position: absolute;
           border-radius: 20px;
           border-style: none;
-  ">
-                          <i class="fa-regular fa-copy" style="font-size:35px; 
+  "onclick=Projects_students_view_button()>
+                          <i class="fa-regular fa-copy" style="font-size:35px;
           right:4%;
           top:20%;
           position: absolute;"></i>
@@ -302,7 +302,7 @@
           border-radius: 20px;
           border-style: none;
   " >
-                          <i class="fa-solid fa-thumbtack" style="font-size:35px; 
+                          <i class="fa-solid fa-thumbtack" style="font-size:35px;
           right:4%;
           top:20%;
           position: absolute;"></i>
@@ -317,14 +317,14 @@
           border-radius: 20px;
           border-style: none;
   ">
-                          <i class="" style="font-size:35px; 
+                          <i class="" style="font-size:35px;
           right:4%;
           top:20%;
           position: absolute;"></i>
                           <h2></h2>
                   </button>
-  
-  
+
+
           </div>
         <div class="Contener" style="background: #F1F0FB;
 width: 70%;
@@ -402,7 +402,7 @@ overflow: auto;">
                     style="width: 100%; height: 150px;">
                     <label for="ad_enabled">Enabled</label>
                     <input type="checkbox" name="ad_enabled" id="ad_enabled" checkbox form="f4" value>
-                    
+
                  </div>
                   <button type="submit" form="f4">إرسال </button>
                 </div>
@@ -413,7 +413,7 @@ overflow: auto;">
 const openModalBtn4 = document.getElementById('openModalBtn4');
 const closeModalBtn4 = document.getElementById('closeModalBtn4');
 const modalContainer4 = document.getElementById('modalContainer4');
-     
+
       openModalBtn4.addEventListener('click', () => {
       modalContainer4.classList.add('show');
     });
@@ -421,7 +421,7 @@ const modalContainer4 = document.getElementById('modalContainer4');
     closeModalBtn4.addEventListener('click', () => {
       modalContainer4.classList.remove('show');
     });
-        
+
         function proposals_view_button() {
           window.location.href = "{{route('proposals_view.index')}}"//"http://127.0.0.1:8000/proposals_view";
 
@@ -436,9 +436,9 @@ const modalContainer4 = document.getElementById('modalContainer4');
         function Home_button() {
       window.location.href = "http://127.0.0.1:8000/Officer_Home"
     }
-    
-   
-    
+
+
+
         </script>
 
       @if($errors->has('ad_error'))

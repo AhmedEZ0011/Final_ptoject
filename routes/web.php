@@ -12,16 +12,14 @@ use App\Http\Controllers\SignInController;
 
 use App\Models\User;
 use App\Http\Controllers\Student_HomeController;
-<<<<<<< HEAD
+
 use App\Http\Controllers\SearchController;
 use App\Http\Controllers\SearchResultsController;
 use App\Http\Controllers\StudentSettingController;
 use App\Http\Controllers\FacultyDocumentationController;
 use App\Http\Controllers\HomeController;
-=======
 use App\Models\Project;
-
->>>>>>> MD
+use App\Http\Controllers\SearchResults;
 //use Illuminate\Support\Facades\Storage;
 //use Illuminate\Support\Facades\File;
 
@@ -38,7 +36,7 @@ Route::resource("/Faculty_Home", 'App\Http\Controllers\Faculty_HomeController')
 Route::name('Officer_Home.')->prefix("Officer_Home")->group(function() {
 	Route::get('/', [Officer_HomeController::class, "index"])->name('index');
 	Route::post('add_advertisement/', [Officer_HomeController::class, "AddAdvertisement"])->name('add_advertisement');
-}); 
+});
 Route::resource("/Faculty_proposal_students", 'App\Http\Controllers\FacultyProposalStudentsController')
 ->names("Faculty_proposal_students");;
 Route::resource("/Faculty_Setting", 'App\Http\Controllers\FacultySettingController');
@@ -65,8 +63,7 @@ Route::name('Search.')->prefix("Search")->group(function() {
     Route::get('/', [SearchController::class, "index"])->name('index');
     Route::get('Searchforproject/', [SearchController::class, "Search_Results"])->name('Searchforproject');
 });
-Route::get('/Main_Home', 'App\Http\Controllers\HomeController@index');
-
+Route::get('/', 'App\Http\Controllers\HomeController@index');
 
 
                  // <<<<<<<<<Sign In >>>>>>>>
@@ -74,7 +71,7 @@ Route::get('/Main_Home', 'App\Http\Controllers\HomeController@index');
 Route::post('/Sign_in.login', [SignInController::class, 'login'])->name("login");
 
                 //<<<<<<<Officer_Home>>>>>>>>
-			
+
 Route::get('/drop_request_account/{id}/', function($id) {
 	$state = User::find($id)->delete();
 	$isdeleted = unlink(public_path().'/users/'.$id);
@@ -111,7 +108,7 @@ Route::name('projects_view.')->group(function() {
     Route::post('set_supervisor/{project_id}/', [ProjectsStudentsViewController::class, "setSupervisor"])->name('set_supervisor');
     Route::post('set_enable/{project_id}/', [ProjectsStudentsViewController::class, "setEnableState"])->name('set_enable');
     Route::post('set_grade/{project_id}/', [ProjectsStudentsViewController::class, "setGrade"])->name('set_grade');
-    
+
 });
 
 
@@ -132,7 +129,7 @@ Route::get('/search/{id}/', function($id) {
         if($state) {
 			$state->active = 1;
 			$state->save();
-			
+
 			return redirect ()->route('Student_Home.search');
 		}
 		else {

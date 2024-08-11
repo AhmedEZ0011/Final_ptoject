@@ -98,7 +98,7 @@
     a {
       color: #000;
     }
-   
+
     .container {
       display: flex;
       justify-content: center;
@@ -188,7 +188,7 @@
     left: 0%;
     top: 13%;
     position: absolute;
-    
+
 }
 
 .flash-success {
@@ -198,7 +198,7 @@
     z-index: 10;
 }
 
-    
+
   </style>
 
 </head>
@@ -215,22 +215,22 @@
    ">
 
     <a href="{{ route('logout') }}">
-      <i name="logout" class="fa-solid fa-arrow-right-from-bracket" style="font-size:35px; 
+      <i name="logout" class="fa-solid fa-arrow-right-from-bracket" style="font-size:35px;
       position: absolute;
       left:2%;
       top:25%;" action="{{route('Sing_up.store')}}" method="post"></i>
     </a>
 
-    <i name="settings" class="fa-solid fa-gear" style="font-size:25px; 
+    <i name="settings" class="fa-solid fa-gear" style="font-size:25px;
       position: absolute;
       left:8%;
       top:40%;" onclick="Settings_button()"></i>
 
-    <i id="bell_icon" class="fa-solid fa-bell" style="font-size:25px; 
+    <i id="bell_icon" class="fa-solid fa-bell" style="font-size:25px;
       position: absolute;
       left:13%;
       top:40%;"></i>
-    
+
     <div class="Home-page" style="left:60%;
      top:30%;
      font-size:40px;
@@ -238,15 +238,15 @@
       <i class="fa-solid fa-house"></i>   الرئيسية
     </div>
   </div>
-  
 
-  
+
+
   @if (session('status'))
   <div class="flash-message flash-success">
     {{ session('status') }}
   </div>
 @endif
- 
+
 
 
 
@@ -258,14 +258,14 @@
       position: absolute;
       background: #97CADB;
       border-radius: 5px;
-      
+
   ">
     <div class="UserName_Icon">
-      <i class="fa-solid fa-user-tie" style="font-size:20px; 
+      <i class="fa-solid fa-user-tie" style="font-size:20px;
     position: absolute;
     left:80%;
     top:9%;
-        
+
          "></i>
       <div class="UserName" style="
     position:absolute;
@@ -283,16 +283,17 @@
   position: absolute;
   border-radius: 20px;
   border-style: none;
-  
+
   " onclick="Home_button()">
 
-      <img src="Group.ico" style="font-size:35px; 
+      <img src="Group.ico" style="font-size:35px;
         right:4%;
         top:20%;
         position: absolute;
         ">
       <h2 style=" right:30px; ">الرئيسية</h2>
     </button>
+
 
     <button id="openModalBtn1" class="btn-primary" style="background-color: #97CADB;
   height: 9%;
@@ -303,7 +304,7 @@
   border-radius: 20px;
   border-style: none;
 ">
-      <i class="fa-solid fa-cloud-arrow-down" style="font-size:25px; 
+      <i class="fa-solid fa-cloud-arrow-down" style="font-size:25px;
   right:2%;
   top:20%;
   position: absolute;"></i>
@@ -312,9 +313,9 @@
 
 
 
- 
-      
-   
+
+
+
     <button id="openModalBtn4" class="btn-primary" style="background-color: #97CADB;
         height: 9%;
         left: 4%;
@@ -323,9 +324,9 @@
         position: absolute;
         border-radius: 20px;
         border-style: none;
-        
+
 "onclick=Search_button()>
-      <i class="fa-solid fa-book-bookmark" style="font-size:35px; 
+      <i class="fa-solid fa-book-bookmark" style="font-size:35px;
         right:-1%;
         top:20%;
         position: absolute;"></i>
@@ -340,7 +341,7 @@
         border-radius: 20px;
         border-style: none;
 ">
-      <i class="fa-solid fa-file-arrow-down" style="font-size:35px; 
+      <i class="fa-solid fa-file-arrow-down" style="font-size:35px;
         right:4%;
         top:20%;
         position: absolute;"></i>
@@ -351,8 +352,8 @@
 
 
 
-  
- 
+
+
   <div class="advertisementContener"
   style="background: #F1F0FB;
   width: 70%;
@@ -368,11 +369,11 @@
         @foreach($project_list as $project)
         <tr>
           <h4 style="color: #44dd68">معلومات عن المقترح المقبول </h4>
-         <h4> أسم المقترح</h4> 
+         <h4> أسم المقترح</h4>
          <td><h5>{{$project->title}}</h5></td>
         </tr>
         <tr>
-          <h4>أسم المشرف  الخاص بك </h4>  
+          <h4>أسم المشرف  الخاص بك </h4>
           <td><h5>{{$project->Supervier_Name}}</h5></td>
         </tr>
         <tr>
@@ -380,14 +381,14 @@
           <td><h5>{{$project->status}}</h5></td>
         </tr>
         <tr>
-          <h4>تاريخ قبول المقترح </h4> 
+          <h4>تاريخ قبول المقترح </h4>
           <td><h5>{{$project->Created_AT}}</h5></td>
         </tr>
-        
-  
+
+
        @endforeach
        @endif
- 
+
   </div>
 
 
@@ -434,7 +435,7 @@
       <button type="submit" form="f2">إرسال</button>
     </div>
   </div>
-  
+
   </div>
   @include('advertisement_panel');
 
@@ -467,7 +468,7 @@
       modalContainer1.classList.remove('show');
     });
 
-    
+
 
     const openModalBtn3 = document.getElementById('openModalBtn3');
     const closeModalBtn3 = document.getElementById('closeModalBtn3');
@@ -481,7 +482,12 @@
       modalContainer3.classList.remove('show');
     });
 
-  
+    var btn = document.getElementById("openModalBtn1");
+                    if (status === "Done") {
+                        btn.disabled = true;
+                    } else {
+                        btn.disabled = false;
+                    }
 
   </script>
 
