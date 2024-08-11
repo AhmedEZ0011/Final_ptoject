@@ -229,7 +229,7 @@
     <i id="bell_icon" class="fa-solid fa-bell" style="font-size:25px;
       position: absolute;
       left:13%;
-      top:40%;"></i>
+      top:40%;" badge-number="0"></i>
 
     <div class="Home-page" style="left:60%;
      top:30%;
@@ -437,6 +437,7 @@
   </div>
 
   </div>
+
   @include('advertisement_panel');
 
 
@@ -450,9 +451,6 @@
 
     function Home_button() {
       window.location.href = "http://127.0.0.1:8000/Student_Home"
-    }
-    function Search_button() {
-      window.location.href = "http://127.0.0.1:8000/Search"
     }
 
 
@@ -468,7 +466,9 @@
       modalContainer1.classList.remove('show');
     });
 
-
+    const openModalBtn2 = document.getElementById('openModalBtn2');
+    const closeModalBtn2 = document.getElementById('closeModalBtn2');
+    const modalContainer2 = document.getElementById('modalContainer2');
 
     const openModalBtn3 = document.getElementById('openModalBtn3');
     const closeModalBtn3 = document.getElementById('closeModalBtn3');
@@ -482,15 +482,151 @@
       modalContainer3.classList.remove('show');
     });
 
-    var btn = document.getElementById("openModalBtn1");
-                    if (status === "Done") {
-                        btn.disabled = true;
-                    } else {
-                        btn.disabled = false;
-                    }
+    const openModalBtn4 = document.getElementById('openModalBtn4');
+    const closeModalBtn4 = document.getElementById('closeModalBtn4');
+    const modalContainer4 = document.getElementById('modalContainer4');
 
+    openModalBtn4.addEventListener('click', () => {
+      modalContainer4.classList.add('show');
+    });
+
+    // closeModalBtn4.addEventListener('click', () => {
+    //   modalContainer4.classList.remove('show');
+    // });
+
+    let notificationPanel = document.getElementById('ads-popup');
+    async function showNotificationPanel(self) {
+      notificationPanel.style.display = notificationPanel.style.display == "none" ? "block" : "none";
+      if (notificationPanel.style.display == "block") {
+        //await loadNotifications();
+      }
+    }
+
+    async function loadNotifications() {
+      let data = await fetch('{{route("advertisements.loads", Auth::user()->id)}}').then(e => e.json());
+      if (data != null)
+        Advertisements = data;
+      displayBadge();
+      displayAds();
+    }
+
+    function displayBadge() {
+      let unread = 0;
+      Advertisements.forEach(ad => unread += !ad.targetlist[0].seen ? + 1 : 0);
+      if(unread == 0) {
+        bellIcon.classList.add('hide-after');
+      } else {
+        bellIcon.classList.remove('hide-after');
+        bellIcon.setAttribute('badge-number', unread);
+      }
+
+    }
+
+    function clearPanel() {
+      notificationPanel.querySelectorAll('div[adblock]').forEach(e => e.remove());
+      notificationPanel.querySelectorAll('B[adblock-label]').forEach(e => e.remove());
+    }
+
+    function displayAds() {
+      let lastDate = "";
+      clearPanel();
+      Advertisements.forEach(ad => {
+        let date = new Date(ad.created_at);
+        let dateString = "يوم " + date.getUTCDate() + "/" + (date.getUTCMonth() + 1) + "/" + date.getUTCFullYear();
+        if (lastDate === dateString) {} else {
+          modifyElement(notificationPanel, {
+            child: createChild('B', {
+              text: dateString,
+              'adblock-label': ""
+            })
+          });
+        }
+        lastDate = dateString;
+        if (ad.content.length < 90) {
+          ad.content += "<br><br><br><br>"
+        }
+        modifyElement(notificationPanel, {
+          child: [
+            createChild('DIV', {
+              title: ad.id,
+              'adblock': "",
+              child: [
+                createChild('B', {
+                  'adtitle': "",
+                  text: ad.owner.name + " - " + ad.title
+                }),
+                createChild('P', {
+                  'adcontent': "",
+                  html: ad.content
+                }),
+                createChild('DIV', {
+                  'adactions': "",
+                  child: [
+                    createChild('IMG', {
+                      'delete': "",
+                      src: "/icons/icons8_remove_96px.png",
+                      title: "delete",
+                      event: {
+                        async onclick(self) {
+                          if(confirm("Sure you want to remove this Advertisement ?"))
+                            await advertisementRemove(ad);
+                        }
+                      }
+                    }),
+                    createChild('IMG', {
+                      'read': "",
+                      src: "/icons/icons8_received_96px.png",
+                      title: "mark as read",
+                      style: ad.targetlist[0].seen ? "display:none" : "",
+                      event: {
+                        async onclick(self) {
+                          //if(ad.)
+                          await advertisementSeen(ad);
+                        }
+                      }
+                    })
+                  ]
+                })
+              ]
+            })
+          ]
+        });
+      });
+    }
+
+    async function advertisementRemove(ad) {
+      fetch("advertisements/remove/" + ad.id + "/{{Auth::user()->id}}/", {
+          method: "DELETE",
+          headers: {
+            'Content-Type': 'application/json',
+            "X-CSRF-Token": "{{csrf_token()}}"
+          },
+          //body: JSON.stringify(ad.targetlist[0])
+        }).then(e => e.json())
+        .then(async e => {
+          alert(e.Message);
+          await loadNotifications();
+        });
+    }
+    async function advertisementSeen(ad) {
+      fetch("advertisements/seen/" + ad.id + "/{{Auth::user()->id}}/", {
+          method: "POST",
+          headers: {
+            'Content-Type': 'application/json',
+            "X-CSRF-Token": "{{csrf_token()}}"
+          },
+          //body: JSON.stringify(ad.targetlist[0])
+        }).then(e => e.json())
+        .then(async e => {
+          alert(e.Message);
+          await loadNotifications();
+        });
+    }
+    loadNotifications();
+    setInterval(async () => {
+      await loadNotifications();
+    }, 15000);
   </script>
-
 </body>
 
 </html>
