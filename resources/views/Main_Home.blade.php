@@ -5,31 +5,15 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>محرك بحث مشاريع التخرج</title>
 </head>
-<script src="script.js"></script>
+{{-- <script src="script.js"></script> --}}
+<script src="/js/main.js"></script>
 <script src="https://kit.fontawesome.com/258bab96e7.js" crossorigin="anonymous"></script>
-<script>document.getElementById('dropdown-button').addEventListener('click', function(event) {
-    event.stopPropagation();
-    const dropdownList = document.getElementById('dropdown-list');
-    dropdownList.classList.toggle('hidden');
-});
+<script>
 
-document.addEventListener('click', function() {
-    const dropdownList = document.getElementById('dropdown-list');
-    if (!dropdownList.classList.contains('hidden')) {
-        dropdownList.classList.add('hidden');
-    }
-});
 
-document.getElementById('dropdown-list').addEventListener('click', function(event) {
-    event.stopPropagation();
-});
 
-document.querySelectorAll('#dropdown-list li').forEach(function(item) {
-    item.addEventListener('click', function() {
-        document.getElementById('search-input').value = this.textContent;
-        document.getElementById('dropdown-list').classList.add('hidden');
-    });
-});
+
+
 function performSearch() {
             var selectedOption = document.getElementById("options").value;
             var searchTerm = document.getElementById("search").value;
@@ -257,9 +241,9 @@ h1 {
             </p>
         </div>
 
-            <div>
+            <div >
                <label for="options"></label>
-                   <select id="options">
+                   <select id="options" onchange="clearList();" style=" height:90%">
                     <option value="ALL">جميع الأقسام</option>
                     <option value="WT">تقنيات الإنترنت </option>
                      <option value="SE">هندسة برمجيات</option>
@@ -267,8 +251,12 @@ h1 {
                    <option value="IS">نظم المعلومات</option>
                     <option value="MC ">الحوسبة المتنقلة</option>
                          </select>
-                    <input name="search" type="text" id="search" placeholder="ابحث...">
-                    <button  class="fa-sharp fa-solid fa-magnifying-glass" ></button>
+                    <input name="search" type="text" id="search"
+                           placeholder="ابحث..." list="browsers"
+                           oninput="sendData(); checkSelected();">
+                    <datalist id="browsers">
+                      </datalist>
+                    <button onclick="sendData()" class="fa-sharp fa-solid fa-magnifying-glass" ></button>
 
             </div>
         </div>
@@ -276,6 +264,49 @@ h1 {
 </div>
 </body>
 <script>
+    let deptValue = document.querySelector("select#options");
+    let textValue = document.querySelector("input[name='search']");
+    let list = document.querySelector("#browsers");
+
+    async function sendData() {
+
+        const payload = {
+            search: textValue.value,
+            departement: deptValue.value
+        };
+
+        await fetch("Search/"+payload.search+"/"+payload.departement+"/", {
+          method: "GET",
+          headers: {
+            'Content-Type': 'application/json',
+            "X-CSRF-Token": "{{csrf_token()}}"
+          }
+        }).then(e => e.json())
+        .then(async e => {
+
+            let elements = [];
+            e.forEach(project => {
+                elements.push(createChild('option', {
+                    value: project.title, text: project.id
+                }))
+            });
+            list.replaceChildren();
+            modifyElement(list, {
+                child: elements
+            });
+        });
+
+
+    }
+    function checkSelected() {
+        [...list.children].forEach(child => {
+            if(child.value == textValue.value)
+                location.href = "/Search/view/"+child.innerText+"/";
+        });
+    }
+    function clearList() {
+        list.replaceChildren();
+    }
 function Sing_up_button() {
     window.location.href = "http://127.0.0.1:8000/Sing_up"
   }

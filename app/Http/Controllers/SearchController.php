@@ -9,24 +9,32 @@ use Illuminate\Http\Request;
 
 class SearchController extends Controller
 {
-    public function index()
+    public function index(Request $request, $search, $department)
     {
-        return view('Search',[
-            'project_list' => Project::getProjectsListWithCondition("p.title <> '' "),
-       ]);
-    }
-        public function Search_Results(Request $request)
-{
-    $query = $request->input('query'); // استخراج قيمة كلمة البحث
+        $a = ["Search" => $search,
+              "Department" => $department
+            ];
 
-    $results =Project::getProjectsListWithCondition('p.title LIKE \'%'.$query.'%\'');
-    //$results =Project::getProjectsListWithCondition("p.title <> '' ");
-    
-    //return $results;
-    return view('Search_Results', ['results' => $results]);
+        $deptString = "";
+
+        if($department !== "ALL")
+            $deptString = " AND ps.department_id = '$department'";
+        $projects = Project::getProjectsListWithCondition("(p.title LIKE '%$search%' OR p.sub_title LIKE '%$search%') AND j.status = 'DONE'".$deptString);
+        if($projects == null)
+             $projects = [];
+        return response()->json($projects);
+        }
+
+
+public function view(Request $request, $pid)
+
+{
+
+    //return response()->json([1,2,3]);
+    return view('Search_Results', ['details' => Project :: getProjectsListWithCondition(' j.id ='. $pid)]);
 }
-        
-       
-    
-   
+
+
+
+
 }

@@ -60,8 +60,8 @@ Route::resource("/Search_Results", 'App\Http\Controllers\SearchResultsController
 ->names("Search_Results");
 
 Route::name('Search.')->prefix("Search")->group(function() {
-    Route::get('/', [SearchController::class, "index"])->name('index');
-    Route::get('Searchforproject/', [SearchController::class, "Search_Results"])->name('Searchforproject');
+    Route::get('/{search}/{dept}/', [SearchController::class, "index"])->name('index');
+    Route::get('/view/{pid}/', [SearchController::class, "view"])->name('view');
 });
 Route::get('/', 'App\Http\Controllers\HomeController@index');
 
@@ -103,12 +103,10 @@ Route::name('proposals_view.')->group(function() {
 });
 
 Route::name('projects_view.')->group(function() {
-//
     Route::post('set_examiner/{project_id}/', [ProjectsStudentsViewController::class, "setExaminers"])->name('set_examiner');
     Route::post('set_supervisor/{project_id}/', [ProjectsStudentsViewController::class, "setSupervisor"])->name('set_supervisor');
     Route::post('set_enable/{project_id}/', [ProjectsStudentsViewController::class, "setEnableState"])->name('set_enable');
     Route::post('set_grade/{project_id}/', [ProjectsStudentsViewController::class, "setGrade"])->name('set_grade');
-
 });
 
 

@@ -229,7 +229,7 @@
     <i id="bell_icon" class="fa-solid fa-bell" style="font-size:25px;
       position: absolute;
       left:13%;
-      top:40%;" badge-number="0"></i>
+      top:40%;" badge-number="0" onclick="showNotificationPanel(this);"></i>
 
     <div class="Home-page" style="left:60%;
      top:30%;

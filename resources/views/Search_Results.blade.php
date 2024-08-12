@@ -210,7 +210,7 @@ overflow: auto;">
         top: 20%;
         border=0.5">
 
-                                          
+
 
 
 
@@ -220,8 +220,9 @@ overflow: auto;">
 
 
 
+        <h1>{{ $details->id }}</h1>
 
-
+        <h1>UI</h1>
 </body>
 
 </html>
