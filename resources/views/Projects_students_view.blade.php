@@ -193,12 +193,12 @@
       position: absolute;
       border-bottom:black">
                 <a href="{{ route('logout') }}">
-                        <i class="fa-solid fa-arrow-right-from-bracket" style="font-size:35px; 
+                        <i class="fa-solid fa-arrow-right-from-bracket" style="font-size:35px;
       position: absolute;
       left:2%;
       top:25%;"></a></i>
 
-                <i class="fa-solid fa-graduation-cap" style="font-size:35px; 
+                <i class="fa-solid fa-graduation-cap" style="font-size:35px;
       position: absolute;
       left:10%;
       top:25%;"></i>
@@ -222,11 +222,11 @@
       border-radius: 40px;
   ">
                 <div class="UserName_Icon">
-                        <i class="fa-solid fa-user-tie" style="font-size:40px; 
+                        <i class="fa-solid fa-user-tie" style="font-size:40px;
     position: absolute;
     left:80%;
     top:4%;
-        
+
          "></i>
                         <div class="UserName" style="
     position:absolute;
@@ -244,9 +244,9 @@
   position: absolute;
   border-radius: 20px;
   border-style: none;
-  
+
 " onclick=Home_button()>
-                        <i class="fa-solid fa-house" style="font-size:35px; 
+                        <i class="fa-solid fa-house" style="font-size:35px;
         right:4%;
         top:20%;
         position: absolute;"></i>
@@ -261,14 +261,14 @@
         border-radius: 20px;
         border-style: none;
 " onclick=Settings_button()>
-                        <i class="fa-solid fa-gear" style="font-size:35px; 
+                        <i class="fa-solid fa-gear" style="font-size:35px;
         right:4%;
         top:20%;
         position: absolute;"></i>
                         <h2>الإعدادات </h2>
                 </button>
 
-     
+
                 <button class="Proposals" style="background-color: #97CADB;
         height: 9%;
         left: 4%;
@@ -278,7 +278,7 @@
         border-radius: 20px;
         border-style: none;
 " onclick=proposals_view_button()>
-                        <i class="fa-regular fa-newspaper" style="font-size:35px; 
+                        <i class="fa-regular fa-newspaper" style="font-size:35px;
         right:4%;
         top:20%;
         position: absolute;"></i>
@@ -296,7 +296,7 @@
         border-radius: 20px;
         border-style: none;
 ">
-                        <i class="fa-regular fa-copy" style="font-size:35px; 
+                        <i class="fa-regular fa-copy" style="font-size:35px;
         right:4%;
         top:20%;
         position: absolute;"></i>
@@ -311,7 +311,7 @@
         border-radius: 20px;
         border-style: none;
 " >
-                        <i class="fa-solid fa-thumbtack" style="font-size:35px; 
+                        <i class="fa-solid fa-thumbtack" style="font-size:35px;
         right:4%;
         top:20%;
         position: absolute;"></i>
@@ -326,7 +326,7 @@
         border-radius: 20px;
         border-style: none;
 ">
-                        <i class="" style="font-size:35px; 
+                        <i class="" style="font-size:35px;
         right:4%;
         top:20%;
         position: absolute;"></i>
@@ -401,13 +401,13 @@ overflow: auto;">
                                                 </button></td>
 
                                         <td><button onclick="EnterTheRating(this);" href="{{ route('projects_view.set_grade',[$projects->id]) }}" class="btn-primary" style="background-color: rgb(93, 202, 93)">
-                                        ادخال التقييم        
+                                        ادخال التقييم
                                 </button></td>
                                         <td><button onclick="ReplaceTheExaminer(this);" href="{ route('proposals_view.modify', ['accept', $proposals->title, $proposals->students]) }" class="btn-primary" style="background-color: rgb(93, 202, 93)">
-                                                       تغيير مشرف  
+                                                       تغيير مشرف
                                                 </button></td>
                                          <td><button onclick="setEnableState(this);" href="{ route('projects_view.set_enable') }" style="background-color: rgb(211, 69, 69)">
-                                                        إيقاف مشروع   
+                                                        إيقاف مشروع
                                                  </button></td>
 
                                 </tr>
@@ -457,7 +457,7 @@ overflow: auto;">
                 </div>
         </div>
 
-        
+
         <form id="f1" name="f1" method="post" enctype="multipart/form-data">
                 @csrf</form>
         <div class="modal-container" id="modalContainer2">
@@ -508,7 +508,7 @@ overflow: auto;">
                     <h2> إضافةإعلان </h2>
                   </div>
                   <div class="form-group">
-                    
+
                     <input type="text" id="report-input-content" name="report-input-content" required maxlength="300" minlength="20" form="f4"
                     style="width: 100%; height: 150px;">
                  </div>
@@ -537,8 +537,8 @@ const modalContainer3 = document.getElementById('modalContainer3');
 const openModalBtn4 = document.getElementById('openModalBtn4');
 const closeModalBtn4 = document.getElementById('closeModalBtn4');
 const modalContainer4 = document.getElementById('modalContainer4');
-     
-  
+
+
 
     closeModalBtn1.addEventListener('click', () => {
       modalContainer1.classList.remove('show');
@@ -556,7 +556,7 @@ const modalContainer4 = document.getElementById('modalContainer4');
     closeModalBtn4.addEventListener('click', () => {
       modalContainer4.classList.remove('show');
     });
-    
+
 
         function proposals_view_button() {
                 window.location.href = "{{route('proposals_view.index')}}" //"http://127.0.0.1:8000/proposals_view";
@@ -593,7 +593,7 @@ const modalContainer4 = document.getElementById('modalContainer4');
         }
         function setEnableState(button) {
                 const route = button.getAttribute('href');
-                
+
         }
 </script>
 

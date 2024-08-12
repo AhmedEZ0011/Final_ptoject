@@ -33,15 +33,15 @@ class AdvertisementController  extends Controller {
                 if($target_id != null) {
                     if($target->member()->get()[0]->id == $target_id) {
                         array_push($targets, $target->member()->get()[0]);
-                        $targets[count($targets)-1]["seen"] = $target->seen == 1; 
+                        $targets[count($targets)-1]["seen"] = $target->seen == 1;
                     }
                 }
                 else {
                     array_push($targets, $target->member()->get()[0]);
-                    $targets[count($targets)-1]["seen"] = $target->seen == 1; 
+                    $targets[count($targets)-1]["seen"] = $target->seen == 1;
                 }
-                
-                
+
+
             }
             array_push($adsData, [
                 "id" => $ad->id,
@@ -55,7 +55,7 @@ class AdvertisementController  extends Controller {
             ]);
         }
         return $adsData;
-                    
+
     }
 
     public function remove(Request $request, $ad_id, $target_id) {
@@ -66,7 +66,7 @@ class AdvertisementController  extends Controller {
     }
 
     public function edit(Request $request, $ad_id) {
-        
+
     }
 
     public function seen(Request $request, $ad_id, $target_id) {

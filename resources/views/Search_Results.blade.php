@@ -209,18 +209,20 @@ overflow: auto;">
                         <table style="position: absolute;
         top: 20%;
         border=0.5">
-                              
-                              
-                               
-                              
+
+
+
+
+
                         </table>
                 </div>
         </div>
-      
-  
 
-    
 
+
+        <h1>{{ $details->id }}</h1>
+
+        <h1>UI</h1>
 </body>
 
 </html>

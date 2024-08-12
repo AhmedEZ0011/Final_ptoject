@@ -5,31 +5,15 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>محرك بحث مشاريع التخرج</title>
 </head>
-<script src="script.js"></script>
+{{-- <script src="script.js"></script> --}}
+<script src="/js/main.js"></script>
 <script src="https://kit.fontawesome.com/258bab96e7.js" crossorigin="anonymous"></script>
-<script>document.getElementById('dropdown-button').addEventListener('click', function(event) {
-    event.stopPropagation();
-    const dropdownList = document.getElementById('dropdown-list');
-    dropdownList.classList.toggle('hidden');
-});
+<script>
 
-document.addEventListener('click', function() {
-    const dropdownList = document.getElementById('dropdown-list');
-    if (!dropdownList.classList.contains('hidden')) {
-        dropdownList.classList.add('hidden');
-    }
-});
 
-document.getElementById('dropdown-list').addEventListener('click', function(event) {
-    event.stopPropagation();
-});
 
-document.querySelectorAll('#dropdown-list li').forEach(function(item) {
-    item.addEventListener('click', function() {
-        document.getElementById('search-input').value = this.textContent;
-        document.getElementById('dropdown-list').classList.add('hidden');
-    });
-});
+
+
 function performSearch() {
             var selectedOption = document.getElementById("options").value;
             var searchTerm = document.getElementById("search").value;
@@ -61,7 +45,7 @@ body, html {
     justify-content: center;
     align-items: center;
      z-index: -1;
- 
+
 }
 
 .header {
@@ -104,7 +88,7 @@ button:hover {
     top: 25%;
     text-align: center;
     position: absolute;
-   
+
 }
 
 h1 {
@@ -222,19 +206,19 @@ h1 {
 }
 </style>
 <body>
-    
+
     <div class="container">
         <div class="header">
             <div class="login">
                 <button id="signup-button" onclick=Sing_up_button()>إنشاء حساب</button>
                 <div class="dropdown-content">
-                <button id="login-button" onclick=Student_Sign_In()>تسجيل الدخول ک 
+                <button id="login-button" onclick=Student_Sign_In()>تسجيل الدخول ک
                     </button>
-                    
+
                     </div>
-                    
+
                 </div>
-                
+
                 </div>
                 <div>
                 @if (session('active'))
@@ -242,23 +226,24 @@ h1 {
                     {{ session('active') }}
                 </div>
                 </div>
-              @endif 
+              @endif
         <div class="centered-flex">
             <img src="Mortarboard.ico" alt="Description of the image" width="50" height="30">
         </div>
         <div class="content">
         <div class="welcome" style="text-align: center; margin-top: 50px;">
             <h1>مرحبًا بكم في نظام إدارة وأرشفة مشاريع التخرج
-                 بكلية تقنية المعلومات - جامعة طرابلس 
+                 بكلية تقنية المعلومات - جامعة طرابلس
             </h1>
             <p style="font-size: 20px; color: #000000; margin-top: 20px; top:29%;">
-   يوفر نظامنا بيئة متكاملة لإدارة وأرشفة مشاريع التخرج الخاصة بكم. 
+   يوفر نظامنا بيئة متكاملة لإدارة وأرشفة مشاريع التخرج الخاصة بكم.
    يمكنكم من خلاله البحث بسهولة عن المشاريع السابقة .
             </p>
         </div>
-            <div>     
+
+            <div >
                <label for="options"></label>
-                   <select id="options">
+                   <select id="options" onchange="clearList();" style=" height:90%">
                     <option value="ALL">جميع الأقسام</option>
                     <option value="WT">تقنيات الإنترنت </option>
                      <option value="SE">هندسة برمجيات</option>
@@ -266,21 +251,68 @@ h1 {
                    <option value="IS">نظم المعلومات</option>
                     <option value="MC ">الحوسبة المتنقلة</option>
                          </select>
-                    <input type="text" id="search" placeholder="ابحث...">
-                    <button onclick="performSearch()" class="fa-sharp fa-solid fa-magnifying-glass" ></button>
-                    <div id="searchResults"></div>
+                    <input name="search" type="text" id="search"
+                           placeholder="ابحث..." list="browsers"
+                           oninput="sendData(); checkSelected();">
+                    <datalist id="browsers">
+                      </datalist>
+                    <button onclick="sendData()" class="fa-sharp fa-solid fa-magnifying-glass" ></button>
+
             </div>
         </div>
-    </div> 
+    </div>
 </div>
 </body>
 <script>
+    let deptValue = document.querySelector("select#options");
+    let textValue = document.querySelector("input[name='search']");
+    let list = document.querySelector("#browsers");
+
+    async function sendData() {
+
+        const payload = {
+            search: textValue.value,
+            departement: deptValue.value
+        };
+
+        await fetch("Search/"+payload.search+"/"+payload.departement+"/", {
+          method: "GET",
+          headers: {
+            'Content-Type': 'application/json',
+            "X-CSRF-Token": "{{csrf_token()}}"
+          }
+        }).then(e => e.json())
+        .then(async e => {
+
+            let elements = [];
+            e.forEach(project => {
+                elements.push(createChild('option', {
+                    value: project.title, text: project.id
+                }))
+            });
+            list.replaceChildren();
+            modifyElement(list, {
+                child: elements
+            });
+        });
+
+
+    }
+    function checkSelected() {
+        [...list.children].forEach(child => {
+            if(child.value == textValue.value)
+                location.href = "/Search/view/"+child.innerText+"/";
+        });
+    }
+    function clearList() {
+        list.replaceChildren();
+    }
 function Sing_up_button() {
-    window.location.href = "http://127.0.0.1:8000/Sing_up" 
+    window.location.href = "http://127.0.0.1:8000/Sing_up"
   }
   function Student_Sign_In() {
-    window.location.href = "http://127.0.0.1:8000/Student_Sign_In" 
+    window.location.href = "http://127.0.0.1:8000/Student_Sign_In"
   }
- 
+
       </script>
 </html>

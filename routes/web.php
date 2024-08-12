@@ -54,7 +54,7 @@ Route::resource("/Faculty_project_students", 'App\Http\Controllers\FacultyProjec
 Route::post('/Sign_in.login', [SignInController::class, 'login'])->name("login");
 
                 //<<<<<<<Officer_Home>>>>>>>>
-			
+
 Route::get('/drop_request_account/{id}/', function($id) {
 	$state = User::find($id)->delete();
 	$isdeleted = unlink(public_path().'/users/'.$id);
@@ -86,12 +86,10 @@ Route::name('proposals_view.')->group(function() {
 });
 
 Route::name('projects_view.')->group(function() {
-//
     Route::post('set_examiner/{project_id}/', [ProjectsStudentsViewController::class, "setExaminers"])->name('set_examiner');
     Route::post('set_supervisor/{project_id}/', [ProjectsStudentsViewController::class, "setSupervisor"])->name('set_supervisor');
     Route::post('set_enable/{project_id}/', [ProjectsStudentsViewController::class, "setEnableState"])->name('set_enable');
     Route::post('set_grade/{project_id}/', [ProjectsStudentsViewController::class, "setGrade"])->name('set_grade');
-    
 });
 
 
