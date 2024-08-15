@@ -23,7 +23,7 @@ body {
     height: 100%;
     font-family: Arial, sans-serif;
     box-sizing: border-box;
-    background-image: url('MainImg.jpg');
+    background-image: url('log.jpg');
     background-size: cover;
     background-position: center;
     background-repeat: no-repeat;
@@ -161,13 +161,17 @@ text-decoration: none;
     color: #000000; /* لون الأيقونة */
 
 }
+#logo{
+    position: absolute;
+    top: 34px;
+    left: 50px;
+    weight: 50;
+    height: 30; /* لون الأيقونة */
+}
 </style>
 <body>
-
-    <nav class="navbar">
-        
-        </div>
-    </nav>
+        <img src="Mortarboard.ico" alt="Description of the image" width="50" height="30">
+    </div>
     <div class="login-container">
         <h2>تسجيل الدخول</h2>
         <form  action="{{ route('Sign_in.login') }}" method="post">

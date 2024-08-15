@@ -1,4 +1,3 @@
-
 <!DOCTYPE html>
 <html lang="ar">
 <head>
@@ -7,6 +6,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <script src="https://kit.fontawesome.com/258bab96e7.js" crossorigin="anonymous"></script>
     <title>إنشاء حساب جديد</title>
+    
     <style>
         body {
             font-family: Arial, sans-serif;
@@ -20,15 +20,16 @@
             margin: 0;
         }
         .form-container {
-            background-color:  #97cadba8;
-            padding: 20px;
-            border-radius: 20px;
+            background: linear-gradient(130deg, #a2b3c5, #dadada);  /* Slightly transparent white */
+            padding: 2rem;
+            border-radius: 10px;
             box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
-            width: 450px;
+            width: 100%;
+            max-width: 450px;
         }
         .form-container h2 {
             text-align: center;
-            margin-bottom: 20px;
+            margin-bottom: 1rem;
         }
         .form-container input, .form-container select {
             width: 95%;
@@ -38,16 +39,7 @@
             border: 1px solid #ccc;
             border-radius: 5px;
         }
-        .form-container .gender {
-            
-            display: flex;
-            justify-content: space-around;
-            margin: 15px 0;
-        }
-        .form-container .gender input {
-            width: auto;
-            margin: 0 5px;
-        }
+
         .form-container button {
             width: 100%;
             padding: 10px;
@@ -92,6 +84,15 @@
     weight: 50;
     height: 30; /* لون الأيقونة */
 }
+.button-wrapper {
+            display: flex;
+            justify-content: center;
+            margin-top: 1rem;
+        }
+        .button-wrapper button {
+            width: 40%; /* Set the button width */
+            padding: 0.75rem; /* Adjust padding if needed */
+        }
     </style>
 </head>
 <body>
@@ -102,9 +103,9 @@
         <h2>إنشاء حساب جديد</h2>
         <form  action="{{route('Sing_up.store')}}" method="post"> 
             @csrf
-            <input type="hidden" name="_token" value="{{ csrf_token() }}" />
+            <input type="hidden" name="_token" value="{{ csrf_token() }}"  />
             <div>     
-                <label for="options" placeholder="اختر نوع الحساب"></label>
+                <label for="options" placeholder="اختر نوع الحساب" ></label>
                     <select name="type" placeholder="اختر">
 
                        
@@ -117,7 +118,7 @@
            <input type="text" name="name" placeholder="الاسم الثلاثي" required>
              <input type="text" name="id" placeholder="رقم القيد" required>
               <div>     
-                <label for="options" placeholder=" القسم "></label>
+                <label for="options" placeholder=" القسم " width="120%"></label>
                     <select name="department_id" placeholder="القسم">
                         @foreach($departments as $department)
                             <option value="{{$department->id}}">{{$department->name}}</option>
@@ -134,7 +135,9 @@
             </div>
           
             
-            <button type="submit" value="submit">إنشاء حساب</button>
+            <div class="button-wrapper">
+                <button type="submit" value="submit" class="btn btn-primary">إنشاء حساب</button>
+            </div>
             
         </form>
         
@@ -152,3 +155,4 @@ document.getElementById('myForm').addEventListener('submit', function(event) {
     </div>
 </body>
 </html>
+

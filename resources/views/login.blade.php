@@ -28,7 +28,7 @@
     }
 
     .login-container {
-        background: #97cadbe1;
+        background: linear-gradient(130deg, #a2b3c5, #dadada); /* Blue gradient background */
         padding: 30px;
         border-radius: 8px;
         width: 300px;
@@ -184,12 +184,21 @@
         /* لون الأيقونة */
 
     }
+    #logo{
+    position: absolute;
+    top: 1.5%;
+    left: 1%;
+    weight: 50;
+    height: 30; /* لون الأيقونة */
+}
 </style>
 
 <body>
+    <div id="logo"> 
+        <img src="Back.ico" alt="Description of the image" width="50" height="34" >
+        <img src="Mortarboard.ico" alt="Description of the image" width="50" height="30">
+    </div>
 
-
-   
     <div class="login-container">
         @if ($errors->has('incorrectData'))
             <span class="text-danger" style="color:red;">{{ $errors->first('incorrectData') }}</span>

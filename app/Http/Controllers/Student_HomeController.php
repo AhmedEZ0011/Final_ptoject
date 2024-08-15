@@ -20,7 +20,7 @@ class Student_HomeController extends Controller
             return view('Student_Home', [
                 'username' => $account->name,
                 'userid' => $account->id,
-                'decision' => Proposal::where('decision', '=', 'REFUSED')->get() ,
+                //'decision' => Project::where('status', '=', 'IDLE')->get() ,
                 'project_list' => Project::getProjectsListWithCondition('ps.user_id = '.Auth::user()->id) ,
                // 'project_list' => Project::getArchive('ps.user_id = '.Auth::user()->id) ,
             ]);

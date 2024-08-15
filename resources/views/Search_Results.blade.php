@@ -185,40 +185,44 @@
 </head>
 
 <body>
-
-
-        </div>
-        <div class="Contener" style="background: #F1F0FB;
-width: 98%;
-height: 97%;
-left: 1%;
-top: 1%;
-position: absolute;
-border-radius: 20px;
-border-style: solid;
-border-color:grey;
-overflow: auto;">
-                <div>
-
-                        <div style="position: absolute;
-                     right: 46%;
-                     top: 2%;">
-                                <i style="font-size: 27px;"> مشاريع مؤرشفة   </i>
-                        </div>
-                        <br>
-                        <table style="position: absolute;
-        top: 20%;
-        border=0.5">
-                              
-                              
-                               
-                              
-                        </table>
-                </div>
-        </div>
+        <div class="advertisementContener"
+        style="background: #F1F0FB;
+        width: 98%;
+        height: 98%;
+        left: 1%;
+        top: 2%;
+        position: absolute;
+        overflow: auto;
+        ">
+        <form method="GET" action="{{ route('Search.Searchforproject') }}">
+                <input type="text" name="query" placeholder="ابحث هنا...">
+                <button type="submit">بحث</button>
+            </form>
+            <table style="position: absolute;
+            top: 17%;
+            border=0.5;"> 
+            
+            <tr>
+                <td>عنوان المقترح</td>
+                <td> أسم القسم </td>
+                <td>ملف</td>
+                
+           </tr>
+            @if(count($project_list))
+            @foreach($project_list as $project)
+            <tr>
+            
+              <td>{{$project->title}}</td>
+              <td>{{$project->department_name}}</td>
+              <td><a download href="/users/{{$project->Student1_ID}}/proposals/{{$project->Student1_Path}}">Download</a></td>
+            </tr>
+            
       
+           @endforeach
+           @endif
+            </table>    
   
-
+        </div>
     
 
 </body>

@@ -1,39 +1,32 @@
-
 <!DOCTYPE html>
 <html>
-
 <head>
-
-
-
-
-  <title></title>
-  <meta name="csrf-token" content="{{csrf_token()}}">
+  <title>Student Home</title>
+  <meta name="csrf-token" content="{{ csrf_token() }}">
   <meta name="viewport" content="width=device-width, initial-scale=1">
+  
+  <!-- FontAwesome for icons -->
   <script src="https://kit.fontawesome.com/258bab96e7.js" crossorigin="anonymous"></script>
 
+  <!-- Bootstrap CSS -->
+  <link href="https://stackpath.bootstrapcdn.com/bootstrap/5.3.0/css/bootstrap.min.css" rel="stylesheet">
+  
+  <!-- jQuery -->
+  <script src="https://code.jquery.com/jquery-3.7.1.min.js"></script>
+ 
+    </script>
   <style>
-    /* Container styles */
-    table {
-                        width: 100%;
-                        border-collapse: collapse;
-                }
+    /* General styles */
+    body {
+      font-family: Arial, sans-serif;
+      text-align: right;
+      direction: rtl;
+      background-position: center;
+      padding: 0;
+      margin: 0;
+      background-attachment: fixed;
+    }
 
-                th,
-                td {
-                        text-align: left;
-                        padding: 8px;
-                        border-bottom: 1px solid #ddd;
-                        text-align: center;
-                }
-                h4{
-                        text-align: center;
-                        margin: 8px;
-                  }
-                  h5{
-                        text-align: center;
-                        margin: 8px;
-                  }
     .container {
       display: flex;
       justify-content: center;
@@ -43,88 +36,8 @@
       z-index: 2;
     }
 
-    /* Button styles */
-
-
-    /* Modal container styles */
-    .modal-container {
-      position: absolute;
-      inset: 0;
-      background-color: rgba(0, 0, 0, 0.5);
-      display: flex;
-      justify-content: center;
-      align-items: center;
-      opacity: 0;
-      visibility: hidden;
-      transition: opacity 0.3s, visibility 0.3s;
-      z-index: 1;
-
-    }
-
-    /* Modal styles */
-    .modal {
-
-      background-color: rgba(255, 255, 255, 0.589);
-      padding: 20px;
-      border-radius: 10px;
-      box-shadow: 0 0 10px rgba(0, 0, 0, 0.3);
-      transform: scale(0.8);
-      transition: transform 0.3s;
-      height: 60%;
-      width: 50%;
-
-    }
-
-    /* Show modal styles */
-    .modal-container.show {
-      opacity: 1;
-      visibility: visible;
-    }
-
-    .modal-container.show .modal {
-      transform: scale(1);
-    }
-
-    body {
-      font-family: Arial, sans-serif;
-      background-color: #f5f5f5;
-      text-align: right;
-      direction: rtl;
-      margin: 0;
-      padding: 0;
-    }
-
-    a{
+    a {
       color: #000;
-    }
-   
-    .container {
-      display: flex;
-      justify-content: center;
-      align-items: center;
-      height: 100vh;
-    }
-
-    .popup {
-      background-color: #d3d0d0;
-      padding: 30px;
-      border-radius: 10px;
-      box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
-      width: 500px;
-      height: 200px;
-      position: relative;
-
-    }
-
-    .close-btn {
-      position: absolute;
-      top: 15px;
-      right: 15px;
-      background: none;
-      border: none;
-      font-size: 18px;
-      cursor: pointer;
-      color: red;
     }
 
     .header {
@@ -138,8 +51,7 @@
       font-size: 40px;
       width: 40px;
       height: 40px;
-      margin-right: 15px;
-      margin-left: 15px;
+      margin: 0 15px;
     }
 
     .header h2 {
@@ -148,10 +60,70 @@
     }
 
     .form-group {
-      margin-bottom: 2px;
+      margin-bottom: 20%;
       position: relative;
     }
+    .container {
+            position: fixed;
+            justify-content: center;
+            height: 97vh;
+            width: 40%;
+            right: 10%;
+        }
+        .sidebar {
+            background: linear-gradient(130deg, #a2b3c5, #dadada); 
+            position: fixed;
+            right: 0%;
+            width: 20%;
+            height: 100%;
+            border-radius: 5px;
+            padding: 20px;
+            overflow-y: auto; 
+            top:0%;
+            border:#4a8cdb;
+            box-shadow: 0 4px 8px rgba(19, 108, 168, 0.2); /* Adding shadow */
+        }
+              .sidebar button {
+            display: flex;
+            align-items: center;
+            justify-content: flex-start;
+            background: linear-gradient(130deg, #a2b3c5, #dadada); 
+            border: none;
+            border-radius: 10px;
+            width: 100%;
+            padding: 5px;
+            margin-bottom: 10px;
+            color: #000;
+            text-align: right;
+            transition: background-color 0.3s, transform 0.2s;
+            font-family: "monospace", sans-serif; /* تحسين نوع الخط */
+            font-size: 20px; /* تحسين حجم الخط */
+            position: relative; /* لضبط المواضع الداخلية */
+        }
 
+        .sidebar button:hover {
+            background-color: #85b8c2;
+            transform: scale(1.02);
+        }
+
+        .sidebar button:active {
+            background-color:#6f9db7;
+            transform: scale(0.80);
+        }
+
+        .sidebar img {
+          margin-right: 3px; /* المسافة بين الأيقونة والنص */
+            font-size: 20px;
+        }
+
+        .sidebar h2 {
+         font-size: 25px; /* حجم النص */
+         margin: 5%; /* إزالة الهوامش الافتراضية */
+         line-height: 0; /* تحسين المسافة بين الأسطر */
+}
+.mb-4.text-center {
+    text-align: center;
+}
     .form-group input {
       width: calc(100% - 10px);
       padding: 1px;
@@ -177,228 +149,242 @@
     button[type="submit"]:hover {
       background-color: #4a8cdb;
     }
+
     .flash-message {
-    border-radius: 5px;
-    font-size: 25px;
-    text-align: center;
-    width: 78%;
-    height: 7%;
-    left: 0%;
-    top: 13%;
-    position: absolute;
-    
+      border-radius: 5px;
+      font-size: 25px;
+      text-align: center;
+      width: 78%;
+      height: 7%;
+      left: 0%;
+      top: 13%;
+      position: absolute;
+    }
+
+    .flash-success {
+      background-color: #d4edda;
+      color: #155724;
+      border: 1px solid #c3e6cb;
+      z-index: 10;
+    }
+
+    /* Modal styles */
+    .modal-container {
+    position: fixed; /* استخدام fixed بدلاً من absolute لتغطية الشاشة بالكامل حتى عند التمرير */
+    inset: 0;
+    background-color: rgba(0, 0, 0, 0.5);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    opacity: 0;
+    visibility: hidden;
+    transition: opacity 0.3s, visibility 0.3s;
+    z-index: 1050; /* z-index أعلى لضمان ظهورها فوق جميع العناصر الأخرى */
+    width: 100%; /* التأكد من تغطية العرض بالكامل */
+    height: 100vh; /* التأكد من تغطية الارتفاع بالكامل */
+    background-attachment: fixed;
 }
 
-.flash-success {
-    background-color: #d4edda;
-    color: #155724;
-    border: 1px solid #c3e6cb;
-    z-index: 10;
-}
 
-
-  </style>
-
-</head>
-
-<body style=" background:#F1F0FB;   
-    
-">
-
-  <div class="heder" style="
+    .modal {
+      background-color: rgba(255, 255, 255, 0.589);
+      padding: 20px;
+      border-radius: 10px;
+      box-shadow: 0 0 10px rgba(0, 0, 0, 0.3);
+      transform: scale(0.8);
+      transition: transform 0.3s;
       width: 100%;
-      height: 10%;
+    
+    }
+
+    .modal-container.show {
+      opacity: 1;
+      visibility: visible;
+      width: 70%;
+     
+    }
+
+    .modal-container.show .modal {
+      transform: scale(1);
+      width: 70%;
+      
+    }
+
+    .close-btn {
       position: absolute;
-      border-bottom: 5px solid black;
+      top: 15px;
+      right: 15px;
+      background: none;
+      border: none;
+      font-size: 18px;
+      cursor: pointer;
+      color: red;
+    }
+    #logo{
+    position: absolute;
+    left: 2%;
+    weight: 50;
+    height: 30; /* لون الأيقونة */
+}
+.header {
+      display: flex;
       align-items: center;
-      background-color: #fff;
-   ">
+      justify-content: center;
+      margin-bottom: 1px;
+    }
 
-    <a href="{{ route('logout') }}">
-      <i name="logout" class="fa-solid fa-arrow-right-from-bracket" style="font-size:35px; 
-      position: absolute;
-      left:2%;
-      top:25%;" action="{{route('Sing_up.store')}}" method="post"></i>
-    </a>
-    
-      <i name="settings" class="fa-solid fa-gear" style="font-size:25px; 
-      position: absolute;
-      left:8%;
-      top:40%;" onclick="Settings_button()"></i>
-    
-      <i class="fa-solid fa-bell" style="font-size:25px; 
-      position: absolute;
-      left:13%;
-      top:40%;"></i>
-    
-    <div class="Home-page" style="left:60%;
-     top:30%;
-     font-size:40px;
-      position: absolute;">
-      <i class="fa-solid fa-house"></i>   الرئيسية
-    </div>
-  </div>
-  
+    .header .cloud-icon {
+      font-size: 40px;
+      width: 40px;
+      height: 40px;
+      margin: 0 15px;
+    }
 
+    .header h2 {
+      margin: 0;
+      font-size: 40px;
+    }
   
+  </style>
+</head>
+<body style="  position: fixed;
+top: 0;
+left: 0;
+width: 100%;
+height:100vh ;
+margin: 0;
+background-image: url('MainImg.jpg');
+background-size: cover;
+background-repeat: no-repeat;
+background-position: center;
+opacity: 0.9;
+z-index: -1;">
+   <div class="header d-flex justify-content-between align-items-center px-4" 
+   style="  background: linear-gradient(130deg, #dadada,  #a2b3c5);  border-bottom-width: 2px; width: 80%; margin-right: 20%; padding: 0.5% 0;">
+   <div id="logo"> 
+     <img src="SMS.ico" class="mx-2" width="50" height="40">
+     <img src="Mortarboard.ico" alt="Description of the image" width="50" height="34" top=0% >
+     <img src="Back.ico" alt="Description of the image" width="50" height="34" ></div>
+     <img src="Home Screen.ico" alt="Student Icon" style="font-size: 100%; font-family:Arial, Helvetica, sans-serif;left:3%"></div>
   @if (session('status'))
   <div class="flash-message flash-success">
-      {{ session('status') }}
-  </div>
-@endif
+    {{ session('status') }}
+  </div></div>
  
+  @endif
 
-
-
-  <div class="ContenFunction" style="
-      width: 20%;
-      height: 89%;
-      right:1px;
-      top: 11%;
-      position: absolute;
-      background: #97CADB;
-      border-radius: 5px;
-      
-  ">
-    <div class="UserName_Icon">
-      <i class="fa-solid fa-user-tie" style="font-size:20px; 
-    position: absolute;
-    left:80%;
-    top:9%;
-        
-         "></i>
-      <div class="UserName" style="
-    position:absolute;
-    font-size:20px;
-    right:27%;
-    top:12%;
-    ">{{ Auth::user()->name}}</div>
+  <div class="container">
+    <div class="sidebar">
+      <div class="mb-4 text-center" style="top: 5%">
+      <img src="Student Male.ico" >
+      <div class="user-name" style="font-size: 25px;">{{ Auth::user()->name }}</div>
     </div>
-    <button name="Home" class="Home" style="
-  background-color: #97CADB;
-  height: 9%;
-  left: 4%;
-  right:4%;
-  top: 25%;
-  position: absolute;
-  border-radius: 20px;
-  border-style: none;
-  
-  " onclick="Home_button()">
-
-      <img src="Group.ico" style="font-size:35px; 
-        right:4%;
-        top:20%;
-        position: absolute;
-        ">
-      <h2 style=" right:30px; ">الرئيسية</h2>
+    <br><br>
+    <button name="Home" class="btn btn-light d-flex align-items-center mb-2" style="background-color: #97CADB; border-radius: 20px; border-style: none;" onclick="Home_button()">
+      <img src="Home Screen.ico" >
+      <h2>الرئيسية</h2>
     </button>
-
-    <button id="openModalBtn1" class="btn-primary" style="background-color: #97CADB;
-  height: 9%;
-  left: 4%;
-  right:4%;
-  top: 40%;
-  position: absolute;
-  border-radius: 20px;
-  border-style: none;
-">
-      <i class="fa-solid fa-cloud-arrow-down" style="font-size:25px; 
-  right:2%;
-  top:20%;
-  position: absolute;"></i>
-      <h2 style=" right:10px; ">تقديم مقترح</h2>
+    <br>
+    <button class="btn btn-light mb-2" style="background-color: #97CADB;" onclick="Settings_button()">
+        <img src="Settings.ico" style="font-size:35px;">
+        <h2>الإعدادات</h2>
     </button>
-
-
-
- 
-      
-   
-    <button id="openModalBtn4" class="btn-primary" style="background-color: #97CADB;
-        height: 9%;
-        left: 4%;
-        right:4%;
-        top: 55%;
-        position: absolute;
-        border-radius: 20px;
-        border-style: none;
-        
-"onclick=Search_button()>
-      <i class="fa-solid fa-book-bookmark" style="font-size:35px; 
-        right:-1%;
-        top:20%;
-        position: absolute;"></i>
-
-      <h2>مشاريع مؤرشفة </h2>
- <button id="openModalBtn3" class="btn-primary" style="background-color: #97CADB;
-        height: 9%;
-        left: 4%;
-        right:4%;
-        top: 70%;
-        position: absolute;
-        border-radius: 20px;
-        border-style: none;
-">
-      <i class="fa-solid fa-file-arrow-down" style="font-size:35px; 
-        right:4%;
-        top:20%;
-        position: absolute;"></i>
+    <br>
+    <button id="openModalBtn1" class="btn btn-light d-flex align-items-center mb-2" style="background-color: #97CADB; border-radius: 20px; border-style: none;">
+      <img src="Add List.ico">
+      <h2>تقديم مقترح</h2>
+    </button>
+    <br>
+    <button id="openModalBtn4" class="btn btn-light d-flex align-items-center mb-2" style="background-color: #97CADB; border-radius: 20px; border-style: none;" onclick="Search_button()">
+      <img src="Product Documents2.ico">
+      <h2>مشاريع مؤرشفة</h2>
+    </button>
+    <br>
+    <button id="openModalBtn3" class="btn btn-light d-flex align-items-center mb-2" style="background-color: #97CADB; border-radius: 20px; border-style: none;">
+      <img src="Upload Document.ico">
       <h2>تحميل التوثيق</h2>
     </button>
+    <br>
+    <button id="openModalBtn3" class="btn btn-light d-flex align-items-center mb-2" style="background-color: #97CADB; border-radius: 20px; border-style: none;">
+    <img src="Logout.ico">
+                <a href="{{ route('logout') }}" class="btn" style=" text-decoration: none; font-size: 25px; /* حجم النص */
+                margin: 5%; 
+                line-height: 0;">
+                 تسجيل خروج 
+              </a> 
+            </button>
   </div>
-
-
-
-
-  
- 
-  <div class="advertisementContener"
-  style="background: #F1F0FB;
-  width: 70%;
-  height: 80%;
-  left: 5%;
-  top: 15%;
-  position: absolute;
-  border-radius: 20px;
-  border-style: solid;
-  border-color:grey;
-  z-index: 1;">
-        @if(count($project_list))
-        @foreach($project_list as $project)
-        <tr>
-          <h4 style="color: #44dd68">معلومات عن المقترح المقبول </h4>
-         <h4> أسم المقترح</h4> 
-         <td><h5>{{$project->title}}</h5></td>
-        </tr>
-        <tr>
-          <h4>أسم المشرف  الخاص بك </h4>  
-          <td><h5>{{$project->Supervier_Name}}</h5></td>
-        </tr>
-        <tr>
-          <h4>حالة المشروع</h4>
-          <td><h5>{{$project->status}}</h5></td>
-        </tr>
-        <tr>
-          <h4>تاريخ قبول المقترح </h4> 
-          <td><h5>{{$project->Created_AT}}</h5></td>
-        </tr>
-        
-  
-       @endforeach
-       @endif
- 
+  <div class="content" style="background: #F1F0FB; width: 50%; height: 70%; left: -50%; top: 10%; position: absolute; border-radius: 20px; z-index: 1; display: flex; justify-content: center; align-items: flex-start; padding-top: px;">
+    <div style="text-align: center;">
+    <h4>اسم المشرف الخاص بك </h4>
+    <img src="Name Tag.ico"style="transform: translateY(-30%);max-width: 100%;">
+    </div>
+    @if(count($project_list))
+    @foreach($project_list as $project)
+    <div>
+      <h4 style="color: #44dd68;">معلومات عن المقترح المقبول</h4>
+      <h4>اسم المقترح</h4>
+      <h5>{{ $project->title }}</h5>
+      <h4>اسم المشرف الخاص بك</h4>
+      <h5>{{ $project->Supervier_Name }}</h5>
+      <h4>حالة المشروع</h4>
+      <h5>{{ $project->status }}</h5>
+      <h4>تاريخ قبول المقترح</h4>
+      <h5>{{ $project->Created_AT }}</h5>
+    </div>
+    @endforeach
+    @endif
   </div>
-
-
-
+  <div class="content " style="background: #F1F0FB; width: 50%; height: 70%; left: 10%; top: 10%; position: absolute; border-radius: 20px; z-index: 1; display: flex; justify-content: center; align-items: flex-start; padding-top: px;">
+    <div style="text-align: center;">
+      <h4>معلومات المقترح </h4>
+    <img src=" Header.ico"style="transform: translateY(-30%); max-width: 100%;">
+  </div>
+    @if(count($project_list))
+    @foreach($project_list as $project)
+    <div>
+      <h4 style="color: #44dd68;">معلومات عن المقترح المقبول</h4>
+      <h4>اسم المقترح</h4>
+      <h5>{{ $project->title }}</h5>
+      <h4>اسم المشرف الخاص بك</h4>
+      <h5>{{ $project->Supervier_Name }}</h5>
+      <h4>حالة المشروع</h4>
+      <h5>{{ $project->status }}</h5>
+      <h4>تاريخ قبول المقترح</h4>
+      <h5>{{ $project->Created_AT }}</h5>
+    </div>
+    @endforeach
+    @endif
+  </div>
+  <div class="content " style="background: #F1F0FB; width: 50%; height: 70%; left: -110%; top: 10%; position: absolute; border-radius: 20px; z-index: 1; display: flex; justify-content: center; align-items: flex-start; padding-top: px;">
+    <div style="text-align: center;">
+      <h4>تاريخ قبول المقترح</h4>
+    <img src="Calendar.ico" style="transform: translateY(-30%); max-width: 100%;">
+    </div>
+     @if(count($project_list))
+    @foreach($project_list as $project)
+    <div>
+      <h4 style="color: #44dd68;">معلومات عن المقترح المقبول</h4>
+      <h4>اسم المقترح</h4>
+      <h5>{{ $project->title }}</h5>
+      <h4>اسم المشرف الخاص بك</h4>
+      <h5>{{ $project->Supervier_Name }}</h5>
+      <h4>حالة المشروع</h4>
+      <h5>{{ $project->status }}</h5>
+      <h4>تاريخ قبول المقترح</h4>
+      <h5>{{ $project->Created_AT }}</h5>
+    </div>
+    @endforeach
+    @endif
+  </div>
   <form action="{{ route('Student_Home.addproposal') }}" id="f0" name="f0" method="post" enctype="multipart/form-data">
-    @csrf</form>
+    @csrf
+  </form>
   <div class="modal-container" id="modalContainer1">
     <div class="modal">
       <button class="close-btn" id="closeModalBtn1">❌</button>
-      <div class="header">
-        <img src="Upload to the Cloud.png" class="cloud-icon"></img>
+      <div class="header d-flex align-items-center justify-content-center mb-3">
+        <img src="Add List.ico" class="cloud-icon" alt="Upload Icon">
         <h2>تقديم مقترح</h2>
       </div>
       <div class="form-group">
@@ -406,81 +392,68 @@
         <input type="text" id="proposal-input-title" name="proposal-input-title" required maxlength="200" minlength="5" form="f0">
         <label for="proposal-input-subtitle">عنوان المقترح الفرعي</label>
         <input type="text" id="proposal-input-subtitle" name="proposal-input-subtitle" maxlength="200" minlength="5" form="f0">
-        <label for="proposal-input-subtitle">أدخل رقم القيد الطالب الثاني</label>
+        <label for="proposal-input-student2">أدخل رقم القيد الطالب الثاني</label>
         <input type="text" id="proposal-input-student2" name="proposal-input-student2" form="f0">
-        <label for="proposal-input-subtitle">أدخل رقم قيد الطالب الثالث </label>
+        <label for="proposal-input-student3">أدخل رقم قيد الطالب الثالث</label>
         <input type="text" id="proposal-input-student3" name="proposal-input-student3" form="f0">
-        <label for="proposal-input1"></label>
-        <input type="file" form="f0" name="proposal" id="proposal-input1" placeholder="ادخل مقترح المشروع">
+        <label for="proposal-input1">أدخل مقترح المشروع</label>
+        <input type="file" form="f0" name="proposal" id="proposal-input1">
       </div>
       <button type="submit" form="f0">إرسال</button>
     </div>
   </div>
 
-
   <form action="{{ route('Student_Home.addDocumentation') }}" id="f2" name="f2" method="post" enctype="multipart/form-data">
-    @csrf</form>
+    @csrf
+  </form>
   <div class="modal-container" id="modalContainer3">
     <div class="modal">
       <button class="close-btn" id="closeModalBtn3">❌</button>
-      <div class="header">
-        <img src="Upload to the Cloud.png" class="cloud-icon"></img>
+      <div class="header d-flex align-items-center justify-content-center mb-3">
+        <img src="Upload Document.ico" class="cloud-icon" alt="Upload Icon">
         <h2>رفع التوثيق</h2>
       </div>
       <div class="form-group">
-        <label for="proposal-input3"></label>
-        <input type="file" form="f2" name="documentation" id="proposal-input3" placeholder="رفع التوثيق ">
+        <label for="proposal-input3">رفع التوثيق</label>
+        <input type="file" form="f2" name="documentation" id="proposal-input3">
       </div>
       <button type="submit" form="f2">إرسال</button>
     </div>
   </div>
-  
-  </div>
 
   <script>
-
-
     function Settings_button() {
-      window.location.href = "http://127.0.0.1:8000/Student_Settings"
+      window.location.href = "http://127.0.0.1:8000/Student_Settings";
     }
 
     function Home_button() {
-      window.location.href = "http://127.0.0.1:8000/Student_Home"
+      window.location.href = "http://127.0.0.1:8000/Student_Home";
     }
+
     function Search_button() {
-      window.location.href = "http://127.0.0.1:8000/Search"
+      window.location.href = "http://127.0.0.1:8000/Search";
     }
 
+    $(document).ready(function() {
+      $('#openModalBtn1').click(function() {
+        $('#modalContainer1').addClass('show');
+      });
 
-    const openModalBtn1 = document.getElementById('openModalBtn1');
-    const closeModalBtn1 = document.getElementById('closeModalBtn1');
-    const modalContainer1 = document.getElementById('modalContainer1');
+      $('#closeModalBtn1').click(function() {
+        $('#modalContainer1').removeClass('show');
+      });
 
-    openModalBtn1.addEventListener('click', () => {
-      modalContainer1.classList.add('show');
+      $('#openModalBtn3').click(function() {
+        $('#modalContainer3').addClass('show');
+      });
+
+      $('#closeModalBtn3').click(function() {
+        $('#modalContainer3').removeClass('show');
+      });
     });
-
-    closeModalBtn1.addEventListener('click', () => {
-      modalContainer1.classList.remove('show');
-    });
-
-    
-
-    const openModalBtn3 = document.getElementById('openModalBtn3');
-    const closeModalBtn3 = document.getElementById('closeModalBtn3');
-    const modalContainer3 = document.getElementById('modalContainer3');
-
-    openModalBtn3.addEventListener('click', () => {
-      modalContainer3.classList.add('show');
-    });
-
-    closeModalBtn3.addEventListener('click', () => {
-      modalContainer3.classList.remove('show');
-    });
-
-  
-
   </script>
+  
+  <!-- Bootstrap JS -->
+  <script src="https://stackpath.bootstrapcdn.com/bootstrap/5.3.0/js/bootstrap.bundle.min.js"></script>
 </body>
-
 </html>

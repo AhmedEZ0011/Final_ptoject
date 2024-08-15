@@ -12,7 +12,6 @@
     const dropdownList = document.getElementById('dropdown-list');
     dropdownList.classList.toggle('hidden');
 });
-
 document.addEventListener('click', function() {
     const dropdownList = document.getElementById('dropdown-list');
     if (!dropdownList.classList.contains('hidden')) {
@@ -30,7 +29,7 @@ document.querySelectorAll('#dropdown-list li').forEach(function(item) {
         document.getElementById('dropdown-list').classList.add('hidden');
     });
 });
-function performSearch() {
+            function performSearch() {
             var selectedOption = document.getElementById("options").value;
             var searchTerm = document.getElementById("search").value;
             var searchResultsDiv = document.getElementById("searchResults");
@@ -39,7 +38,15 @@ function performSearch() {
             // For simplicity, let's just display the selected option and search term
             searchResultsDiv.innerHTML = "Selected Option: " + selectedOption + "<br>";
             searchResultsDiv.innerHTML += "Search Term: " + searchTerm;
-        }</script>
+        }
+            function Sing_up_button() {
+                window.location.href = "http://127.0.0.1:8000/Sing_up" 
+              }
+              function Student_Sign_In() {
+                window.location.href = "http://127.0.0.1:8000/Student_Sign_In" 
+              }
+             
+</script>
 <style>
 body, html {
     margin: 0;
@@ -55,6 +62,7 @@ body, html {
 }
 
 .container {
+     
     text-align: center;
     height: 50%;
     display: flex;
@@ -91,7 +99,7 @@ button:hover {
 
 
 .content {
-    background-color: #77c1dab2;
+    background: linear-gradient(130deg, #a2b3c5, #dadada); 
     padding: 70px;
     border-radius: 75px;
     display: flex;
@@ -99,12 +107,12 @@ button:hover {
     justify-content: center;
     align-items: center;
     width: 550px;
-    height: 200px;
+    height: 300px;
     left: 28%;
     top: 25%;
     text-align: center;
     position: absolute;
-   
+
 }
 
 h1 {
@@ -186,6 +194,7 @@ h1 {
     margin-right: 0px;
     flex: 3;
     width: 120px;
+    height: 40px;
 }
 #search{
     border:none;
@@ -219,24 +228,28 @@ h1 {
     top: 14%;
     width: 98%;
     left: 1%;
+}#logo{
+    position: absolute;
+    top: 1.5%;
+    left: 1%;
+    weight: 50;
+    height: 30; /* لون الأيقونة */
 }
 </style>
 <body>
-    
+    <div id="logo"> 
+        <img src="Mortarboard.ico" alt="Description of the image" width="50" height="30">
+    </div>
     <div class="container">
         <div class="header">
             <div class="login">
-                <button id="signup-button" onclick=Sing_up_button()>إنشاء حساب</button>
+                <button id="signup-button" onclick=Sing_up_button()> إنشاء حساب</button>
                 <div class="dropdown-content">
-                <button id="login-button" onclick=Student_Sign_In()>تسجيل الدخول ک 
-                    </button>
-                    
-                    </div>
-                    
-                </div>
-                
-                </div>
-                <div>
+                <button id="login-button" onclick=Student_Sign_In()>تسجيل الدخول   </button>
+                    </div> 
+                </div>  
+            </div>
+ <div>
                 @if (session('active'))
                 <div class="flash-message flash-success">
                     {{ session('active') }}
@@ -244,14 +257,15 @@ h1 {
                 </div>
               @endif 
         <div class="centered-flex">
-            <img src="Mortarboard.ico" alt="Description of the image" width="50" height="30">
+            <form  action="{{route('Search_Results.index')}}" method="post"> 
+                @csrf
         </div>
         <div class="content">
-        <div class="welcome" style="text-align: center; margin-top: 50px;">
+        <div class="welcome" style="text-align: center; margin-top: 50px;  font-size: 50%;">
             <h1>مرحبًا بكم في نظام إدارة وأرشفة مشاريع التخرج
                  بكلية تقنية المعلومات - جامعة طرابلس 
             </h1>
-            <p style="font-size: 20px; color: #000000; margin-top: 20px; top:29%;">
+            <p style="font-size: 20px; color: #000000; margin-top: 0; top:20%;">
    يوفر نظامنا بيئة متكاملة لإدارة وأرشفة مشاريع التخرج الخاصة بكم. 
    يمكنكم من خلاله البحث بسهولة عن المشاريع السابقة .
             </p>
@@ -267,20 +281,12 @@ h1 {
                     <option value="MC ">الحوسبة المتنقلة</option>
                          </select>
                     <input type="text" id="search" placeholder="ابحث...">
-                    <button onclick="performSearch()" class="fa-sharp fa-solid fa-magnifying-glass" ></button>
+                    <button type="submit" value="submit" class="fa-sharp fa-solid fa-magnifying-glass" ></button>
                     <div id="searchResults"></div>
             </div>
         </div>
     </div> 
+</form>
 </div>
 </body>
-<script>
-function Sing_up_button() {
-    window.location.href = "http://127.0.0.1:8000/Sing_up" 
-  }
-  function Student_Sign_In() {
-    window.location.href = "http://127.0.0.1:8000/Student_Sign_In" 
-  }
- 
-      </script>
 </html>

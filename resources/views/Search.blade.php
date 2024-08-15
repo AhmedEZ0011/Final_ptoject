@@ -8,6 +8,16 @@
         <script src="https://kit.fontawesome.com/258bab96e7.js" crossorigin="anonymous"></script>
         <!--Get your own code at fontawesome.com-->
         <style>
+
+body {
+      font-family: Arial, sans-serif;
+      text-align: right;
+      direction: rtl;
+      background-position: center;
+      padding: 0;
+      margin: 0;
+      background-attachment: fixed;
+    }
                 table {
                         width: 100%;
                         border-collapse: collapse;
@@ -184,16 +194,18 @@
         </style>
 </head>
 
-<body>
-        <div class="advertisementContener"
-        style="background: #F1F0FB;
-        width: 98%;
-        height: 98%;
-        left: 1%;
-        top: 2%;
-        position: absolute;
-        overflow: auto;
-        ">
+<body style="  position: fixed;
+top: 0;
+left: 0;
+width: 100%;
+height:100vh ;
+margin: 0;
+background-image: url('MainImg.jpg');
+background-size: cover;
+background-repeat: no-repeat;
+background-position: center;
+opacity: 0.9;
+z-index: -1;">
         <form method="GET" action="{{ route('Search.Searchforproject') }}">
                 <input type="text" name="query" placeholder="ابحث هنا...">
                 <button type="submit">بحث</button>
