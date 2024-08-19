@@ -208,9 +208,9 @@
             <input type="hidden" name="_token" value="{{ csrf_token() }}" />
             <div>
                 <label for="accountType" ></label>
-                    <select id="accountType" >
+                    <select id="accountType" name = "type">
 
-                       
+
                             <option value="4">طالب</option>
                             <option value="3">أستاذ</option>
 

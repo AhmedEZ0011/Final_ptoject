@@ -25,7 +25,7 @@
     }
 </style>
 </head>
-<body 
+<body
     style=" background:#F1F0FB;">
 
 <div class="heder"
@@ -38,30 +38,30 @@ style="
       border-bottom: 5px solid black;" >
       <a href="{{ route('logout') }}">
       <i class="fa-solid fa-arrow-right-from-bracket"
-      style="font-size:35px; 
+      style="font-size:35px;
       position: absolute;
       left:2%;
       top:25%;"></i></a>
-     
+
       <i class="fa-solid fa-gear"
-      style="font-size:25px; 
+      style="font-size:25px;
       position: absolute;
       left:8%;
       top:40%;" onclick="Setting()"
       ></i>
-      
+
       <i class="fa-solid fa-bell"
-      style="font-size:25px; 
+      style="font-size:25px;
       position: absolute;
       left:13%;
       top:40%;"></i>
-      
+
      <div class="Home-page"
      style="left:50%;
      top:18;
      font-size:40px;
       position: absolute;">
-      <i class="fa-solid fa-people-group">طلبة مشاريع</i>
+      <i class="fa-solid fa-people-group"> مشاريع</i>
                      </div>
     </div>
 
@@ -77,16 +77,16 @@ style="
       position: absolute;
       background: #4B80AB;
       border-radius: 40px;
-      
+
   "
 >
   <div class="UserName_Icon">
     <i class="fa-solid fa-user-tie"
-    style="font-size:40px; 
+    style="font-size:40px;
     position: absolute;
     left:80%;
     top:9%;
-        
+
          "></i>
   <div class="UserName"
   style="
@@ -105,14 +105,14 @@ style="
   position: absolute;
   border-radius: 20px;
   border-style: none;
-  
-"onclick="Home_button()">  
+
+"onclick="Home_button()">
 <i class="fa-solid fa-house"
-style="font-size:35px; 
+style="font-size:35px;
         right:4%;
         top:20%;
         position: absolute;"></i>
-        <h2>الرئيسية</h2>    
+        <h2>الرئيسية</h2>
 </button>
 <button class="Graduation-project-students"
         style="background-color: #4B80AB;
@@ -123,13 +123,13 @@ style="font-size:35px;
         position: absolute;
         border-radius: 20px;
         border-style: none;
-"onclick=Faculty_project_students_button()>  
+"onclick=Faculty_project_students_button()>
 <i class="fa-solid fa-people-group"
-style="font-size:35px; 
+style="font-size:35px;
         right:-3%;
         top:29%;
         position: absolute;"></i>
-               <h2>طلبة المشاريع</h2>
+               <h2> المشاريع</h2>
 </button>
 
 
@@ -142,13 +142,13 @@ top: 43%;
 position: absolute;
 border-radius: 20px;
 border-style: none;
-"onclick=Faculty_proposal_students_button()>  
+"onclick=Faculty_proposal_students_button()>
 <i class="fa-regular fa-newspaper"
-style="font-size:35px; 
+style="font-size:35px;
         right:4%;
         top:32%;
         position: absolute;"></i>
-        <h2>المقترحات</h2> 
+        <h2>المقترحات</h2>
 </button>
 <button class="Project-document"
 style="background-color: #4B80AB;
@@ -159,13 +159,13 @@ top: 55%;
 position: absolute;
 border-radius: 20px;
 border-style: none;
-"onclick=Faculty_documentation_button()>  
+"onclick=Faculty_documentation_button()>
 <i class="fa-regular fa-copy"
-style="font-size:35px; 
+style="font-size:35px;
         right:4%;
         top:20%;
         position: absolute;"></i>
-        <h2>ملفات التوثيق</h2> 
+        <h2>ملفات التوثيق</h2>
 </button>
 </div>
 
@@ -189,43 +189,25 @@ overflow: auto;">
     border=0.5">
                                 <tr>
 
-                                   
-                                    <td>طلبة المشروع </td>
-                                    <td>عنوان </td>
-                                    <td>تاريخ تقديم المقترح</td>
+                                    <td> موعد مناقشة النهائية    </td>
+                                    <td> حالة المشروع   </td>
+                                    <td> طالب يتبع قسم </td>
+                                    <td> تاريخ بدء في المشروع   </td>
+                                    <td>  عنوان المشروع  </td>
 
 
                             </tr>
                             @if(count($projects_list))
                             @foreach($projects_list as $projects)
-                            
-                                        
 
-                                    @php
-                                    $studentsList = [
-                                    "First" => ["ID" => $projects->Student1_ID, "Name" => $projects->Student1_Name],
-                                    "Second" => ["ID" => $projects->Student2_ID, "Name" => $projects->Student2_Name],
-                                    "Third" => ["ID" => $projects->Student3_ID, "Name" => $projects->Student3_Name]
-                                    ];
-                                    //$students = explode(",", $studentsList);
-                                    echo "<td>
-                                            <ul style='text-align:right'>";
-                                                    foreach ($studentsList as $student) {
-                                                    if($student["ID"] == null) {
-                                                    continue;
-                                                    }
-                                                    else {
-                                                    echo "<li>".$student["Name"].
-                                                            " (".$student["ID"]. ")</li>";
-                                                    }
-                                                    }
-                                                    echo "</ul>
-                                    </td>";
-                                    @endphp
 
-                                    <td>{{$projects->title}}</td>
+
+
+                                    <td>{{$projects->end_date}}</td>
+                                    <td>{{$projects->status}}</td>
+                                    <td>{{$projects->department_name}}</td>
                                     <td>{{$projects->Created_AT}}</td>
-
+                                    <td>{{$projects->title}}</td>
 
                             </tr>
                             @endforeach
@@ -237,7 +219,7 @@ overflow: auto;">
                     </table>
             </div>
     </div>
-    
+
 </body>
 <script>
 
@@ -258,7 +240,7 @@ overflow: auto;">
                         window.location.href ="http://127.0.0.1:8000/Faculty_documentation"
                                 }
 
-     </script> 
+     </script>
 
 
 

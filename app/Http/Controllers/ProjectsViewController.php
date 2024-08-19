@@ -5,16 +5,17 @@ namespace App\Http\Controllers;
 use Illuminate\Http\Request;
 use App\Models\Project;
 use Illuminate\Support\Facades\DB;
-
+use Illuminate\Support\Facades\Auth;
 class ProjectsViewController extends Controller
 {
     public function index()
     {
-       
-        return view('Projects_view' 
+        if (auth()->check()) {
+            $account = Auth::user();
+        return view('Projects_view'
             ,['projects_list' => DB::select('SELECT title, group_concat(user_id) students, created_at, group_concat(path) path FROM gpmsnew.proposals where decision = \'PENDING\' group by title, created_at;')]
-        );
-        
+        );}
+
     }
 
     public function modify(Request $request, $state, $title, $students) {

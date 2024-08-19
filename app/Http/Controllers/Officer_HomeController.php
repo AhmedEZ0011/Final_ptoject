@@ -13,17 +13,19 @@ use Exception;
 
 class Officer_HomeController extends Controller
 {
-   
+
     public function index()
     {
         if(!Auth::check())
             redirect('login');
         return view('Officer_Home', [
-            'inactive_users' => User::where('active', '=', 0)->whereIn('type', [3, 4])->get()
+    'inactive_users' => User::where('active', '=', 0)
+    ->whereIn('type', [3, 4])
+    ->where('department_id', Auth::user()->department_id)->get()
            ]);
     }
     public function drop($id) {
-        
+
     }
 
     public function AddAdvertisement(Request $request) {

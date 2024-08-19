@@ -303,8 +303,12 @@
   position: absolute;
   border-radius: 20px;
   border-style: none;
-">
-      <i class="fa-solid fa-cloud-arrow-down" style="font-size:25px;
+"
+
+
+
+
+     > <i class="fa-solid fa-cloud-arrow-down" style="font-size:25px;
   right:2%;
   top:20%;
   position: absolute;"></i>
@@ -393,6 +397,9 @@
 
 
 
+
+
+
   <form action="{{ route('Student_Home.addproposal') }}" id="f0" name="f0" method="post" enctype="multipart/form-data">
     @csrf</form>
   <div class="modal-container" id="modalContainer1">
@@ -405,11 +412,11 @@
       <div class="form-group">
         <label for="proposal-input-title">عنوان المقترح</label>
         <input type="text" id="proposal-input-title" name="proposal-input-title" required maxlength="200" minlength="5" form="f0">
-        <label for="proposal-input-subtitle">عنوان المقترح الفرعي</label>
+        <label for="proposal-input-subtitle">عنوان المقترح باللغة الإنجليزية </label>
         <input type="text" id="proposal-input-subtitle" name="proposal-input-subtitle" maxlength="200" minlength="5" form="f0">
-        <label for="proposal-input-subtitle">أدخل رقم القيد الطالب الثاني</label>
+        <label for="proposal-input-subtitle">أدخل رقم القيد الطالب التاني في المقترح  </label>
         <input type="text" id="proposal-input-student2" name="proposal-input-student2" form="f0">
-        <label for="proposal-input-subtitle">أدخل رقم قيد الطالب الثالث </label>
+        <label for="proposal-input-subtitle">أدخل رقم قيد الطالب الثالث في المقترح   </label>
         <input type="text" id="proposal-input-student3" name="proposal-input-student3" form="f0">
         <label for="proposal-input1"></label>
         <input type="file" form="f0" name="proposal" id="proposal-input1" placeholder="ادخل مقترح المشروع">
@@ -430,7 +437,7 @@
       </div>
       <div class="form-group">
         <label for="proposal-input3"></label>
-        <input type="file" form="f2" name="documentation" id="proposal-input3" placeholder="رفع التوثيق ">
+        <input type="file" form="f2" name="documentation" id="proposal-input3" placeholder="رفع التوثيق " accept="application/pdf">
       </div>
       <button type="submit" form="f2">إرسال</button>
     </div>
@@ -458,10 +465,11 @@
     const closeModalBtn1 = document.getElementById('closeModalBtn1');
     const modalContainer1 = document.getElementById('modalContainer1');
 
+    @if ($decision !== "PENDING" && $decision !== 'ACCEPTED')
     openModalBtn1.addEventListener('click', () => {
       modalContainer1.classList.add('show');
     });
-
+    @endif
     closeModalBtn1.addEventListener('click', () => {
       modalContainer1.classList.remove('show');
     });
@@ -626,6 +634,10 @@
     setInterval(async () => {
       await loadNotifications();
     }, 15000);
+
+
+
+
   </script>
 </body>
 

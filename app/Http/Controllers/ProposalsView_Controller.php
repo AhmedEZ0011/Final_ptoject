@@ -1,7 +1,7 @@
 <?php
 
 namespace App\Http\Controllers;
-
+use Illuminate\Support\Facades\Auth;
 use Illuminate\Http\Request;
 use App\Models\Proposal;
 use Illuminate\Support\Facades\DB;
@@ -14,7 +14,7 @@ class ProposalsView_Controller extends Controller
     //
     public function index()
     {
-        
+
         return view('Proposals_view', [
             'proposal_list' => Proposal::getProposalsList(),//DB::select('SELECT title, group_concat(user_id) students, created_at, group_concat(path) path FROM '.env('DB_DATABASE').'.proposals where decision = \'PENDING\' group by title, created_at;'),
             'teachers' => User::where('type', '=', 3)->get()
@@ -30,7 +30,7 @@ class ProposalsView_Controller extends Controller
         if($request->input('project-supoervisor-id', null) != null)
             $proposal->superviser_id = $request->input('project-supoervisor-id');
         $proposal->save();
-        
+
         if($state == "accept")
             return $this->store($request, $data->ProposalID);
 

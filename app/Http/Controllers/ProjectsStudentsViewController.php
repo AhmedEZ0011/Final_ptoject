@@ -1,8 +1,9 @@
 <?php
 
 namespace App\Http\Controllers;
-
+use Illuminate\Support\Facades\Auth;
 use Illuminate\Http\Request;
+use App\Http\Controllers\AdvertisementController;
 use Illuminate\Support\Facades\DB;
 use App\Models\Project;
 use App\Models\Proposal;
@@ -12,10 +13,12 @@ class ProjectsStudentsViewController extends Controller
 {
     public function index()
     {
+        if (auth()->check()) {
+            $account = Auth::user();
         return view('Projects_students_view',[
             'projects_list' => Project::getProjectsList(),
             'teachers' => User::where('type', '=', 3)->get()
-       ]);
+       ]);}
     }
 
     public function setExaminers(Request $request, $project_id) {
@@ -36,11 +39,21 @@ class ProjectsStudentsViewController extends Controller
                                 WHERE j.id = $project_id AND p.superviser_id = $examinerID;");
 
             if($count[0]->Count != 0) continue;
+            $data = [
+                "ad_title" => "You fucked up",
+                "ad_content" => "Surprise MF",
+                "ad_target" => "",
+                "ad_specific_target" => $examinerID
+            ];
+
+            AdvertisementController::sendForSpecific($data);
             Trial_examiner::create([
                 'examiner_id' => $examinerID,
                 'project_id' => (int)$project_id,
                 'comments' => null
             ]);
+
+
         }
         return $this->index();
     }

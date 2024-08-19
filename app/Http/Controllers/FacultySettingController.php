@@ -12,23 +12,25 @@ use Illuminate\Support\Facades\Auth as LaravelAuth;
 
 class FacultySettingController extends Controller
 {
-   
+
     public function index()
     {
+    if (auth()->check()) {
+        $account = Auth::user();
         return view ('/Faculty_Setting');
     }
+}
     public function update(Request $request)
-{   
+{
     $account = User::find(Auth::user()->id);
     $account->name = $request->input('name');
     $account->email = $request->input('email');
-    $account->password = $request->input('password');
+    $account->password = Hash::make($request->input('password'));
      $account->save();
      return redirect("Faculty_Home");
-}       
-       
-    }
-        
-        
+}
 
-    
+    }
+
+
+

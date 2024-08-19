@@ -197,13 +197,13 @@ position: absolute;
 border-radius: 20px;
 border-style: solid;
 border-color:grey;
-overflow: auto;">
+overflow: auto;display:none">
                 <div>
 
                         <div style="position: absolute;
                      right: 46%;
                      top: 2%;">
-                                <i style="font-size: 27px;"> مشاريع مؤرشفة   </i>
+
                         </div>
                         <br>
                         <table style="position: absolute;
@@ -219,8 +219,18 @@ overflow: auto;">
         </div>
 
 
-
+        <td>{{$details->title}}</td>
+        <td>{{$details->department_name}}</td>
         <h1>{{ $details->id }}</h1>
+        @auth()
+            @php
+                $lastFile = app('App\Models\Project')
+                                ->getLastModifiedFile($details->Student1_ID);
+            @endphp
+            <a download="documentation_{{ $details->id }}.pdf" href="/users/{{$details->Student1_ID}}/documentation/{{$lastFile}}">get documentation</a>
+        @else
+        <a download="proposal_{{ $details->id }}.pdf" href="/users/{{$details->Student1_ID}}/proposals/{{$details->Student1_Path}}">get proposal</a>
+        @endauth()
 
         <h1>UI</h1>
 </body>

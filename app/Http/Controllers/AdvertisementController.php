@@ -76,4 +76,41 @@ class AdvertisementController  extends Controller {
         return response()->json(["Message" => (!$result) ? "Process failed" : "Done"]);
     }
 
+    public static function sendForSpecific($data) {
+        // {ad_title: "", ad_content: "",
+        // ad_target: "", ad_specific_target: ""}
+        $data["ad_target"] = "SPECIFIC";
+        $data["ad_enabled"] = 1;
+        $request = Request::create('/path', 'POST', $data);
+        $this->AddAdvertisement($request);
+    }
+
+    public static function AddAdvertisement(Request $request) {
+        $advertisement = Advertisement::create([
+           'title' =>  $request->input('ad_title'),
+           'content' =>  $request->input('ad_content'),
+           'targets' =>  $request->input('ad_target'),
+           'owner' =>  Auth::user()->id,
+           'enabled' => $request->input('ad_enabled') == "on" ? 1 : 0
+        ]);
+
+
+        if($request->input('ad_target') == 'SPECIFIC') {
+
+            $selectedAudience = explode(' ', $request->input('ad_specific_target'));
+            foreach($selectedAudience as $item) {
+                try {
+                    AdvertisementMember::create([
+                        'ad_id' => $advertisement->id,
+                        'target_id' => (int)$item,
+                        'seen' => 0
+                    ]);
+                }
+                catch(Exception $e) {
+                    //return redirect('Officer_Home')->withErrors(['ad_error' => "Failed to add the current user($item) to audience group"]);
+                }
+            }
+        }
+    }
+
 }

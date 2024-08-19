@@ -7,12 +7,13 @@ use App\Http\Controllers\AdvertisementController;
 use App\Http\Controllers\SingupController;
 //use Illuminate\Routing\Route;
 use Illuminate\Support\Facades\Route;
-//use App\Http\Controllers\StudentSignInController;
+use App\Http\Controllers\StudentSignInController;
 use App\Http\Controllers\SignInController;
-
+use Illuminate\Support\Facades\File;
 use App\Models\User;
 use App\Http\Controllers\Student_HomeController;
-
+use App\Http\Controllers\OfficerSettingsController;
+use App\Http\Controllers\FacultySettingController;
 use App\Http\Controllers\SearchController;
 use App\Http\Controllers\SearchResultsController;
 use App\Http\Controllers\StudentSettingController;
@@ -39,8 +40,14 @@ Route::name('Officer_Home.')->prefix("Officer_Home")->group(function() {
 });
 Route::resource("/Faculty_proposal_students", 'App\Http\Controllers\FacultyProposalStudentsController')
 ->names("Faculty_proposal_students");;
-Route::resource("/Faculty_Setting", 'App\Http\Controllers\FacultySettingController');
-Route::resource("/OfficerSettings", 'App\Http\Controllers\OfficerSettingsController');
+Route::name('Faculty_Setting.')->prefix('Faculty_Setting')->group(function() {
+	Route::get('/', [FacultySettingController::class, 'index'])->name("index");
+	Route::post('update/', [FacultySettingController::class, 'update'])->name("update");
+});
+Route::name('OfficerSettings.')->prefix('OfficerSettings')->group(function() {
+	Route::get('/', [OfficerSettingsController::class, 'index'])->name("index");
+	Route::post('update/', [OfficerSettingsController::class, 'update'])->name("update");
+});
 Route::resource("/Student_Sign_In", 'App\Http\Controllers\Student_Sign_InController');
 Route::resource("Student_Home", 'App\Http\Controllers\Student_HomeController')
 ->names("Student_Home");
@@ -56,13 +63,14 @@ Route::resource("/Projects_students_view", 'App\Http\Controllers\ProjectsStudent
 ->names("Projects_students_view");
 Route::resource("/Faculty_project_students", 'App\Http\Controllers\FacultyProjectStudentsController')
 ->names("Faculty_project_students");
-Route::resource("/Search_Results", 'App\Http\Controllers\SearchResultsController')
-->names("Search_Results");
+// Route::resource("/Search_Results", 'App\Http\Controllers\SearchResultsController')
+// ->names("Search_Results");
 
 Route::name('Search.')->prefix("Search")->group(function() {
     Route::get('/{search}/{dept}/', [SearchController::class, "index"])->name('index');
-    Route::get('/view/{pid}/', [SearchController::class, "view"])->name('view');
 });
+
+Route::get('/searchview/{id}/', [SearchController::class, "view"])->name('view-search-result');
 Route::get('/', 'App\Http\Controllers\HomeController@index');
 
 
@@ -72,16 +80,28 @@ Route::post('/Sign_in.login', [SignInController::class, 'login'])->name("login")
 
                 //<<<<<<<Officer_Home>>>>>>>>
 
-Route::get('/drop_request_account/{id}/', function($id) {
-	$state = User::find($id)->delete();
-	$isdeleted = unlink(public_path().'/users/'.$id);
-        if($state && $isdeleted) {
-            return redirect ()->route('Officer_Home.index');
-        }
-        else {
-			return redirect ()->route('Officer_Home.index');
-        }
-})->name("drop_request_account");
+                Route::delete('/drop_request_account/{id}', function($id) {
+                    $user = User::find($id);
+
+                    if ($user) {
+                        $state = $user->delete();
+                        $directoryPath = public_path('users/' . $id);
+
+                        if (File::exists($directoryPath)) {
+                            $isDeleted = File::deleteDirectory($directoryPath);
+                        } else {
+                            $isDeleted = true; // Directory does not exist, so consider it deleted
+                        }
+
+                        if ($state && $isDeleted) {
+                            return redirect()->route('Officer_Home.index')->with('status', 'Account and directory deleted successfully!');
+                        } else {
+                            return redirect()->route('Officer_Home.index')->withErrors(['error' => 'Failed to delete account or directory']);
+                        }
+                    } else {
+                        return redirect()->route('Officer_Home.index')->withErrors(['error' => 'User not found']);
+                    }
+                })->name("drop_request_account");
 Route::get('/add_request_account/{id}/', function($id) {
 	$state = User::find($id);
         if($state) {

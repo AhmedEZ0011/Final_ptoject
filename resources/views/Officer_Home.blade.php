@@ -357,9 +357,11 @@ overflow: auto;">
                                 @if($inactive_users->count())
                                 @foreach($inactive_users as $user)
                                 <tr>
-                                        <td><button style="background-color: rgb(218, 55, 55);">
-                                                        <a target="self" href="{{route('drop_request_account', $user->id)}}">رفض</a>
-                                                </button></td>
+                                        <td><form method="POST" action="{{ route('drop_request_account', $user->id) }}">
+                                            @csrf
+                                            @method('DELETE')
+                                            <button type="submit" style="background-color: rgb(218, 55, 55);">رفض</button>
+                                        </form></td>
                                         <td><button style="background-color: rgb(93, 202, 93)">
                                                         <a href="{{route('add_request_account', $user->id)}}">قبول</a>
                                                 </button></td>

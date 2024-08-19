@@ -25,7 +25,7 @@
     }
 </style>
 </head>
-<body 
+<body
     style=" background:#F1F0FB;">
 
 <div class="heder"
@@ -38,30 +38,30 @@ style="
       border-bottom: 5px solid black;" >
       <a href="{{ route('logout') }}">
       <i class="fa-solid fa-arrow-right-from-bracket"
-      style="font-size:35px; 
+      style="font-size:35px;
       position: absolute;
       left:2%;
       top:25%;"></i></a>
-     
+
       <i class="fa-solid fa-gear"
-      style="font-size:25px; 
+      style="font-size:25px;
       position: absolute;
       left:8%;
       top:40%;" onclick="Setting()"
       ></i>
-      
+
       <i class="fa-solid fa-bell"
-      style="font-size:25px; 
+      style="font-size:25px;
       position: absolute;
       left:13%;
       top:40%;"></i>
-      
+
      <div class="Home-page"
      style="left:50%;
      top:18;
      font-size:40px;
       position: absolute;">
-      <i class="fa-solid fa-people-group">طلبة مشاريع</i>
+      <i class="fa-solid fa-people-group">ط</i>
                      </div>
     </div>
 
@@ -77,16 +77,16 @@ style="
       position: absolute;
       background: #4B80AB;
       border-radius: 40px;
-      
+
   "
 >
   <div class="UserName_Icon">
     <i class="fa-solid fa-user-tie"
-    style="font-size:40px; 
+    style="font-size:40px;
     position: absolute;
     left:80%;
     top:9%;
-        
+
          "></i>
   <div class="UserName"
   style="
@@ -105,14 +105,14 @@ style="
   position: absolute;
   border-radius: 20px;
   border-style: none;
-  
-"onclick="Home_button()">  
+
+"onclick="Home_button()">
 <i class="fa-solid fa-house"
-style="font-size:35px; 
+style="font-size:35px;
         right:4%;
         top:20%;
         position: absolute;"></i>
-        <h2>الرئيسية</h2>    
+        <h2>الرئيسية</h2>
 </button>
 <button class="Graduation-project-students"
         style="background-color: #4B80AB;
@@ -123,9 +123,9 @@ style="font-size:35px;
         position: absolute;
         border-radius: 20px;
         border-style: none;
-"onclick=Faculty_project_students_button()>  
+"onclick=Faculty_project_students_button()>
 <i class="fa-solid fa-people-group"
-style="font-size:35px; 
+style="font-size:35px;
         right:-3%;
         top:29%;
         position: absolute;"></i>
@@ -142,13 +142,13 @@ top: 43%;
 position: absolute;
 border-radius: 20px;
 border-style: none;
-"onclick=Faculty_proposal_students_button()>  
+"onclick=Faculty_proposal_students_button()>
 <i class="fa-regular fa-newspaper"
-style="font-size:35px; 
+style="font-size:35px;
         right:4%;
         top:32%;
         position: absolute;"></i>
-        <h2>المقترحات</h2> 
+        <h2>المقترحات</h2>
 </button>
 <button class="Project-document"
 style="background-color: #4B80AB;
@@ -159,13 +159,13 @@ top: 55%;
 position: absolute;
 border-radius: 20px;
 border-style: none;
-"onclick=Faculty_documentation_button()>  
+"onclick=Faculty_documentation_button()>
 <i class="fa-regular fa-copy"
-style="font-size:35px; 
+style="font-size:35px;
         right:4%;
         top:20%;
         position: absolute;"></i>
-        <h2>ملفات التوثيق</h2> 
+        <h2>ملفات التوثيق</h2>
 </button>
 </div>
 
@@ -187,20 +187,20 @@ overflow: auto;">
     <table style="position: absolute;
     top: 10%;
     border=0.5">
-           
+
            <tr>
-                <td> </td>
-                <td> </td>
+
                 <td>ملف  </td>
                 <td>الطلبة المقدمين</td>
                 <td>عنوان </td>
                 <td>تاريخ تقديم  </td>
-                
+
 
         </tr>
         @if(count($proposal_list))
-        
+
         @foreach($proposal_list as $proposals)
+        <td><a download href="/users/{{$proposals->Student1_ID}}/proposals/{{$proposals->Student1_Path}}">Download</a></td>
 
                 @php
                         $routeData = [
@@ -209,12 +209,12 @@ overflow: auto;">
                                 "StudentsID" => [$proposals->Student1_ID, $proposals->Student2_ID, $proposals->Student3_ID]
                         ];
                 @endphp
-       
+
                 @php
-               
+
                         $studentsList = [
-                                "First" => ["ID" => $proposals->Student1_ID, "Name" => $proposals->Student1_Name], 
-                                "Second" => ["ID" => $proposals->Student2_ID, "Name" => $proposals->Student2_Name], 
+                                "First" => ["ID" => $proposals->Student1_ID, "Name" => $proposals->Student1_Name],
+                                "Second" => ["ID" => $proposals->Student2_ID, "Name" => $proposals->Student2_Name],
                                 "Third" => ["ID" => $proposals->Student3_ID, "Name" => $proposals->Student3_Name]
                         ];
                         //$students = explode(",", $studentsList);
@@ -224,16 +224,14 @@ overflow: auto;">
                                         continue;
                                 }
                                 else {
-                                        echo "<li>".$student["Name"]. 
+                                        echo "<li>".$student["Name"].
                                         " (".$student["ID"]. ")</li>";
                                 }
                         }
                         echo "</ul></td>";
                 @endphp
-
                 <td>{{$proposals->title}}</td>
                 <td>{{$proposals->created_at}}</td>
-                
 
         </tr>
         @endforeach
@@ -246,7 +244,7 @@ overflow: auto;">
 </div>
             </div>
     </div>
-    
+
 </body>
 <script>
 
@@ -268,7 +266,7 @@ overflow: auto;">
                                 }
 
 
-     </script> 
+     </script>
 
 
 
