@@ -381,7 +381,7 @@ overflow: auto;">
         </div>
         </div>
 
-        <form action="{{ route('Officer_Home.add_advertisement') }}" id="f4" name="f4" method="post" enctype="multipart/form-data">
+        <form action="{{ route('Officer_Home.add_advertisement') }}" id="f4" name="f4" method="post">
                 @csrf</form>
               <div class="modal-container" id="modalContainer4">
                 <div class="modal">
@@ -403,7 +403,7 @@ overflow: auto;">
                     <input type="text" id="ad_content" name="ad_content" required maxlength="300" minlength="20" form="f4"
                     style="width: 100%; height: 150px;">
                     <label for="ad_enabled">Enabled</label>
-                    <input type="checkbox" name="ad_enabled" id="ad_enabled" checkbox form="f4" value>
+                    <input type="checkbox" name="ad_enabled" id="ad_enabled" form="f4" required checked value="on">
 
                  </div>
                   <button type="submit" form="f4">إرسال </button>

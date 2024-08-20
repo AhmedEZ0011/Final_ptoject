@@ -34,7 +34,7 @@ class Officer_HomeController extends Controller
            'content' =>  $request->input('ad_content'),
            'targets' =>  $request->input('ad_target'),
            'owner' =>  Auth::user()->id,
-           'enabled' => $request->input('ad_enabled') == "on" ? 1 : 0
+           'enabled' => 1//$request->input('ad_enabled') == "on" ? 1 : 0
         ]);
 
 

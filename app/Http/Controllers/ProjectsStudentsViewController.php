@@ -7,6 +7,7 @@ use App\Http\Controllers\AdvertisementController;
 use Illuminate\Support\Facades\DB;
 use App\Models\Project;
 use App\Models\Proposal;
+use App\Models\Proposal_student;
 use App\Models\User;
 use App\Models\Trial_examiner;
 class ProjectsStudentsViewController extends Controller
@@ -29,8 +30,15 @@ class ProjectsStudentsViewController extends Controller
             $request->input('project-examiner3-id'),
         ];
 
+        $data = [
+            "ad_title" => "تكليف ",
+            "ad_content" => "تم تكليفك ك ممتحن ",
+            "ad_specific_target" => ""
+        ];
         foreach($examiners as $examinerID) {
             if($examinerID == "None") continue;
+
+            $data["ad_specific_target"] .= " ". $examinerID;
 
             $count = Trial_examiner::where('project_id', '=', $project_id)->where('examiner_id', '=', $examinerID)->count();
             if($count != 0) continue;
@@ -39,31 +47,43 @@ class ProjectsStudentsViewController extends Controller
                                 WHERE j.id = $project_id AND p.superviser_id = $examinerID;");
 
             if($count[0]->Count != 0) continue;
-            $data = [
-                "ad_title" => "You fucked up",
-                "ad_content" => "Surprise MF",
-                "ad_target" => "",
-                "ad_specific_target" => $examinerID
-            ];
 
-            AdvertisementController::sendForSpecific($data);
             Trial_examiner::create([
                 'examiner_id' => $examinerID,
                 'project_id' => (int)$project_id,
                 'comments' => null
             ]);
-
-
         }
+
+        AdvertisementController::sendForSpecific($data);
         return $this->index();
     }
 
     public function setGrade(Request $request, $project_id) {
         $p = Project::find($project_id);
+        $id = $p->proposal_id;
         $p->grade = $request->input('project-grade');
-        $p->status = 'DONE'  ;
+        $p->status = 'DONE';
         $p->save();
 
+        //$proposal = Proposal::find($id);
+
+
+        $students = Proposal_student::where("proposal_id", $id)->get();
+        $targets = "";
+
+        echo "Proposal id".$id. " Count = ".count($students);
+
+        foreach($students as $ps) {
+            $targets .= " ".$ps->user_id;
+        }
+        echo var_dump($targets);
+        $data = [
+            "ad_title" => "تعيين درجة ",
+            "ad_content" => "تم تعيين درجة للمشروع ",
+            "ad_specific_target" => $targets
+        ];
+        AdvertisementController::sendForSpecific($data);
         return $this->index();
     }
 

@@ -22,6 +22,7 @@ class Student_HomeController extends Controller
                 'username' => $account->name,
                 'userid' => $account->id,
                 'decision' => ($p == null) ? "" : $p->decision,
+                'status' => ($p == null) ? "" : $p->project->status,
                 'project_list' => Project::getProjectsListWithCondition('ps.user_id = '.Auth::user()->id) ,
 
                // 'project_list' => Project::getArchive('ps.user_id = '.Auth::user()->id) ,
@@ -82,6 +83,16 @@ public function addDocumentation(Request $request)
 }
 private function getMyProposal() {
     foreach(Proposal::where('decision', '=', 'ACCEPTED')->orWhere('decision', '=', 'PENDING')->get() as $p) {
+        foreach($p->students as $studentProposal) {
+            if($studentProposal->user_id == Auth::user()->id)
+                return $p;
+        }
+    }
+
+    return null;
+}
+private function getGraduated() {
+    foreach(Project::where('status', '=', 'DONE')->get() as $p) {
         foreach($p->students as $studentProposal) {
             if($studentProposal->user_id == Auth::user()->id)
                 return $p;

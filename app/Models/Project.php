@@ -4,6 +4,7 @@ namespace App\Models;
 
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
+use Illuminate\Database\Eloquent\Relations\BelongsTo;
 use Illuminate\Support\Facades\DB;
 
 class Project extends Model
@@ -19,6 +20,9 @@ class Project extends Model
         'grade'
     ];
 
+    public function proposal() : BelongsTo {
+        return $this->belongsTo(Project::class);
+    }
 
     public static function getProjectsList($status = 'INPROGRESS')
     {

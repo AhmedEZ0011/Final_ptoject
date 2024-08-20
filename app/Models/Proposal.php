@@ -6,6 +6,8 @@ use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Support\Facades\DB;
 use Illuminate\Database\Eloquent\Relations\HasMany;
+use Illuminate\Database\Eloquent\Relations\HasOne;
+
 class Proposal extends Model
 {
     use HasFactory;
@@ -81,6 +83,9 @@ class Proposal extends Model
         return $this->hasMany(Proposal_student::class);
     }
 
+    public function project() : HasOne {
+        return $this->hasOne(Project::class);
+    }
 
 
 

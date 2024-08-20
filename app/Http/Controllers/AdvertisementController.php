@@ -82,7 +82,7 @@ class AdvertisementController  extends Controller {
         $data["ad_target"] = "SPECIFIC";
         $data["ad_enabled"] = 1;
         $request = Request::create('/path', 'POST', $data);
-        $this->AddAdvertisement($request);
+        AdvertisementController::AddAdvertisement($request);
     }
 
     public static function AddAdvertisement(Request $request) {
@@ -91,7 +91,7 @@ class AdvertisementController  extends Controller {
            'content' =>  $request->input('ad_content'),
            'targets' =>  $request->input('ad_target'),
            'owner' =>  Auth::user()->id,
-           'enabled' => $request->input('ad_enabled') == "on" ? 1 : 0
+           'enabled' => 1 //$request->input('ad_enabled', "on") == "on" ? 1 : 0
         ]);
 
 
@@ -99,6 +99,7 @@ class AdvertisementController  extends Controller {
 
             $selectedAudience = explode(' ', $request->input('ad_specific_target'));
             foreach($selectedAudience as $item) {
+                if($item == "") continue;
                 try {
                     AdvertisementMember::create([
                         'ad_id' => $advertisement->id,
