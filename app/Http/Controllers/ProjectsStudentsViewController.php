@@ -77,7 +77,7 @@ class ProjectsStudentsViewController extends Controller
         foreach($students as $ps) {
             $targets .= " ".$ps->user_id;
         }
-        echo var_dump($targets);
+        //echo var_dump($targets);
         $data = [
             "ad_title" => "تعيين درجة ",
             "ad_content" => "تم تعيين درجة للمشروع ",
@@ -87,11 +87,34 @@ class ProjectsStudentsViewController extends Controller
         return $this->index();
     }
 
-    public function ReplaceTheExaminer(Request $request, $project_id) {
+    public function setSupervisor(Request $request, $project_id) {
         $p = Project::find($project_id);
+        if($p == null) return "ERROR : PROJECT NOT FOUND";
         $proposal = Proposal::find($p->proposal_id);
+
+        $targets = "";
+        $targetList = [$proposal->superviser_id, (int)$request->input('project-examiner1-id')];
+
+        foreach(Proposal_student::where("proposal_id", $p->proposal_id)->get()
+        as $ps) {
+                array_push($targetList, $ps->user_id);
+        }
+
+        foreach ($targetList as $item) {
+            $targets .= " ".$item;
+        }
+        //$targetList
+        $data = [
+            "ad_title" => "تعيين مشرف جديد ",
+            "ad_content" => "تم تعيين مشرف جديد للمشروع  ".($proposal->title),
+            "ad_specific_target" => $targets
+        ];
+        AdvertisementController::sendForSpecific($data);
+
         $proposal->superviser_id = (int)$request->input('project-examiner1-id');
         $proposal->save();
+
+
         return $this->index();
     }
 

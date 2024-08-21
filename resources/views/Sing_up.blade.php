@@ -260,6 +260,7 @@ const accountType = document.getElementById('accountType');
                 submitButton.disabled = false;
             }
         });
+        
 </script>
 
 

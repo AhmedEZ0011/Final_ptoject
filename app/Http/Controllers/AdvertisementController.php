@@ -23,9 +23,10 @@ class AdvertisementController  extends Controller {
         ->orWhere('advertisements.targets', '=', $target)
         ->where('advertisements_members.target_id', '=', Auth::user()->id)->get("*");
 
+        $ids = [];
         $adsData = [];
         foreach($ads as $ad) {
-            if($ad->enabled == 0) {
+            if($ad->enabled == 0 || in_array($ad->id, $ids)) {
                 continue;
             }
             $targets = [];
@@ -43,6 +44,7 @@ class AdvertisementController  extends Controller {
 
 
             }
+            array_push($ids, $ad->id);
             array_push($adsData, [
                 "id" => $ad->id,
                 "title" => $ad->title,

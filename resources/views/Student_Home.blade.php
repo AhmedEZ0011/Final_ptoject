@@ -550,14 +550,14 @@
                 if(ad.targetlist.length == 0) return;
                  unread += !ad.targetlist[0].seen ? +1 : 0
                 });
-            }if (unread == 0) {
+            if (unread == 0) {
                 bellIcon.classList.add('hide-after');
             } else {
                 bellIcon.classList.remove('hide-after');
                 bellIcon.setAttribute('badge-number', unread);
             }
-
         }
+
 
         function clearPanel() {
             notificationPanel.querySelectorAll('div[adblock]').forEach(e => e.remove());

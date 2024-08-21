@@ -151,11 +151,11 @@ button[type="submit"]:hover {
 }
 </style>
 </head>
-<body 
+<body
     style=" background:#F1F0FB;
-    
-    
-    
+
+
+
 "
 >
 <div class="heder"
@@ -168,19 +168,19 @@ style="background-color:#F1F0FB;
       border-bottom:rgb(15, 9, 9)">
       <a href="{{ route('logout') }}">
       <i class="fa-solid fa-arrow-right-from-bracket"
-      style="font-size:35px; 
+      style="font-size:35px;
       position: absolute;
       left:2%;
       top:25%;"></a></i>
       <button>
       <i class="fa-solid fa-gear"
-      style="font-size:25px; 
+      style="font-size:25px;
       position: absolute;
       left:6%;
       top:40%;"></i></button>
       <button>
       <i class="fa-solid fa-bell"
-      style="font-size:25px; 
+      style="font-size:25px;
       position: absolute;
       left:9%;
       top:40%;"></i>
@@ -204,11 +204,11 @@ style="background-color:#F1F0FB;
       border-radius: 40px;
   ">
                 <div class="UserName_Icon">
-                        <i class="fa-solid fa-user-tie" style="font-size:40px; 
+                        <i class="fa-solid fa-user-tie" style="font-size:40px;
     position: absolute;
     left:80%;
     top:4%;
-        
+
          "></i>
                         <div class="UserName" style="
     position:absolute;
@@ -226,9 +226,9 @@ style="background-color:#F1F0FB;
   position: absolute;
   border-radius: 20px;
   border-style: none;
-  
+
 " onclick=Home_button()>
-                        <i class="fa-solid fa-house" style="font-size:35px; 
+                        <i class="fa-solid fa-house" style="font-size:35px;
         right:4%;
         top:20%;
         position: absolute;"></i>
@@ -243,14 +243,14 @@ style="background-color:#F1F0FB;
         border-radius: 20px;
         border-style: none;
 " onclick=Settings_button()>
-                        <i class="fa-solid fa-gear" style="font-size:35px; 
+                        <i class="fa-solid fa-gear" style="font-size:35px;
         right:4%;
         top:20%;
         position: absolute;"></i>
                         <h2>الإعدادات </h2>
                 </button>
 
-     
+
                 <button class="Proposals" style="background-color: #97CADB;
         height: 9%;
         left: 4%;
@@ -260,7 +260,7 @@ style="background-color:#F1F0FB;
         border-radius: 20px;
         border-style: none;
 " onclick=proposals_view_button()>
-                        <i class="fa-regular fa-newspaper" style="font-size:35px; 
+                        <i class="fa-regular fa-newspaper" style="font-size:35px;
         right:4%;
         top:20%;
         position: absolute;"></i>
@@ -278,7 +278,7 @@ style="background-color:#F1F0FB;
         border-radius: 20px;
         border-style: none;
 ">
-                        <i class="fa-regular fa-copy" style="font-size:35px; 
+                        <i class="fa-regular fa-copy" style="font-size:35px;
         right:4%;
         top:20%;
         position: absolute;"></i>
@@ -293,7 +293,7 @@ style="background-color:#F1F0FB;
         border-radius: 20px;
         border-style: none;
 " >
-                        <i class="fa-solid fa-thumbtack" style="font-size:35px; 
+                        <i class="fa-solid fa-thumbtack" style="font-size:35px;
         right:4%;
         top:20%;
         position: absolute;"></i>
@@ -308,7 +308,7 @@ style="background-color:#F1F0FB;
         border-radius: 20px;
         border-style: none;
 ">
-                        <i class="" style="font-size:35px; 
+                        <i class="" style="font-size:35px;
         right:4%;
         top:20%;
         position: absolute;"></i>
@@ -329,9 +329,9 @@ style="background-color:#F1F0FB;
   border-style: solid;
   border-color:grey;
   z-index: 1;">
-  
-  
-  <form action="{{ route('Student_Settings.update') }}" id="f2" name="f2" method="post" enctype="multipart/form-data">
+
+
+  <form action="{{ route('OfficerSettings.update') }}" id="f2" name="f2" method="post" enctype="multipart/form-data">
     @csrf
 <input class="name" name="name"
 style="
@@ -345,7 +345,7 @@ border-radius: 10px;
 text-align: center;
 font-size:30px;
 "
-type="text" 
+type="text"
 name="f2"
 placeholder="تغيير الأسم";
 >
@@ -405,7 +405,7 @@ name="password"
 placeholder="تغيير كلمة المرور ";>
 
 
-<button class="Saving changes" 
+<button class="Saving changes"
 type="submit"
 style="
 background: #4B80AB;
@@ -438,7 +438,7 @@ font-size:25px;
 const openModalBtn4 = document.getElementById('openModalBtn4');
 const closeModalBtn4 = document.getElementById('closeModalBtn4');
 const modalContainer4 = document.getElementById('modalContainer4');
-     
+
       openModalBtn4.addEventListener('click', () => {
       modalContainer4.classList.add('show');
     });
@@ -459,8 +459,8 @@ const modalContainer4 = document.getElementById('modalContainer4');
         function Home_button() {
       window.location.href = "http://127.0.0.1:8000/Officer_Home"
     }
-    
-    
+
+
  </script>
 </html>
 </html>
