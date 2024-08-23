@@ -23,7 +23,9 @@ class ProjectsStudentsViewController extends Controller
     }
 
     public function setExaminers(Request $request, $project_id) {
-
+        $p = Project::find($project_id);
+        if($p == null) return "ERROR : PROJECT NOT FOUND";
+        $proposal = Proposal::find($p->proposal_id);
         $examiners = [
             $request->input('project-examiner1-id'),
             $request->input('project-examiner2-id'),
@@ -32,7 +34,7 @@ class ProjectsStudentsViewController extends Controller
 
         $data = [
             "ad_title" => "تكليف ",
-            "ad_content" => "تم تكليفك ك ممتحن ",
+            "ad_content" => "تم تكليفك ك ممتحن ".($proposal->title),
             "ad_specific_target" => ""
         ];
         foreach($examiners as $examinerID) {
@@ -66,7 +68,7 @@ class ProjectsStudentsViewController extends Controller
         $p->status = 'DONE';
         $p->save();
 
-        //$proposal = Proposal::find($id);
+
 
 
         $students = Proposal_student::where("proposal_id", $id)->get();
@@ -80,7 +82,7 @@ class ProjectsStudentsViewController extends Controller
         //echo var_dump($targets);
         $data = [
             "ad_title" => "تعيين درجة ",
-            "ad_content" => "تم تعيين درجة للمشروع ",
+            "ad_content" => " درحتك في المشروع هو ".($p->grade),
             "ad_specific_target" => $targets
         ];
         AdvertisementController::sendForSpecific($data);

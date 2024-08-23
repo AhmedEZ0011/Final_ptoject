@@ -21,8 +21,9 @@ class Student_HomeController extends Controller
              return view('Student_Home', [
                 'username' => $account->name,
                 'userid' => $account->id,
-                'decision' => ($p == null) ? "" : $p->decision,
-                'status' => ($p == null) ? "" : $p->project->status,
+                'decision' => ($p == null|| $p->proposal == null) ? "" : $p->decision,
+                //'status' => ($p == null) ? "" : $p->project->status,
+                'status' => ($p == null || $p->project == null) ? "" : $p->project->status,
                 'project_list' => Project::getProjectsListWithCondition('ps.user_id = '.Auth::user()->id) ,
 
                // 'project_list' => Project::getArchive('ps.user_id = '.Auth::user()->id) ,

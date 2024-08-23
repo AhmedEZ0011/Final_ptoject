@@ -19,6 +19,7 @@ use App\Http\Controllers\SearchResultsController;
 use App\Http\Controllers\StudentSettingController;
 use App\Http\Controllers\FacultyDocumentationController;
 use App\Http\Controllers\HomeController;
+use App\Http\Controllers\ArchiefController;
 use App\Models\Project;
 
 //use Illuminate\Support\Facades\Storage;
@@ -69,6 +70,9 @@ Route::name('Search.')->prefix("Search")->group(function() {
 
 Route::get('/searchview/{id}/', [SearchController::class, "view"])->name('view-search-result');
 Route::get('/', 'App\Http\Controllers\HomeController@index');
+
+Route::get('/searchview/{id}/', [ArchiefController::class, "view"])->name('view-search-result');
+Route::get('/', 'App\Http\Controllers\ArchiefController@index');
 
 
                  // <<<<<<<<<Sign In >>>>>>>>
@@ -137,6 +141,11 @@ Route::name('advertisements.')->prefix('advertisements')->group(function() {
 Route::name('Search.')->prefix("Search")->group(function() {
     Route::get('/{search}/{dept}/', [SearchController::class, "index"])->name('index');
     Route::get('/view/{pid}/', [SearchController::class, "view"])->name('view');
+});
+Route::name('Archief.')->prefix("Archief")->group(function() {
+    Route::get('/', [ArchiefController::class, "index"])->name('index');
+    Route::get('/{search}/{dept}/', [ArchiefController::class, "Search"])->name('Search');
+    Route::get('/view/{pid}/', [ArchiefController::class, "view"])->name('view');
 });
 	//<<<<<<<Student_Home>>>>>>>>
 Route::post("/Student_Home/addproposal/", 'App\Http\Controllers\Student_HomeController@addproposal')->name('Student_Home.addproposal');

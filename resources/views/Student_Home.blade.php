@@ -342,7 +342,7 @@
         border-radius: 20px;
         border-style: none;
 
-"onclick=Search_button()>
+"onclick=Archief_button()>
             <i class="fa-solid fa-book-bookmark"
                 style="font-size:35px;
         right:-1%;
@@ -487,6 +487,9 @@
         function Home_button() {
             window.location.href = "http://127.0.0.1:8000/Student_Home"
         }
+        function Archief_button() {
+            window.location.href = "http://127.0.0.1:8000/Archief"
+        }
 
 
         const openModalBtn1 = document.getElementById('openModalBtn1');
@@ -498,7 +501,7 @@
                 openModalBtn1.addEventListener('click', () => {
                     modalContainer1.classList.add('show');
                 });
-            @endif
+           @endif
             closeModalBtn1.addEventListener('click', () => {
                 modalContainer1.classList.remove('show');
             });
