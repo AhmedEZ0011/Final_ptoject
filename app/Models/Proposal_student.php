@@ -25,5 +25,4 @@ class Proposal_student extends Model
     }
     public function proposal() : BelongsTo {
         return $this->belongsTo(Proposal::class);
-    }
-}
+    }}

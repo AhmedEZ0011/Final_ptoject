@@ -44,7 +44,7 @@ class ProjectsStudentsViewController extends Controller
 
             $count = Trial_examiner::where('project_id', '=', $project_id)->where('examiner_id', '=', $examinerID)->count();
             if($count != 0) continue;
-            $count = DB::select("SELECT count(*) as `Count`  FROM proposals p
+            $count = DB::select("SELECT count(*) as Count  FROM proposals p
                                 INNER JOIN projects j ON j.proposal_id = p.id
                                 WHERE j.id = $project_id AND p.superviser_id = $examinerID;");
 
@@ -120,7 +120,8 @@ class ProjectsStudentsViewController extends Controller
         return $this->index();
     }
 
-    public function setEnableState(Request $request, $project_id  ) {
+
+public function setEnableState(Request $request, $project_id  ) {
         $p = Project::find($project_id);
         $proposal = Proposal::find($p->proposal_id);
         $proposal->enabled = $proposal->enabled == 1 ? 0 : 1;
@@ -130,4 +131,3 @@ class ProjectsStudentsViewController extends Controller
         return $this->index();
     }
 }
-

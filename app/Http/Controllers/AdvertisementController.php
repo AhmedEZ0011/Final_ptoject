@@ -1,6 +1,5 @@
 <?php
 namespace App\Http\Controllers;
-
 use App\Models\Advertisement;
 use App\Models\AdvertisementMember;
 use Illuminate\Http\Request;
@@ -99,7 +98,7 @@ class AdvertisementController  extends Controller {
 
         if($request->input('ad_target') == 'SPECIFIC') {
 
-            $selectedAudience = explode(' ', $request->input('ad_specific_target'));
+$selectedAudience = explode(' ', $request->input('ad_specific_target'));
             foreach($selectedAudience as $item) {
                 if($item == "") continue;
                 try {

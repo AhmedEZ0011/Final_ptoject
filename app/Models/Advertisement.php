@@ -22,7 +22,7 @@ class Advertisement extends Model
     public static function getAdvertisementsFor($id) {
         return DB::select('SELECT mem.ad_id, ifnull() FROM advertisements_members mem 
                             INNER JOIN advertisements ad ON ad.id = mem.ad_id
-                            INNER JOIN users s ON s.id = ad.`owner`
+                            INNER JOIN users s ON s.id = ad.owner
                             WHERE ad.targets = \'ALL\' OR (ad.targets = \'SPECIFIC\' AND mem.target_id = '.$id.');');
     }
 

@@ -23,7 +23,7 @@ class Student_HomeController extends Controller
                 'userid' => $account->id,
                 'decision' => ($p == null|| $p->proposal == null) ? "" : $p->decision,
                 //'status' => ($p == null) ? "" : $p->project->status,
-                'status' => ($p == null || $p->project == null) ? "" : $p->project->status,
+               // 'status' => ($p == null  $p->project == null) ? "" : $p->project->status,
                 'project_list' => Project::getProjectsListWithCondition('ps.user_id = '.Auth::user()->id) ,
 
                // 'project_list' => Project::getArchive('ps.user_id = '.Auth::user()->id) ,
@@ -52,10 +52,10 @@ class Student_HomeController extends Controller
             $request->input('proposal-input-student2'),
             $request->input('proposal-input-student3')
         ];
-        for($i = 0; $i < count($students); $i++) {
+       /* for($i = 0; $i < count($students); $i++) {
             $element = $students[$i];
 
-            if(null == $element || $element == '') continue;
+            if(null == $element  $element == '') continue;
             else {
                 Proposal_student::create([
                     'user_id' => $element,
@@ -63,7 +63,7 @@ class Student_HomeController extends Controller
                     'path' => $proposal->getClientOriginalName()
                 ]);
             }
-        }
+        }*/
          return redirect('Student_Home')->with('status', 'تم رفع المقترح بنجاح');
     }
 
@@ -106,4 +106,3 @@ public function drop($id)
     {
     }
 }
-

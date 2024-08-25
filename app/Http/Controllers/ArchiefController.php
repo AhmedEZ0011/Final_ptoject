@@ -37,6 +37,6 @@ public function view(Request $request, $pid)
         $projects = Project :: getProjectsListWithCondition(' j.id ='. $pid);
         if(count($projects) == 0) abort(404);
         else
-            return view('Search_Results', ['details' => $projects[0]]);
+            return view('Archief', ['details' => $projects[0]]);
     }
 }

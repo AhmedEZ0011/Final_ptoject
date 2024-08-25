@@ -339,39 +339,8 @@ z-index: -1;">
                         <button type="submit" class="btn btn-primary" style="width: 20%;margin-right: 38%">إرسال</button>
                     </form>
                         <br>
-                        <table style="position: absolute;
-        top: 10%;
-        border=0.5">
-                                <tr>
-                                        <td> </td>
-                                        <td> </td>
-                                        <td>الأسم</td>
-                                        <td>تاريخ طلب التسجيل</td>
-
-                                </tr>
-                                @if($inactive_users->count())
-                                @foreach($inactive_users as $user)
-                                <tr>
-                                        <td><form method="POST" action="{{ route('drop_request_account', $user->id) }}">
-                                            @csrf
-                                            @method('DELETE')
-                                            <button type="submit" style="background-color: rgb(218, 55, 55);">رفض</button>
-                                        </form></td>
-                                        <td><button style="background-color: rgb(93, 202, 93)">
-                                                        <a href="{{route('add_request_account', $user->id)}}">قبول</a>
-                                                </button></td>
-
-                                        <td>{{$user->name}}</td>
-                                        <td>{{$user->created_at}}</td>
-
-                                </tr>
-                                @endforeach
-                                @else
-                                <tr>
-                                        <td colspan="4">لا يوجد طلبات تسجيل </td>
-                                </tr>
-                                @endif
-                        </table>
+                      
+                        
                 </div>
             </div>
         </div>
@@ -420,7 +389,7 @@ const modalContainer4 = document.getElementById('modalContainer4');
       modalContainer4.classList.remove('show');
     });
 
-    <script>
+    
         function proposals_view_button() {
                 window.location.href = "{{route('proposals_view.index')}}" //"http://127.0.0.1:8000/proposals_view";
         }
@@ -437,6 +406,7 @@ const modalContainer4 = document.getElementById('modalContainer4');
         function Home_button() {
                 window.location.href = "http://127.0.0.1:8000/Officer_Home"
         }
+        
     </script>
 
 </html>

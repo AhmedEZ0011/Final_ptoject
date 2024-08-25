@@ -4,7 +4,7 @@ namespace App\Http\Controllers;
 use App\Models\User;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Http\Request;
-
+use Illuminate\Support\Facades\Hash;
 class OfficerSettingsController extends Controller
 {
     public function index()
@@ -23,4 +23,3 @@ class OfficerSettingsController extends Controller
          return redirect("Officer_Home");
     }
 }
-

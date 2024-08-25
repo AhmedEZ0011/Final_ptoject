@@ -394,6 +394,11 @@ z-index: -1;">
       <h2>تقديم مقترح</h2>
     </button>
     <br>
+    <button id="openModalBtn1" class="btn btn-light d-flex align-items-center mb-2" style="background-color: #97CADB; border-radius: 20px; border-style: none;">
+      <img src="Add List.ico">
+      <h2>تقديم تقرير </h2>
+    </button>
+    <br>
     <button id="openModalBtn4" class="btn btn-light d-flex align-items-center mb-2" style="background-color: #97CADB; border-radius: 20px; border-style: none;" onclick="Search_button()">
       <img src="Product Documents2.ico">
       <h2>مشاريع مؤرشفة</h2>
@@ -500,6 +505,23 @@ z-index: -1;">
       </div>
       <button type="submit" form="f0">إرسال</button>
     </div>
+    <form action="{{ route('Student_Home.addproposal') }}" id="f0" name="f0" method="post" enctype="multipart/form-data">
+      @csrf
+    </form>
+    <div class="modal-container" id="modalContainer1">
+      <div class="modal">
+        <button class="close-btn" id="closeModalBtn1">❌</button>
+        <div class="header d-flex align-items-center justify-content-center mb-3">
+          <img src="Add List.ico" class="cloud-icon" alt="Upload Icon">
+          <h2>تقديم تقرير </h2>
+        </div>
+        <div class="form-group">
+          <label for="proposal-input1">أدخل مقترح المشروع</label>
+          <input type="file" form="f0" name="proposal" id="proposal-input1">
+        </div>
+        <button type="submit" form="f0">إرسال</button>
+      </div>
+  
 
   <form action="{{ route('Student_Home.addDocumentation') }}" id="f2" name="f2" method="post" enctype="multipart/form-data">
     @csrf
@@ -697,12 +719,12 @@ z-index: -1;">
         const closeModalBtn1 = document.getElementById('closeModalBtn1');
         const modalContainer1 = document.getElementById('modalContainer1');
 
-        @if ($status !== 'DONE')
-            @if ($decision !== 'PENDING' && $decision !== 'ACCEPTED')
+       
+      //      @if ($decision !== 'PENDING' && $decision !== 'ACCEPTED')
                 openModalBtn1.addEventListener('click', () => {
                     modalContainer1.classList.add('show');
                 });
-           @endif
+          // @endif
             closeModalBtn1.addEventListener('click', () => {
                 modalContainer1.classList.remove('show');
             });
@@ -715,7 +737,7 @@ z-index: -1;">
             openModalBtn3.addEventListener('click', () => {
                 modalContainer3.classList.add('show');
             });
-        @endif
+        
         closeModalBtn3.addEventListener('click', () => {
             modalContainer3.classList.remove('show');
         });

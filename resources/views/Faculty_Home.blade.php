@@ -242,14 +242,24 @@ z-index: -1;">
                <h2>طلبة المشاريع</h2>
 </button>
 <br>
+<button class="btn btn-light mb-2" style="background-color: #97CADB;"onclick=Faculty_project_students_button()>  
+    <img src="Student Male.ico" style="font-size:35px;">
+           <h2>التقارير</h2>
+</button>
+<br>
 <button class="btn btn-light mb-2" style="background-color: #97CADB;" onclick=Faculty_proposal_students_button()>  
         <img src="Sign Document.ico" style="font-size:35px;">
-        <h2>المقترحات</h2> 
+        <h2> المقترحات</h2> 
 </button>
 <br>
 <button class="btn btn-light mb-2" style="background-color: #97CADB;" onclick=Faculty_documentation_button()>  
         <img src="Copy.ico" style="font-size:35px;">
         <h2>ملفات التوثيق</h2> 
+</button>
+<br>
+<button class="btn btn-light mb-2" style="background-color: #97CADB;" onclick=Faculty_documentation_button()>  
+    <img src="Copy.ico" style="font-size:35px;">
+    <h2>إدخال تقييم</h2> 
 </button>
 <br>
 <button id="openModalBtn3" class="btn btn-light d-flex align-items-center mb-2" style="background-color: #97CADB; border-radius: 20px; border-style: none;">
