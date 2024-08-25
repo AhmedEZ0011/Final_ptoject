@@ -225,8 +225,18 @@
         </div>
     
 
-
+        <td>{{$details->title}}</td>
+        <td>{{$details->department_name}}</td>
         <h1>{{ $details->id }}</h1>
+        @auth()
+            @php
+                $lastFile = app('App\Models\Project')
+                                ->getLastModifiedFile($details->Student1_ID);
+            @endphp
+            <a download="documentation_{{ $details->id }}.pdf" href="/users/{{$details->Student1_ID}}/documentation/{{$lastFile}}">get documentation</a>
+        @else
+        <a download="proposal_{{ $details->id }}.pdf" href="/users/{{$details->Student1_ID}}/proposals/{{$details->Student1_Path}}">get proposal</a>
+        @endauth()
 
         <h1>UI</h1>
 </body>

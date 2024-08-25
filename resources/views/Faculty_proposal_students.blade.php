@@ -296,20 +296,20 @@ overflow: auto;">
     <table style="position: absolute;
     top: 10%;
     border=0.5">
-           
+
            <tr>
-                <td> </td>
-                <td> </td>
+
                 <td>ملف  </td>
                 <td>الطلبة المقدمين</td>
                 <td>عنوان </td>
                 <td>تاريخ تقديم  </td>
-                
+
 
         </tr>
         @if(count($proposal_list))
-        
+
         @foreach($proposal_list as $proposals)
+        <td><a download href="/users/{{$proposals->Student1_ID}}/proposals/{{$proposals->Student1_Path}}">Download</a></td>
 
                 @php
                         $routeData = [
@@ -318,12 +318,12 @@ overflow: auto;">
                                 "StudentsID" => [$proposals->Student1_ID, $proposals->Student2_ID, $proposals->Student3_ID]
                         ];
                 @endphp
-       
+
                 @php
-               
+
                         $studentsList = [
-                                "First" => ["ID" => $proposals->Student1_ID, "Name" => $proposals->Student1_Name], 
-                                "Second" => ["ID" => $proposals->Student2_ID, "Name" => $proposals->Student2_Name], 
+                                "First" => ["ID" => $proposals->Student1_ID, "Name" => $proposals->Student1_Name],
+                                "Second" => ["ID" => $proposals->Student2_ID, "Name" => $proposals->Student2_Name],
                                 "Third" => ["ID" => $proposals->Student3_ID, "Name" => $proposals->Student3_Name]
                         ];
                         //$students = explode(",", $studentsList);
@@ -333,16 +333,14 @@ overflow: auto;">
                                         continue;
                                 }
                                 else {
-                                        echo "<li>".$student["Name"]. 
+                                        echo "<li>".$student["Name"].
                                         " (".$student["ID"]. ")</li>";
                                 }
                         }
                         echo "</ul></td>";
                 @endphp
-
                 <td>{{$proposals->title}}</td>
                 <td>{{$proposals->created_at}}</td>
-                
 
         </tr>
         @endforeach
@@ -355,7 +353,7 @@ overflow: auto;">
 </div>
             </div>
     </div>
-    
+
 </body>
 <script>
 
@@ -377,7 +375,7 @@ overflow: auto;">
                                 }
 
 
-     </script> 
+     </script>
 
 
 

@@ -1,33 +1,46 @@
 <?php
 
 namespace App\Http\Controllers;
-
+use Illuminate\Support\Facades\Auth;
 use Illuminate\Http\Request;
+use App\Http\Controllers\AdvertisementController;
 use Illuminate\Support\Facades\DB;
 use App\Models\Project;
 use App\Models\Proposal;
+use App\Models\Proposal_student;
 use App\Models\User;
 use App\Models\Trial_examiner;
 class ProjectsStudentsViewController extends Controller
 {
     public function index()
     {
+        if (auth()->check()) {
+            $account = Auth::user();
         return view('Projects_students_view',[
             'projects_list' => Project::getProjectsList(),
             'teachers' => User::where('type', '=', 3)->get()
-       ]);
+       ]);}
     }
 
     public function setExaminers(Request $request, $project_id) {
-
+        $p = Project::find($project_id);
+        if($p == null) return "ERROR : PROJECT NOT FOUND";
+        $proposal = Proposal::find($p->proposal_id);
         $examiners = [
             $request->input('project-examiner1-id'),
             $request->input('project-examiner2-id'),
             $request->input('project-examiner3-id'),
         ];
 
+        $data = [
+            "ad_title" => "تكليف ",
+            "ad_content" => "تم تكليفك ك ممتحن ".($proposal->title),
+            "ad_specific_target" => ""
+        ];
         foreach($examiners as $examinerID) {
             if($examinerID == "None") continue;
+
+            $data["ad_specific_target"] .= " ". $examinerID;
 
             $count = Trial_examiner::where('project_id', '=', $project_id)->where('examiner_id', '=', $examinerID)->count();
             if($count != 0) continue;
@@ -36,29 +49,74 @@ class ProjectsStudentsViewController extends Controller
                                 WHERE j.id = $project_id AND p.superviser_id = $examinerID;");
 
             if($count[0]->Count != 0) continue;
+
             Trial_examiner::create([
                 'examiner_id' => $examinerID,
                 'project_id' => (int)$project_id,
                 'comments' => null
             ]);
         }
+
+        AdvertisementController::sendForSpecific($data);
         return $this->index();
     }
 
     public function setGrade(Request $request, $project_id) {
         $p = Project::find($project_id);
+        $id = $p->proposal_id;
         $p->grade = $request->input('project-grade');
-        $p->status = 'DONE'  ;
+        $p->status = 'DONE';
         $p->save();
 
+
+
+
+        $students = Proposal_student::where("proposal_id", $id)->get();
+        $targets = "";
+
+        echo "Proposal id".$id. " Count = ".count($students);
+
+        foreach($students as $ps) {
+            $targets .= " ".$ps->user_id;
+        }
+        //echo var_dump($targets);
+        $data = [
+            "ad_title" => "تعيين درجة ",
+            "ad_content" => " درحتك في المشروع هو ".($p->grade),
+            "ad_specific_target" => $targets
+        ];
+        AdvertisementController::sendForSpecific($data);
         return $this->index();
     }
 
-    public function ReplaceTheExaminer(Request $request, $project_id) {
+    public function setSupervisor(Request $request, $project_id) {
         $p = Project::find($project_id);
+        if($p == null) return "ERROR : PROJECT NOT FOUND";
         $proposal = Proposal::find($p->proposal_id);
+
+        $targets = "";
+        $targetList = [$proposal->superviser_id, (int)$request->input('project-examiner1-id')];
+
+        foreach(Proposal_student::where("proposal_id", $p->proposal_id)->get()
+        as $ps) {
+                array_push($targetList, $ps->user_id);
+        }
+
+        foreach ($targetList as $item) {
+            $targets .= " ".$item;
+        }
+        //$targetList
+        $data = [
+            "ad_title" => "تعيين مشرف جديد ",
+            "ad_content" => "تم تعيين مشرف جديد للمشروع  ".($proposal->title),
+            "ad_specific_target" => $targets
+        ];
+        AdvertisementController::sendForSpecific($data);
+
         $proposal->superviser_id = (int)$request->input('project-examiner1-id');
         $proposal->save();
+
+
         return $this->index();
     }
 

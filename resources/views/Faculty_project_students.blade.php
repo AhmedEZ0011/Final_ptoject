@@ -299,43 +299,25 @@ overflow: auto;">
     border=0.5">
                                 <tr>
 
-                                   
-                                    <td>طلبة المشروع </td>
-                                    <td>عنوان </td>
-                                    <td>تاريخ تقديم المقترح</td>
+                                    <td> موعد مناقشة النهائية    </td>
+                                    <td> حالة المشروع   </td>
+                                    <td> طالب يتبع قسم </td>
+                                    <td> تاريخ بدء في المشروع   </td>
+                                    <td>  عنوان المشروع  </td>
 
 
                             </tr>
                             @if(count($projects_list))
                             @foreach($projects_list as $projects)
-                            
-                                        
 
-                                    @php
-                                    $studentsList = [
-                                    "First" => ["ID" => $projects->Student1_ID, "Name" => $projects->Student1_Name],
-                                    "Second" => ["ID" => $projects->Student2_ID, "Name" => $projects->Student2_Name],
-                                    "Third" => ["ID" => $projects->Student3_ID, "Name" => $projects->Student3_Name]
-                                    ];
-                                    //$students = explode(",", $studentsList);
-                                    echo "<td>
-                                            <ul style='text-align:right'>";
-                                                    foreach ($studentsList as $student) {
-                                                    if($student["ID"] == null) {
-                                                    continue;
-                                                    }
-                                                    else {
-                                                    echo "<li>".$student["Name"].
-                                                            " (".$student["ID"]. ")</li>";
-                                                    }
-                                                    }
-                                                    echo "</ul>
-                                    </td>";
-                                    @endphp
 
-                                    <td>{{$projects->title}}</td>
+
+
+                                    <td>{{$projects->end_date}}</td>
+                                    <td>{{$projects->status}}</td>
+                                    <td>{{$projects->department_name}}</td>
                                     <td>{{$projects->Created_AT}}</td>
-
+                                    <td>{{$projects->title}}</td>
 
                             </tr>
                             @endforeach
@@ -347,7 +329,7 @@ overflow: auto;">
                     </table>
             </div>
     </div>
-    
+
 </body>
 <script>
 
@@ -368,7 +350,7 @@ overflow: auto;">
                         window.location.href ="http://127.0.0.1:8000/Faculty_documentation"
                                 }
 
-     </script> 
+     </script>
 
 
 

@@ -5,6 +5,8 @@ namespace App\Models;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Support\Facades\DB;
+use Illuminate\Database\Eloquent\Relations\HasMany;
+use Illuminate\Database\Eloquent\Relations\HasOne;
 
 class Proposal extends Model
 {
@@ -12,7 +14,7 @@ class Proposal extends Model
 
     public $timestamps = false;
     protected $fillable = [
-        
+
         'title',
         'sub_title',
         'last_proposal_id',
@@ -73,6 +75,18 @@ class Proposal extends Model
 
         return DB::select($script);
     }
+
+    public function isAccepted() : bool {
+        return $this->desition == "ACCEPTED";
+    }
+    public function students() : HasMany {
+        return $this->hasMany(Proposal_student::class);
+    }
+
+    public function project() : HasOne {
+        return $this->hasOne(Project::class);
+    }
+
 
 
 

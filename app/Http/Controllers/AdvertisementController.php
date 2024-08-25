@@ -23,9 +23,10 @@ class AdvertisementController  extends Controller {
         ->orWhere('advertisements.targets', '=', $target)
         ->where('advertisements_members.target_id', '=', Auth::user()->id)->get("*");
 
+        $ids = [];
         $adsData = [];
         foreach($ads as $ad) {
-            if($ad->enabled == 0) {
+            if($ad->enabled == 0 || in_array($ad->id, $ids)) {
                 continue;
             }
             $targets = [];
@@ -43,6 +44,7 @@ class AdvertisementController  extends Controller {
 
 
             }
+            array_push($ids, $ad->id);
             array_push($adsData, [
                 "id" => $ad->id,
                 "title" => $ad->title,
@@ -74,6 +76,44 @@ class AdvertisementController  extends Controller {
                 ->where('target_id', '=', $target_id)
                 ->update(["seen" => 1]);
         return response()->json(["Message" => (!$result) ? "Process failed" : "Done"]);
+    }
+
+    public static function sendForSpecific($data) {
+        // {ad_title: "", ad_content: "",
+        // ad_target: "", ad_specific_target: ""}
+        $data["ad_target"] = "SPECIFIC";
+        $data["ad_enabled"] = 1;
+        $request = Request::create('/path', 'POST', $data);
+        AdvertisementController::AddAdvertisement($request);
+    }
+
+    public static function AddAdvertisement(Request $request) {
+        $advertisement = Advertisement::create([
+           'title' =>  $request->input('ad_title'),
+           'content' =>  $request->input('ad_content'),
+           'targets' =>  $request->input('ad_target'),
+           'owner' =>  Auth::user()->id,
+           'enabled' => 1 //$request->input('ad_enabled', "on") == "on" ? 1 : 0
+        ]);
+
+
+        if($request->input('ad_target') == 'SPECIFIC') {
+
+            $selectedAudience = explode(' ', $request->input('ad_specific_target'));
+            foreach($selectedAudience as $item) {
+                if($item == "") continue;
+                try {
+                    AdvertisementMember::create([
+                        'ad_id' => $advertisement->id,
+                        'target_id' => (int)$item,
+                        'seen' => 0
+                    ]);
+                }
+                catch(Exception $e) {
+                    //return redirect('Officer_Home')->withErrors(['ad_error' => "Failed to add the current user($item) to audience group"]);
+                }
+            }
+        }
     }
 
 }

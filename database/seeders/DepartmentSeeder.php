@@ -17,12 +17,25 @@ class DepartmentSeeder extends Seeder
         //
         DB::table("departments")->insert([
             'department_id' => "WT",
-            'name' => "Web Technology"
+            'name' => "تقنيات الإنترنت "
         ]);
 
         DB::table("departments")->insert([
             'department_id' => "SE",
-            'name' => "Software Engineer"
+            'name' => "هندسة البرمجيات "
+        ]);
+
+        DB::table("departments")->insert([
+            'department_id' => "",
+            'name' => ""
+        ]);
+        DB::table("departments")->insert([
+            'department_id' => "",
+            'name' => ""
+        ]);
+        DB::table("departments")->insert([
+            'department_id' => "",
+            'name' => "شبكات"
         ]);
     }
 }

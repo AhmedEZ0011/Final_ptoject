@@ -338,10 +338,87 @@ z-index: -1;">
                         </div>
                         <button type="submit" class="btn btn-primary" style="width: 20%;margin-right: 38%">إرسال</button>
                     </form>
+                        <br>
+                        <table style="position: absolute;
+        top: 10%;
+        border=0.5">
+                                <tr>
+                                        <td> </td>
+                                        <td> </td>
+                                        <td>الأسم</td>
+                                        <td>تاريخ طلب التسجيل</td>
+
+                                </tr>
+                                @if($inactive_users->count())
+                                @foreach($inactive_users as $user)
+                                <tr>
+                                        <td><form method="POST" action="{{ route('drop_request_account', $user->id) }}">
+                                            @csrf
+                                            @method('DELETE')
+                                            <button type="submit" style="background-color: rgb(218, 55, 55);">رفض</button>
+                                        </form></td>
+                                        <td><button style="background-color: rgb(93, 202, 93)">
+                                                        <a href="{{route('add_request_account', $user->id)}}">قبول</a>
+                                                </button></td>
+
+                                        <td>{{$user->name}}</td>
+                                        <td>{{$user->created_at}}</td>
+
+                                </tr>
+                                @endforeach
+                                @else
+                                <tr>
+                                        <td colspan="4">لا يوجد طلبات تسجيل </td>
+                                </tr>
+                                @endif
+                        </table>
                 </div>
             </div>
         </div>
-    </div>
+        </div>
+
+        <form action="{{ route('Officer_Home.add_advertisement') }}" id="f4" name="f4" method="post">
+                @csrf</form>
+              <div class="modal-container" id="modalContainer4">
+                <div class="modal">
+                  <button class="close-btn" id="closeModalBtn4">❌</button>
+                  <div class="header">
+                    <img src="Upload to the Cloud.png" class="cloud-icon"></img>
+                    <h2> إضافةإعلان </h2>
+                  </div>
+                  <div class="form-group">
+                    <select name="ad_target" form="f4" required>
+                      <option value="ALL">All</option>
+                      <option value="STUDENTS">Students</option>
+                      <option value="FACULTIES">Faculties</option>
+                      <option value="OFFICERS">Officers</option>
+                      <option value="SPECIFIC">Specific</option>
+                    </select>
+                    <input type="text" name="ad_specific_target" form="f4" placeholder="Specific target">
+                    <input type="text" name="ad_title" form="f4" placeholder="Title">
+                    <input type="text" id="ad_content" name="ad_content" required maxlength="300" minlength="20" form="f4"
+                    style="width: 100%; height: 150px;">
+                    <label for="ad_enabled">Enabled</label>
+                    <input type="checkbox" name="ad_enabled" id="ad_enabled" form="f4" required checked value="on">
+
+                 </div>
+                  <button type="submit" form="f4">إرسال </button>
+                </div>
+              </div>
+</body>
+<script>
+
+const openModalBtn4 = document.getElementById('openModalBtn4');
+const closeModalBtn4 = document.getElementById('closeModalBtn4');
+const modalContainer4 = document.getElementById('modalContainer4');
+
+      openModalBtn4.addEventListener('click', () => {
+      modalContainer4.classList.add('show');
+    });
+
+    closeModalBtn4.addEventListener('click', () => {
+      modalContainer4.classList.remove('show');
+    });
 
     <script>
         function proposals_view_button() {

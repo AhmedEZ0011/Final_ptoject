@@ -13,17 +13,19 @@ use Exception;
 
 class Officer_HomeController extends Controller
 {
-   
+
     public function index()
     {
         if(!Auth::check())
             redirect('login');
         return view('Officer_Home', [
-            'inactive_users' => User::where('active', '=', 0)->whereIn('type', [3, 4])->get()
+    'inactive_users' => User::where('active', '=', 0)
+    ->whereIn('type', [3, 4])
+    ->where('department_id', Auth::user()->department_id)->get()
            ]);
     }
     public function drop($id) {
-        
+
     }
 
     public function AddAdvertisement(Request $request) {
@@ -32,7 +34,7 @@ class Officer_HomeController extends Controller
            'content' =>  $request->input('ad_content'),
            'targets' =>  $request->input('ad_target'),
            'owner' =>  Auth::user()->id,
-           'enabled' => $request->input('ad_enabled') == "on" ? 1 : 0
+           'enabled' => 1//$request->input('ad_enabled') == "on" ? 1 : 0
         ]);
 
 

@@ -36,96 +36,115 @@
       z-index: 2;
     }
 
-    /* Button styles */
+        h4 {
+            text-align: center;
+            margin: 8px;
+        }
+
+        h5 {
+            text-align: center;
+            margin: 8px;
+        }
+
+        .container {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 5%;
+            position: relative;
+            z-index: 2;
+        }
+
+        /* Button styles */
 
 
-    /* Modal container styles */
-    .modal-container {
-      position: absolute;
-      inset: 0;
-      background-color: rgba(0, 0, 0, 0.5);
-      display: flex;
-      justify-content: center;
-      align-items: center;
-      opacity: 0;
-      visibility: hidden;
-      transition: opacity 0.3s, visibility 0.3s;
-      z-index: 1;
+        /* Modal container styles */
+        .modal-container {
+            position: absolute;
+            inset: 0;
+            background-color: rgba(0, 0, 0, 0.5);
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            opacity: 0;
+            visibility: hidden;
+            transition: opacity 0.3s, visibility 0.3s;
+            z-index: 1;
 
-    }
+        }
 
-    /* Modal styles */
-    .modal {
+        /* Modal styles */
+        .modal {
 
-      background-color: rgba(255, 255, 255, 0.589);
-      padding: 20px;
-      border-radius: 10px;
-      box-shadow: 0 0 10px rgba(0, 0, 0, 0.3);
-      transform: scale(0.8);
-      transition: transform 0.3s;
-      height: 60%;
-      width: 50%;
+            background-color: rgba(255, 255, 255, 0.589);
+            padding: 20px;
+            border-radius: 10px;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.3);
+            transform: scale(0.8);
+            transition: transform 0.3s;
+            height: 60%;
+            width: 50%;
 
-    }
+        }
 
-    /* Show modal styles */
-    .modal-container.show {
-      opacity: 1;
-      visibility: visible;
-    }
+        /* Show modal styles */
+        .modal-container.show {
+            opacity: 1;
+            visibility: visible;
+        }
 
-    .modal-container.show .modal {
-      transform: scale(1);
-    }
+        .modal-container.show .modal {
+            transform: scale(1);
+        }
 
-    body {
-      font-family: Arial, sans-serif;
-      background-color: #f5f5f5;
-      text-align: right;
-      direction: rtl;
-      margin: 0;
-      padding: 0;
-    }
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #f5f5f5;
+            text-align: right;
+            direction: rtl;
+            margin: 0;
+            padding: 0;
+        }
 
-    a {
-      color: #000;
-    }
+        a {
+            color: #000;
+        }
 
-    .container {
-      display: flex;
-      justify-content: center;
-      align-items: center;
-      height: 100vh;
-    }
+        .container {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+        }
 
-    .popup {
-      background-color: #d3d0d0;
-      padding: 30px;
-      border-radius: 10px;
-      box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
-      width: 500px;
-      height: 200px;
-      position: relative;
+        .popup {
+            background-color: #d3d0d0;
+            padding: 30px;
+            border-radius: 10px;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+            width: 500px;
+            height: 200px;
+            position: relative;
 
-    }
+        }
 
-    .close-btn {
-      position: absolute;
-      top: 15px;
-      right: 15px;
-      background: none;
-      border: none;
-      font-size: 18px;
-      cursor: pointer;
-      color: red;
-    }
+        .close-btn {
+            position: absolute;
+            top: 15px;
+            right: 15px;
+            background: none;
+            border: none;
+            font-size: 18px;
+            cursor: pointer;
+            color: red;
+        }
 
-    .header {
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      margin-bottom: 1px;
-    }
+        .header {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin-bottom: 1px;
+        }
 
     .header .cloud-icon {
       font-size: 40px;
@@ -134,10 +153,10 @@
       margin: 0 15px;
     }
 
-    .header h2 {
-      margin: 0;
-      font-size: 40px;
-    }
+        .header h2 {
+            margin: 0;
+            font-size: 40px;
+        }
 
     .form-group {
       margin-bottom: 20%;
@@ -213,22 +232,22 @@
       box-sizing: border-box;
     }
 
-    button[type="submit"] {
-      width: 30%;
-      padding: 10px;
-      border: none;
-      background-color: #5c9ded;
-      color: #fff;
-      font-size: 16px;
-      border-radius: 5px;
-      cursor: pointer;
-      margin-top: 4%;
-      margin-right: 37%;
-    }
+        button[type="submit"] {
+            width: 30%;
+            padding: 10px;
+            border: none;
+            background-color: #5c9ded;
+            color: #fff;
+            font-size: 16px;
+            border-radius: 5px;
+            cursor: pointer;
+            margin-top: 4%;
+            margin-right: 37%;
+        }
 
-    button[type="submit"]:hover {
-      background-color: #4a8cdb;
-    }
+        button[type="submit"]:hover {
+            background-color: #4a8cdb;
+        }
 
     .flash-message {
       border-radius: 5px;
@@ -481,7 +500,6 @@ z-index: -1;">
       </div>
       <button type="submit" form="f0">إرسال</button>
     </div>
-  </div>
 
   <form action="{{ route('Student_Home.addDocumentation') }}" id="f2" name="f2" method="post" enctype="multipart/form-data">
     @csrf
@@ -498,17 +516,59 @@ z-index: -1;">
         <input type="file" form="f2" name="documentation" id="proposal-input3">
       </div>
       <button type="submit" form="f2">إرسال</button>
+
+
+
+
+
+    <form action="{{ route('Student_Home.addproposal') }}" id="f0" name="f0" method="post"
+        enctype="multipart/form-data">
+        @csrf</form>
+    <div class="modal-container" id="modalContainer1">
+        <div class="modal">
+            <button class="close-btn" id="closeModalBtn1">❌</button>
+            <div class="header">
+                <img src="Upload to the Cloud.png" class="cloud-icon"></img>
+                <h2>تقديم مقترح</h2>
+            </div>
+            <div class="form-group">
+                <label for="proposal-input-title">عنوان المقترح</label>
+                <input type="text" id="proposal-input-title" name="proposal-input-title" required maxlength="200"
+                    minlength="5" form="f0">
+                <label for="proposal-input-subtitle">عنوان المقترح باللغة الإنجليزية </label>
+                <input type="text" id="proposal-input-subtitle" name="proposal-input-subtitle" maxlength="200"
+                    minlength="5" form="f0">
+                <label for="proposal-input-subtitle">أدخل رقم القيد الطالب التاني في المقترح </label>
+                <input type="text" id="proposal-input-student2" name="proposal-input-student2" form="f0">
+                <label for="proposal-input-subtitle">أدخل رقم قيد الطالب الثالث في المقترح </label>
+                <input type="text" id="proposal-input-student3" name="proposal-input-student3" form="f0">
+                <label for="proposal-input1"></label>
+                <input type="file" form="f0" name="proposal" id="proposal-input1"
+                    placeholder="ادخل مقترح المشروع">
+            </div>
+            <button type="submit" form="f0">إرسال</button>
+        </div>
     </div>
-  </div>
-
-  </div>
-
-  @include('advertisement_panel');
 
 
-  <script>
-    var Advertisements = [];
-    var bellIcon = document.getElementById('bell_icon');
+    <form action="{{ route('Student_Home.addDocumentation') }}" id="f2" name="f2" method="post"
+        enctype="multipart/form-data">
+        @csrf</form>
+    <div class="modal-container" id="modalContainer3">
+        <div class="modal">
+            <button class="close-btn" id="closeModalBtn3">❌</button>
+            <div class="header">
+                <img src="Upload to the Cloud.png" class="cloud-icon"></img>
+                <h2>رفع التوثيق</h2>
+            </div>
+            <div class="form-group">
+                <label for="proposal-input3"></label>
+                <input type="file" form="f2" name="documentation" id="proposal-input3"
+                    placeholder="رفع التوثيق " accept="application/pdf">
+            </div>
+            <button type="submit" form="f2">إرسال</button>
+        </div>
+    </div>
 
     function Settings_button() {
       window.location.href = "http://127.0.0.1:8000/Student_Settings";
@@ -517,6 +577,9 @@ z-index: -1;">
     function Home_button() {
       window.location.href = "http://127.0.0.1:8000/Student_Home";
     }
+    </div>
+
+    @include('advertisement_panel');
 
     $(document).ready(function() {
       $('#openModalBtn1').click(function() {
@@ -614,86 +677,55 @@ z-index: -1;">
               'adblock-label': ""
             })
           });
-        }
-        lastDate = dateString;
-        if (ad.content.length < 90) {
-          ad.content += "<br><br><br><br>"
-        }
-        modifyElement(notificationPanel, {
-          child: [
-            createChild('DIV', {
-              title: ad.id,
-              'adblock': "",
-              child: [
-                createChild('B', {
-                  'adtitle': "",
-                  text: ad.owner.name + " - " + ad.title
-                }),
-                createChild('P', {
-                  'adcontent': "",
-                  html: ad.content
-                }),
-                createChild('DIV', {
-                  'adactions': "",
-                  child: [
-                    createChild('IMG', {
-                      'delete': "",
-                      src: "/icons/icons8_remove_96px.png",
-                      title: "delete",
-                      event: {
-                        async onclick(self) {
-                          if(confirm("Sure you want to remove this Advertisement ?"))
-                            await advertisementRemove(ad);
-                        }
-                      }
-                    }),
-                    createChild('IMG', {
-                      'read': "",
-                      src: "/icons/icons8_received_96px.png",
-                      title: "mark as read",
-                      style: ad.targetlist[0].seen ? "display:none" : "",
-                      event: {
-                        async onclick(self) {
-                          //if(ad.)
-                          await advertisementSeen(ad);
-                        }
-                      }
-                    })
-                  ]
-                })
-              ]
-            })
-          ]
-        });
-      });
-    }
+    <script>
+        var Advertisements = [];
+        var bellIcon = document.getElementById('bell_icon');
 
-    async function advertisementRemove(ad) {
-      fetch("advertisements/remove/" + ad.id + "/{{Auth::user()->id}}/", {
-          method: "DELETE",
-          headers: {
-            'Content-Type': 'application/json',
-            "X-CSRF-Token": "{{csrf_token()}}"
-          },
-          //body: JSON.stringify(ad.targetlist[0])
-        }).then(e => e.json())
-        .then(async e => {
-          alert(e.Message);
-          await loadNotifications();
+        function Settings_button() {
+            window.location.href = "http://127.0.0.1:8000/Student_Settings"
+        }
+
+        function Home_button() {
+            window.location.href = "http://127.0.0.1:8000/Student_Home"
+        }
+        function Archief_button() {
+            window.location.href = "http://127.0.0.1:8000/Archief"
+        }
+
+
+        const openModalBtn1 = document.getElementById('openModalBtn1');
+        const closeModalBtn1 = document.getElementById('closeModalBtn1');
+        const modalContainer1 = document.getElementById('modalContainer1');
+
+        @if ($status !== 'DONE')
+            @if ($decision !== 'PENDING' && $decision !== 'ACCEPTED')
+                openModalBtn1.addEventListener('click', () => {
+                    modalContainer1.classList.add('show');
+                });
+           @endif
+            closeModalBtn1.addEventListener('click', () => {
+                modalContainer1.classList.remove('show');
+            });
+
+
+            const openModalBtn3 = document.getElementById('openModalBtn3');
+            const closeModalBtn3 = document.getElementById('closeModalBtn3');
+            const modalContainer3 = document.getElementById('modalContainer3');
+
+            openModalBtn3.addEventListener('click', () => {
+                modalContainer3.classList.add('show');
+            });
+        @endif
+        closeModalBtn3.addEventListener('click', () => {
+            modalContainer3.classList.remove('show');
         });
-    }
-    async function advertisementSeen(ad) {
-      fetch("advertisements/seen/" + ad.id + "/{{Auth::user()->id}}/", {
-          method: "POST",
-          headers: {
-            'Content-Type': 'application/json',
-            "X-CSRF-Token": "{{csrf_token()}}"
-          },
-          //body: JSON.stringify(ad.targetlist[0])
-        }).then(e => e.json())
-        .then(async e => {
-          alert(e.Message);
-          await loadNotifications();
+
+        const openModalBtn4 = document.getElementById('openModalBtn4');
+        const closeModalBtn4 = document.getElementById('closeModalBtn4');
+        const modalContainer4 = document.getElementById('modalContainer4');
+
+        openModalBtn4.addEventListener('click', () => {
+            modalContainer4.classList.add('show');
         });
     }
     loadNotifications();
@@ -704,5 +736,152 @@ z-index: -1;">
   
   <!-- Bootstrap JS -->
   <script src="https://stackpath.bootstrapcdn.com/bootstrap/5.3.0/js/bootstrap.bundle.min.js"></script>
+
+        // closeModalBtn4.addEventListener('click', () => {
+        //   modalContainer4.classList.remove('show');
+        // });
+
+        let notificationPanel = document.getElementById('ads-popup');
+        async function showNotificationPanel(self) {
+            notificationPanel.style.display = notificationPanel.style.display == "none" ? "block" : "none";
+            if (notificationPanel.style.display == "block") {
+                //await loadNotifications();
+            }
+        }
+
+        async function loadNotifications() {
+            let data = await fetch('{{ route('advertisements.loads', Auth::user()->id) }}').then(e => e.json());
+            if (data != null)
+                Advertisements = data;
+            displayBadge();
+            displayAds();
+        }
+
+        function displayBadge() {
+            let unread = 0;
+            Advertisements.forEach(ad =>{
+                if(ad.targetlist.length == 0) return;
+                 unread += !ad.targetlist[0].seen ? +1 : 0
+                });
+            if (unread == 0) {
+                bellIcon.classList.add('hide-after');
+            } else {
+                bellIcon.classList.remove('hide-after');
+                bellIcon.setAttribute('badge-number', unread);
+            }
+        }
+
+
+        function clearPanel() {
+            notificationPanel.querySelectorAll('div[adblock]').forEach(e => e.remove());
+            notificationPanel.querySelectorAll('B[adblock-label]').forEach(e => e.remove());
+        }
+
+        function displayAds() {
+            let lastDate = "";
+            clearPanel();
+            Advertisements.forEach(ad => {
+                if(ad.targetlist.length == 0) return;
+                let date = new Date(ad.created_at);
+                let dateString = "يوم " + date.getUTCDate() + "/" + (date.getUTCMonth() + 1) + "/" + date
+                    .getUTCFullYear();
+                if (lastDate === dateString) {} else {
+                    modifyElement(notificationPanel, {
+                        child: createChild('B', {
+                            text: dateString,
+                            'adblock-label': ""
+                        })
+                    });
+                }
+                lastDate = dateString;
+                if (ad.content.length < 90) {
+                    ad.content += "<br><br><br><br>"
+                }
+                modifyElement(notificationPanel, {
+                    child: [
+                        createChild('DIV', {
+                            title: ad.id,
+                            'adblock': "",
+                            child: [
+                                createChild('B', {
+                                    'adtitle': "",
+                                    text: ad.owner.name + " - " + ad.title
+                                }),
+                                createChild('P', {
+                                    'adcontent': "",
+                                    html: ad.content
+                                }),
+                                createChild('DIV', {
+                                    'adactions': "",
+                                    child: [
+                                        createChild('IMG', {
+                                            'delete': "",
+                                            src: "/icons/icons8_remove_96px.png",
+                                            title: "delete",
+                                            event: {
+                                                async onclick(self) {
+                                                    if (confirm(
+                                                            "Sure you want to remove this Advertisement ?"
+                                                            ))
+                                                        await advertisementRemove(
+                                                            ad);
+                                                }
+                                            }
+                                        }),
+                                        createChild('IMG', {
+                                            'read': "",
+                                            src: "/icons/icons8_received_96px.png",
+                                            title: "mark as read",
+                                            style: ad.targetlist[0].seen ?
+                                                "display:none" : "",
+                                            event: {
+                                                async onclick(self) {
+                                                    //if(ad.)
+                                                    await advertisementSeen(ad);
+                                                }
+                                            }
+                                        })
+                                    ]
+                                })
+                            ]
+                        })
+                    ]
+                });
+            });
+        }
+
+        async function advertisementRemove(ad) {
+            fetch("advertisements/remove/" + ad.id + "/{{ Auth::user()->id }}/", {
+                    method: "DELETE",
+                    headers: {
+                        'Content-Type': 'application/json',
+                        "X-CSRF-Token": "{{ csrf_token() }}"
+                    },
+                    //body: JSON.stringify(ad.targetlist[0])
+                }).then(e => e.json())
+                .then(async e => {
+                    alert(e.Message);
+                    await loadNotifications();
+                });
+        }
+        async function advertisementSeen(ad) {
+            fetch("advertisements/seen/" + ad.id + "/{{ Auth::user()->id }}/", {
+                    method: "POST",
+                    headers: {
+                        'Content-Type': 'application/json',
+                        "X-CSRF-Token": "{{ csrf_token() }}"
+                    },
+                    //body: JSON.stringify(ad.targetlist[0])
+                }).then(e => e.json())
+                .then(async e => {
+                    alert(e.Message);
+                    await loadNotifications();
+                });
+        }
+        loadNotifications();
+        setInterval(async () => {
+            await loadNotifications();
+        }, 15000);
+    </script>
 </body>
 </html>

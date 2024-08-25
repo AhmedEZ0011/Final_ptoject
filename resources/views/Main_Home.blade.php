@@ -6,6 +6,7 @@
     <title>محرك بحث مشاريع التخرج</title>
 </head>
 {{-- <script src="script.js"></script> --}}
+<link rel="stylesheet" href="/css/a.css">
 <script src="/js/main.js"></script>
 <script src="https://kit.fontawesome.com/258bab96e7.js" crossorigin="anonymous"></script>
 
@@ -273,21 +274,23 @@ h1 {
 
             <div >
                <label for="options"></label>
-                   <select id="options" onchange="clearList();" style=" height:90%">
-                    <option value="ALL">جميع الأقسام</option>
-                    <option value="WT">تقنيات الإنترنت </option>
-                     <option value="SE">هندسة برمجيات</option>
-                    <option value="NT">الشبكات</option>
-                   <option value="IS">نظم المعلومات</option>
-                    <option value="MC ">الحوسبة المتنقلة</option>
-                         </select>
-                    <input name="search" type="text" id="search"
-                           placeholder="ابحث..." list="browsers"
-                           oninput="sendData(); checkSelected();">
-                    <datalist id="browsers">
-                      </datalist>
-                    <button onclick="sendData()" class="fa-sharp fa-solid fa-magnifying-glass" ></button>
-
+                   <select id="options" name="options" onchange="clearList();" style=" height:90%">
+                        <option value="ALL">جميع الأقسام</option>
+                        <option value="WT">تقنيات الإنترنت </option>
+                        <option value="SE">هندسة برمجيات</option>
+                        <option value="NT">الشبكات</option>
+                        <option value="IS">نظم المعلومات</option>
+                        <option value="MC ">الحوسبة المتنقلة</option>
+                    </select>
+                    <input list="browsers-list" name="search" type="text" id="search" placeholder="ابحث..."
+                        oninput="sendData(); ">
+                    <datalist id="browsers-list">
+                        <option value="md"></option>
+                        <option value="ahmed"></option>
+                    </datalist>
+                    <button onclick="sendData()" class="fa-sharp fa-solid fa-magnifying-glass"></button>
+            </div>
+            <div class="search-results-window">
             </div>
         </div>
     </div>
@@ -296,7 +299,7 @@ h1 {
 <script>
     let deptValue = document.querySelector("select#options");
     let textValue = document.querySelector("input[name='search']");
-    let list = document.querySelector("#browsers");
+    let list = document.querySelector(".search-results-window");
 
     async function sendData() {
 
@@ -304,7 +307,12 @@ h1 {
             search: textValue.value,
             departement: deptValue.value
         };
-
+        if(payload.search == "") {
+            list.style.display = "none";
+            return;
+        }else {
+            list.style.display = "block";
+        }
         await fetch("Search/"+payload.search+"/"+payload.departement+"/", {
           method: "GET",
           headers: {
@@ -317,10 +325,19 @@ h1 {
             let elements = [];
             e.forEach(project => {
                 elements.push(createChild('option', {
-                    value: project.title, text: project.id
+                    'class': "result-item",
+                    text: project.title + " - " + project.subtitle,
+                    pid: project.id,
+                    event: {
+                        onclick(self) {
+                            checkSelected(self);
+                        }
+                    }
                 }))
             });
-            list.replaceChildren();
+            console.log(elements);
+            //list.replaceChildren();
+            list.innerHTML = "";
             modifyElement(list, {
                 child: elements
             });
@@ -328,11 +345,8 @@ h1 {
 
 
     }
-    function checkSelected() {
-        [...list.children].forEach(child => {
-            if(child.value == textValue.value)
-                location.href = "/Search/view/"+child.innerText+"/";
-        });
+    function checkSelected(self) {
+        location.href = "/searchview/"+self.getAttribute("pid")+"/";
     }
     function clearList() {
         list.replaceChildren();

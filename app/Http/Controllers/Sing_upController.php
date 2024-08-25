@@ -15,30 +15,11 @@ class Sing_upController extends Controller
         ]);
     }
 
-    /*
-    public function storeRegistration(Request $request)
-    {
-        $request->validate([
-            'name' => 'required|string|max:255',
-            'email' => 'required|string|email|max:255|unique:users',
-            'password' => 'required|string|min:8|confirmed',
-            'id'=> 'required|integer|max:11|unique:users',
-            'role'=> 'required|string|max:255',
-            'department'=> 'required|string|max:50',
-            'gender'=> 'required|string',
-            'reg_date'=> 'required|integer|max:50',
-            'file_path' => 'nullable|file|mimes:jpg,jpeg,png,pdf|max:2048',
-            'cridits'=> 'integer|max:135|min:1',
-            'gpa'=> 'integer|max:100|min:0',
-            'department_id'=> 'required|integer|max:11|unique:users',
-
-        ]);
 
 
-    }  */
     public function store(Request $request)
     {
-
+       
         $user = User::create([
             'name' => $request->name,
             'email' => $request->email,

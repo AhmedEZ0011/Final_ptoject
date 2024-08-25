@@ -295,8 +295,8 @@ z-index: 1;">
     border=0.5">
                                 <tr>
 
-                                   
-                                    
+
+
                                     <td> </td>
                                     <td>عنوان</td>
 
@@ -305,11 +305,13 @@ z-index: 1;">
                             @if(count($projects_list))
                             @foreach($projects_list as $projects)
                             @php
-                                
+                                $lastFile = app('App\Models\Project')
+                                                ->getLastModifiedFile($projects->Student1_ID);
                             @endphp
-                                   
-                            <td><a download href="/users/{{$projects->Student1_ID}}/documentation/{{$projects->Student1_Path}}">Download</a></td>
+
+                            <td><a download="{{$projects->title}}.pdf" href="/users/{{$projects->Student1_ID}}/documentation/{{$lastFile}}">Download</a></td>
                                     <td>{{$projects->title}}</td>
+
 
 
                             </tr>
@@ -319,10 +321,12 @@ z-index: 1;">
                                     <td colspan="2">لا يوجد مقترحات </td>
                             </tr>
                             @endif
+
+
                     </table>
             </div>
     </div>
-    
+
 </body>
 <script>
 
@@ -343,7 +347,7 @@ z-index: 1;">
                         window.location.href ="http://127.0.0.1:8000/Faculty_documentation"
                                 }
 
-     </script> 
+     </script>
 
 
 
