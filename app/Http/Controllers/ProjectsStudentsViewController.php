@@ -19,7 +19,7 @@ class ProjectsStudentsViewController extends Controller
     }
 
     public function setExaminers(Request $request, $project_id) {
-        
+
         $examiners = [
             $request->input('project-examiner1-id'),
             $request->input('project-examiner2-id'),
@@ -32,9 +32,9 @@ class ProjectsStudentsViewController extends Controller
             $count = Trial_examiner::where('project_id', '=', $project_id)->where('examiner_id', '=', $examinerID)->count();
             if($count != 0) continue;
             $count = DB::select("SELECT count(*) as `Count`  FROM proposals p
-                                INNER JOIN projects j ON j.proposal_id = p.id 
+                                INNER JOIN projects j ON j.proposal_id = p.id
                                 WHERE j.id = $project_id AND p.superviser_id = $examinerID;");
-            
+
             if($count[0]->Count != 0) continue;
             Trial_examiner::create([
                 'examiner_id' => $examinerID,
@@ -51,7 +51,7 @@ class ProjectsStudentsViewController extends Controller
         $p->status = 'DONE'  ;
         $p->save();
 
-        return $this->index();        
+        return $this->index();
     }
 
     public function ReplaceTheExaminer(Request $request, $project_id) {
@@ -59,7 +59,7 @@ class ProjectsStudentsViewController extends Controller
         $proposal = Proposal::find($p->proposal_id);
         $proposal->superviser_id = (int)$request->input('project-examiner1-id');
         $proposal->save();
-        return $this->index();        
+        return $this->index();
     }
 
     public function setEnableState(Request $request, $project_id  ) {
@@ -69,7 +69,7 @@ class ProjectsStudentsViewController extends Controller
         $p->status = $proposal->enabled == 1 ? 'IDLE' : 'INPROGRESS' ;
         $proposal->save();
 
-        return $this->index();        
+        return $this->index();
     }
 }
-        
+

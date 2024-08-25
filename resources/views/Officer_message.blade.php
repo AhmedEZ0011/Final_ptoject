@@ -58,12 +58,12 @@
       position: absolute;
       border-bottom:black">
                 <a href="{{ route('logout') }}">
-                        <i class="fa-solid fa-arrow-right-from-bracket" style="font-size:35px; 
+                        <i class="fa-solid fa-arrow-right-from-bracket" style="font-size:35px;
       position: absolute;
       left:2%;
       top:25%;"></a></i>
 
-                <i class="fa-solid fa-graduation-cap" style="font-size:35px; 
+                <i class="fa-solid fa-graduation-cap" style="font-size:35px;
       position: absolute;
       left:10%;
       top:25%;"></i>
@@ -87,11 +87,11 @@
       border-radius: 40px;
   ">
                 <div class="UserName_Icon">
-                        <i class="fa-solid fa-user-tie" style="font-size:40px; 
+                        <i class="fa-solid fa-user-tie" style="font-size:40px;
     position: absolute;
     left:80%;
     top:4%;
-        
+
          "></i>
                         <div class="UserName" style="
     position:absolute;
@@ -109,9 +109,9 @@
   position: absolute;
   border-radius: 20px;
   border-style: none;
-  
+
 "onclick=Home_button()>
-                        <i class="fa-solid fa-house" style="font-size:35px; 
+                        <i class="fa-solid fa-house" style="font-size:35px;
         right:4%;
         top:20%;
         position: absolute;"></i>
@@ -126,14 +126,14 @@
         border-radius: 20px;
         border-style: none;
 "onclick=Settings_button()>
-                        <i class="fa-solid fa-gear" style="font-size:35px; 
+                        <i class="fa-solid fa-gear" style="font-size:35px;
         right:4%;
         top:20%;
         position: absolute;"></i>
                         <h2>الإعدادات </h2>
                 </button>
-              
-                
+
+
                 <button class="Proposals" style="background-color: #97CADB;
         height: 9%;
         left: 4%;
@@ -143,14 +143,14 @@
         border-radius: 20px;
         border-style: none;
 "onclick=proposals_view_button()>
-                        <i class="fa-regular fa-newspaper" style="font-size:35px; 
+                        <i class="fa-regular fa-newspaper" style="font-size:35px;
         right:4%;
         top:20%;
         position: absolute;"></i>
                         <h2>المقترحات</h2>
-                        
-                        
-                        
+
+
+
                 </button>
                 <button class="Graduation-project-students" style="background-color: #97CADB;
         height: 9%;
@@ -161,7 +161,7 @@
         border-radius: 20px;
         border-style: none;
 "onclick=Projects_students_view_button()>
-                        <i class="fa-regular fa-copy" style="font-size:35px; 
+                        <i class="fa-regular fa-copy" style="font-size:35px;
         right:4%;
         top:20%;
         position: absolute;"></i>
@@ -176,7 +176,7 @@
         border-radius: 20px;
         border-style: none;
 ">
-                        <i class="fa-solid fa-thumbtack" style="font-size:35px; 
+                        <i class="fa-solid fa-thumbtack" style="font-size:35px;
         right:4%;
         top:20%;
         position: absolute;"></i>
@@ -191,7 +191,7 @@
         border-radius: 20px;
         border-style: none;
 ">
-                        <i class="" style="font-size:35px; 
+                        <i class="" style="font-size:35px;
         right:4%;
         top:20%;
         position: absolute;"></i>
@@ -225,7 +225,7 @@ overflow: auto;">
                 </div>
 
         </div>
-        
+
 </body>
 <script>
 
@@ -239,7 +239,10 @@ overflow: auto;">
 
         }
         function Settings_button() {
-      window.location.href = "http://127.0.0.1:8000/OfficerSettings"
+      window.location.href = " function Projects_students_view_button() {
+          window.location.href = "{{route('Projects_students_view.index')}}"//"http://127.0.0.1:8000/proposals_view";
+
+        }OfficerSettings"
         }
         function Home_button() {
       window.location.href = "http://127.0.0.1:8000/Officer_Home"

@@ -4,8 +4,8 @@
   <title>Student Home</title>
   <meta name="csrf-token" content="{{ csrf_token() }}">
   <meta name="viewport" content="width=device-width, initial-scale=1">
-  
-  <!-- FontAwesome for icons -->
+  <link rel="stylesheet" href="/css/a.css">
+  <script src="/js/main.js"></script>
   <script src="https://kit.fontawesome.com/258bab96e7.js" crossorigin="anonymous"></script>
 
   <!-- Bootstrap CSS -->
@@ -17,7 +17,7 @@
     </script>
   <style>
     /* General styles */
-    body {
+        body {
       font-family: Arial, sans-serif;
       text-align: right;
       direction: rtl;
@@ -36,8 +36,88 @@
       z-index: 2;
     }
 
+    /* Button styles */
+
+
+    /* Modal container styles */
+    .modal-container {
+      position: absolute;
+      inset: 0;
+      background-color: rgba(0, 0, 0, 0.5);
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      opacity: 0;
+      visibility: hidden;
+      transition: opacity 0.3s, visibility 0.3s;
+      z-index: 1;
+
+    }
+
+    /* Modal styles */
+    .modal {
+
+      background-color: rgba(255, 255, 255, 0.589);
+      padding: 20px;
+      border-radius: 10px;
+      box-shadow: 0 0 10px rgba(0, 0, 0, 0.3);
+      transform: scale(0.8);
+      transition: transform 0.3s;
+      height: 60%;
+      width: 50%;
+
+    }
+
+    /* Show modal styles */
+    .modal-container.show {
+      opacity: 1;
+      visibility: visible;
+    }
+
+    .modal-container.show .modal {
+      transform: scale(1);
+    }
+
+    body {
+      font-family: Arial, sans-serif;
+      background-color: #f5f5f5;
+      text-align: right;
+      direction: rtl;
+      margin: 0;
+      padding: 0;
+    }
+
     a {
       color: #000;
+    }
+
+    .container {
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      height: 100vh;
+    }
+
+    .popup {
+      background-color: #d3d0d0;
+      padding: 30px;
+      border-radius: 10px;
+      box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+      width: 500px;
+      height: 200px;
+      position: relative;
+
+    }
+
+    .close-btn {
+      position: absolute;
+      top: 15px;
+      right: 15px;
+      background: none;
+      border: none;
+      font-size: 18px;
+      cursor: pointer;
+      color: red;
     }
 
     .header {
@@ -421,17 +501,21 @@ z-index: -1;">
     </div>
   </div>
 
+  </div>
+
+  @include('advertisement_panel');
+
+
   <script>
+    var Advertisements = [];
+    var bellIcon = document.getElementById('bell_icon');
+
     function Settings_button() {
       window.location.href = "http://127.0.0.1:8000/Student_Settings";
     }
 
     function Home_button() {
       window.location.href = "http://127.0.0.1:8000/Student_Home";
-    }
-
-    function Search_button() {
-      window.location.href = "http://127.0.0.1:8000/Search";
     }
 
     $(document).ready(function() {
@@ -451,6 +535,171 @@ z-index: -1;">
         $('#modalContainer3').removeClass('show');
       });
     });
+
+    closeModalBtn1.addEventListener('click', () => {
+      modalContainer1.classList.remove('show');
+    });
+
+    const openModalBtn2 = document.getElementById('openModalBtn2');
+    const closeModalBtn2 = document.getElementById('closeModalBtn2');
+    const modalContainer2 = document.getElementById('modalContainer2');
+
+    const openModalBtn3 = document.getElementById('openModalBtn3');
+    const closeModalBtn3 = document.getElementById('closeModalBtn3');
+    const modalContainer3 = document.getElementById('modalContainer3');
+
+    openModalBtn3.addEventListener('click', () => {
+      modalContainer3.classList.add('show');
+    });
+
+    closeModalBtn3.addEventListener('click', () => {
+      modalContainer3.classList.remove('show');
+    });
+
+    const openModalBtn4 = document.getElementById('openModalBtn4');
+    const closeModalBtn4 = document.getElementById('closeModalBtn4');
+    const modalContainer4 = document.getElementById('modalContainer4');
+
+    openModalBtn4.addEventListener('click', () => {
+      modalContainer4.classList.add('show');
+    });
+
+    // closeModalBtn4.addEventListener('click', () => {
+    //   modalContainer4.classList.remove('show');
+    // });
+
+    let notificationPanel = document.getElementById('ads-popup');
+    async function showNotificationPanel(self) {
+      notificationPanel.style.display = notificationPanel.style.display == "none" ? "block" : "none";
+      if (notificationPanel.style.display == "block") {
+        //await loadNotifications();
+      }
+    }
+
+    async function loadNotifications() {
+      let data = await fetch('{{route("advertisements.loads", Auth::user()->id)}}').then(e => e.json());
+      if (data != null)
+        Advertisements = data;
+      displayBadge();
+      displayAds();
+    }
+
+    function displayBadge() {
+      let unread = 0;
+      Advertisements.forEach(ad => unread += !ad.targetlist[0].seen ? + 1 : 0);
+      if(unread == 0) {
+        bellIcon.classList.add('hide-after');
+      } else {
+        bellIcon.classList.remove('hide-after');
+        bellIcon.setAttribute('badge-number', unread);
+      }
+
+    }
+
+    function clearPanel() {
+      notificationPanel.querySelectorAll('div[adblock]').forEach(e => e.remove());
+      notificationPanel.querySelectorAll('B[adblock-label]').forEach(e => e.remove());
+    }
+
+    function displayAds() {
+      let lastDate = "";
+      clearPanel();
+      Advertisements.forEach(ad => {
+        let date = new Date(ad.created_at);
+        let dateString = "يوم " + date.getUTCDate() + "/" + (date.getUTCMonth() + 1) + "/" + date.getUTCFullYear();
+        if (lastDate === dateString) {} else {
+          modifyElement(notificationPanel, {
+            child: createChild('B', {
+              text: dateString,
+              'adblock-label': ""
+            })
+          });
+        }
+        lastDate = dateString;
+        if (ad.content.length < 90) {
+          ad.content += "<br><br><br><br>"
+        }
+        modifyElement(notificationPanel, {
+          child: [
+            createChild('DIV', {
+              title: ad.id,
+              'adblock': "",
+              child: [
+                createChild('B', {
+                  'adtitle': "",
+                  text: ad.owner.name + " - " + ad.title
+                }),
+                createChild('P', {
+                  'adcontent': "",
+                  html: ad.content
+                }),
+                createChild('DIV', {
+                  'adactions': "",
+                  child: [
+                    createChild('IMG', {
+                      'delete': "",
+                      src: "/icons/icons8_remove_96px.png",
+                      title: "delete",
+                      event: {
+                        async onclick(self) {
+                          if(confirm("Sure you want to remove this Advertisement ?"))
+                            await advertisementRemove(ad);
+                        }
+                      }
+                    }),
+                    createChild('IMG', {
+                      'read': "",
+                      src: "/icons/icons8_received_96px.png",
+                      title: "mark as read",
+                      style: ad.targetlist[0].seen ? "display:none" : "",
+                      event: {
+                        async onclick(self) {
+                          //if(ad.)
+                          await advertisementSeen(ad);
+                        }
+                      }
+                    })
+                  ]
+                })
+              ]
+            })
+          ]
+        });
+      });
+    }
+
+    async function advertisementRemove(ad) {
+      fetch("advertisements/remove/" + ad.id + "/{{Auth::user()->id}}/", {
+          method: "DELETE",
+          headers: {
+            'Content-Type': 'application/json',
+            "X-CSRF-Token": "{{csrf_token()}}"
+          },
+          //body: JSON.stringify(ad.targetlist[0])
+        }).then(e => e.json())
+        .then(async e => {
+          alert(e.Message);
+          await loadNotifications();
+        });
+    }
+    async function advertisementSeen(ad) {
+      fetch("advertisements/seen/" + ad.id + "/{{Auth::user()->id}}/", {
+          method: "POST",
+          headers: {
+            'Content-Type': 'application/json',
+            "X-CSRF-Token": "{{csrf_token()}}"
+          },
+          //body: JSON.stringify(ad.targetlist[0])
+        }).then(e => e.json())
+        .then(async e => {
+          alert(e.Message);
+          await loadNotifications();
+        });
+    }
+    loadNotifications();
+    setInterval(async () => {
+      await loadNotifications();
+    }, 15000);
   </script>
   
   <!-- Bootstrap JS -->

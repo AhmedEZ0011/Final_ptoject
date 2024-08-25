@@ -225,6 +225,10 @@
         </div>
     
 
+
+        <h1>{{ $details->id }}</h1>
+
+        <h1>UI</h1>
 </body>
 
 </html>

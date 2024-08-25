@@ -172,13 +172,6 @@
       margin: 0;
       font-size: 40px;
     }
-    .custom-close {
-            background-color: #f00; /* لون الخلفية */
-            color: #fff; /* لون النص */
-            border: 2px solid #fff; /* لون الحدود */
-            border-radius: 50%; /* يجعل الزر دائري */
-            width: 40px; /* عرض الزر */
-            height: 40px; /* ارتفاع الزر */
             display: flex;
             align-items: center;
             justify-content: center;
@@ -352,29 +345,22 @@ z-index: -1;">
 
     <script>
         function proposals_view_button() {
-            window.location.href = "{{ route('proposals_view.index') }}";
+                window.location.href = "{{route('proposals_view.index')}}" //"http://127.0.0.1:8000/proposals_view";
         }
 
         function Projects_students_view_button() {
-            window.location.href = "{{ url('Projects_students_view') }}";
+                window.location.href = "{{route('Projects_students_view.index')}}" //"http://127.0.0.1:8000/proposals_view";
+
         }
 
         function Settings_button() {
-            window.location.href = "{{ url('OfficerSettings') }}";
+                window.location.href = "http://127.0.0.1:8000/Student_Settings"
         }
 
         function Home_button() {
-            window.location.href = "{{ url('Officer_Home') }}";
+                window.location.href = "http://127.0.0.1:8000/Officer_Home"
         }
-
-        //function removeBorder() {
-         //   document.getElementById('myElement').style.border = 'none';
-        //}
-   
     </script>
 
-    @if($errors->has('ad_error'))
-        <h1>{{ $errors->first('ad_error') }}</h1>
-    @endif
-</body>
 </html>
+

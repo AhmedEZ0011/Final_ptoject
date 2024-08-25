@@ -3,21 +3,22 @@
 use App\Http\Controllers\Officer_HomeController;
 use App\Http\Controllers\ProposalsView_Controller;
 use App\Http\Controllers\ProjectsStudentsViewController;
+use App\Http\Controllers\AdvertisementController;
 use App\Http\Controllers\SingupController;
 //use Illuminate\Routing\Route;
 use Illuminate\Support\Facades\Route;
 //use App\Http\Controllers\StudentSignInController;
 use App\Http\Controllers\SignInController;
+use App\Http\Controllers\SearchController;
+
 use App\Models\User;
 use App\Http\Controllers\Student_HomeController;
-use App\Http\Controllers\SearchController;
-use App\Http\Controllers\SearchResultsController;
-use App\Http\Controllers\StudentSettingController;
-use App\Http\Controllers\FacultyDocumentationController;
-use App\Http\Controllers\HomeController;
+use App\Models\Project;
+
 //use Illuminate\Support\Facades\Storage;
 //use Illuminate\Support\Facades\File;
 
+Route::get('/', 'App\Http\Controllers\HomeController@index');
 
 Route::get('/loginhome', 'App\Http\Controllers\LoginController@index');
 Route::resource("/Student_Sign_In", 'App\Http\Controllers\Student_Sign_InController');
@@ -31,7 +32,8 @@ Route::resource("/Faculty_Home", 'App\Http\Controllers\Faculty_HomeController')
 Route::name('Officer_Home.')->prefix("Officer_Home")->group(function() {
 	Route::get('/', [Officer_HomeController::class, "index"])->name('index');
 	Route::post('add_advertisement/', [Officer_HomeController::class, "AddAdvertisement"])->name('add_advertisement');
-}); 
+}); //::resource("", 'App\Http\Controllers\Officer_HomeController')
+//->names("Officer_Home");
 Route::resource("/Faculty_proposal_students", 'App\Http\Controllers\FacultyProposalStudentsController')
 ->names("Faculty_proposal_students");;
 Route::resource("/Faculty_Setting", 'App\Http\Controllers\FacultySettingController');
@@ -39,35 +41,20 @@ Route::resource("/OfficerSettings", 'App\Http\Controllers\OfficerSettingsControl
 Route::resource("/Student_Sign_In", 'App\Http\Controllers\Student_Sign_InController');
 Route::resource("Student_Home", 'App\Http\Controllers\Student_HomeController')
 ->names("Student_Home");
-Route::resource("Faculty_documentation", 'App\Http\Controllers\FacultyDocumentationController')
-->names("Faculty_documentation");
-Route::name('Student_Settings.')->prefix('Student_Settings')->group(function() {
-	Route::get('/', [StudentSettingController::class, 'index'])->name("index");
-	Route::post('update/', [StudentSettingController::class, 'update'])->name("update");
-});
+Route::resource("/Student_Settings", 'App\Http\Controllers\Student_SettingsController');
 Route::resource("/proposals_view", 'App\Http\Controllers\ProposalsView_Controller')
 ->names("proposals_view");
 Route::resource("/Projects_students_view", 'App\Http\Controllers\ProjectsStudentsViewController')
 ->names("Projects_students_view");
 Route::resource("/Faculty_project_students", 'App\Http\Controllers\FacultyProjectStudentsController')
 ->names("Faculty_project_students");
-Route::resource("/Search_Results", 'App\Http\Controllers\SearchResultsController')
-->names("Search_Results");
-
-Route::name('Search.')->prefix("Search")->group(function() {
-    Route::get('/', [SearchController::class, "index"])->name('index');
-    Route::get('Searchforproject/', [SearchController::class, "Search_Results"])->name('Searchforproject');
-});
-Route::get('/Main_Home', 'App\Http\Controllers\HomeController@index');
-
-
 
                  // <<<<<<<<<Sign In >>>>>>>>
 
 Route::post('/Sign_in.login', [SignInController::class, 'login'])->name("login");
 
                 //<<<<<<<Officer_Home>>>>>>>>
-			
+
 Route::get('/drop_request_account/{id}/', function($id) {
 	$state = User::find($id)->delete();
 	$isdeleted = unlink(public_path().'/users/'.$id);
@@ -99,27 +86,27 @@ Route::name('proposals_view.')->group(function() {
 });
 
 Route::name('projects_view.')->group(function() {
-//
     Route::post('set_examiner/{project_id}/', [ProjectsStudentsViewController::class, "setExaminers"])->name('set_examiner');
     Route::post('set_supervisor/{project_id}/', [ProjectsStudentsViewController::class, "setSupervisor"])->name('set_supervisor');
     Route::post('set_enable/{project_id}/', [ProjectsStudentsViewController::class, "setEnableState"])->name('set_enable');
     Route::post('set_grade/{project_id}/', [ProjectsStudentsViewController::class, "setGrade"])->name('set_grade');
-    
 });
-//Route::name('Projects_view.')->group(function() {
-
-//    Route::get('modify/{state}/{title}/{ids}/', [ProjectsViewController::class, "modify"])->name('modify');
-	
-//});
 
 
-
-/*Route::get('m/{i}', function($i) {
-	return "You requested ".$i;
+Route::name('advertisements.')->prefix('advertisements')->group(function() {
+	Route::get('/', [AdvertisementController::class, "load"])->name('load');
+	Route::get('/{target}/', [AdvertisementController::class, "loads"])->name('loads');
+	Route::post('seen/{id}/{target}/', [AdvertisementController::class, "seen"])->name('seen');
+	Route::post('edit/{id}/', [AdvertisementController::class, "edit"])->name('edit');
+	Route::delete('remove/{id}/{target}/', [AdvertisementController::class, "remove"])->name('remove');
 });
-*/
-                //<<<<<<<Student_Home>>>>>>>>
+Route::name('Search.')->prefix("Search")->group(function() {
+    Route::get('/{search}/{dept}/', [SearchController::class, "index"])->name('index');
+    Route::get('/view/{pid}/', [SearchController::class, "view"])->name('view');
+});
+	//<<<<<<<Student_Home>>>>>>>>
 Route::post("/Student_Home/addproposal/", 'App\Http\Controllers\Student_HomeController@addproposal')->name('Student_Home.addproposal');
+Route::post("/Student_Home/addreport/", 'App\Http\Controllers\Student_HomeController@addreport')->name('Student_Home.addreport');
 Route::post("/Student_Home/addDocumentation/", 'App\Http\Controllers\Student_HomeController@addDocumentation')->name('Student_Home.addDocumentation');
 Route::get("/Student_Home/search",'App\Http\Controllers\Student_HomeController@search')->name('Student_Home.search');
 Route::get('/search/{id}/', function($id) {
@@ -127,12 +114,12 @@ Route::get('/search/{id}/', function($id) {
         if($state) {
 			$state->active = 1;
 			$state->save();
-			
+			//$query = $request->input('query');
+			//$results = Project::where('column_name', 'LIKE', "%{$query}%")->get(); // Adjust column_name and model
+	
 			return redirect ()->route('Student_Home.search');
 		}
 		else {
 			return redirect ()->route('Student_Home.search');
         }
 })->name("search");
-
-

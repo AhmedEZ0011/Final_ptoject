@@ -310,13 +310,13 @@
                                                 </button></td>
 
                                         <td><button onclick="EnterTheRating(this);" href="{{ route('projects_view.set_grade',[$projects->id]) }}" class="btn-primary" style="background-color: rgb(93, 202, 93)">
-                                        ادخال التقييم        
+                                        ادخال التقييم
                                 </button></td>
                                         <td><button onclick="ReplaceTheExaminer(this);" href="{ route('proposals_view.modify', ['accept', $proposals->title, $proposals->students]) }" class="btn-primary" style="background-color: rgb(93, 202, 93)">
-                                                       تغيير مشرف  
+                                                       تغيير مشرف
                                                 </button></td>
                                          <td><button onclick="setEnableState(this);" href="{ route('projects_view.set_enable') }" style="background-color: rgb(211, 69, 69)">
-                                                        إيقاف مشروع   
+                                                        إيقاف مشروع
                                                  </button></td>
 
                                 </tr>
@@ -366,7 +366,7 @@
                 </div>
         </div>
 
-        
+
         <form id="f1" name="f1" method="post" enctype="multipart/form-data">
                 @csrf</form>
         <div class="modal-container" id="modalContainer2">
@@ -417,7 +417,7 @@
                     <h2> إضافةإعلان </h2>
                   </div>
                   <div class="form-group">
-                    
+
                     <input type="text" id="report-input-content" name="report-input-content" required maxlength="300" minlength="20" form="f4"
                     style="width: 100%; height: 150px;">
                  </div>
@@ -446,8 +446,8 @@ const modalContainer3 = document.getElementById('modalContainer3');
 const openModalBtn4 = document.getElementById('openModalBtn4');
 const closeModalBtn4 = document.getElementById('closeModalBtn4');
 const modalContainer4 = document.getElementById('modalContainer4');
-     
-  
+
+
 
     closeModalBtn1.addEventListener('click', () => {
       modalContainer1.classList.remove('show');
@@ -465,7 +465,7 @@ const modalContainer4 = document.getElementById('modalContainer4');
     closeModalBtn4.addEventListener('click', () => {
       modalContainer4.classList.remove('show');
     });
-    
+
 
         function proposals_view_button() {
                 window.location.href = "{{route('proposals_view.index')}}" //"http://127.0.0.1:8000/proposals_view";
@@ -502,7 +502,7 @@ const modalContainer4 = document.getElementById('modalContainer4');
         }
         function setEnableState(button) {
                 const route = button.getAttribute('href');
-                
+
         }
 </script>
 
